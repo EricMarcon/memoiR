@@ -1,0 +1,154 @@
+---
+title: "Title of the Talk"
+author: "Author's name"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+preamble: >
+  \usepackage{textcomp}
+  \DeclareUnicodeCharacter{B0}{\textdegree}
+output:
+  beamer_presentation:
+    df_print: kable
+    fig_caption: no
+    includes:
+      in_header: latex/header.tex
+    keep_tex: no
+    slide_level: 2
+  ioslides_presentation:
+    logo: images/logo.png
+    widescreen: true
+  slidy_presentation: default
+---
+
+```{r DoNotModify, include=FALSE}
+### Utilities. Do not modify.
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos="https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(Packages, InstallPackage))
+}
+
+# Basic packages
+InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
+library("kableExtra") # Mandatory to load css and more
+
+# Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r Options, include=FALSE}
+### Customized options for this document
+# Add necessary packages here
+Packages <- c("tidyverse")
+# Install them
+InstallPackages(Packages)
+
+# knitr options
+knitr::opts_chunk$set(
+  cache=FALSE, # Cache chunk results
+  echo = TRUE, # Show R chunks
+  warning=FALSE, # Hide warnings
+  # Books only: figures with side captions
+  # fig.env='SCfigure', fig.asp=.75,
+  # Figure alignment and size
+  fig.align='center', out.width='80%',
+  # Graphic device
+  dev = "ragg_png",
+  # Code chunk format
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  )
+options(width=50)
+
+# ggplot style
+library("tidyverse")
+theme_set(theme_bw())
+theme_update(panel.background=element_rect(fill="transparent", colour=NA),
+             plot.background=element_rect(fill="transparent", colour=NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
+# Tibbles: 5 lines, fit to slide width
+options(tibble.print_min = 5, tibble.width = 50)
+
+# Random seed
+set.seed(973)
+```
+
+
+# First Part
+
+<!-- This comment is needed to avoid a white slide after the first part's title --> 
+<!-- HTML column break --> 
+<style>
+  .forceBreak { -webkit-column-break-after: always; break-after: column; }
+</style>
+
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+Table Header | Second Header
+------------ | -------------
+Table Cell   | Cell 2
+Cell 3       | Cell 4
+
+## Slide with Incremental Bullets
+
+> - Bullet 1
+> - Bullet 2
+> - Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+head(cars)
+```
+
+# Second part
+
+## Slide with a Plot{.flexbox .vcenter}
+```{r pressure}
+plot(pressure)
+```
+
+## Two Column Layout{.columns-2} 
+
+\begincols
+  \begincol{.48\textwidth}
+
+This slide has two columns.
+
+In Beamer, each column in between `\begincol` and `\endcol`.
+
+In HTML, the `{.columns-2}` option is added to the slide title and `<p class="forceBreak"></p>` allows forcing column break.
+
+
+  \endcol
+  \begincol{.48\textwidth}
+  <p class="forceBreak"></p>
+
+```{r pressure2, out.width='90%'}
+plot(pressure)
+```
+
+  \endcol
+\endcols
+
+## Documentation
+
+See [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html) for full documentation about HTML slides.
+
+Note:
+
+- `{.flexbox .vcenter}` to center the HTML slide with plot.
+- `out.width='90%'` to reduce the size of the plot in the Two Column Layout slide.

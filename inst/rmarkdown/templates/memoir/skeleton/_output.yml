@@ -1,0 +1,20 @@
+bookdown::pdf_book:
+  template: latex/template.tex
+  pandoc_args: --top-level-division=chapter
+  includes:
+    in_header: latex/preamble.tex
+    before_body: latex/before_body.tex
+    after_body: latex/after_body.tex
+  latex_engine: xelatex
+  citation_package: biblatex
+  keep_tex: yes
+bookdown::epub_book: default
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Ouvrage Bookdown</a></li>
+      after: |
+        <li><a href="https://github.com/EcoFoG/EcofoG" target="blank">Published with bookdown</a></li>
+    download: "pdf"

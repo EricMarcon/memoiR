@@ -1,0 +1,36 @@
+# History files
+.Rhistory
+.Rapp.history
+# Session Data files
+.RData
+# Example code in package build process
+*-Ex.R
+# Output files from R CMD build
+/*.tar.gz
+# Output files from R CMD check
+/*.Rcheck/
+# RStudio files
+.Rproj.user/
+.Rprofile
+# produced vignettes
+Meta
+doc
+vignettes/*.html
+vignettes/*.pdf
+vignettes/*.R
+vignettes/*_files/
+vignettes/articles/*.html
+vignettes/articles/*.pdf
+vignettes/articles/*_files/
+# knitr and R markdown default cache directories
+/*_cache/
+/cache/
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+# C binaries
+src/*.o
+src/*.so
+src/*.dll
+# pkgdown by GitHub Actions
+docs/

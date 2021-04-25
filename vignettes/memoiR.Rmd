@@ -1,0 +1,40 @@
+---
+title: "R Markdown and Bookdown Templates to Publish Documents"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Content
+
+This package provides templates to publish well-formatted documents both in HTML and PDF formats. 
+Documents can be produced locally or hosted on GitHub.
+GitHub actions can be used for automatic updates.
+
+Templates include:
+
+- "Stylish Article": an article for self archiving. The HTML version is optimized to be read online and the PDF version is a two-column, well formatted article to be printed.
+- "Simple Article":  simpler than the stylish article. The HTML version is the same and the PDF version follows the classical 'article' LaTeX template.
+- "Beamer Slideshow": the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.
+- "Memoir": a book template based on memoir. The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.
+
+
+# Getting started
+
+In RStudio, create a new R Markdown document and chose the appropriate template in the wizard.
+
+Use the menu "File > New File... > R Markdown...", click on _From template_ and pick up the template you want in the list.
+
+Chose the location to create the document and the name of its directory.
+
+Make the new folder an RStudio Project: use the menu "File / New Project...", click on "Existing Directory" and select the directory created previously.
+
+Articles, memos and slideshows are produced by clicking on the **Knit** button of the Source pane of their Rmd file.
+Memoirs are produced by clicking on the **Build Book** button of the Build pane.
+
+
+# Full documentation
+
+https://EricMarcon.github.io/memoiR/ 

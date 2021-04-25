@@ -1,0 +1,61 @@
+# Syntaxe
+
+La syntaxe de _R Mardown_ étendue par _Bookdown_ est rappelée ici, en Anglais.
+
+Les références bibliographiques [@xie2015] sont supportées.
+
+Le changement de langue est géré en LaTeX (ponctuation et césures différentes) mais pas en HTML.
+La commande `\selectlanguage{english}` est simplement ignorée en HTML.
+
+\selectlanguage{english}
+
+## Section in English
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(Demarrage).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+Figure captions can be set into a paragraph starting with `(ref:FigName)` where `FigName` is the name of the figure code chunk.
+These caption allow any format (even though they are limited to a single paragraph), whilst captions in code chunk headers must be plain text.
+In the code chunk header, the caption is called by `fig.cap='(ref:FigName)'`.
+
+(ref:nice-fig) Here is a nice figure! It has a long, long, *long*, **long**, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, caption in full Markdown, including maths : $\pi$ .
+```{r nice-fig, fig.cap='(ref:nice-fig)'}
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:kable).
+
+```{r kable, echo=FALSE, warning=FALSE, tidy=FALSE}
+names(iris) <- c("Longueur sépales", "Largeur", 
+                 "Longueur pétales", "Largeur", "Espèce")
+knitr::kable(head(iris), caption="Tableau créé par R", 
+             longtable = TRUE, booktabs = TRUE) %>%
+kableExtra::kable_styling(bootstrap_options = "striped", 
+                          full_width = FALSE)
+```
+
+\selectlanguage{french}
+
+Remarque: si le tableau est mal formaté, supprimer le dossier `_bookdown_files` et recréer le livre.
+
+La légende est précisée par l'argument `caption` et le référencement est possible parce que le tableau reçoit une étiquette dont le nom est `tab:` suivi du nom du bout de code (tableau \@ref(tab:kable)).
+Utiliser systématiquement l'argument `booktabs = TRUE` pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
+L'option\break `bootstrap_options = "striped"` fournit des tableaux plus lisibles en HTML.
+
+En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages (`longtable = TRUE`).
+L'option `longtable = FALSE` du modèle d'article pour afficher les tableaux en pleine largeur n'est pas disponible ici.
+
+
+## Documentation pour les utilisateurs
+
+- L'ouvrage [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) de Yihui Xie, l'auteur de **bookdown** et de **knitr**. Toutes les précisions nécessaires à la rédaction (écriture d'équations, références croisées, etc.) y sont données;
+
+- L'[anti-sèche de R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) pour la syntaxe.
+
+
+## Documentation pour les développeurs {#sec:docdev}
+
+- La [personnalisation du format du fichier LaTeX](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization) produit.
+
+- Le [manuel de Pandoc](https://pandoc.org/MANUAL.html) pour les options possibles dans l'entête YAML.

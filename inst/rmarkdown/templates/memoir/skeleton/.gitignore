@@ -1,0 +1,48 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+
+# Package file
+.Rbuildignore
+
+# RStudio files
+.Rproj.user/
+
+# knitr and R markdown default cache directories
+/cache/
+/figure/
+/*_files/
+/*_cache/
+/libs/
+_bookdown_files/
+
+# Latex files
+*.aux
+*-blx.bib
+*.log
+*.xml
+*.bbl
+*.bcf
+*.blg
+*.synctex.gz
+*.out
+*.toc
+*-concordance.tex
+*(busy)
+*.tex
+*.nav
+*.snm
+*.vrb
+
+# Extras
+.#Extra
+
+# Template specific
+MyBook.Rmd
+packages.bib
+
+# Uncomment if CI builds docs/
+# docs/

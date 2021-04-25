@@ -1,0 +1,4 @@
+name: Simple article
+description: >
+ Simple article based on the LaTeX article class
+create_dir: true

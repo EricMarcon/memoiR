@@ -1,0 +1,4 @@
+name: Memoir
+description: >
+ GitBook and PDF based on the memoir LaTeX class
+create_dir: true

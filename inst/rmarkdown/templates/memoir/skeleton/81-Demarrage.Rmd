@@ -1,0 +1,112 @@
+# Démarrage {#Demarrage}
+
+_RStudio_ en version supérieure à 1 doit être utilisé.
+Le package **bookdown** doit être installé.
+
+Pour la création du fichier PDF, une installation de LaTeX est nécessaire.
+Sous Windows, utiliser [MikTex](https://miktex.org/download).
+Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable.
+
+Les paramètres de base du projet doivent être saisis dans les fichiers suivants.
+
+## index.Rmd
+
+Dans l'entête du fichier, saisir le titre de l'ouvrage et le nom du ou des auteurs
+
+    title: "Ouvrage Bookdown" 
+    author: "Prénom NomAuteur"
+
+Les options spécifiques à LaTeX sont:
+
+- _documentclass_ la classe de document, obligatoirement _memoir_ pour ce modèle. Les options de la classe _memoir_ sont énumérer, à ne pas modifier normalement;
+- _fontfamily_: la [police de caractère](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ par défaut;
+- _linestretch_: l'interlignage, 1 par défaut;
+- _papersize_: A4;
+- _fontsize_: 11pt;
+- _toc-depth_: nombre de niveaux dans la table des matières, 3 par défaut;
+- _lang_: fr-FR, en-US ou en-GB (ou n'importe quel code valide[^1]), la langue principale;
+- _otherlangs_: ignoré depuis la version 2 de pandoc[^2];
+- _graphics_: yes obligatoirement pour utiliser le package _graphics_ nécessaire aux figures;
+- *fig_crop*: yes pour autoriser le rognage des marges excédentaires des figures;
+- La quatrième de couverture affichera le résumé en Français et en Anglais et les mots-clés associés si les instructions _resume_, _mots-cles_, _abstract_ et _keywords_ sont présentes;
+- _fourthpagefontsize_ donne la taille de la police de caractère de la quatrième de couverture, normalsize par défaut, à adapter selon la longueur des résumés. La commande doit être reconnue par LaTeX.
+
+[^1]: https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf
+[^2]: https://github.com/jgm/pandoc/issues/4072
+
+Les paramètres de la bibliographie sont:
+
+- _bibliography_: fichiers contenant les références, [MyBook.bib, packages.bib] par défaut. _package.bib_ est créé par le premier bout de code du document: il permet de citer les packages déclarés avec les identifiants de la forme `@R-package`. R lui-même est cité par `@R-base`;
+- _biblio-style_: le style bibliographique, authoryear-ibid par défaut;
+- _cite-style_: le style des citations dans le document LaTeX, verbose-inote par défaut;
+- _biblatexoptions_ contient la liste des options de biblatex, utilisées pour la production du document PDF;
+- _link-citations_: yes pour que les citations soient des liens hypertexte;
+- _colorlinks_: yes pour que les liens hypertexte soient affichés en couleur.
+
+La couverture sera:
+
+- au format livre si l'instruction _maintitlepage_ est présente. Le contenu de _epigraph_ sera écrit en page 2;
+- la première page du fichier PDF déclaré dans l'instruction _pdftitlepage_ si elle est présente.
+
+Supprimer une des deux instructions dans l'entête.
+
+Pour un mémoire d'étudiant, préparer la page de couverture avec Word, Powerpoint ou un logiciel de PAO et l'enregistrer au format PDF, en taille A4.
+Seule la première page du PDF est utilisée.
+La création directe de pages de gardes de thèses n'est plus supportée.
+
+
+## _bookdown.yml
+
+Saisir le nom du fichier Rmd qui sera le résultat de la fusion de tous les chapitres et choisir s'il doit être détruit après usage.
+Les options par défaut conviendront à la plupart des usages.
+
+    book_filename: "_Book"
+    delete_merged_file: true
+
+
+Si le projet est hébergé sur GitHub, indiquer son adresse.
+Sinon, supprimer la ligne.
+
+    repo: "https://github.com/EcoFoG/BookTemplate"
+
+
+Il est inutile de compléter les mots-clés selon la langue de l'ouvrage.
+Les options _language_ sont prises en charge par ailleurs.
+
+    language:
+      ui:
+        chapter_name: "Chapitre "
+
+
+## _output.yml
+
+Personnaliser la table des matières au format HTML.
+
+    config:
+      toc:
+        before: |
+          <li><a href="./">Ouvrage Bookdown</a></li>
+        after: |
+          <li><a href="https://github.com/EcoFoG/ (...)
+
+
+## Documents multilingues
+
+Seule la langue principale du document est déclarée dans l'entête.
+Les titres seront écrits dans cette langue (ex.: Chapitre / Chapter).
+
+Pour utiliser d'autres langues ponctuellement dans le texte, elles doivent être activées dans `preamble.tex` dans le dossier `latex`.
+L'Anglais américain et le Français sont activés par défaut.
+
+Les changements de langue n'ont aucun effet en HTML mais modifient la ponctuation, les césures... dans les sorties en PDF.
+
+Pour passer en Anglais, insérer le code suivant dans le texte:
+```
+\selectlanguage{english}
+```
+
+Le changement de langue au format markdown de base, 
+```
+::: {lang=en-US}
+```
+n'est pas supporté par R Markdown.

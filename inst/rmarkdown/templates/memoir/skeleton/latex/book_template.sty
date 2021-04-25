@@ -1,0 +1,156 @@
+% Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Based on memoir, style companion
+\newcommand{\MemoirChapStyle}{companion}
+\newcommand{\MemoirPageStyle}{companion}
+
+% Space between paragraphs
+\RequirePackage{parskip}
+	\abnormalparskip{3pt}
+
+% Adjust margin paragraphs vertical position
+\RequirePackage{marginfix}
+
+
+% Clear page and open an even one (\clearpage opens an odd one)
+\newcommand{\evenpage}{
+  \clearpage
+	\strictpagecheck % slower but efficient detection of odd/even pages
+  \checkoddpage
+  \ifoddpage
+    \thispagestyle{empty}
+    ~\\ % Print a character or the page will not exist
+    \newpage
+  \else
+    % do nothing
+  \fi
+}
+
+% Text blocks
+\RequirePackage[absolute,overlay]{textpos}
+	\setlength{\TPHorizModule}{1mm}
+	\setlength{\TPVertModule}{1mm}
+
+
+
+% Margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% allow use of '-',+','/' ans '*' to make simple length computation
+\RequirePackage{calc}
+
+% Full-width figures utilities
+\newlength\widthw % full width
+\newlength{\rf}
+\newcommand*{\definesHSpace}{
+  \strictpagecheck % slower but efficient detection of odd/even pages
+  \checkoddpage
+  \ifoddpage
+  \setlength{\rf}{0mm}
+  \else
+  \setlength{\rf}{\marginparsep+\marginparwidth}
+  \fi
+}
+
+% 1" margins for the front matter.
+\newcommand*{\SmallMargins}{
+  \setlrmarginsandblock{1in}{1in}{*}
+  \setmarginnotes{0.1in}{0.1in}{0.1in}
+  \setulmarginsandblock{1.5in}{1in}{*}
+  \checkandfixthelayout
+  \ch@ngetext
+  \clearpage
+  \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
+  \footnotesatfoot
+  \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
+  \pagestyle{\MemoirPageStyle}
+}
+
+% 3" outer margin for the main matter
+\newcommand*{\LargeMargins}{
+  \setlrmarginsandblock{1in}{3in}{*}
+  \setmarginnotes{0.2in}{1.8in}{0.1in}
+  \setsidecaps{0.2in}{1.8in}
+  \setulmarginsandblock{1.5in}{1in}{*}
+  \checkandfixthelayout
+  \ch@ngetext
+  \clearpage
+  \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
+  \footnotesinmargin
+  \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
+  \pagestyle{\MemoirPageStyle}
+}
+
+% Figure captions and footnotes in outer margins
+\usepackage[margincaption,outercaption,ragged,wide]{sidecap}
+%\sidecapmargin{outer}
+
+
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Font size of side captions and side notes
+\captionnamefont{\scriptsize}	% ignored if subfig is used
+\captiontitlefont{\scriptsize}	% ignored if subfig is used
+\renewcommand{\footnotesize}{\tiny}
+
+
+
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[strict,autostyle]{csquotes}
+% Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
+\renewbibmacro*{footcite:note}{%
+	\ifnameundef{labelname}
+		{\printfield{label}}
+		{\printnames{labelname}}
+	\setunit*{\nameyeardelim}
+	\iffieldundef{labelyear}
+		{}
+		{\printtext[parens]{\printfield{labelyear}\printfield{userb}}.}
+	\ifsamepage{\the\value{instcount}}{\csuse{cbx@f@\thefield{entrykey}}}
+		{}
+		{\setunit*{\nametitledelim} \printfield[title]{labeltitle}}
+	\setunit*{\addcomma\space}
+	\printtext{
+		\bibstring{seenote}\addnbspace
+		\ref{cbx@\csuse{cbx@f@\thefield{entrykey}}}
+		\iftoggle{cbx:pageref}
+		{
+			\ifsamepage{\the\value{instcount}}	{\csuse{cbx@f@\thefield{entrykey}}}
+			{}
+			{\addcomma\space\bibstring{page}\addnbspace
+			\pageref{cbx@\csuse{cbx@f@\thefield{entrykey}}}
+			}
+		}
+		{}
+	}
+}
+% Normal text in citations, to allow \textcite
+\AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textnormal{#1}}}
+% Add url's to computer softfware and @Misc in general, delete it in other cases
+% in citations...
+\AtEveryCitekey{%
+  \ifentrytype{misc}{%
+  }{%
+  \clearfield{url}%
+  \clearfield{urldate}%
+  }%
+}
+% ... and in bibliography
+\AtEveryBibitem{%
+  \ifentrytype{misc}{%
+  }{%
+  \clearfield{url}%
+  \clearfield{urldate}%
+}%
+}
+
+
+
+%% Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fix the typesetting of the part number
+\renewcommand\partnumberlinebox[2]{#2\ ---\ }

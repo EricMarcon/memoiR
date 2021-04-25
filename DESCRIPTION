@@ -1,0 +1,25 @@
+Package: memoiR
+Title: R Markdown and Bookdown Templates to Publish Documents
+Version: 0.1.1
+Authors@R: 
+  person(given = "Eric",
+         family = "Marcon",
+         role = c("aut", "cre"),
+         email = "eric.marcon@agroparistech.fr",
+         comment = c(ORCID = "0000-0002-5249-321X"))
+Description: What the package does (one paragraph).
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+SystemRequirements: pandoc
+VignetteBuilder: knitr
+Imports: 
+  bookdown, 
+  rmarkdown,
+  usethis
+Suggests: 
+  knitr, 
+  pkgdown, 
+  testthat

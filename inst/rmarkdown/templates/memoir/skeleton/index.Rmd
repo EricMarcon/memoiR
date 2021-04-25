@@ -1,0 +1,162 @@
+--- 
+title: "Memoir"
+author: "Authors' names"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+always_allow_html: yes
+description: "A bookdown template base on LaTeX memoir class."
+maintitlepage:
+  epigraph: |
+    This document is reproducible thanks to:
+
+    \begin{itemize}
+      \item \LaTeX and its class memoir (\url{http://www.ctan.org/pkg/memoir}).
+      \item R (\url{http://www.r-project.org/}) and RStudio (\url{http://www.rstudio.com/})
+      \item bookdown (\url{http://bookdown.org/})
+    \end{itemize}
+pdftitlepage: images/cover.pdf
+documentclass: memoir
+classoption:
+  - extrafontsizes
+  - onecolumn
+  - openright
+papersize: A4
+fontsize: 11pt
+toc-depth: 3
+lang: en-US # or fr-FR or en-GB
+bibliography: references.bib
+biblio-style: authoryear-ibid
+cite-style: verbose-inote
+biblatexoptions:
+  - backend=biber
+  - citestyle=verbose-inote
+  - pageref=true
+  - isbn=false
+  - backref=true
+  - giveninits=true
+  - uniquename=init
+  - maxcitenames=2
+  - maxbibnames=150
+  - sorting=nyt
+  - sortcites=false
+link-citations: yes
+colorlinks: yes
+graphics: yes
+fig_crop: yes
+resume: |
+  Résumé en Français, en quatrième de couverture.
+  
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+  
+  Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+mots-cles:
+  - Mot clé en Français
+  - En liste
+abstract: |
+  English abstract, on the last page.
+  
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+  
+  Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+keywords:
+  - Keyword in English
+  - As a list
+fourthpagefontsize: normalsize
+---
+
+<!-- HTML code necessary for key messages --> 
+<img src="images/key_message.png" alt="image" hidden/>
+
+```{r DoNotModify, include=FALSE}
+### Utilities. Do not modify.
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos="https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(Packages, InstallPackage))
+}
+
+# Basic packages
+InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
+library("kableExtra") # Mandatory to load css and more
+
+# Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r Options, include=FALSE}
+### Customized options for this document
+# Add necessary packages here
+Packages <- c( "tidyverse")
+# Install them
+InstallPackages(Packages)
+
+# knitr options
+knitr::opts_chunk$set(
+  cache=FALSE, # Cache chunk results
+  echo = TRUE, # Show R chunks
+  warning=FALSE, # Hide warnings
+  # Books only: figures with side captions
+  fig.env='SCfigure', fig.asp=.75,
+  # Figure alignment and size
+  fig.align='center', out.width='80%',
+  # Graphic device
+  dev = "ragg_png",
+  # Code chunk format
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  )
+options(width=50)
+
+# ggplot style
+library("tidyverse")
+theme_set(theme_bw())
+theme_update(panel.background=element_rect(fill="transparent", colour=NA),
+             plot.background=element_rect(fill="transparent", colour=NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
+# Random seed
+set.seed(973)
+```
+
+
+# Principes {-}
+
+Ce document permet de créer un livre au format PDF (et au format ePub) en même temps qu'une version HTML à publier sur le web.
+La syntaxe est celle de **Markdown** avec quelques extensions.
+
+Le package **bookdown** doit être installé à partir de CRAN ou GitHub:
+
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
+
+Le livre est organisé en chapitres. 
+Chaque chapitre est un fichier Rmd, dont le nom commence normalement par son numéro (ex.: 01-intro.Rmd).
+Tous les fichiers Rmd présents dans le dossier du projet sont en réalité traités comme des chapitres, triés par ordre de nom de fichier.
+Le fichier index.Rmd est particulier: il contient l'entête du document et le premier chapitre.
+
+Ce premier chapitre est placé dans l'avant-propos de l'ouvrage imprimé: il ne doit pas être numéroté (d'où le code `{-}` à côté du titre) dans la version HTML. Il se termine obligatoirement par la commande LaTeX `\mainmatter` qui marque le début du corps de l'ouvrage.
+
+Les niveaux de plan commencent sont `#` pour les chapitres (un seul par fichier), `##` pour les sections, etc.
+
+La compilation au format PDF est faite par XeLaTeX, qui doit être installé.
+
+Pendant la rédaction, il est fortement conseillé de ne créer que le fichier HTML, ce qui est beaucoup plus rapide qu'une compilation LaTeX.
+Chaque chapitre peut être visualisé très rapidement en cliquant sur le bouton _Knit_ au-dessus de la fenêtre de source.
+Le livre entier est créé en cliquant sur le bouton _Build Book_ de la fenêtre _Build_ de RStudio.
+La liste déroulante du bouton permet de créer tous les documents ou de se limiter à un format.
+
+<!-- La commande \mainmatter marque le début du corps du document LaTeX--> 
+<!-- Elle ne doit pas être supprimée-->
+\mainmatter
+ 
