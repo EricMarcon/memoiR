@@ -1,6 +1,7 @@
 Package: memoiR
 Title: R Markdown and Bookdown Templates to Publish Documents
 Version: 0.1.1
+url: https://github.com/EricMarcon/memoiR
 Authors@R: 
   person(given = "Eric",
          family = "Marcon",
