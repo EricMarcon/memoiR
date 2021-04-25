@@ -32,8 +32,37 @@ jobs:
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
+      - name: Build Gallery
+        run: knit_all()
+        shell: Rscript {0}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: gallery
+          path: docs/
       - name: Pkgdown
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+  checkout-and-deploy:
+    runs-on: ubuntu-latest
+    needs: R-CMD-check
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          # Artifact name
+          name: gallery
+          # Destination path
+          path: docs
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          email: ${{ secrets.EMAIL }}
+          build_dir: docs
+          jekyll: no
