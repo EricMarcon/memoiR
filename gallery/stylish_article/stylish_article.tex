@@ -167,64 +167,51 @@ Summary of the article.
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Ce modèle permet la rédaction d'articles au format Markdown\footnote{\url{https://ericmarcon.github.io/travailleR/chap-rediger.html}}.
-Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) ou sous d'autres formats, par exemple HTML.
+This template allows writing articles in Markdown\footnote{\url{https://ericmarcon.github.io/travailleR/chap-rediger.html}} format.
+It directly produces well-formatted articles for self-archiving (deposit on HAL for example) or in other formats, for example HTML.
 
 \hypertarget{markdown}{%
 \section{R Markdown}\label{markdown}}
 
-Markdown est un langage très simple pour produire divers types de documents: HTML, PDF, et Word entre autres.
-Sa documentation est disponible sur le site de RStudio\footnote{\url{http://rmarkdown.rstudio.com/articles.html}}.
+Markdown is a very simple language for producing various types of documents: HTML, PDF, and Word among others.
+Its documentation is available at the RStudio website\footnote{\url{http://rmarkdown.rstudio.com/articles.html}}.
 
-Markdown est étendu par Bookdown\footnote{\url{https://bookdown.org/yihui/bookdown/}}, qui permet la rédaction de livres et une syntaxe plus efficace pour les articles.
-Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformation en LaTeX, enfin LateX le compile en PDF.
+Markdown is extended by Bookdown\footnote{\url{https://bookdown.org/yihui/bookdown/}}, which allows for book writing and more efficient syntax for articles.
+This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
 
-\hypertarget{intuxe9ruxeat}{%
-\subsection{Intérêt}\label{intuxe9ruxeat}}
+\hypertarget{motivation}{%
+\subsection{Motivation}\label{motivation}}
 
-Markdown est très simple à apprendre.
+Markdown is very easy to learn.
 
-Markdown permet d'intégrer son code R pour un résultat \emph{reproductible}.
+Markdown allows you to integrate your R code for a \emph{reproducible} result.
 
-Markdown permet de produire, sans réécrire le texte, un document dans différents formats: article LaTeX ou Word par exemple.
+Markdown allows to produce, without rewriting the text, a document in different formats: article LaTeX or Word for example.
 
-\hypertarget{comment-faire}{%
-\subsection{Comment faire}\label{comment-faire}}
+\hypertarget{how-to-do-it}{%
+\subsection{How to do it}\label{how-to-do-it}}
 
-Dans RStudio, créer un nouveau document de type Document R Markdown.
-L'assistant permet de choisir entre divers formats.
+In RStudio, create a new document of type Document R Markdown.
+The wizard allows you to choose between different formats.
 
-\scriptsize
+Click on \emph{From template}: from templates installed by packages.
+The EcoFoG package templates are displayed: choose Article EcoFoG.
 
-\begin{figure}
+Write the document in RStudio.
 
-{\centering \includegraphics[width=0.8\linewidth]{images/logo} 
+Clicking the \textbf{Knit} button in RStudio generates the document in the requested format.
 
-}
-
-\caption{Nouveau document}\label{fig:nouveau}
-\end{figure}
-
-\normalsize
-
-Cliquer sur \emph{From template}: à partir de modèles installés par des packages.
-Les modèles du package EcoFoG sont affichés (voir figure \ref{fig:nouveau}): choisir Article EcoFoG.
-
-Ecrire le document dans RStudio.
-
-Cliquer sur le bouton \textbf{Knit} de RStudio génère le document au format demandé.
-
-Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : \emph{File} / \emph{New Project} puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
+It is better to create a RStudio project to benefit from all the possibilities: \emph{File} / \emph{New Project} then use the wizard to create a project from an existing folder.
 
 \hypertarget{code}{%
 \section{Code}\label{code}}
 
-Les principales caractéristiques de Markdown sont résumées ici.
+The main features of Markdown are summarized here.
 
-\hypertarget{code-r}{%
-\subsection{Code R}\label{code-r}}
+\hypertarget{r-code}{%
+\subsection{R code}\label{r-code}}
 
-Le code R est inclus dans des bouts de code (\emph{code chunks}):
+R code is included in code chunks:
 
 \scriptsize
 
@@ -246,21 +233,21 @@ Le code R est inclus dans des bouts de code (\emph{code chunks}):
 
 \normalsize
 
-\hypertarget{tableaux}{%
-\subsection{Tableaux}\label{tableaux}}
+\hypertarget{tables}{%
+\subsection{Tables}\label{tables}}
 
-Les séparateurs horizontaux - et verticaux \textbar{} permettent de dessiner un tableau selon la syntaxe de Markdown, mais ce n'est pas la meilleure méthode.
+The horizontal \texttt{-} and vertical separators \texttt{\textbar{}} allow you to draw an array according to Markdown syntax, but this is not the best method.
 
-Les tableaux peuvent aussi être produits par du code R.
-Le contenu du tableau est dans un dataframe.
-La fonction \texttt{kable} du package \emph{knitr} prépare le tableau pour l'affichage et passe le résultat à la fonction \texttt{kable\_styling} du package \emph{kableExtra} pour le formatage final.
+Tables can also be produced by R code.
+The content of the table is in a dataframe.
+The \texttt{kable} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
 
 \scriptsize
 
 \begin{longtable}[t]{rrrrl}
-\caption{\label{tab:kable}Tableau créé par R}\\
+\caption{\label{tab:kable}Table created by R}\\
 \toprule
-Longueur sépales & Largeur & Longueur pétales & Largeur & Espèce\\
+Sepal length & Width & Petal length & Width & Species\\
 \midrule
 5.1 & 3.5 & 1.4 & 0.2 & setosa\\
 4.9 & 3.0 & 1.4 & 0.2 & setosa\\
@@ -274,11 +261,11 @@ Longueur sépales & Largeur & Longueur pétales & Largeur & Espèce\\
 
 \normalsize
 
-La légende est précisée par l'argument \texttt{caption} et le référencement est possible parce que le tableau reçoit une étiquette dont le nom est \texttt{tab:} suivi du nom du bout de code (tableau \ref{tab:kable}).
-Utiliser systématiquement l'argument \texttt{booktabs\ =\ TRUE} pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
-L'option\break \texttt{bootstrap\_options\ =\ "striped"} fournit des tableaux plus lisibles en HTML.
+The caption is specified by the \texttt{caption} argument and referencing is possible because the array receives a label whose name is \texttt{tab:} followed by the name of the code snippet (array \ref{tab:kable}).
+Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
+The \texttt{bootstrap\_options\ =\ "striped"} option provides more readable tables in HTML.
 
-En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break \texttt{longtable\ =\ TRUE} ou bien utliser la largeur de la page\break \texttt{longtable\ =\ FALSE} comme le tableau \ref{tab:Paracou}).
+In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like the table \ref{tab:Paracou}).
 
 \scriptsize
 
@@ -300,11 +287,11 @@ T3 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha & DBH $\geq$ 50
 
 \normalsize
 
-Ce tableau contient des mathématiques : l'option\break \texttt{escape\ =\ FALSE} est nécessaire.
+This table contains mathematics: the \texttt{escape\ =\ FALSE} option is necessary.
 
-Enfin, l'option \texttt{full\_width\ =\ FALSE} permet d'ajuster la largeur du tableau à son contenu au lieu d'occuper toute la largeur disponible.
-Elle doit être \texttt{TRUE} pour le formatage correct des tableaux sur deux colonnes en LaTeX.
-Un bug de knitr fait que le format du tableau (``html'') n'est pas transmis correctement à \texttt{kable\_styling} lors du tricotage au format gitbook, ce qui génère un avertissement et empêche l'option d'être prise en compte.
+Finally, the \texttt{full\_width\ =\ FALSE} option adjusts the width of the table to its content instead of occupying all the available width.
+It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
+A knitr bug causes the table format (``html'') to be passed incorrectly to \texttt{kable\_styling} when knitting to gitbook format, which generates a warning and prevents the option from being taken into account.
 
 \hypertarget{figures}{%
 \subsection{Figures}\label{figures}}
@@ -319,114 +306,128 @@ Un bug de knitr fait que le format du tableau (``html'') n'est pas transmis corr
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpllMaSh/stylish_article/gallery/stylish_article/stylish_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpAEqK2T/stylish_article/gallery/stylish_article/stylish_article_files/figure-latex/pressure-1} 
 
 }
 
-\caption{Titre de la figure}\label{fig:pressure}
+\caption{Figure title}\label{fig:pressure}
 \end{figure}
 
 \normalsize
 
-Les figures peuvent être créées par le code R (figure \ref{fig:pressure}).
-Avec Bookdown, une étiquette est associée à chaque figure: son nom est \texttt{fig:xxx} où \texttt{xxx} est le nom du bout de code R.
-Les renvois se fonct avec la commande \texttt{\textbackslash{}@ref(fig:xxx)}.
+Figures can be created by the R code (figure \ref{fig:pressure}).
+With Bookdown, a label is associated with each figure: its name is \texttt{fig:xxx} where \texttt{xxx} is the name of the R code snippet.
+Cross-references are made with the command \texttt{\ref{fig:xxx}}.
 
-Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: \texttt{fig.env="figure*"} et\break \texttt{out.extra=""}.
+A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: \texttt{fig.env="figure*} and \texttt{out.extra=}.
 
-Les figures existantes sont intégrées dans un bout de code par la fonction \texttt{include\_graphics}, voir la figure \ref{fig:nouveau}.
-Placer systématiquement ces fichiers dans le dossier \texttt{images} pour l'automatisation des pages GitHub.
+Existing figures are integrated into a piece of code by the \texttt{include\_graphics} function, see figure \ref{fig:logo}.
 
-\hypertarget{listes}{%
-\subsection{Listes}\label{listes}}
+\scriptsize
 
-Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou des nombres 1., i. et A. (listes numérotées).
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{images/logo} 
+
+}
+
+\caption{New document}\label{fig:logo}
+\end{figure}
+
+\normalsize
+
+Systematically place these files in the \texttt{images} folder for the automation of GitHub pages.
+
+\hypertarget{lists}{%
+\subsection{Lists}\label{lists}}
+
+Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
 
 \begin{itemize}
 \tightlist
 \item
-  Liste
+  List
 
   \begin{itemize}
   \tightlist
   \item
-    sous-liste
+    sub-list
   \end{itemize}
 \item
-  deuxième élément
+  second element
 \item
-  Suite de la liste
+  Continuation of the list
 \end{itemize}
 
-\hypertarget{maths}{%
-\subsection{Maths}\label{maths}}
+\hypertarget{math}{%
+\subsection{Math}\label{math}}
 
-Les équations au format LaTeX peuvent être insérées en ligne, comme \(A=\pi r^2\) ou isolées comme \[e^{i \pi} = -1.\]
+Equations in LaTeX format can be inserted in line, like \(A=pi r^2\) or isolated like \[e^{i \pi} = -1.\]
 
-Elles peuvent être numérotées, voir équation \eqref{eq:disque}, en utilisant l'environnement \texttt{\textbackslash{}equation}:
+They can be numbered, see equation \eqref{eq:disque}, using the \texttt{equation} environment:
 
 \begin{equation}
-A = \pi r^2.
-\label{eq:disque}
+  A = \pi r^2.
+  \label{eq:disk}
 \end{equation}
 
-\hypertarget{ruxe9fuxe9rences-croisuxe9es}{%
-\subsection{Références croisées}\label{ruxe9fuxe9rences-croisuxe9es}}
+\hypertarget{cross-references}{%
+\subsection{Cross-references}\label{cross-references}}
 
-Les figures et tableaux ont une étiquette générée automatiquement, identique au nom du bout de code préfixé par \texttt{fig:} et \texttt{tab:}.
+Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with \texttt{fig:} and \texttt{tab:}.
 
-Pour les équations, l'étiquette est ajoutée manuellement par le code \texttt{(\textbackslash{}\#eq:xxx)} avant la fin de l'équation.
+For equations, the label is added manually by the code \texttt{(\textbackslash{}\#eq:xxx)} before the end of the equation.
 
-Les sections peuvent recevoir une étiquette en terminant leur titre par \texttt{\{\#yyy\}}.
+Sections can be tagged by ending their title with \texttt{\{\#yyy\}}.
 
-Des signets peuvent aussi être placés librement dans le texte avec la commande \texttt{(ref:zzz)}.
+Bookmarks can also be placed freely in the text with the command \texttt{(ref:zzz)}.
 
-Dans tous les cas, l'appel à la référence est fait par la commande \texttt{\textbackslash{}@ref(ref:zzz)}.
+In all cases, the call to the reference is made by the command \texttt{ref(ref:zzz)}.
 
-\hypertarget{bibliographie}{%
-\subsection{Bibliographie}\label{bibliographie}}
+\hypertarget{bibliography}{%
+\subsection{Bibliography}\label{bibliography}}
 
-Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses \citep{Xie2016}, ou dans le texte, à la façon de \citet{Xie2016}.
+Bibliographic references included in the references.bib file can be called in the text, in parentheses \citep{Xie2016}, or in the text, as \citet{Xie2018}.
 
-La bibliographie est traitée par Pandoc lors de la production de documents Word ou HTML.
-Le style bibliographique peut être précisé, en ajoutant la ligne
+The bibliography is processed by Pandoc when producing Word or HTML documents.
+The bibliographic style can be specified, by adding the line
 
 \begin{verbatim}
-csl:nom_du_fichier.csl
+csl:file_name.csl
 \end{verbatim}
 
-dans l'entête du document et en copiant le fichier de style \emph{.csl} dans le dossier du projet.
-Plus d'un millier de styles sont disponibles\footnote{\url{https://github.com/citation-style-language/styles}}.
+in the document header and copying the \emph{.csl} style file to the project folder.
+More than a thousand styles are available\footnote{\url{https://github.com/citation-style-language/styles}}.
 
-Pour les documents PDF, la bibliographie est gérée par LaTeX.
-Le style est inclus dans le modèle EcoFoG: c'est celui de \emph{Methods in Ecology and Evolution}.
-Il ne peut pas être changé, pour assurer l'homogénéité des documents produits.
+For PDF documents, the bibliography is managed by LaTeX.
+The style is included in the EcoFoG template: it is the one from \emph{Methods in Ecology and Evolution}.
+It cannot be changed, to ensure the homogeneity of the documents produced.
 
-Pour préparer la soumission d'un manuscrit à une revue, il faudra ouvrir le fichier \emph{.tex} intermédiaire produit par Pandoc et copier le contenu de l'environnement \{document\} dans le modèle proposé par la revue, qui se chargera du formatage.
+To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate \emph{.tex} file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.
 
-\hypertarget{pruxe9ambule-latex}{%
-\subsection{Préambule LaTeX}\label{pruxe9ambule-latex}}
+\hypertarget{latex-preamble}{%
+\subsection{LaTeX preamble}\label{latex-preamble}}
 
-Des commandes LaTeX peuvent être ajoutées dans le préambule du fichier LaTeX produit, par exemple pour charger des packages supplémentaires.
-Ces commandes sont dans la section \texttt{preamble:} de l'entête du fichier Markdown.
+LaTeX commands can be added in the preamble of the produced LaTeX file, for example to load additional packages.
+These commands are in the \texttt{preamble:} section of the Markdown file header.
 
-Les commandes par défaut permettent :
+The default commands allow:
 
 \begin{itemize}
 \tightlist
 \item
-  d'utiliser le caractère degré (exemple: 20°C) :
+  to use the degree character (example: 20°C) :
 \end{itemize}
 
 \begin{verbatim}
 \usepackage{textcomp}
-\DeclareUnicodeCharacter{B0}{\textdegree}
+\DeclareUnicodeCharacter{B0}{textdegree}
 \end{verbatim}
 
 \begin{itemize}
 \tightlist
 \item
-  d'obtenir des tableaux sur deux colonnes en redéfinissant l'environnement \texttt{table} et de charger le package \emph{tabu} nécessaire à \emph{kableExtra}:
+  to obtain two-column arrays by redefining the \texttt{table} environment and loading the \emph{tabu} package necessary for \emph{kableExtra}:
 \end{itemize}
 
 \begin{verbatim}
@@ -441,7 +442,7 @@ Les commandes par défaut permettent :
 \begin{itemize}
 \tightlist
 \item
-  de montrer l'utilisation de la commande de césure:
+  to show the use of the hyphenation command:
 \end{itemize}
 
 \begin{verbatim}
@@ -449,92 +450,92 @@ Les commandes par défaut permettent :
   {bio-di-ver-si-ty sap-lings}
 \end{verbatim}
 
-D'autres commandes peuvent être ajoutées selon les besoins.
-Attention :
+Other commands can be added as needed.
+Warning:
 
 \begin{itemize}
 \tightlist
 \item
-  les commentaires ne sont pas possibles ;
+  comments are not possible;
 \item
-  les commandes complexes (comme\break \texttt{\textbackslash{}renewenvironment}) doivent être entrées sur une seule ligne sinon elles seront détruites par knitr au premier tricotage en HTML.
+  complex commands (such as \texttt{renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 \end{itemize}
 
-\hypertarget{foruxe7age-des-coupures-de-ligne}{%
-\subsection{Forçage des coupures de ligne}\label{foruxe7age-des-coupures-de-ligne}}
+\hypertarget{forcing-line-breaks}{%
+\subsection{Forcing line breaks}\label{forcing-line-breaks}}
 
-La césure est gérée automatiquement en LaTeX.
-Si un mot n'est pas coupé correctement, ajouter son découpage dans le préambule du fichier avec la commande \texttt{\textbackslash{}hyphenation} (les mots sont séparés par des espaces, les emplacement de césure représentés par des tirets).
+Hyphenation is handled automatically in LaTeX.
+If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command \texttt{hyphenation} (words are separated by spaces, hyphenation locations are represented by dashes).
 
-Si LaTeX ne parvient pas à trouver de solution pour le retout à la ligne, par exemple pare que du code constitue un bloc insécable trop long, ajouter la commande LaTeX \texttt{\textbackslash{}break} à l'emplacement du retour à la ligne.
-Ne pas laisser d'espace avant la commande.
-Le document HTML ignore les commandes LaTeX.
+If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command \texttt{\textbackslash{}break} to the line break location.
+Do not leave a space before the command.
+The HTML document ignores LaTeX commands.
 
-\hypertarget{langues}{%
-\subsection{Langues}\label{langues}}
+\hypertarget{languages}{%
+\subsection{Languages}\label{languages}}
 
-L'Anglais et le Français sont supportés, à déclarer dans l'entête du document.
+English and French are supported, to be declared in the document header.
 
-La langue choisie n'a d'effet que dans les sorties LaTeX: un espace est ajouté devant les ponctuations doubles en Français, la taille des espaces est plus grande en début de phrase en Anglais, etc.
+The chosen language has an effect only in LaTeX output: a space is added in front of double punctuation in French, the size of spaces is bigger at the beginning of a sentence in English, etc.
 
-Les modèles EcoFoG utilisent le package LaTeX \emph{babel} qui reconnaît les noms de langue \emph{french} et \emph{english}.
-Pandoc utilise en revanche les codes IETF \emph{fr-FR} ou \emph{en-US} pour un support linguistique limité en HTML.
-Les deux paramètres doivent donc être saisis dans l'entête du document.
+LaTeX templates use the LaTeX package \emph{babel} which recognizes the language names \emph{English} and \emph{french}.
+Pandoc on the other hand uses the IETF codes \emph{fr-FR} or \emph{en-US} for limited language support in HTML.
+Both parameters must therefore be entered in the document header.
 
-\hypertarget{types-de-document}{%
-\section{Types de document}\label{types-de-document}}
+\hypertarget{document-types}{%
+\section{Document types}\label{document-types}}
 
-Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF, HTML ou Word.
-Utiliser la liste de choix du bouton \emph{Knit} pour choisir le format de sortie.
+This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
+Use the list of choices in the \emph{Knit} button to choose the output format.
 
-Le document Word peut ensuite être modifié pour respecter les instructions aux auteurs des revues : double interlignage, police, etc.
+The Word document can then be modified to comply with the instructions to journal authors: double-spaced, font, etc.
 
-\hypertarget{document-pdf}{%
-\subsection{Document PDF}\label{document-pdf}}
+\hypertarget{pdf-document}{%
+\subsection{PDF Document}\label{pdf-document}}
 
-Le document est formaté pour l'auto-archivage d'articles bien mis en page.
+The document is formatted for self-archiving of well-formatted articles.
 
-\hypertarget{document-html}{%
-\subsection{Document HTML}\label{document-html}}
+\hypertarget{html-document}{%
+\subsection{HTML document}\label{html-document}}
 
-Le modèle GitBook est optimisé pour la lecture sur écran.
-Pendant toute l'écriture, préférer le tricot au format HTML pour sa vitesse d'exécution.
-Un bouton de téléchargement est disponible dans la barre de menu du document: il fonctionnera si le document est aussi tricoté au format PDF et si le nom du fichier est rensigné dans le champ download de l'entête YAML.
+The GitBook template is optimized for on-screen reading.
+While writing, prefer knitting to HTML format for its speed of execution.
+A download button is available in the document menu bar: it will work if the document is also knitted in PDF format and if the file name is entered in the download field of the YAML header.
 
-Le modèle HMTL Book est une alternative.
+The HMTL Book template is an alternative.
 
-\hypertarget{document-word}{%
-\subsection{Document Word}\label{document-word}}
+\hypertarget{word-document}{%
+\subsection{Word document}\label{word-document}}
 
-Son contenu peut être mis en forme ou copié dans un modèle.
-Les styles de texte standard sont ``First Paragraph'' et ``Corps de de texte''.
+Its content can be formatted or copied into a template.
+The standard text styles are ``First Paragraph'' and ``Body Text''.
 
-L'intérêt du format Word est de produire un manuscrit pour les revues qui ne supportent pas LaTeX.
-Le style bibliographique de la revue est très probablement disponible au format \emph{.csl}, ce qui permet de minimiser la préparation manuelle.
+The advantage of the Word format is to produce a manuscript for journals that do not support LaTeX.
+The bibliographic style of the journal is most likely available in \emph{.csl} format, which minimizes manual preparation.
 
-\hypertarget{optimisation-pour-github}{%
-\subsection{Optimisation pour GitHub}\label{optimisation-pour-github}}
+\hypertarget{optimization-for-github}{%
+\subsection{Optimization for GitHub}\label{optimization-for-github}}
 
-Le projet d'article peut être déposé sur Github\footnote{\url{https://ericmarcon.github.io/travailleR/chap-git.html}}.
+The draft article can be deposited on Github\footnote{\url{https://ericmarcon.github.io/travailleR/chap-git.html}}.
 
-Le script R fourni, \emph{GithubPages.R}, permet de publier facilement l'article dans les pages web associées au dépôt en déplaçant les fichiers HTML produit par le tricotage de l'article dans le dossier \emph{docs}.
+The provided R script, \emph{GithubPages.R}, makes it easy to publish the article to the web pages associated with the repository by moving the HTML files produced by knitting the article into the \emph{docs} folder.
 
-Il suffit ensuite d'activer les pages web du dépôt, d'adapter le fichier \emph{README.md} fourni (suivre ses instructions) et de le dupliquer dans le dossier \emph{docs}.
+Then you just have to activate the web pages of the repository, adapt the \emph{README.md} file provided (follow its instructions) and duplicate it in the \emph{docs} folder.
 
-Les pages web peuvent être produites par intégration continue\footnote{\url{https://ericmarcon.github.io/travailleR/chap-ci.html}}.
+The web pages can be produced by continuous integration\footnote{\url{https://ericmarcon.github.io/travailleR/chap-ci.html}}.
 
-\hypertarget{autres-moduxe8les}{%
-\subsection{Autres Modèles}\label{autres-moduxe8les}}
+\hypertarget{other-templates}{%
+\subsection{Other Templates}\label{other-templates}}
 
-Le modèle de mémo EcoFoG est plus simple, formaté sur une seule colonne.
+The EcoFoG memo template is simpler, formatted on a single column.
 
-Le package \emph{rticle} fournit des modèles d'articles (PLOS, PNAS, etc.), mais nécessite l'utlisation de commandes LaTeX et ne permet pas le tricot en HTML.
-Le package \emph{xaringan} fournit un modèle de présentation HTML 5.
+The \emph{rticle} package provides templates for articles (PLOS, PNAS, etc.), but requires the use of LaTeX commands and does not allow knitting in HTML.
+The \emph{xaringan} package provides an HTML 5 presentation template.
 
-Le modèle \emph{Ouvrage} du package EcoFoG permet d'écrire des livres.
+The \emph{Book} template of the EcoFoG package allows to write books.
 
-La dernière ligne du modèle (bout de code R) doit être conservée pour afficher le titre \emph{References} (à traduire éventuellement dans la langue du document) au format HTML.
-Le titre de niveau 1 \emph{Références} doit être ajouté manuellement aux fichiers Word.
+The last line of the template (R code snippet) must be kept to display the title \emph{References} (to be translated into the document language if necessary) in HTML format.
+The level 1 title \emph{References} must be added manually to Word files.
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
