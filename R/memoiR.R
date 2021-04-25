@@ -56,7 +56,7 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
   options(knitr.table.format='html')
   if (type == "document") {
     rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                      output_format="bookdown::html_document2",
+                      output_format="rmdformats::downcute",
                       output_dir=paste(gallery , "/", template, sep=""))
   }
   if (type == "book"){

@@ -17,14 +17,17 @@ preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 always_allow_html: yes
 output:
-  bookdown::pdf_book:
-    template: latex/template.tex
-    citation_package: natbib
-    keep_tex: yes
+  rmdformats::downcute:
+    use_bookdown: yes
+    lightbox: yes
   bookdown::html_document2:
     toc: yes
     toc_float: yes
   bookdown::word_document2: default
+  bookdown::pdf_book:
+    template: latex/template.tex
+    citation_package: natbib
+    keep_tex: yes
 ---
 
 ```{r DoNotModify, include=FALSE}

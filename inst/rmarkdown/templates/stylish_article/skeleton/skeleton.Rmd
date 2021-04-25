@@ -41,6 +41,9 @@ preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 always_allow_html: yes
 output:
+  rmdformats::downcute:
+    use_bookdown: yes
+    lightbox: yes
   bookdown::pdf_book:
     template: latex/template.tex
     citation_package: natbib

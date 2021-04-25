@@ -16,10 +16,11 @@ RoxygenNote: 7.1.1
 SystemRequirements: pandoc
 VignetteBuilder: knitr
 Imports: 
-  bookdown, 
+  bookdown,
   rmarkdown,
+  rmdformats,
   usethis
 Suggests: 
-  knitr, 
-  pkgdown, 
+  knitr,
+  pkgdown,
   testthat
