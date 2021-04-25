@@ -1,0 +1,22 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+div.Essentiel {
+background:url('images/Essentiel.png') 3% 50% no-repeat #dbe0ef;
+border-top:2px solid #aeb8de;
+border-bottom:2px solid #aeb8de;
+padding:1em 1em 1em 5em;
+margin: 2em ;
+}
