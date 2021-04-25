@@ -31,8 +31,6 @@
 *.toc
 *-concordance.tex
 *(busy)
-*.tex
-!EcoFoGBeamer.tex
 *.nav
 *.snm
 *.vrb

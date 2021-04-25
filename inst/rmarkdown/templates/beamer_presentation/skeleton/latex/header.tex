@@ -1,0 +1,32 @@
+% Theme, colors, font
+\usetheme{PaloAlto}
+\usecolortheme{beaver}
+\setbeamercolor{section in sidebar}{fg=red!75!green}
+\setbeamercolor{section in sidebar shaded}{fg=gray}
+\usefonttheme{professionalfonts}
+% Font size of code chunks : scriptsize
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\scriptsize}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@verbatim}
+  {\verbatim@font}
+  {\verbatim@font\scriptsize }
+  {}{}
+\makeatother
+
+% Logo
+\pgfdeclareimage[width=1.4cm]{logo}{images/logo.pdf}
+\logo{\pgfuseimage{logo}}
+
+% 2-column layout in Beamer, https://groups.google.com/forum/#!topic/pandoc-discuss/vcy7v9Uk95U
+\def\begincols{\begin{columns}}
+\def\begincol{\begin{column}}
+\def\endcol{\end{column}}
+\def\endcols{\end{columns}}
+
+% Correction of caption3.sty issue
+% https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
