@@ -44,7 +44,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean=TRUE)'
   checkout-and-deploy:
     runs-on: ubuntu-latest
     needs: R-CMD-check
