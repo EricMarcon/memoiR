@@ -33,7 +33,7 @@ jobs:
       - name: Install package
         run: R CMD INSTALL .
       - name: Build Gallery
-        run: knit_all()
+        run: memoiR::knit_all()
         shell: Rscript {0}
       - name: Upload artifact
         uses: actions/upload-artifact@v1
