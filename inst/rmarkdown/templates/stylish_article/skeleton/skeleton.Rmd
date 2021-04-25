@@ -124,87 +124,83 @@ set.seed(973)
 
 # Introduction
 
-Ce modèle permet la rédaction d'articles au format Markdown[^4].
-Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) ou sous d'autres formats, par exemple HTML.
+This template allows writing articles in Markdown[^4] format.
+It directly produces well-formatted articles for self-archiving (deposit on HAL for example) or in other formats, for example HTML.
 
 [^4]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
 
 
 # R Markdown{#markdown}
 
-Markdown est un langage très simple pour produire divers types de documents: HTML, PDF, et Word entre autres.
-Sa documentation est disponible sur le site de RStudio[^1].
+Markdown is a very simple language for producing various types of documents: HTML, PDF, and Word among others.
+Its documentation is available at the RStudio website[^1].
 
 [^1]: <http://rmarkdown.rstudio.com/articles.html>
 
 
-Markdown est étendu par Bookdown[^2], qui permet la rédaction de livres et une syntaxe plus efficace pour les articles.
-Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformation en LaTeX, enfin LateX le compile en PDF.
+Markdown is extended by Bookdown[^2], which allows for book writing and more efficient syntax for articles.
+This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
 
 [^2]: <https://bookdown.org/yihui/bookdown/>
 
 
-## Intérêt
+## Motivation
 
-Markdown est très simple à apprendre.
+Markdown is very easy to learn.
 
-Markdown permet d'intégrer son code R pour un résultat *reproductible*.
+Markdown allows you to integrate your R code for a *reproducible* result.
 
-Markdown permet de produire, sans réécrire le texte, un document dans différents formats: article LaTeX ou Word par exemple.
+Markdown allows to produce, without rewriting the text, a document in different formats: article LaTeX or Word for example.
 
 
-## Comment faire
+## How to do it
 
-Dans RStudio, créer un nouveau document de type Document R Markdown. 
-L'assistant permet de choisir entre divers formats.
+In RStudio, create a new document of type Document R Markdown. 
+The wizard allows you to choose between different formats.
 
-```{r nouveau, fig.cap="Nouveau document", echo=FALSE}
-  knitr::include_graphics("images/logo.png")
-```
+Click on _From template_: from templates installed by packages. 
+The EcoFoG package templates are displayed: choose Article EcoFoG.
 
-Cliquer sur _From template_: à partir de modèles installés par des packages. 
-Les modèles du package EcoFoG sont affichés (voir figure \@ref(fig:nouveau)): choisir Article EcoFoG.
+Write the document in RStudio.
 
-Ecrire le document dans RStudio.
+Clicking the **Knit** button in RStudio generates the document in the requested format.
 
-Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
-
-Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
+It is better to create a RStudio project to benefit from all the possibilities: _File_ / _New Project_ then use the wizard to create a project from an existing folder.
 
 
 # Code
 
-Les principales caractéristiques de Markdown sont résumées ici.
+The main features of Markdown are summarized here.
 
 
-## Code R
+## R code
 
-Le code R est inclus dans des bouts de code (*code chunks*):
+R code is included in code chunks:
 
 ```{r cars, echo = TRUE}
 head(cars)
 ```
 
 
-## Tableaux
+## Tables
 
-Les séparateurs horizontaux - et verticaux | permettent de dessiner un tableau selon la syntaxe de Markdown, mais ce n'est pas la meilleure méthode.
+The horizontal `-` and vertical separators `|` allow you to draw an array according to Markdown syntax, but this is not the best method.
 
-Les tableaux peuvent aussi être produits par du code R.
-Le contenu du tableau est dans un dataframe.
-La fonction `kable` du package _knitr_ prépare le tableau pour l'affichage et passe le résultat à la fonction `kable_styling` du package _kableExtra_ pour le formatage final.
+Tables can also be produced by R code.
+The content of the table is in a dataframe.
+The `kable` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
 
 ```{r kable, echo=FALSE, warning=FALSE}
-names(iris) <- c("Longueur sépales", "Largeur", "Longueur pétales", "Largeur", "Espèce")
-knitr::kable(head(iris), caption="Tableau créé par R", longtable = TRUE, booktabs = TRUE) %>%
+names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
+knitr::kable(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE) %>%
 kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-La légende est précisée par l'argument `caption` et le référencement est possible parce que le tableau reçoit une étiquette dont le nom est `tab:` suivi du nom du bout de code (tableau \@ref(tab:kable)).
-Utiliser systématiquement l'argument `booktabs = TRUE` pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
-L'option\break `bootstrap_options = "striped"` fournit des tableaux plus lisibles en HTML.
+The caption is specified by the `caption` argument and referencing is possible because the array receives a label whose name is `tab:` followed by the name of the code snippet (array \@ref(tab:kable)).
+Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
+The `bootstrap_options = "striped"` option provides more readable tables in HTML.
 
-En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break `longtable = TRUE` ou bien utliser la largeur de la page\break `longtable = FALSE` comme le tableau \@ref(tab:Paracou)).
+In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like the table \@ref(tab:Paracou)).
 
 ```{r Paracou, echo=FALSE, warning=FALSE}
 Intervention <- data.frame(
@@ -228,98 +224,102 @@ knitr::kable(Intervention, caption="Intervention table, summary of the disturban
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
-Ce tableau contient des mathématiques : l'option\break `escape = FALSE` est nécessaire.
+This table contains mathematics: the `escape = FALSE` option is necessary.
 
-Enfin, l'option `full_width = FALSE` permet d'ajuster la largeur du tableau à son contenu au lieu d'occuper toute la largeur disponible.
-Elle doit être `TRUE` pour le formatage correct des tableaux sur deux colonnes en LaTeX.
-Un bug de knitr fait que le format du tableau ("html") n'est pas transmis correctement à `kable_styling` lors du tricotage au format gitbook, ce qui génère un avertissement et empêche l'option d'être prise en compte.
-
+Finally, the `full_width = FALSE` option adjusts the width of the table to its content instead of occupying all the available width.
+It must be `TRUE` for correct formatting of two-column tables in LaTeX.
+A knitr bug causes the table format ("html") to be passed incorrectly to `kable_styling` when knitting to gitbook format, which generates a warning and prevents the option from being taken into account.
 
 
 ## Figures
 
-```{r pressure, fig.cap="Titre de la figure"}
+```{r pressure, fig.cap="Figure title"}
 plot(pressure)
 ```
 
-Les figures peuvent être créées par le code R (figure \@ref(fig:pressure)).
-Avec Bookdown, une étiquette est associée à chaque figure: son nom est `fig:xxx` où `xxx` est le nom du bout de code R.
-Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
+Figures can be created by the R code (figure \@ref(fig:pressure)).
+With Bookdown, a label is associated with each figure: its name is `fig:xxx` where `xxx` is the name of the R code snippet.
+Cross-references are made with the command `@ref(fig:xxx)`.
 
-Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"` et\break `out.extra=""`.
+A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: `fig.env="figure*` and `out.extra=`.
 
-Les figures existantes sont intégrées dans un bout de code par la fonction `include_graphics`, voir la figure \@ref(fig:nouveau).
-Placer systématiquement ces fichiers dans le dossier `images` pour l'automatisation des pages GitHub.
+Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
+```{r logo, fig.cap="New document", echo=FALSE}
+knitr::include_graphics("images/logo.png")
+```
 
-## Listes
-
-Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou des nombres 1., i. et A. (listes numérotées). 
-
-* Liste
-    + sous-liste
-* deuxième élément
-* Suite de la liste
+Systematically place these files in the `images` folder for the automation of GitHub pages.
 
 
-## Maths
+## Lists
 
-Les équations au format LaTeX peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
+Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists). 
 
-Elles peuvent être numérotées, voir équation \@ref(eq:disque), en utilisant l'environnement `\equation`:
+* List
+    + sub-list
+* second element
+* Continuation of the list
+
+
+## Math
+
+Equations in LaTeX format can be inserted in line, like $A=pi r^2$ or isolated like $$e^{i \pi} = -1.$$
+
+They can be numbered, see equation \@ref(eq:disque), using the `equation` environment:
 
 \begin{equation}
-A = \pi r^2.
-(\#eq:disque)
+  A = \pi r^2.
+  (\#eq:disk)
 \end{equation}
 
 
-## Références croisées
+## Cross-references
 
-Les figures et tableaux ont une étiquette générée automatiquement, identique au nom du bout de code préfixé par `fig:` et `tab:`.
+Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with `fig:` and `tab:`.
 
-Pour les équations, l'étiquette est ajoutée manuellement par le code `(\#eq:xxx)` avant la fin de l'équation.
+For equations, the label is added manually by the code `(\#eq:xxx)` before the end of the equation.
 
-Les sections peuvent recevoir une étiquette en terminant leur titre par `{#yyy}`.
+Sections can be tagged by ending their title with `{#yyy}`.
 
-Des signets peuvent aussi être placés librement dans le texte avec la commande `(ref:zzz)`.
+Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
 
-Dans tous les cas, l'appel à la référence est fait par la commande `\@ref(ref:zzz)`.
+In all cases, the call to the reference is made by the command `ref(ref:zzz)`.
 
 
-## Bibliographie
+## Bibliography
 
-Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses [@Xie2016], ou dans le texte, à la façon de @Xie2016.
+Bibliographic references included in the references.bib file can be called in the text, in parentheses [@Marcon2014c], or in the text, as @Marcon2014c.
 
-La bibliographie est traitée par Pandoc lors de la production de documents Word ou HTML.
-Le style bibliographique peut être précisé, en ajoutant la ligne 
+The bibliography is processed by Pandoc when producing Word or HTML documents.
+The bibliographic style can be specified, by adding the line 
 
-    csl:nom_du_fichier.csl
+    csl:file_name.csl
     
-dans l'entête du document et en copiant le fichier de style _.csl_ dans le dossier du projet.
-Plus d'un millier de styles sont disponibles[^3].
+in the document header and copying the _.csl_ style file to the project folder.
+More than a thousand styles are available[^3].
 
 [^3]: <https://github.com/citation-style-language/styles>
 
-Pour les documents PDF, la bibliographie est gérée par LaTeX.
-Le style est inclus dans le modèle EcoFoG: c'est celui de _Methods in Ecology and Evolution_.
-Il ne peut pas être changé, pour assurer l'homogénéité des documents produits.
+For PDF documents, the bibliography is managed by LaTeX.
+The style is included in the EcoFoG template: it is the one from _Methods in Ecology and Evolution_.
+It cannot be changed, to ensure the homogeneity of the documents produced.
 
-Pour préparer la soumission d'un manuscrit à une revue, il faudra ouvrir le fichier _.tex_ intermédiaire produit par Pandoc et copier le contenu de l'environnement \{document\} dans le modèle proposé par la revue, qui se chargera du formatage.
+To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate _.tex_ file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.
 
-## Préambule LaTeX
+## LaTeX preamble
 
-Des commandes LaTeX peuvent être ajoutées dans le préambule du fichier LaTeX produit, par exemple pour charger des packages supplémentaires.
-Ces commandes sont dans la section `preamble:` de l'entête du fichier Markdown.
+LaTeX commands can be added in the preamble of the produced LaTeX file, for example to load additional packages.
+These commands are in the `preamble:` section of the Markdown file header.
 
-Les commandes par défaut permettent :
+The default commands allow:
 
-- d'utiliser le caractère degré (exemple: 20°C) :
+- use the degree character (example: 20°C) :
 ```
 \usepackage{textcomp}
-\DeclareUnicodeCharacter{B0}{\textdegree}
+\DeclareUnicodeCharacter{B0}{textdegree}
 ```
-- d'obtenir des tableaux sur deux colonnes en redéfinissant l'environnement `table` et de charger le package _tabu_ nécessaire à _kableExtra_:
+- to obtain two-column arrays by redefining the `table` environment and loading the _tabu_ package necessary for _kableExtra_:
 ```
 \usepackage{tabu}
 \renewenvironment{table}{%
@@ -328,92 +328,92 @@ Les commandes par défaut permettent :
   \ignorespacesafterend
 }
 ```
-- de montrer l'utilisation de la commande de césure:
+- to show the use of the hyphenation command:
 ```
 \hyphenation%
   {bio-di-ver-si-ty sap-lings}
 ```
 
-D'autres commandes peuvent être ajoutées selon les besoins.
-Attention :
+Other commands can be added as needed.
+Warning:
 
-- les commentaires ne sont pas possibles ;
-- les commandes complexes (comme\break `\renewenvironment`) doivent être entrées sur une seule ligne sinon elles seront détruites par knitr au premier tricotage en HTML.
-
-
-## Forçage des coupures de ligne
-
-La césure est gérée automatiquement en LaTeX.
-Si un mot n'est pas coupé correctement, ajouter son découpage dans le préambule du fichier avec la commande `\hyphenation` (les mots sont séparés par des espaces, les emplacement de césure représentés par des tirets).
-
-Si LaTeX ne parvient pas à trouver de solution pour le retout à la ligne, par exemple pare que du code constitue un bloc insécable trop long, ajouter la commande LaTeX `\break` à l'emplacement du retour à la ligne.
-Ne pas laisser d'espace avant la commande. 
-Le document HTML ignore les commandes LaTeX.
-
-## Langues
-
-L'Anglais et le Français sont supportés, à déclarer dans l'entête du document.
-
-La langue choisie n'a d'effet que dans les sorties LaTeX: un espace est ajouté devant les ponctuations doubles en Français, la taille des espaces est plus grande en début de phrase en Anglais, etc.
-
-Les modèles EcoFoG utilisent le package LaTeX _babel_ qui reconnaît les noms de langue _french_ et _english_.
-Pandoc utilise en revanche les codes IETF _fr-FR_ ou _en-US_ pour un support linguistique limité en HTML.
-Les deux paramètres doivent donc être saisis dans l'entête du document.
+- comments are not possible;
+- complex commands (such as `renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 
 
-# Types de document
+## Forcing line breaks
 
-Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF, HTML ou Word.
-Utiliser la liste de choix du bouton _Knit_ pour choisir le format de sortie.
+Hyphenation is handled automatically in LaTeX.
+If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command `hyphenation` (words are separated by spaces, hyphenation locations are represented by dashes).
 
-Le document Word peut ensuite être modifié pour respecter les instructions aux auteurs des revues : double interlignage, police, etc.
+If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command `break` to the line break location.
+Do not leave a space before the command. 
+The HTML document ignores the LaTeX commands.
 
-## Document PDF
+## Languages
 
-Le document est formaté pour l'auto-archivage d'articles bien mis en page.
+English and French are supported, to be declared in the document header.
 
-## Document HTML
+The chosen language has an effect only in LaTeX output: a space is added in front of double punctuation in French, the size of spaces is bigger at the beginning of a sentence in English, etc.
 
-Le modèle GitBook est optimisé pour la lecture sur écran.
-Pendant toute l'écriture, préférer le tricot au format HTML pour sa vitesse d'exécution.
-Un bouton de téléchargement est disponible dans la barre de menu du document: il fonctionnera si le document est aussi tricoté au format PDF et si le nom du fichier est rensigné dans le champ download de l'entête YAML.
-
-Le modèle HMTL Book est une alternative.
-
-## Document Word
-
-Son contenu peut être mis en forme ou copié dans un modèle. 
-Les styles de texte standard  sont "First Paragraph" et "Corps de de texte".
-
-L'intérêt du format Word est de produire un manuscrit pour les revues qui ne supportent pas LaTeX.
-Le style bibliographique de la revue est très probablement disponible au format _.csl_, ce qui permet de minimiser la préparation manuelle.
+EcoFoG templates use the LaTeX package _babel_ which recognizes the language names _English_ and _french_.
+Pandoc on the other hand uses the IETF codes _fr-FR_ or _en-US_ for limited language support in HTML.
+Both parameters must therefore be entered in the document header.
 
 
-## Optimisation pour GitHub
+# Document types
 
-Le projet d'article peut être déposé sur Github[^5].
+This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
+Use the list of choices in the _Knit_ button to choose the output format.
+
+The Word document can then be modified to comply with the instructions to journal authors: double-spaced, font, etc.
+
+## PDF Document
+
+The document is formatted for self-archiving of well-formatted articles.
+
+## HTML document
+
+The GitBook template is optimized for on-screen reading.
+While writing, prefer knitting to HTML format for its speed of execution.
+A download button is available in the document menu bar: it will work if the document is also knitted in PDF format and if the file name is entered in the download field of the YAML header.
+
+The HMTL Book template is an alternative.
+
+## Word document
+
+Its content can be formatted or copied into a template. 
+The standard text styles are "First Paragraph" and "Body Text".
+
+The advantage of the Word format is to produce a manuscript for journals that do not support LaTeX.
+The bibliographic style of the journal is most likely available in _.csl_ format, which minimizes manual preparation.
+
+
+## Optimization for GitHub
+
+The draft article can be deposited on Github[^5].
 
 [^5]: <https://ericmarcon.github.io/travailleR/chap-git.html>
 
-Le script R fourni, _GithubPages.R_, permet de publier facilement l'article dans les pages web associées au dépôt en déplaçant les fichiers HTML produit par le tricotage de l'article dans le dossier _docs_.
+The provided R script, _GithubPages.R_, makes it easy to publish the article to the web pages associated with the repository by moving the HTML files produced by knitting the article into the _docs_ folder.
 
-Il suffit ensuite d'activer les pages web du dépôt, d'adapter le fichier _README.md_ fourni (suivre ses instructions) et de le dupliquer dans le dossier _docs_.
+Then you just have to activate the web pages of the repository, adapt the _README.md_ file provided (follow its instructions) and duplicate it in the _docs_ folder.
 
-Les pages web peuvent être produites par intégration continue[^6].
+The web pages can be produced by continuous integration[^6].
 
 [^6]: <https://ericmarcon.github.io/travailleR/chap-ci.html>
 
 
-## Autres Modèles
+## Other Templates
 
-Le modèle de mémo EcoFoG est plus simple, formaté sur une seule colonne.
+The EcoFoG memo template is simpler, formatted on a single column.
 
-Le package _rticle_ fournit des modèles d'articles (PLOS, PNAS, etc.), mais nécessite l'utlisation de commandes LaTeX et ne permet pas le tricot en HTML.
-Le package _xaringan_ fournit un modèle de présentation HTML 5.
+The _rticle_ package provides templates for articles (PLOS, PNAS, etc.), but requires the use of LaTeX commands and does not allow knitting in HTML.
+The _xaringan_ package provides an HTML 5 presentation template.
 
-Le modèle _Ouvrage_ du package EcoFoG permet d'écrire des livres.
+The _Book_ template of the EcoFoG package allows to write books.
 
-La dernière ligne du modèle (bout de code R) doit être conservée pour afficher le titre _References_ (à traduire éventuellement dans la langue du document) au format HTML.
-Le titre de niveau 1 _Références_ doit être ajouté manuellement aux fichiers Word.
+The last line of the template (R code snippet) must be kept to display the title _References_ (to be translated into the document language if necessary) in HTML format.
+The level 1 title _References_ must be added manually to the Word files.
 
 `r if (!knitr:::is_latex_output()) '# References {-}'`
