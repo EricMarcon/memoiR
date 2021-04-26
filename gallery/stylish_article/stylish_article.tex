@@ -186,7 +186,7 @@ Markdown is very easy to learn.
 
 Markdown allows you to integrate your R code for a \emph{reproducible} result.
 
-Markdown allows to produce, without rewriting the text, a document in different formats: article LaTeX or Word for example.
+Markdown allows to produce, without rewriting the text, a document in different formats: HTML, LaTeX or Word for example.
 
 \hypertarget{how-to-do-it}{%
 \subsection{How to do it}\label{how-to-do-it}}
@@ -195,13 +195,13 @@ In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.
 
 Click on \emph{From template}: from templates installed by packages.
-The EcoFoG package templates are displayed: choose Article EcoFoG.
+The EcoFoG package templates are displayed: choose \emph{Stylish Article}.
+
+It is better to create an RStudio project to benefit from all the possibilities: \emph{File} / \emph{New Project} then use the wizard to create a project from an existing folder.
 
 Write the document in RStudio.
 
 Clicking the \textbf{Knit} button in RStudio generates the document in the requested format.
-
-It is better to create a RStudio project to benefit from all the possibilities: \emph{File} / \emph{New Project} then use the wizard to create a project from an existing folder.
 
 \hypertarget{code}{%
 \section{Code}\label{code}}
@@ -236,11 +236,11 @@ R code is included in code chunks:
 \hypertarget{tables}{%
 \subsection{Tables}\label{tables}}
 
-The horizontal \texttt{-} and vertical separators \texttt{\textbar{}} allow you to draw an array according to Markdown syntax, but this is not the best method.
+The horizontal \texttt{-} and vertical separators \texttt{\textbar{}} allow you to draw a table according to Markdown syntax, but this is not the best method.
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The \texttt{kable} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
+The \texttt{kable()} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
 
 \scriptsize
 
@@ -261,11 +261,13 @@ Sepal length & Width & Petal length & Width & Species\\
 
 \normalsize
 
-The caption is specified by the \texttt{caption} argument and referencing is possible because the array receives a label whose name is \texttt{tab:} followed by the name of the code snippet (array \ref{tab:kable}).
+The caption is specified by the \texttt{caption} argument and referencing is possible because the table receives a label whose name is \texttt{tab:} followed by the name of the code snippet (table \ref{tab:kable}).
 Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
 The \texttt{bootstrap\_options\ =\ "striped"} option provides more readable tables in HTML.
 
-In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like the table \ref{tab:Paracou}).
+In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like table \ref{tab:Paracou}).
+
+
 
 \scriptsize
 
@@ -291,7 +293,6 @@ This table contains mathematics: the \texttt{escape\ =\ FALSE} option is necessa
 
 Finally, the \texttt{full\_width\ =\ FALSE} option adjusts the width of the table to its content instead of occupying all the available width.
 It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
-A knitr bug causes the table format (``html'') to be passed incorrectly to \texttt{kable\_styling} when knitting to gitbook format, which generates a warning and prevents the option from being taken into account.
 
 \hypertarget{figures}{%
 \subsection{Figures}\label{figures}}
@@ -306,7 +307,7 @@ A knitr bug causes the table format (``html'') to be passed incorrectly to \text
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpAEqK2T/stylish_article/gallery/stylish_article/stylish_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmpip91WY/stylish_article/gallery/stylish_article/stylish_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -319,7 +320,7 @@ Figures can be created by the R code (figure \ref{fig:pressure}).
 With Bookdown, a label is associated with each figure: its name is \texttt{fig:xxx} where \texttt{xxx} is the name of the R code snippet.
 Cross-references are made with the command \texttt{\ref{fig:xxx}}.
 
-A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: \texttt{fig.env="figure*} and \texttt{out.extra=}.
+A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: \texttt{fig.env="figure*"} and \texttt{out.extra=""}.
 
 Existing figures are integrated into a piece of code by the \texttt{include\_graphics} function, see figure \ref{fig:logo}.
 
@@ -331,22 +332,37 @@ Existing figures are integrated into a piece of code by the \texttt{include\_gra
 
 }
 
-\caption{New document}\label{fig:logo}
+\caption{A figure from a file}\label{fig:logo}
 \end{figure}
 
 \normalsize
 
 Systematically place these files in the \texttt{images} folder for the automation of GitHub pages.
 
+\hypertarget{captions}{%
+\subsection{Captions}\label{captions}}
+
+Figure and table captions can be long, include formatted text, maths, references\ldots{}
+The only limit is they cannot contain more than a single paragraph.
+Such captions must be stored in a separate paragraph starting with \texttt{(ref:ChunkName)}and a space.
+The text of the caption follows.
+
+In the figure chunk heading, the caption is called in the \texttt{fig.cap} field:
+
+\{r ChunkName, fig.cap=``(ref:ChunkName)''\}
+
+In tables, the \texttt{caption} argument of the \texttt{kable()} function is used the same way.
+
 \hypertarget{lists}{%
 \subsection{Lists}\label{lists}}
 
-Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
+Lists are indicated by \emph{, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
+Indentation of lists indicates their level: }, + and - may be replaced by - at all levels, but four spaces are needed to nest a list into another.
 
 \begin{itemize}
 \tightlist
 \item
-  List
+  First element of a list
 
   \begin{itemize}
   \tightlist
@@ -354,10 +370,12 @@ Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. 
     sub-list
   \end{itemize}
 \item
-  second element
+  Second element
 \item
   Continuation of the list
 \end{itemize}
+
+Leave an empty line before and after the list, but not between its items.
 
 \hypertarget{math}{%
 \subsection{Math}\label{math}}
@@ -382,12 +400,12 @@ Sections can be tagged by ending their title with \texttt{\{\#yyy\}}.
 
 Bookmarks can also be placed freely in the text with the command \texttt{(ref:zzz)}.
 
-In all cases, the call to the reference is made by the command \texttt{ref(ref:zzz)}.
+In all cases, the call to the reference is made by the command \texttt{\textbackslash{}@ref(ref:zzz)}.
 
 \hypertarget{bibliography}{%
 \subsection{Bibliography}\label{bibliography}}
 
-Bibliographic references included in the references.bib file can be called in the text, in parentheses \citep{Xie2016}, or in the text, as \citet{Xie2018}.
+Bibliographic references included in the \texttt{references.bib} file can be called by \texttt{{[}@CitationKey{]}}, in parentheses \citep{Xie2016}, or without suare brackets, in the text, as \citet{Xie2018} .
 
 The bibliography is processed by Pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line
@@ -400,7 +418,7 @@ in the document header and copying the \emph{.csl} style file to the project fol
 More than a thousand styles are available\footnote{\url{https://github.com/citation-style-language/styles}}.
 
 For PDF documents, the bibliography is managed by LaTeX.
-The style is included in the EcoFoG template: it is the one from \emph{Methods in Ecology and Evolution}.
+The style is included in the template: it is the one from \emph{Methods in Ecology and Evolution}.
 It cannot be changed, to ensure the homogeneity of the documents produced.
 
 To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate \emph{.tex} file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.
@@ -416,7 +434,7 @@ The default commands allow:
 \begin{itemize}
 \tightlist
 \item
-  to use the degree character (example: 20°C) :
+  To use the degree character (example: 20°C):
 \end{itemize}
 
 \begin{verbatim}
@@ -427,7 +445,7 @@ The default commands allow:
 \begin{itemize}
 \tightlist
 \item
-  to obtain two-column arrays by redefining the \texttt{table} environment and loading the \emph{tabu} package necessary for \emph{kableExtra}:
+  To obtain two-column tables by redefining the \texttt{table} environment and loading the \emph{tabu} package necessary for \emph{kableExtra}:
 \end{itemize}
 
 \begin{verbatim}
@@ -442,7 +460,7 @@ The default commands allow:
 \begin{itemize}
 \tightlist
 \item
-  to show the use of the hyphenation command:
+  To show the use of the hyphenation command:
 \end{itemize}
 
 \begin{verbatim}
@@ -456,9 +474,9 @@ Warning:
 \begin{itemize}
 \tightlist
 \item
-  comments are not possible;
+  Comments are not possible.
 \item
-  complex commands (such as \texttt{renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+  Complex commands (such as \texttt{renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 \end{itemize}
 
 \hypertarget{forcing-line-breaks}{%
@@ -513,28 +531,7 @@ The standard text styles are ``First Paragraph'' and ``Body Text''.
 The advantage of the Word format is to produce a manuscript for journals that do not support LaTeX.
 The bibliographic style of the journal is most likely available in \emph{.csl} format, which minimizes manual preparation.
 
-\hypertarget{optimization-for-github}{%
-\subsection{Optimization for GitHub}\label{optimization-for-github}}
-
-The draft article can be deposited on Github\footnote{\url{https://ericmarcon.github.io/travailleR/chap-git.html}}.
-
-The provided R script, \emph{GithubPages.R}, makes it easy to publish the article to the web pages associated with the repository by moving the HTML files produced by knitting the article into the \emph{docs} folder.
-
-Then you just have to activate the web pages of the repository, adapt the \emph{README.md} file provided (follow its instructions) and duplicate it in the \emph{docs} folder.
-
-The web pages can be produced by continuous integration\footnote{\url{https://ericmarcon.github.io/travailleR/chap-ci.html}}.
-
-\hypertarget{other-templates}{%
-\subsection{Other Templates}\label{other-templates}}
-
-The EcoFoG memo template is simpler, formatted on a single column.
-
-The \emph{rticle} package provides templates for articles (PLOS, PNAS, etc.), but requires the use of LaTeX commands and does not allow knitting in HTML.
-The \emph{xaringan} package provides an HTML 5 presentation template.
-
-The \emph{Book} template of the EcoFoG package allows to write books.
-
-The last line of the template (R code snippet) must be kept to display the title \emph{References} (to be translated into the document language if necessary) in HTML format.
+The last line of this template (R code snippet) must be kept to display the title \emph{References} (to be translated into the document language if necessary) in HTML format.
 The level 1 title \emph{References} must be added manually to Word files.
 
 %----------------------------------------------------------------------------------------
