@@ -123,7 +123,7 @@ LAst, the `full_width = FALSE` option allows you to adjust the width of the tabl
 
 Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ (code: `$A=\pi r^2$`) or isolated (the $ are doubled) like $$e^{i \pi} = -1.$$
 
-They can be numbered: see equation \@ref(eq:disque), using the `\equation` environment.
+They can be numbered: see equation \@ref(eq:disk), using the `\equation` environment.
 
 \begin{equation}
   A = \pi r^2.
@@ -158,7 +158,7 @@ Bibliographic references in bibtex format must be included in the `.bib` file de
 
     bibliography: references.bib
 
-They can be called in the text, between brackets by the code `[@Reference]`, or in the text, by removing the brackets.
+They can be called in the text, between brackets by the code `[@CitationKey]`, in parentheses [@Xie2016], or without square brackets, in the text, as @Xie2018 .
 
 Bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line 
