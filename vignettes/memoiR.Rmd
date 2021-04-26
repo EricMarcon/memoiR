@@ -20,6 +20,12 @@ Templates include:
 - "Beamer Slideshow": the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.
 - "Memoir": a book template based on memoir. The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.
 
+Available HTML formats for articles are:
+
+- GitBook: `bookdown::gitbook`
+- Bookdown's HTML format (`bookdown::html_document2`)
+- Any format from the **rmdformats** package. `rmdformats::downcute` is by default. See the package documentation for other possibilities.
+
 
 # Getting started
 
@@ -33,6 +39,13 @@ Make the new folder an RStudio Project: use the menu "File / New Project...", cl
 
 Articles and slideshows are produced by clicking on the **Knit** button of the Source pane of their Rmd file.
 Memoirs are produced by clicking on the **Build Book** button of the Build pane.
+
+
+# Credits
+
+The feather in the memoiR package sticker is from [Wikimedia](https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg) under licence[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+
+The [memoir](https://www.ctan.org/pkg/memoir) LaTeX package is on CTAN.
 
 
 # Full documentation
