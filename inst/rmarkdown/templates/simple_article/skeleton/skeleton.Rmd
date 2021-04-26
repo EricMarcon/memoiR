@@ -213,7 +213,7 @@ plot(pressure)
 
 Figures can be created by the R code (figure \@ref(fig:pressure)).
 With Bookdown, a label is associated with each figure: its name is `fig:xxx` where `xxx` is the name of the R code snippet.
-Cross-references are made with the command `@ref(fig:xxx)`.
+Cross-references are made with the command `\@ref(fig:xxx)`.
 
 A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: `fig.env="figure*"` and `out.extra=""`.
 
@@ -257,7 +257,7 @@ Leave an empty line before and after the list, but not between its items.
 
 Equations in LaTeX format can be inserted in line, like $A=pi r^2$ or isolated like $$e^{i \pi} = -1.$$
 
-They can be numbered, see equation \@ref(eq:disque), using the `equation` environment:
+They can be numbered, see equation \@ref(eq:disk), using the `equation` environment:
 
 \begin{equation}
   A = \pi r^2.
