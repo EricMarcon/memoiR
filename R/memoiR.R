@@ -142,7 +142,7 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
 #' # Go to temp directory
 #' setwd(wd)
 #' # Make it the current project
-#' proj_set(path = ".", force = TRUE)
+#' usethis::proj_set(path = ".", force = TRUE)
 #' # render: knit to downcute
 #' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
 #'                   output_format="rmdformats::downcute")
