@@ -13,5 +13,39 @@ build_githubpages(destination = usethis::proj_path("docs"))
 Copy the files produced by knitting to the destination folder.
 }
 \details{
-Produced files are HTML pages and their companions (css, figures, libraries) and PDF documents.
+Produced files are HTML pages and their companions (css, figures, libraries)
+and PDF documents.
+The function moves them all and the \code{README.md} file into the destination folder.
+GitHub Pages allow making a website to present them:
+\itemize{
+\item \code{README.md} is the home page. Make it with \code{\link[=build_index]{build_index()}} to have links to the HTML and PDF outputs.
+\item knit both HTML and PDF versions to avoid dead links.
+\item run \code{build_githubpages()}.
+\item push to GitHub and activate GitHub Pages on the main branch and the \code{docs} folder.
+}
+}
+\examples{
+# Save working directory
+original_wd <- getwd()
+# Get a temporary woking directory
+wd <- tempfile("example")
+# Simulate File > New File > R Markdown... > From Template > Stylish Article
+rmarkdown::draft(wd, template="stylish_article", package="memoiR", edit=FALSE)
+# Go to temp directory
+setwd(wd)
+# Make it the current project
+proj_set(path = ".", force = TRUE)
+# render: knit to downcute
+rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+                  output_format="rmdformats::downcute")
+# Build index, HTML only
+build_index(PDF=FALSE)
+# Build GitHub Pages
+build_githubpages(destination="docs")
+# List the GitHub Pages files
+setwd("docs")
+list.files(recursive=TRUE)
+# Return to the original working directory and clean up
+setwd(original_wd)
+unlink(wd, recursive=TRUE)
 }

@@ -18,9 +18,9 @@ knit_template(
 \arguments{
 \item{destination}{name of the folder containing GitHub pages or equivalent.}
 
-\item{gallery}{name of the subfolder of destination to store the knitted documents.}
+\item{gallery}{name of the subfolder of \code{destination} to store the knitted documents.}
 
-\item{template}{name of the template to knit.}
+\item{template}{name of the template to knit, e.g. "simple_article".}
 
 \item{type}{type of the template to knit. May be "document", "book" or "slides".}
 }
@@ -28,5 +28,13 @@ knit_template(
 Create documents from templates
 }
 \details{
-Used to test the templates
+These functions are used to test the templates and produce a gallery.
+\itemize{
+\item \code{knit_template()} produces an HTML and a PDF output of the chosen template.
+\item \code{knit_all()} runs knit_template() on all templates of the package.
+The \code{type} argument selects the way templates are rendered:
+\item "document": HTML by \code{rmdformats::downcute} and PDF by \code{bookdown::pdf_book}.
+\item "book": HTML by \code{bookdown::gitbook} and PDF by \code{bookdown::pdf_book}.
+\item "slides": HTML by \code{rmarkdown::ioslides_presentation} and PDF by \code{rmarkdown::beamer_presentation}.
+}
 }

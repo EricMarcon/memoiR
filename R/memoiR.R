@@ -12,12 +12,18 @@ NULL
 #'
 #' Create documents from templates
 #'
-#' Used to test the templates
+#' These functions are used to test the templates and produce a gallery.
+#' - `knit_template()` produces an HTML and a PDF output of the chosen template.
+#' - `knit_all()` runs knit_template() on all templates of the package.
+#' The `type` argument selects the way templates are rendered:
+#' - "document": HTML by `rmdformats::downcute` and PDF by `bookdown::pdf_book`.
+#' - "book": HTML by `bookdown::gitbook` and PDF by `bookdown::pdf_book`.
+#' - "slides": HTML by `rmarkdown::ioslides_presentation` and PDF by `rmarkdown::beamer_presentation`.
 #'
-#' @param template name of the template to knit.
+#' @param template name of the template to knit, e.g. "simple_article".
 #' @param type type of the template to knit. May be "document", "book" or "slides".
 #' @param destination name of the folder containing GitHub pages or equivalent.
-#' @param gallery name of the subfolder of destination to store the knitted documents.
+#' @param gallery name of the subfolder of `destination` to store the knitted documents.
 #'
 #' @name Knit
 NULL
@@ -113,11 +119,43 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
 #'
 #' Copy the files produced by knitting to the destination folder.
 #'
-#' Produced files are HTML pages and their companions (css, figures, libraries) and PDF documents.
+#' Produced files are HTML pages and their companions (css, figures, libraries) 
+#' and PDF documents.
+#' The function moves them all and the `README.md` file into the destination folder.
+#' GitHub Pages allow making a website to present them:
+#' - `README.md` is the home page. Make it with [build_index()] to have links to the HTML and PDF outputs.
+#' - knit both HTML and PDF versions to avoid dead links.
+#' - run `build_githubpages()`.
+#' - push to GitHub and activate GitHub Pages on the main branch and the `docs` folder.
 #'
 #' @param destination destination folder of the knitted documents.
 #'
 #' @export
+#' 
+#' @examples
+#' # Save working directory
+#' original_wd <- getwd()
+#' # Get a temporary woking directory
+#' wd <- tempfile("example")
+#' # Simulate File > New File > R Markdown... > From Template > Stylish Article
+#' rmarkdown::draft(wd, template="stylish_article", package="memoiR", edit=FALSE)
+#' # Go to temp directory
+#' setwd(wd)
+#' # Make it the current project
+#' proj_set(path = ".", force = TRUE)
+#' # render: knit to downcute
+#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+#'                   output_format="rmdformats::downcute")
+#' # Build index, HTML only
+#' build_index(PDF=FALSE)
+#' # Build GitHub Pages
+#' build_githubpages(destination="docs")
+#' # List the GitHub Pages files
+#' setwd("docs")
+#' list.files(recursive=TRUE)
+#' # Return to the original working directory and clean up
+#' setwd(original_wd)
+#' unlink(wd, recursive=TRUE)
 build_githubpages <- function(destination=usethis::proj_path("docs")) {
   # Create the destination folder
   if (!dir.exists(destination)) dir.create(destination)
@@ -173,11 +211,13 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' Build a README.md file that will be used as index of GitHub Pages.
 #'
 #' R Markdown files of the project are used to get the title and abstract of the published documents.
-#' A link to their HTML and PDF versions is added.
-#' Metadata fields are needed in the .Rmd files YAML header: title, abstract and `URL`.
+#' A link to their HTML and, optionally, PDF versions is added.
+#' Metadata fields are read in the .Rmd files YAML header: title, abstract and `URL`.
 #'
+#' @param PDF if `TRUE` (by default), a link to the PDF output is added.
+#' 
 #' @export
-build_index <- function() {
+build_index <- function(PDF = TRUE) {
   # Find the markdown files
   RmdFiles <- list.files(pattern="*.Rmd")
   lines <- character()
@@ -185,14 +225,21 @@ build_index <- function() {
     yaml_header <- rmarkdown::yaml_front_matter(RmdFile)
     # Eliminate the extension
     RmdFileName <- gsub(".Rmd", "", RmdFile)
-    lines <- c(lines,
-                paste("# ", yaml_header$title, "\n", sep=""),
-                yaml_header$abstract,
-                "Formats:\n",
-                paste("- [HTML](", yaml_header$url, RmdFileName, ".html)", sep=""),
-                paste("- [PDF](", yaml_header$url, RmdFileName, ".pdf)\n", sep=""),
-                "\n"
-                )
+    if (PDF) {
+      lines <- c(lines,
+                 paste("# ", yaml_header$title, "\n", sep=""),
+                 yaml_header$abstract,
+                 "Formats:\n",
+                 paste("- [HTML](", yaml_header$url, RmdFileName, ".html)", sep=""),
+                 paste("- [PDF](", yaml_header$url, RmdFileName, ".pdf)\n", sep=""),
+                 "\n")
+    } else{
+      lines <- c(paste("# [", 
+                       yaml_header$title, "](", 
+                       yaml_header$url, RmdFileName, "html)\n", 
+                       sep=""),
+                 yaml_header$abstract)
+    }
   }
   usethis::write_over(usethis::proj_path("README.md"), lines)
 }

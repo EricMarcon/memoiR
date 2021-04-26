@@ -1,4 +1,4 @@
-# memoiR 0.1-1
+# memoiR 0.1-2
 
 ## New features
 

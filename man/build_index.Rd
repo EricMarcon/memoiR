@@ -4,13 +4,16 @@
 \alias{build_index}
 \title{Build Index}
 \usage{
-build_index()
+build_index(PDF = TRUE)
+}
+\arguments{
+\item{PDF}{if \code{TRUE} (by default), a link to the PDF output is added.}
 }
 \description{
 Build a README.md file that will be used as index of GitHub Pages.
 }
 \details{
 R Markdown files of the project are used to get the title and abstract of the published documents.
-A link to their HTML and PDF versions is added.
-Metadata fields are needed in the .Rmd files YAML header: title, abstract and \code{URL}.
+A link to their HTML and, optionally, PDF versions is added.
+Metadata fields are read in the .Rmd files YAML header: title, abstract and \code{URL}.
 }
