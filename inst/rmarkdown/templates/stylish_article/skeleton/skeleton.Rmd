@@ -150,7 +150,7 @@ Markdown is very easy to learn.
 
 Markdown allows you to integrate your R code for a *reproducible* result.
 
-Markdown allows to produce, without rewriting the text, a document in different formats: article LaTeX or Word for example.
+Markdown allows to produce, without rewriting the text, a document in different formats: HTML, LaTeX or Word for example.
 
 
 ## How to do it
@@ -159,13 +159,14 @@ In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.
 
 Click on _From template_: from templates installed by packages. 
-The EcoFoG package templates are displayed: choose Article EcoFoG.
+The EcoFoG package templates are displayed: choose *Stylish Article*.
+
+It is better to create an RStudio project to benefit from all the possibilities: _File_ / _New Project_ then use the wizard to create a project from an existing folder.
 
 Write the document in RStudio.
 
 Clicking the **Knit** button in RStudio generates the document in the requested format.
 
-It is better to create a RStudio project to benefit from all the possibilities: _File_ / _New Project_ then use the wizard to create a project from an existing folder.
 
 
 # Code
@@ -184,11 +185,11 @@ head(cars)
 
 ## Tables
 
-The horizontal `-` and vertical separators `|` allow you to draw an array according to Markdown syntax, but this is not the best method.
+The horizontal `-` and vertical separators `|` allow you to draw a table according to Markdown syntax, but this is not the best method.
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The `kable` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
+The `kable()` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
 
 ```{r kable, echo=FALSE, warning=FALSE}
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
@@ -196,12 +197,13 @@ knitr::kable(head(iris), caption="Table created by R", longtable = TRUE, booktab
 kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-The caption is specified by the `caption` argument and referencing is possible because the array receives a label whose name is `tab:` followed by the name of the code snippet (array \@ref(tab:kable)).
+The caption is specified by the `caption` argument and referencing is possible because the table receives a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
 Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
 The `bootstrap_options = "striped"` option provides more readable tables in HTML.
 
-In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like the table \@ref(tab:Paracou)).
+In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like table \@ref(tab:Paracou)).
 
+(ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
 ```{r Paracou, echo=FALSE, warning=FALSE}
 Intervention <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
@@ -220,7 +222,7 @@ Intervention <- data.frame(
   AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
-knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
+knitr::kable(Intervention, caption="(ref:Paracou)", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
@@ -228,7 +230,6 @@ This table contains mathematics: the `escape = FALSE` option is necessary.
 
 Finally, the `full_width = FALSE` option adjusts the width of the table to its content instead of occupying all the available width.
 It must be `TRUE` for correct formatting of two-column tables in LaTeX.
-A knitr bug causes the table format ("html") to be passed incorrectly to `kable_styling` when knitting to gitbook format, which generates a warning and prevents the option from being taken into account.
 
 
 ## Figures
@@ -241,25 +242,42 @@ Figures can be created by the R code (figure \@ref(fig:pressure)).
 With Bookdown, a label is associated with each figure: its name is `fig:xxx` where `xxx` is the name of the R code snippet.
 Cross-references are made with the command `@ref(fig:xxx)`.
 
-A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: `fig.env="figure*` and `out.extra=`.
+A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: `fig.env="figure*"` and `out.extra=""`.
 
 Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
-```{r logo, fig.cap="New document", echo=FALSE}
+```{r logo, fig.cap="A figure from a file", echo=FALSE}
 knitr::include_graphics("images/logo.png")
 ```
 
 Systematically place these files in the `images` folder for the automation of GitHub pages.
 
 
+## Captions
+
+Figure and table captions can be long, include formatted text, maths, references...
+The only limit is they cannot contain more than a single paragraph.
+Such captions must be stored in a separate paragraph starting with `(ref:ChunkName)`and a space.
+The text of the caption follows.
+
+In the figure chunk heading, the caption is called in the `fig.cap` field:
+
+  {r ChunkName, fig.cap="(ref:ChunkName)"}
+
+In tables, the `caption` argument of the `kable()` function is used the same way.
+
+
 ## Lists
 
-Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists). 
+Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
+Indentation of lists indicates their level: *, + and - may be replaced by - at all levels, but four spaces are needed to nest a list into another.
 
-* List
+* First element of a list
     + sub-list
-* second element
+* Second element
 * Continuation of the list
+
+Leave an empty line before and after the list, but not between its items.
 
 
 ## Math
@@ -284,12 +302,13 @@ Sections can be tagged by ending their title with `{#yyy}`.
 
 Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
 
-In all cases, the call to the reference is made by the command `ref(ref:zzz)`.
+In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
 
 
 ## Bibliography
 
-Bibliographic references included in the references.bib file can be called in the text, in parentheses [@Xie2016], or in the text, as @Xie2018.
+Bibliographic references included in the `references.bib` file can be called by `[@CitationKey]`, in parentheses [@Xie2016], or without suare brackets, in the text, as @Xie2018 .
+
 
 The bibliography is processed by Pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line 
@@ -302,10 +321,11 @@ More than a thousand styles are available[^3].
 [^3]: <https://github.com/citation-style-language/styles>
 
 For PDF documents, the bibliography is managed by LaTeX.
-The style is included in the EcoFoG template: it is the one from _Methods in Ecology and Evolution_.
+The style is included in the template: it is the one from _Methods in Ecology and Evolution_.
 It cannot be changed, to ensure the homogeneity of the documents produced.
 
 To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate _.tex_ file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.
+
 
 ## LaTeX preamble
 
@@ -314,12 +334,12 @@ These commands are in the `preamble:` section of the Markdown file header.
 
 The default commands allow:
 
-- to use the degree character (example: 20°C) :
+- To use the degree character (example: 20°C):
 ```
 \usepackage{textcomp}
 \DeclareUnicodeCharacter{B0}{textdegree}
 ```
-- to obtain two-column arrays by redefining the `table` environment and loading the _tabu_ package necessary for _kableExtra_:
+- To obtain two-column tables by redefining the `table` environment and loading the _tabu_ package necessary for _kableExtra_:
 ```
 \usepackage{tabu}
 \renewenvironment{table}{%
@@ -328,7 +348,7 @@ The default commands allow:
   \ignorespacesafterend
 }
 ```
-- to show the use of the hyphenation command:
+- To show the use of the hyphenation command:
 ```
 \hyphenation%
   {bio-di-ver-si-ty sap-lings}
@@ -337,8 +357,8 @@ The default commands allow:
 Other commands can be added as needed.
 Warning:
 
-- comments are not possible;
-- complex commands (such as `renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+- Comments are not possible.
+- Complex commands (such as `renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 
 
 ## Forcing line breaks
@@ -349,6 +369,7 @@ If a word is not hyphenated correctly, add its hyphenation in the preamble of th
 If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command `\break` to the line break location.
 Do not leave a space before the command. 
 The HTML document ignores LaTeX commands.
+
 
 ## Languages
 
@@ -388,32 +409,7 @@ The standard text styles are "First Paragraph" and "Body Text".
 The advantage of the Word format is to produce a manuscript for journals that do not support LaTeX.
 The bibliographic style of the journal is most likely available in _.csl_ format, which minimizes manual preparation.
 
-
-## Optimization for GitHub
-
-The draft article can be deposited on Github[^5].
-
-[^5]: <https://ericmarcon.github.io/travailleR/chap-git.html>
-
-The provided R script, _GithubPages.R_, makes it easy to publish the article to the web pages associated with the repository by moving the HTML files produced by knitting the article into the _docs_ folder.
-
-Then you just have to activate the web pages of the repository, adapt the _README.md_ file provided (follow its instructions) and duplicate it in the _docs_ folder.
-
-The web pages can be produced by continuous integration[^6].
-
-[^6]: <https://ericmarcon.github.io/travailleR/chap-ci.html>
-
-
-## Other Templates
-
-The EcoFoG memo template is simpler, formatted on a single column.
-
-The _rticle_ package provides templates for articles (PLOS, PNAS, etc.), but requires the use of LaTeX commands and does not allow knitting in HTML.
-The _xaringan_ package provides an HTML 5 presentation template.
-
-The _Book_ template of the EcoFoG package allows to write books.
-
-The last line of the template (R code snippet) must be kept to display the title _References_ (to be translated into the document language if necessary) in HTML format.
+The last line of this template (R code snippet) must be kept to display the title _References_ (to be translated into the document language if necessary) in HTML format.
 The level 1 title _References_ must be added manually to Word files.
 
 `r if (!knitr:::is_latex_output()) '# References {-}'`
