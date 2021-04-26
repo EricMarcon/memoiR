@@ -2137,7 +2137,7 @@ This document is made with Markdown in RStudio: knitr processes the Markdown cod
 <p>In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.</p>
 <p>Click on <em>From template</em>: from templates installed by packages.
-The EcoFoG package templates are displayed: choose <em>Simple Article</em>.</p>
+The memoiR package templates are displayed: choose <em>Simple Article</em>.</p>
 <p>It is better to create an RStudio project to benefit from all the possibilities: <em>File</em> / <em>New Project</em> then use the wizard to create a project from an existing folder.</p>
 <p>Write the document in RStudio.</p>
 <p>Clicking the <strong>Knit</strong> button in RStudio generates the document in the requested format.</p>
@@ -2408,7 +2408,7 @@ Figure 3.1: Figure title
 
 <p>Figures can be created by the R code (figure <a href="#fig:pressure">3.1</a>).
 With Bookdown, a label is associated with each figure: its name is <code>fig:xxx</code> where <code>xxx</code> is the name of the R code snippet.
-Cross-references are made with the command <code><a href="#fig:xxx"><strong>??</strong></a></code>.</p>
+Cross-references are made with the command <code>\@ref(fig:xxx)</code>.</p>
 <p>A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: <code>fig.env=&quot;figure*&quot;</code> and <code>out.extra=&quot;&quot;</code>.</p>
 <p>Existing figures are integrated into a piece of code by the <code>include_graphics</code> function, see figure <a href="#fig:logo">3.2</a>.</p>
 
@@ -2447,8 +2447,8 @@ Indentation of lists indicates their level: </em>, + and - may be replaced by - 
 </div>
 <div id="math" class="section level2">
 <h2><span class="header-section-number">3.6</span> Math</h2>
-<p>Equations in LaTeX format can be inserted in line, like <span class="math inline">\(A=pi r^2\)</span> or isolated like <span class="math display">\[e^{i \pi} = -1.\]</span></p>
-<p>They can be numbered, see equation <a href="#eq:disque">(<strong>??</strong>)</a>, using the <code>equation</code> environment:</p>
+<p>Equations in LaTeX format can be inserted in line, like <span class="math inline">\(A=\pi r^2\)</span> or isolated like <span class="math display">\[e^{i \pi} = -1\]</span>.</p>
+<p>They can be numbered, see equation <a href="#eq:disk">(3.1)</a>, using the <code>equation</code> environment:</p>
 <p><span class="math display" id="eq:disk">\[\begin{equation}
   A = \pi r^2.
   \tag{3.1}

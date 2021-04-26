@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -126,14 +126,22 @@
     <p>Build a README.md file that will be used as index of GitHub Pages.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>build_index</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>build_index</span><span class='op'>(</span>PDF <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>PDF</th>
+      <td><p>if <code>TRUE</code> (by default), a link to the PDF output is added.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>R Markdown files of the project are used to get the title and abstract of the published documents.
-A link to their HTML and PDF versions is added.
-Metadata fields are needed in the .Rmd files YAML header: title, abstract and <code>URL</code>.</p>
+A link to their HTML and, optionally, PDF versions is added.
+Metadata fields are read in the .Rmd files YAML header: title, abstract and <code>URL</code>.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

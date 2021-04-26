@@ -165,7 +165,7 @@ In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.
 
 Click on \emph{From template}: from templates installed by packages.
-The EcoFoG package templates are displayed: choose \emph{Simple Article}.
+The memoiR package templates are displayed: choose \emph{Simple Article}.
 
 It is better to create an RStudio project to benefit from all the possibilities: \emph{File} / \emph{New Project} then use the wizard to create a project from an existing folder.
 
@@ -277,7 +277,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmpip91WY/simple_article/gallery/simple_article/simple_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpUffog2/simple_article/gallery/simple_article/simple_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -288,7 +288,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 Figures can be created by the R code (figure \ref{fig:pressure}).
 With Bookdown, a label is associated with each figure: its name is \texttt{fig:xxx} where \texttt{xxx} is the name of the R code snippet.
-Cross-references are made with the command \texttt{\ref{fig:xxx}}.
+Cross-references are made with the command \texttt{\textbackslash{}@ref(fig:xxx)}.
 
 A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: \texttt{fig.env="figure*"} and \texttt{out.extra=""}.
 
@@ -350,9 +350,9 @@ Leave an empty line before and after the list, but not between its items.
 \hypertarget{math}{%
 \subsection{Math}\label{math}}
 
-Equations in LaTeX format can be inserted in line, like \(A=pi r^2\) or isolated like \[e^{i \pi} = -1.\]
+Equations in LaTeX format can be inserted in line, like \(A=\pi r^2\) or isolated like \[e^{i \pi} = -1\].
 
-They can be numbered, see equation \eqref{eq:disque}, using the \texttt{equation} environment:
+They can be numbered, see equation \eqref{eq:disk}, using the \texttt{equation} environment:
 
 \begin{equation}
   A = \pi r^2.

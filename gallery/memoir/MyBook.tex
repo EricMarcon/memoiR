@@ -296,14 +296,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \LargeMargins
-\hypertarget{principes}{%
-\chapter*{Principes}\label{principes}}
-\addcontentsline{toc}{chapter}{Principes}
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
+\addcontentsline{toc}{chapter}{Introduction}
 
-Ce document permet de créer un livre au format PDF (et au format ePub) en même temps qu'une version HTML à publier sur le web.
-La syntaxe est celle de \textbf{Markdown} avec quelques extensions.
+This document allows you to create a book in PDF format (and ePub format) at the same time as an HTML version to be published on the web.
+The syntax is that of \textbf{Markdown} with some extensions.
 
-Le package \textbf{bookdown} doit être installé à partir de CRAN ou GitHub:
+The \textbf{bookdown} package must be installed from CRAN or GitHub:
 
 \scriptsize
 
@@ -317,228 +317,337 @@ Le package \textbf{bookdown} doit être installé à partir de CRAN ou GitHub:
 
 \normalsize
 
-Le livre est organisé en chapitres.
-Chaque chapitre est un fichier Rmd, dont le nom commence normalement par son numéro (ex.: 01-intro.Rmd).
-Tous les fichiers Rmd présents dans le dossier du projet sont en réalité traités comme des chapitres, triés par ordre de nom de fichier.
-Le fichier index.Rmd est particulier: il contient l'entête du document et le premier chapitre.
+The book is organized in chapters.
+Each chapter is an Rmd file, whose name normally begins with its number (e.g.~\texttt{01-intro.Rmd}).
+All Rmd files in the project folder are actually treated as chapters, sorted by filename.
+The index.Rmd file is special: it contains the document header and the first chapter.
 
-Ce premier chapitre est placé dans l'avant-propos de l'ouvrage imprimé: il ne doit pas être numéroté (d'où le code \texttt{\{-\}} à côté du titre) dans la version HTML. Il se termine obligatoirement par la commande LaTeX \texttt{\textbackslash{}mainmatter} qui marque le début du corps de l'ouvrage.
+This first chapter is placed in the foreword of the printed book: it should not be numbered (hence the \texttt{\{-\}} code next to the title) in the HTML version.
+It must end with the LaTeX command \texttt{\textbackslash{}mainmatter} which marks the beginning of the body of the book.
 
-Les niveaux de plan commencent sont \texttt{\#} pour les chapitres (un seul par fichier), \texttt{\#\#} pour les sections, etc.
+The outline levels start with \texttt{\#} for chapters (only one per file), \texttt{\#\#} for sections, etc.
 
-La compilation au format PDF est faite par XeLaTeX, qui doit être installé.
+Compilation in PDF format is done by XeLaTeX, which must be installed.
 
-Pendant la rédaction, il est fortement conseillé de ne créer que le fichier HTML, ce qui est beaucoup plus rapide qu'une compilation LaTeX.
-Chaque chapitre peut être visualisé très rapidement en cliquant sur le bouton \emph{Knit} au-dessus de la fenêtre de source.
-Le livre entier est créé en cliquant sur le bouton \emph{Build Book} de la fenêtre \emph{Build} de RStudio.
-La liste déroulante du bouton permet de créer tous les documents ou de se limiter à un format.
+While writing, it is strongly advised to create only the HTML file, which is much faster than a LaTeX compilation.
+Each chapter can be viewed very quickly by clicking on the \emph{Knit} button above the source window.
+The entire book is created by clicking on the \emph{Build Book} button in the RStudio \emph{Build} window.
+The button's drop-down list allows you to create all documents or limit yourself to one format.
 
 \mainmatter
 
-\hypertarget{Demarrage}{%
-\chapter{Démarrage}\label{Demarrage}}
+\hypertarget{getting_started}{%
+\chapter{Getting Started}\label{getting_started}}
 
-\emph{RStudio} en version supérieure à 1 doit être utilisé.
-Le package \textbf{bookdown} doit être installé.
+\emph{RStudio} in version higher than 1 must be used.
+The \textbf{bookdown} package must be installed.
 
-Pour la création du fichier PDF, une installation de LaTeX est nécessaire.
-Sous Windows, utiliser \href{https://miktex.org/download}{MikTex}.
-Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, \emph{Install missing packages=Yes}) est indispensable.
+For the creation of the PDF file, an installation of LaTeX is necessary.
+Under Windows, use \href{https://miktex.org/download}{MikTex}.
+The automatic download of missing packages (under Windows: MiKTeX settings, \emph{Install missing packages=Yes}) is required.
 
-Les paramètres de base du projet doivent être saisis dans les fichiers suivants.
+The main file is \emph{index.Rmd} which contains the description of the book in its header.
+All other \emph{.Rmd} files in the folder contain a chapter: the order of chapters is that of the file names, sorted alphabetically.
+The \emph{references.bib} file contains the bibliography.
+
+The basic parameters of the project must be entered in the following files.
 
 \hypertarget{index.rmd}{%
 \section{index.Rmd}\label{index.rmd}}
 
-Dans l'entête du fichier, saisir le titre de l'ouvrage et le nom du ou des auteurs
+In the file header, enter the title of the work and the name of the author(s).
 
 \begin{verbatim}
-title: "Ouvrage Bookdown" 
-author: "Prénom NomAuteur"
+title: "Memoir" 
+author: "Authors' names"
 \end{verbatim}
 
-Les options spécifiques à LaTeX sont:
+LaTeX specific options are:
 
 \begin{itemize}
 \tightlist
 \item
-  \emph{documentclass} la classe de document, obligatoirement \emph{memoir} pour ce modèle. Les options de la classe \emph{memoir} sont énumérer, à ne pas modifier normalement;
+  \emph{documentclass}: the document class, necessarily \emph{memoir} for this template.
+  The options of the \emph{memoir} class are listed, not to be changed normally.
 \item
-  \emph{fontfamily}: la \href{https://en.wikibooks.org/wiki/LaTeX/Fonts\#Font_families}{police de caractère}, \emph{lmodern} par défaut;
+  \emph{fontfamily}: \href{https://en.wikibooks.org/wiki/LaTeX/Fonts\#Font_families}{font}, \emph{lmodern} by default.
 \item
-  \emph{linestretch}: l'interlignage, 1 par défaut;
+  \emph{linestretch}: line spacing, 1 by default.
 \item
-  \emph{papersize}: A4;
+  \emph{papersize}: A4.
 \item
-  \emph{fontsize}: 11pt;
+  \emph{fontsize}: 11pt.
 \item
-  \emph{toc-depth}: nombre de niveaux dans la table des matières, 3 par défaut;
+  \emph{toc-depth}: number of levels in the table of contents, 3 by default.
 \item
-  \emph{lang}: fr-FR, en-US ou en-GB (ou n'importe quel code valide\footnote{\url{https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}), la langue principale;
+  \emph{lang}: fr-FR, en-US or en-GB (or any valid code\footnote{\url{https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}), the main language.
 \item
-  \emph{otherlangs}: ignoré depuis la version 2 de pandoc\footnote{\url{https://github.com/jgm/pandoc/issues/4072}};
+  \emph{otherlangs}: ignored since pandoc version 2\footnote{\url{https://github.com/jgm/pandoc/issues/4072}}.
 \item
-  \emph{graphics}: yes obligatoirement pour utiliser le package \emph{graphics} nécessaire aux figures;
+  \emph{graphics}: yes mandatory to use the \emph{graphics} package needed for figures.
 \item
-  \emph{fig\_crop}: yes pour autoriser le rognage des marges excédentaires des figures;
+  \emph{fig\_crop}: yes to allow cropping of excess margins of figures.
 \item
-  La quatrième de couverture affichera le résumé en Français et en Anglais et les mots-clés associés si les instructions \emph{resume}, \emph{mots-cles}, \emph{abstract} et \emph{keywords} sont présentes;
+  The back cover will display the abstract in French and English and the associated keywords if the \emph{resume}, \emph{keywords}, \emph{abstract} and \emph{keywords} instructions are present;
 \item
-  \emph{fourthpagefontsize} donne la taille de la police de caractère de la quatrième de couverture, normalsize par défaut, à adapter selon la longueur des résumés. La commande doit être reconnue par LaTeX.
+  \emph{fourthpagefontsize} gives the font size of the back cover, normalsize by default, to be adapted according to the length of the summaries.
+  The command must be recognized by LaTeX.
 \end{itemize}
 
-Les paramètres de la bibliographie sont:
+The parameters of the bibliography are:
 
 \begin{itemize}
 \tightlist
 \item
-  \emph{bibliography}: fichiers contenant les références, {[}MyBook.bib, packages.bib{]} par défaut. \emph{package.bib} est créé par le premier bout de code du document: il permet de citer les packages déclarés avec les identifiants de la forme \texttt{@R-package}. R lui-même est cité par \texttt{@R-base};
+  \emph{bibliography}: files containing the references, {[}references.bib, packages.bib{]} by default.
+  \emph{package.bib} is created by the first code chunk of the document: it allows packages declared with identifiers of the form \texttt{@R-package} to be cited.
+  R itself is quoted by \texttt{@R-base}.
 \item
-  \emph{biblio-style}: le style bibliographique, authoryear-ibid par défaut;
+  \emph{biblio-style}: the bibliographic style, authoryear-ibid by default.
 \item
-  \emph{cite-style}: le style des citations dans le document LaTeX, verbose-inote par défaut;
+  \emph{cite-style}: the citation style in the LaTeX document, verbose-inote by default.
 \item
-  \emph{biblatexoptions} contient la liste des options de biblatex, utilisées pour la production du document PDF;
+  \emph{biblatexoptions} contains the list of biblatex options, used to produce the PDF document.
 \item
-  \emph{link-citations}: yes pour que les citations soient des liens hypertexte;
+  \emph{link-citations}: yes to make the citations hyperlinks.
 \item
-  \emph{colorlinks}: yes pour que les liens hypertexte soient affichés en couleur.
+  \emph{colorlinks}: yes to make the hyperlinks be displayed in color.
 \end{itemize}
 
-La couverture sera:
+The cover will be:
 
 \begin{itemize}
 \tightlist
 \item
-  au format livre si l'instruction \emph{maintitlepage} est présente. Le contenu de \emph{epigraph} sera écrit en page 2;
+  Book format if the \emph{maintitlepage} statement is present.
+  The content of \emph{epigraph} will be written on page 2.
 \item
-  la première page du fichier PDF déclaré dans l'instruction \emph{pdftitlepage} si elle est présente.
+  the first page of the PDF file declared in the \emph{pdftitlepage} instruction if it is present.
 \end{itemize}
 
-Supprimer une des deux instructions dans l'entête.
+Delete one of the two instructions in the header.
 
-Pour un mémoire d'étudiant, préparer la page de couverture avec Word, Powerpoint ou un logiciel de PAO et l'enregistrer au format PDF, en taille A4.
-Seule la première page du PDF est utilisée.
-La création directe de pages de gardes de thèses n'est plus supportée.
+For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
+Only the first page of the PDF is used.
 
 \hypertarget{bookdown.yml}{%
 \section{\_bookdown.yml}\label{bookdown.yml}}
 
-Saisir le nom du fichier Rmd qui sera le résultat de la fusion de tous les chapitres et choisir s'il doit être détruit après usage.
-Les options par défaut conviendront à la plupart des usages.
+Enter the name of the Rmd file that will be the result of the merging of all chapters and choose if it should be destroyed after use.
+The default options will suit most uses.
 
 \begin{verbatim}
-book_filename: "_Book"
+book_filename: "MyBook"
 delete_merged_file: true
 \end{verbatim}
 
-Si le projet est hébergé sur GitHub, indiquer son adresse.
-Sinon, supprimer la ligne.
+If the project is hosted on GitHub, indicate its address.
+Otherwise, delete the line.
 
 \begin{verbatim}
-repo: "https://github.com/EcoFoG/BookTemplate"
+repo: "https://github.com/GitHubID/Repository"
 \end{verbatim}
 
-Il est inutile de compléter les mots-clés selon la langue de l'ouvrage.
-Les options \emph{language} sont prises en charge par ailleurs.
+There is no need to fill in the keywords according to the language of the work.
+The \emph{language} options are supported elsewhere.
 
 \begin{verbatim}
 language:
   ui:
-    chapter_name: "Chapitre "
+    chapter_name: "Chapter"
 \end{verbatim}
 
 \hypertarget{output.yml}{%
 \section{\_output.yml}\label{output.yml}}
 
-Personnaliser la table des matières au format HTML.
+Customize the table of contents in HTML format.
 
 \begin{verbatim}
 config:
   toc:
     before: |
-      <li><a href="./">Ouvrage Bookdown</a></li>
+      <li><a href="./">Bookdown book</a></li>
     after: |
-      <li><a href="https://github.com/EcoFoG/ (...)
+      <li><a href="https://github.com/GitHubID/Repository
 \end{verbatim}
 
-\hypertarget{documents-multilingues}{%
-\section{Documents multilingues}\label{documents-multilingues}}
+\hypertarget{multilingual-documents}{%
+\section{Multilingual documents}\label{multilingual-documents}}
 
-Seule la langue principale du document est déclarée dans l'entête.
-Les titres seront écrits dans cette langue (ex.: Chapitre / Chapter).
+Only the main language of the document is declared in the header.
+The titles will be written in this language (e.g.: Chapter / Chapitre).
 
-Pour utiliser d'autres langues ponctuellement dans le texte, elles doivent être activées dans \texttt{preamble.tex} dans le dossier \texttt{latex}.
-L'Anglais américain et le Français sont activés par défaut.
+To use other languages punctually in the text, they must be activated in \texttt{preamble.tex} in the \texttt{latex} folder.
+American English and French are activated by default.
 
-Les changements de langue n'ont aucun effet en HTML mais modifient la ponctuation, les césures\ldots{} dans les sorties en PDF.
+Changing the language has no effect in HTML, but changes punctuation, hyphenation\ldots{} in PDF output.
 
-Pour passer en Anglais, insérer le code suivant dans le texte:
+To switch to English, insert the following code into the text:
 
 \begin{verbatim}
 \selectlanguage{english}
 \end{verbatim}
 
-Le changement de langue au format markdown de base,
+The language change in basic markdown format,
 
 \begin{verbatim}
 ::: {lang=en-US}
 \end{verbatim}
 
-n'est pas supporté par R Markdown.
+is not supported by R Markdown.
 
-\hypertarget{syntaxe}{%
-\chapter{Syntaxe}\label{syntaxe}}
+\hypertarget{syntax}{%
+\chapter{Syntax}\label{syntax}}
 
-La syntaxe de \emph{R Mardown} étendue par \emph{Bookdown} est rappelée ici, en Anglais.
+The syntax of \emph{R Mardown} extended by \emph{Bookdown} is recalled here.
 
-Les références bibliographiques \autocite{xie2015} sont supportées.
+In RStudio, create a new document of type Document R Markdown.
+The wizard allows you to choose between different formats.
 
-Le changement de langue est géré en LaTeX (ponctuation et césures différentes) mais pas en HTML.
-La commande \texttt{\textbackslash{}selectlanguage\{english\}} est simplement ignorée en HTML.
+Click on \emph{From template}: from templates installed by packages.
+The memoiR package templates are displayed: choose \emph{Memoir}.
 
-\selectlanguage{english}
+Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g.~\texttt{01-intro.Rmd}).
+All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for \texttt{99-references.Rmd} which contains the bibliography, placed at the end.
+The \texttt{index.Rmd} file is special: it contains the document header and the first chapter.
 
-\hypertarget{section-in-english}{%
-\section{Section in English}\label{section-in-english}}
+\hypertarget{write}{%
+\section{Write}\label{write}}
 
-You can label chapter and section titles using \texttt{\{\#label\}} after them, e.g., we can reference Chapter \ref{Demarrage}.
+The main features of Markdown are summarized here.
+A quick and complete training is offered by RStudio\footnote{\url{https://rmarkdown.rstudio.com/lesson-1.html}}.
 
-Figures and tables with captions will be placed in \texttt{figure} and \texttt{table} environments, respectively.
+The text is written without any formatting other than line breaks.
+A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.
 
-Figure captions can be set into a paragraph starting with \texttt{(ref:FigName)} where \texttt{FigName} is the name of the figure code chunk.
-These caption allow any format (even though they are limited to a single paragraph), whilst captions in code chunk headers must be plain text.
-In the code chunk header, the caption is called by \texttt{fig.cap=\textquotesingle{}(ref:FigName)\textquotesingle{}}.
+A line break marks a paragraph change.
 
+The different levels of the plan are designated by the number of braces at the beginning of the line: \texttt{\#} for a level 1 title, \texttt{\#\#} for a level 2 title, etc.
+A space separates the hashes and the title text.
 
+Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
+An empty line is required before the beginning of the list, but the elements of the list are separated by a simple line break.
+Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
+Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.
+
+In the text, the italicized parts are surrounded by a star or an underscore (\texttt{*italic*}), while two stars mark the bold.
+
+\hypertarget{r-code}{%
+\section{R code}\label{r-code}}
+
+R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the ``Insert a new code chunk'' button above the source code window in RStudio.
+They start and end with three quotation marks on a new line.
+These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
+
+\begin{verbatim}
+```{r cars, echo=TRUE}
+```
+\end{verbatim}
+
+The name and options are optional: the minimum header is \texttt{\{r\}}.
+
+The most useful options are:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{echo} to show (\texttt{=TRUE}) or hide (\texttt{=FALSE}) the code.
+\item
+  \texttt{message=FALSE} to hide the opening messages of some packages.
+\item
+  \texttt{warning=FALSE} to hide warnings.
+\end{itemize}
+
+The default options are declared in the code snippet named ``Options'' at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
+The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
+
+\hypertarget{figures}{%
+\section{Figures}\label{figures}}
 
 \scriptsize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(pressure)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{SCfigure}
 
-{\centering \includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/nice-fig-1} 
+{\centering \includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/pressure-1} 
 
 }
 
-\caption{Here is a nice figure! It has a long, long, \emph{long}, \textbf{long}, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, caption in full Markdown, including maths : \(\pi\) .}\label{fig:nice-fig}
+\caption{Figure title}\label{fig:pressure}
 \end{SCfigure}
 
 \normalsize
 
-Reference a figure by its code chunk label with the \texttt{fig:} prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can reference tables generated from \texttt{knitr::kable()}, e.g., see Table \ref{tab:kable}.
+Figures can be created by the R code (figure \ref{fig:pressure}).
+With Bookdown, a label is associated with each figure: its name is \texttt{fig:xxx} where \texttt{xxx} is the name of the R code snippet.
+References are made with the command \texttt{\textbackslash{}@ref(fig:xxx)}.
+
+The header of the code snippet of the figure \ref{fig:pressure} is:
+
+\begin{verbatim}
+```{r pressure, fig.cap="Title of the figure"}
+```
+\end{verbatim}
+
+It contains at least the name of the figure and its caption.
+If the caption is long, the header is not very readable.
+Also, the caption is limited to simple text.
+For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text \texttt{(ref:FigureName)}.
+The figure \ref{fig:pressure2} benefits from an improved caption.
+
+
 
 \scriptsize
 
+\begin{SCfigure}
+
+{\centering \includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/pressure2-1} 
+
+}
+
+\caption{Title with \emph{italic}, math (\(\sqrt\pi\)) and reference to figure \ref{fig:pressure}}\label{fig:pressure2}
+\end{SCfigure}
+
+\normalsize
+
+The text in \texttt{fig.cap}, ``Title of figure'' previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
+Captions are limited to a single paragraph.
+
+Figures that are not created by R but come from files are embedded in a piece of code by the \texttt{include\_graphics()} function whose argument is the file containing the image to be displayed.
+Always place these files in the \texttt{images} folder for good organization.
+
+\hypertarget{tables}{%
+\section{Tables}\label{tables}}
+
+The horizontal - and vertical separators \textbar{} allow to draw a table according to the Markdown syntax, but it is not the best method.
+
+Tables can also be produced by R code.
+The content of the table is in a dataframe.
+The \texttt{kable} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(iris) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Sepal length ($l_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{, }
+    \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris), }\DataTypeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }
+    \DataTypeTok{longtable =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{escape =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{    }\NormalTok{kableExtra}\OperatorTok{::}\KeywordTok{kable_styling}\NormalTok{(}\DataTypeTok{bootstrap_options =} \StringTok{"striped"}\NormalTok{, }
+        \DataTypeTok{full_width =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{longtable}[t]{rrrrl}
-\caption{\label{tab:kable}Tableau créé par R}\\
+\caption{\label{tab:kable}Table created by R}\\
 \toprule
-Longueur sépales & Largeur & Longueur pétales & Largeur & Espèce\\
+Sepal length ($l_s$) & Width & Petal length & Width & Species\\
 \midrule
 5.1 & 3.5 & 1.4 & 0.2 & setosa\\
 4.9 & 3.0 & 1.4 & 0.2 & setosa\\
@@ -552,35 +661,113 @@ Longueur sépales & Largeur & Longueur pétales & Largeur & Espèce\\
 
 \normalsize
 
-\selectlanguage{french}
+The caption is specified by the \texttt{caption} argument and referencing is possible because the table is given a label whose name is \texttt{tab:} followed by the name of the code snippet (table \ref{tab:kable}).
+As with figures, an enhanced legend can be written in a separate paragraph.
 
-Remarque: si le tableau est mal formaté, supprimer le dossier \texttt{\_bookdown\_files} et recréer le livre.
+Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
+Since the table contains mathematics (in the name of the first column), the \texttt{escape\ =\ FALSE} option is necessary.
 
-La légende est précisée par l'argument \texttt{caption} et le référencement est possible parce que le tableau reçoit une étiquette dont le nom est \texttt{tab:} suivi du nom du bout de code (tableau \ref{tab:kable}).
-Utiliser systématiquement l'argument \texttt{booktabs\ =\ TRUE} pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
-L'option\break \texttt{bootstrap\_options\ =\ "striped"} fournit des tableaux plus lisibles en HTML.
+The \texttt{bootstrap\_options\ =\ "striped"} style option provides more readable tables in HTML.
+LAst, the \texttt{full\_width\ =\ FALSE} option allows you to adjust the width of the table to its content instead of occupying all the available width.
 
-En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages (\texttt{longtable\ =\ TRUE}).
-L'option \texttt{longtable\ =\ FALSE} du modèle d'article pour afficher les tableaux en pleine largeur n'est pas disponible ici.
+\hypertarget{maths}{%
+\section{Maths}\label{maths}}
 
-\hypertarget{documentation-pour-les-utilisateurs}{%
-\section{Documentation pour les utilisateurs}\label{documentation-pour-les-utilisateurs}}
+Equations in LaTeX format can be inserted in line, like \(A=\pi r^2\) (code: \texttt{\$A=\textbackslash{}pi\ r\^{}2\$}) or isolated (the \$ are doubled) like \[e^{i \pi} = -1.\]
+
+They can be numbered: see equation \eqref{eq:disque}, using the \texttt{\textbackslash{}equation} environment.
+
+\begin{equation}
+  A = \pi r^2.
+  \label{eq:disk}
+\end{equation}
+
+The numbered equation is created by the following code:
+
+\begin{verbatim}
+\begin{equation}
+  A = \pi r^2.
+  \label{eq:disk}
+\end{equation}
+\end{verbatim}
+
+\hypertarget{cross-references}{%
+\section{Cross-references}\label{cross-references}}
+
+Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with \texttt{fig:} and \texttt{tab:}.
+
+For equations, the label is added manually by the code \texttt{(\textbackslash{}\#eq:xxx)} before the end of the equation.
+
+Sections can be tagged by ending their title with \texttt{\{\#yyy\}}.
+
+Bookmarks can also be placed freely in the text with the command \texttt{(ref:zzz)}.
+
+In all cases, the call to the reference is made by the command \texttt{\textbackslash{}@ref(ref:zzz)}.
+
+\hypertarget{bibliography}{%
+\section{Bibliography}\label{bibliography}}
+
+Bibliographic references in bibtex format must be included in the \texttt{.bib} file declared in the header of the Markdown document.
+
+\begin{verbatim}
+bibliography: references.bib
+\end{verbatim}
+
+They can be called in the text, between brackets by the code \texttt{{[}@Reference{]}}, or in the text, by removing the brackets.
+
+Bibliography is handled by pandoc when producing Word or HTML documents.
+The bibliographic style can be specified, by adding the line
+
+\begin{verbatim}
+csl:file_name.csl
+\end{verbatim}
+
+in the document header and copying the \emph{.csl} style file into the project folder.
+Over a thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
+
+For PDF documents, the bibliography is handled by LaTeX.
+It cannot be changed, to ensure the homogeneity of the documents produced.
+
+\hypertarget{languages}{%
+\section{Languages}\label{languages}}
+
+English and French are supported, to be declared in the document header.
+
+The main language of the document changes the name of some elements, such as the table of contents.
+The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:
+
+\begin{verbatim}
+\selectlanguage{english}
+\end{verbatim}
+
+The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The \texttt{\textbackslash{}selectlanguage} command is simply ignored in HTML.
+
+EcoFoG templates use the LaTeX package \emph{babel} which recognizes the language names \emph{English} and \emph{french}.
+Pandoc on the other hand uses the IETF codes \emph{fr-FR} or \emph{en-US} for limited language support in HTML.
+Both parameters must therefore be entered in the document header.
+
+\hypertarget{user-documentation}{%
+\section{User documentation}\label{user-documentation}}
 
 \begin{itemize}
+\tightlist
 \item
-  L'ouvrage \href{https://bookdown.org/yihui/bookdown/}{bookdown: Authoring Books and Technical Documents with R Markdown} de Yihui Xie, l'auteur de \textbf{bookdown} et de \textbf{knitr}. Toutes les précisions nécessaires à la rédaction (écriture d'équations, références croisées, etc.) y sont données;
+  The book \href{https://bookdown.org/yihui/bookdown/}{bookdown: Authoring Books and Technical Documents with R Markdown} by Yihui Xie, the author of \textbf{bookdown} and \textbf{knitr}.
+  All the necessary details for writing (writing equations, cross-references, etc.) are given.
 \item
-  L'\href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{anti-sèche de R Markdown} pour la syntaxe.
+  The \href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{R Markdown cheat sheet} for the syntax.
 \end{itemize}
 
-\hypertarget{sec:docdev}{%
-\section{Documentation pour les développeurs}\label{sec:docdev}}
+\hypertarget{documentation-for-developers}{%
+\section{Documentation for developers}\label{documentation-for-developers}}
 
 \begin{itemize}
+\tightlist
 \item
-  La \href{http://rmarkdown.rstudio.com/pdf_document_format.html\#advanced_customization}{personnalisation du format du fichier LaTeX} produit.
+  \href{http://rmarkdown.rstudio.com/pdf_document_format.html\#advanced_customization}{LaTeX file format customization}.
 \item
-  Le \href{https://pandoc.org/MANUAL.html}{manuel de Pandoc} pour les options possibles dans l'entête YAML.
+  The \href{https://pandoc.org/MANUAL.html}{Pandoc manual} for possible options in the YAML header.
 \end{itemize}
 
 

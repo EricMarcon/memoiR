@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -144,11 +144,11 @@
     </tr>
     <tr>
       <th>gallery</th>
-      <td><p>name of the subfolder of destination to store the knitted documents.</p></td>
+      <td><p>name of the subfolder of <code>destination</code> to store the knitted documents.</p></td>
     </tr>
     <tr>
       <th>template</th>
-      <td><p>name of the template to knit.</p></td>
+      <td><p>name of the template to knit, e.g. "simple_article".</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -158,7 +158,15 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Used to test the templates</p>
+    <p>These functions are used to test the templates and produce a gallery.</p><ul>
+<li><p><code>knit_template()</code> produces an HTML and a PDF output of the chosen template.</p></li>
+<li><p><code>knit_all()</code> runs knit_template() on all templates of the package.
+The <code>type</code> argument selects the way templates are rendered:</p></li>
+<li><p>"document": HTML by <code><a href='https://rdrr.io/pkg/rmdformats/man/downcute.html'>rmdformats::downcute</a></code> and PDF by <code><a href='https://pkgs.rstudio.com/bookdown/reference/pdf_book.html'>bookdown::pdf_book</a></code>.</p></li>
+<li><p>"book": HTML by <code><a href='https://pkgs.rstudio.com/bookdown/reference/gitbook.html'>bookdown::gitbook</a></code> and PDF by <code><a href='https://pkgs.rstudio.com/bookdown/reference/pdf_book.html'>bookdown::pdf_book</a></code>.</p></li>
+<li><p>"slides": HTML by <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/ioslides_presentation.html'>rmarkdown::ioslides_presentation</a></code> and PDF by <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/beamer_presentation.html'>rmarkdown::beamer_presentation</a></code>.</p></li>
+</ul>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
