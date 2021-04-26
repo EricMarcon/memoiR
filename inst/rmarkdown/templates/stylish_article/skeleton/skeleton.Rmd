@@ -28,6 +28,7 @@ journalinfo: "Publication reference"
 archive: "DOI: xxx/xx"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 url: https://GitHubID.github.io/Repository/
+github-repo: GitHubID/Repository
 lang: en-US # fr-FR
 babel: english # french 
 keywordlabel: Keywords # Mots-clés
@@ -41,6 +42,11 @@ preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 always_allow_html: yes
 output:
+  bookdown::gitbook:
+    config:
+      download: "pdf"
+      sharing:
+        github: yes
   rmdformats::downcute:
     use_bookdown: yes
     lightbox: yes
@@ -71,7 +77,7 @@ InstallPackages <- function(Packages) {
 InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
 
 # kableExtra must be loaded 
-if ("word_document" %in% rmarkdown::all_output_formats(knitr::current_input())) {
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
   # Word output (https://stackoverflow.com/questions/35144130/in-knitr-how-can-i-test-for-if-the-output-will-be-pdf-or-word)
   # Do not use autoformat (https://github.com/haozhu233/kableExtra/issues/308)
   options(kableExtra.auto_format = FALSE)
