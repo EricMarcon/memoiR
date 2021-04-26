@@ -6,7 +6,7 @@
 % ---------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ArtEcoFoG}[06/11/2017, v. 2.1]
+\ProvidesClass{latex/stylish_article}[06/11/2017, v. 2.1]
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
