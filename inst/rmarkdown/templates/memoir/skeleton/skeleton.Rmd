@@ -3,15 +3,12 @@ title: "Memoir Template"
 output: html_document
 ---
 
-Ce modèle s'appuie sur _Bookdown_ pour permettre d'écrire en _R Markdown_ un livre, un rapport, une thèse de doctorat ou un mémoire d'HDR.
+This template is based on _Bookdown_ and the _Memoir_ LaTeX class to allow writing a book, a report, a PhD thesis, etc. in _R Markdown_.
 
-Le fichier principal est _index.Rmd_ qui contient la description de l'ouvrage dans son entête. Tous les autres fichiers _.Rmd_ du dossier contiennent un chapitre. Le fichier _MyBook.bib_ contient la bibliographie.
+The main file is _index.Rmd_ which contains the description of the book in its header. All other _.Rmd_ files in the folder contain a chapter. 
+The _references.bib_ file contains the bibliography.
 
-Ce fichier devra être supprimé, comme _81-Demarrage.Rmd_ et _82-Syntaxe.Rmd_ : ils doivent être remplacés par le contenu de l'ouvrage.
+This file will have to be deleted, as well as _81-getting_started.Rmd_ and _82-syntax.Rmd_: they have to be replaced by the content of the book.
 
-Pour commencer, créer un nouveau projet R à partir de ce dossier.
-Ouvrir ensuite _index.Rmd_ et cliquer sur le bouton _Build Book_ dans la fenêtre _Build_ de Rstudio.
-
-Attention, évolutions le 11/04/2019. Un fichier est à mettre à jour dans les projets existants:
-
-- Mise à jour du modèle _latex/pdgUniv.sty_ après une évolution de LaTeX.
+To get started, create a new R project from this folder.
+Then open _index.Rmd_ and click on the _Build Book_ button in the _Build_ window of Rstudio.

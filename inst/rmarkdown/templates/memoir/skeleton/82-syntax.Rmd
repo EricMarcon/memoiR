@@ -1,0 +1,206 @@
+# Syntax
+
+The syntax of _R Mardown_ extended by _Bookdown_ is recalled here.
+
+In RStudio, create a new document of type Document R Markdown. 
+The wizard allows you to choose between different formats.
+
+Click on _From template_: from templates installed by packages. 
+The memoiR package templates are displayed: choose *Memoir*.
+
+Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g. `01-intro.Rmd`).
+All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for `99-references.Rmd` which contains the bibliography, placed at the end.
+The `index.Rmd` file is special: it contains the document header and the first chapter.
+
+
+## Write
+
+The main features of Markdown are summarized here.
+A quick and complete training is offered by RStudio[^402].
+
+[^402]: https://rmarkdown.rstudio.com/lesson-1.html
+
+The text is written without any formatting other than line breaks.
+A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.
+
+A line break marks a paragraph change.
+
+The different levels of the plan are designated by the number of braces at the beginning of the line: `#` for a level 1 title, `##` for a level 2 title, etc.
+A space separates the hashes and the title text.
+
+Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
+An empty line is required before the beginning of the list, but the elements of the list are separated by a simple line break.
+Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
+Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.
+
+In the text, the italicized parts are surrounded by a star or an underscore (`*italic*`), while two stars mark the bold.
+
+
+## R code
+
+R code is included in code chunks (*code chunks*) that are easily created by clicking on the "Insert a new code chunk" button above the source code window in RStudio.
+They start and end with three quotation marks on a new line.
+These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example: 
+
+````
+```{r cars, echo=TRUE}`r ''`
+```
+````
+
+The name and options are optional: the minimum header is `{r}`.
+
+The most useful options are:
+
+- `echo` to show (`=TRUE`) or hide (`=FALSE`) the code.
+- `message=FALSE` to hide the opening messages of some packages.
+- `warning=FALSE` to hide warnings.
+
+The default options are declared in the code snippet named "Options" at the beginning of the Markdown document, in the `opts_chunk$set()` function.
+The `echo` option should be set to `FALSE` by default for a scientific article for example.
+
+
+## Figures
+
+```{r pressure, fig.cap="Figure title"}
+plot(pressure)
+```
+
+Figures can be created by the R code (figure \@ref(fig:pressure)).
+With Bookdown, a label is associated with each figure: its name is `fig:xxx` where `xxx` is the name of the R code snippet.
+References are made with the command `\@ref(fig:xxx)`.
+
+The header of the code snippet of the figure \@ref(fig:pressure) is:
+
+````
+```{r pressure, fig.cap="Title of the figure"}`r ''`
+```
+````
+
+It contains at least the name of the figure and its caption. 
+If the caption is long, the header is not very readable.
+Also, the caption is limited to simple text.
+For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text `(ref:FigureName)`. 
+The figure \@ref(fig:pressure2) benefits from an improved caption.
+
+(ref:pressure2) Title with _italic_, math ($\sqrt\pi$) and reference to figure \@ref(fig:pressure)
+```{r pressure2, fig.cap="(ref:pressure2)", echo=FALSE}
+plot(pressure)
+```
+
+The text in `fig.cap`, "Title of figure" previously, is replaced by `(ref:pressure)` _within the quotation marks_ and the caption is entered in a paragraph starting with `(ref:pressure)` followed by a space.
+Captions are limited to a single paragraph.
+
+Figures that are not created by R but come from files are embedded in a piece of code by the `include_graphics()` function whose argument is the file containing the image to be displayed.
+Always place these files in the `images` folder for good organization.
+
+
+## Tables
+
+The horizontal - and vertical separators | allow to draw a table according to the Markdown syntax, but it is not the best method.
+
+Tables can also be produced by R code.
+The content of the table is in a dataframe.
+The `kable` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
+
+```{r kable, echo=TRUE, warning=FALSE}
+library("tidyverse")
+names(iris) <- c("Sepal length ($l_s$)", "Width", "Petal length", "Width", "Species")
+knitr::kable(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE, escape = FALSE) %>%
+kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+```
+
+The caption is specified by the `caption` argument and referencing is possible because the table is given a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
+As with figures, an enhanced legend can be written in a separate paragraph.
+
+Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
+Since the table contains mathematics (in the name of the first column), the `escape = FALSE` option is necessary.
+
+The `bootstrap_options = "striped"` style option provides more readable tables in HTML.
+LAst, the `full_width = FALSE` option allows you to adjust the width of the table to its content instead of occupying all the available width.
+
+
+## Maths
+
+Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ (code: `$A=\pi r^2$`) or isolated (the $ are doubled) like $$e^{i \pi} = -1.$$
+
+They can be numbered: see equation \@ref(eq:disque), using the `\equation` environment.
+
+\begin{equation}
+  A = \pi r^2.
+  (\#eq:disk)
+\end{equation}
+
+The numbered equation is created by the following code:
+
+```
+\begin{equation}
+  A = \pi r^2.
+  (\#eq:disk)
+\end{equation}
+```
+
+## Cross-references
+
+Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with `fig:` and `tab:`.
+
+For equations, the label is added manually by the code `(\#eq:xxx)` before the end of the equation.
+
+Sections can be tagged by ending their title with `{#yyy}`.
+
+Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
+
+In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
+
+
+## Bibliography
+
+Bibliographic references in bibtex format must be included in the `.bib` file declared in the header of the Markdown document.
+
+    bibliography: references.bib
+
+They can be called in the text, between brackets by the code `[@Reference]`, or in the text, by removing the brackets.
+
+Bibliography is handled by pandoc when producing Word or HTML documents.
+The bibliographic style can be specified, by adding the line 
+
+    csl:file_name.csl
+    
+in the document header and copying the _.csl_ style file into the project folder.
+Over a thousand styles are available [^41].
+
+[^41]: <https://github.com/citation-style-language/styles>
+
+For PDF documents, the bibliography is handled by LaTeX.
+It cannot be changed, to ensure the homogeneity of the documents produced.
+
+
+## Languages
+
+English and French are supported, to be declared in the document header.
+
+The main language of the document changes the name of some elements, such as the table of contents.
+The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command: 
+```
+\selectlanguage{english}
+```
+
+The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The `\selectlanguage` command is simply ignored in HTML.
+
+EcoFoG templates use the LaTeX package _babel_ which recognizes the language names _English_ and _french_.
+Pandoc on the other hand uses the IETF codes _fr-FR_ or _en-US_ for limited language support in HTML.
+Both parameters must therefore be entered in the document header.
+
+
+## User documentation
+
+- The book [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie, the author of **bookdown** and **knitr**. 
+All the necessary details for writing (writing equations, cross-references, etc.) are given.
+- The [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for the syntax.
+
+
+## Documentation for developers
+
+-  [LaTeX file format customization](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization).
+- The [Pandoc manual](https://pandoc.org/MANUAL.html) for possible options in the YAML header.
+

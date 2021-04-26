@@ -127,12 +127,12 @@ set.seed(973)
 ```
 
 
-# Principes {-}
+# Introduction {-}
 
-Ce document permet de créer un livre au format PDF (et au format ePub) en même temps qu'une version HTML à publier sur le web.
-La syntaxe est celle de **Markdown** avec quelques extensions.
+This document allows you to create a book in PDF format (and ePub format) at the same time as an HTML version to be published on the web.
+The syntax is that of **Markdown** with some extensions.
 
-Le package **bookdown** doit être installé à partir de CRAN ou GitHub:
+The **bookdown** package must be installed from CRAN or GitHub:
 
 ```{r eval=FALSE}
 install.packages("bookdown")
@@ -140,23 +140,24 @@ install.packages("bookdown")
 # devtools::install_github("rstudio/bookdown")
 ```
 
-Le livre est organisé en chapitres. 
-Chaque chapitre est un fichier Rmd, dont le nom commence normalement par son numéro (ex.: 01-intro.Rmd).
-Tous les fichiers Rmd présents dans le dossier du projet sont en réalité traités comme des chapitres, triés par ordre de nom de fichier.
-Le fichier index.Rmd est particulier: il contient l'entête du document et le premier chapitre.
+The book is organized in chapters. 
+Each chapter is an Rmd file, whose name normally begins with its number (e.g. `01-intro.Rmd`).
+All Rmd files in the project folder are actually treated as chapters, sorted by filename.
+The index.Rmd file is special: it contains the document header and the first chapter.
 
-Ce premier chapitre est placé dans l'avant-propos de l'ouvrage imprimé: il ne doit pas être numéroté (d'où le code `{-}` à côté du titre) dans la version HTML. Il se termine obligatoirement par la commande LaTeX `\mainmatter` qui marque le début du corps de l'ouvrage.
+This first chapter is placed in the foreword of the printed book: it should not be numbered (hence the `{-}` code next to the title) in the HTML version.
+It must end with the LaTeX command `\mainmatter` which marks the beginning of the body of the book.
 
-Les niveaux de plan commencent sont `#` pour les chapitres (un seul par fichier), `##` pour les sections, etc.
+The outline levels start with `#` for chapters (only one per file), `##` for sections, etc.
 
-La compilation au format PDF est faite par XeLaTeX, qui doit être installé.
+Compilation in PDF format is done by XeLaTeX, which must be installed.
 
-Pendant la rédaction, il est fortement conseillé de ne créer que le fichier HTML, ce qui est beaucoup plus rapide qu'une compilation LaTeX.
-Chaque chapitre peut être visualisé très rapidement en cliquant sur le bouton _Knit_ au-dessus de la fenêtre de source.
-Le livre entier est créé en cliquant sur le bouton _Build Book_ de la fenêtre _Build_ de RStudio.
-La liste déroulante du bouton permet de créer tous les documents ou de se limiter à un format.
+While writing, it is strongly advised to create only the HTML file, which is much faster than a LaTeX compilation.
+Each chapter can be viewed very quickly by clicking on the _Knit_ button above the source window.
+The entire book is created by clicking on the _Build Book_ button in the RStudio _Build_ window.
+The button's drop-down list allows you to create all documents or limit yourself to one format.
 
-<!-- La commande \mainmatter marque le début du corps du document LaTeX--> 
-<!-- Elle ne doit pas être supprimée-->
+<!-- The \mainmatter command marks the beginning of the LaTeX document body--> 
+<!-- It must not be deleted-->
 \mainmatter
  

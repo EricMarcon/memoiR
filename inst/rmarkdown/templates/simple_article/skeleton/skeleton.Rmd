@@ -132,7 +132,7 @@ In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.
 
 Click on _From template_: from templates installed by packages. 
-The EcoFoG package templates are displayed: choose *Simple Article*.
+The memoiR package templates are displayed: choose *Simple Article*.
 
 It is better to create an RStudio project to benefit from all the possibilities: _File_ / _New Project_ then use the wizard to create a project from an existing folder.
 
