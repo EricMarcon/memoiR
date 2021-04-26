@@ -55,7 +55,6 @@ output:
     citation_package: natbib
     keep_tex: TRUE
   bookdown::html_document2:
-    theme: sandstone
     toc: yes
     toc_float: yes
   bookdown::word_document2: default
