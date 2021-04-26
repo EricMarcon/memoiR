@@ -60,7 +60,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/EricMarcon/memoiR/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -76,7 +83,7 @@
       <h1 data-toc-skip>R Markdown and Bookdown Templates to Publish Documents</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/memoiR/blob/master/vignettes/memoiR.Rmd"><code>vignettes/memoiR.Rmd</code></a></small>
       <div class="hidden name"><code>memoiR.Rmd</code></div>
 
     </div>
@@ -94,6 +101,13 @@
 <li>“Beamer Slideshow”: the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.</li>
 <li>“Memoir”: a book template based on memoir. The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.</li>
 </ul>
+<p>Available HTML formats for articles are:</p>
+<ul>
+<li>GitBook: <code><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html">bookdown::gitbook</a></code>
+</li>
+<li>Bookdown’s HTML format (<code><a href="https://pkgs.rstudio.com/bookdown/reference/html_document2.html">bookdown::html_document2</a></code>)</li>
+<li>Any format from the <strong>rmdformats</strong> package. <code><a href="https://rdrr.io/pkg/rmdformats/man/downcute.html">rmdformats::downcute</a></code> is by default. See the package documentation for other possibilities.</li>
+</ul>
 </div>
 <div id="getting-started" class="section level1">
 <h1 class="hasAnchor">
@@ -103,6 +117,12 @@
 <p>Chose the location to create the document and the name of its directory.</p>
 <p>Make the new folder an RStudio Project: use the menu “File / New Project…”, click on “Existing Directory” and select the directory created previously.</p>
 <p>Articles and slideshows are produced by clicking on the <strong>Knit</strong> button of the Source pane of their Rmd file. Memoirs are produced by clicking on the <strong>Build Book</strong> button of the Build pane.</p>
+</div>
+<div id="credits" class="section level1">
+<h1 class="hasAnchor">
+<a href="#credits" class="anchor"></a>Credits</h1>
+<p>The feather in the memoiR package sticker is from <a href="https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg">Wikimedia</a> under licence<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+<p>The <a href="https://www.ctan.org/pkg/memoir">memoir</a> LaTeX package is on CTAN.</p>
 </div>
 <div id="full-documentation" class="section level1">
 <h1 class="hasAnchor">

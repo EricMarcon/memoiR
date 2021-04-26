@@ -420,7 +420,7 @@ LAst, the <code>full_width = FALSE</code> option allows you to adjust the width 
 <div id="maths" class="section level2">
 <h2><span class="header-section-number">2.5</span> Maths</h2>
 <p>Equations in LaTeX format can be inserted in line, like <span class="math inline">\(A=\pi r^2\)</span> (code: <code>$A=\pi r^2$</code>) or isolated (the $ are doubled) like <span class="math display">\[e^{i \pi} = -1.\]</span></p>
-<p>They can be numbered: see equation <a href="#eq:disque">(<strong>??</strong>)</a>, using the <code>\equation</code> environment.</p>
+<p>They can be numbered: see equation <a href="syntax.html#eq:disk">(2.1)</a>, using the <code>\equation</code> environment.</p>
 <p><span class="math display" id="eq:disk">\[\begin{equation}
   A = \pi r^2.
   \tag{2.1}
@@ -443,7 +443,7 @@ LAst, the <code>full_width = FALSE</code> option allows you to adjust the width 
 <h2><span class="header-section-number">2.7</span> Bibliography</h2>
 <p>Bibliographic references in bibtex format must be included in the <code>.bib</code> file declared in the header of the Markdown document.</p>
 <p>bibliography: references.bib</p>
-<p>They can be called in the text, between brackets by the code <code>[@Reference]</code>, or in the text, by removing the brackets.</p>
+<p>They can be called in the text, between brackets by the code <code>[@CitationKey]</code>, in parentheses <span class="citation">(Xie <a href="#ref-Xie2016" role="doc-biblioref">2016</a>)</span>, or without square brackets, in the text, as <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-Xie2018" role="doc-biblioref">2018</a>)</span> .</p>
 <p>Bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line</p>
 <p>csl:file_name.csl</p>
@@ -479,6 +479,15 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>
 </ul>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Xie2016">
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+<div id="ref-Xie2018">
+<p>Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.</p>
 </div>
 </div>
 <div class="footnotes">
