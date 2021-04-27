@@ -3,6 +3,7 @@
 ^LICENSE\.md$
 ^Meta$
 ^doc$
+^svg$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\_sgbak$
