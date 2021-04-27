@@ -2,8 +2,6 @@
 title: "Memoir"
 author: "Authors' names"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-always_allow_html: yes
 description: "A bookdown template base on LaTeX memoir class."
 maintitlepage:
   epigraph: |
@@ -15,6 +13,8 @@ maintitlepage:
       \item bookdown (\url{http://bookdown.org/})
     \end{itemize}
 pdftitlepage: images/cover.pdf
+site: bookdown::bookdown_site
+always_allow_html: yes
 documentclass: memoir
 classoption:
   - extrafontsizes
