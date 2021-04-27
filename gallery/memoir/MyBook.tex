@@ -126,30 +126,7 @@
 %%% Complete the preamble of the LaTeX template
 %%%------------------------------------------------------------------------------
 
-%%% Packages
-\usepackage{lipsum} % Dummy text.
-% Utilisation :
-% Ajouter ici d'éventuels packages LaTeX
 
-
-%%% Environnement "Essentiel" en début de chapitre
-\usepackage[tikz]{bclogo}
-\newenvironment{Essentiel}
-  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{L'essentiel}\parindent0pt}
-  {\end{bclogo}}
-% Utilisation :
-%
-%```{block, type='Essentiel'}
-% Texte à mettre en valeur
-% ```
-
-%%% Blocs de code taille scriptsize
-\let\oldverbatim\verbatim
-\def\verbatim{\oldverbatim\scriptsize}
-% Utilisation :
-% S'applique aux blocs de code et résultats du code R
-% opts_chunk$set(size="scriptsize") s'applique au code et ses résultats
-% Si désaccord sur les résultats, \def\verbatim{...} est prioritaire
 
 
 %%% Langues supplémentaires.
@@ -164,11 +141,117 @@
 % pt-BR
 %\setotherlanguage[variant=brazilian]{portuguese}
 
+\usepackage{enumitem}
+
+\usepackage{polyglossia}
+\setmainlanguage[variant=american]{english}
+
+
+\usepackage[style=authoryear-ibid,backend=biber,citestyle=verbose-inote,pageref=true,isbn=false,backref=true,giveninits=true,uniquename=init,maxcitenames=2,maxbibnames=150,sorting=nyt,sortcites=false]{biblatex}
+\addbibresource{references.bib}
+
+% cslreferences environment required by pandoc > 2.7
+
+% Margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% allow use of '-',+','/' ans '*' to make simple length computation
+\RequirePackage{calc}
+
+% Full-width figures utilities
+\newlength\widthw % full width
+\newlength{\rf}
+\newcommand*{\definesHSpace}{
+  \strictpagecheck % slower but efficient detection of odd/even pages
+  \checkoddpage
+  \ifoddpage
+  \setlength{\rf}{0mm}
+  \else
+  \setlength{\rf}{\marginparsep+\marginparwidth}
+  \fi
+}
+
+\makeatletter
+% 1" margins for the front matter.
+\newcommand*{\SmallMargins}{
+  \setlrmarginsandblock{1in}{1in}{*}
+  \setmarginnotes{0.1in}{0.1in}{0.1in}
+  \setulmarginsandblock{1.5in}{1in}{*}
+  \checkandfixthelayout
+  \ch@ngetext
+  \clearpage
+  \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
+  \footnotesatfoot
+  \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
+  \pagestyle{\MemoirPageStyle}
+}
+
+% 3" outer margin for the main matter
+\newcommand*{\LargeMargins}{
+  \setlrmarginsandblock{1in}{3in}{*}
+  \setmarginnotes{0.2in}{1.8in}{0.1in}
+  \setsidecaps{0.2in}{1.8in}
+  \setulmarginsandblock{1.5in}{1in}{*}
+  \checkandfixthelayout
+  \ch@ngetext
+  \clearpage
+  \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
+  \footnotesinmargin
+  \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
+  \pagestyle{\MemoirPageStyle}
+}
+
+\makeatother
+
+
+% Figure captions and footnotes in outer margins
+\usepackage[margincaption,outercaption,ragged,wide]{sidecap}
+%\sidecapmargin{outer}
+
+
+
+
+
+% PDF title page to insert
+\usepackage{pdfpages}
+
+%%% Blocs de code taille scriptsize
+\let\oldverbatim\verbatim
+\def\verbatim{\oldverbatim\scriptsize}
+
+%%% Environnement "Essentiel" en début de chapitre
+\usepackage[tikz]{bclogo}
+\newenvironment{Essentiel}
+  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{L'essentiel}\parindent0pt}
+  {\end{bclogo}}
+% Utilisation :
+%
+%```{block, type='Essentiel'}
+% Texte à mettre en valeur
+% ```
+
+% Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Based on memoir, style companion
+\newcommand{\MemoirChapStyle}{companion}
+\newcommand{\MemoirPageStyle}{companion}
+
+% Space between paragraphs
+\RequirePackage{parskip}
+	\abnormalparskip{3pt}
+
+% Adjust margin paragraphs vertical position
+\RequirePackage{marginfix}
+
+
+
+
 
 % Main title page with filigrane
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\MainTitlePage}[1][]{
+\newcommand{\MainTitlePage}[2]{
 	\SmallMargins % Margins
 	\pagestyle{empty} % No header/footer
 	~\\ % Print a character or the page will not exist
@@ -185,9 +268,6 @@
 		\flushright
 		{\fontfamily{qtm}\Large \theauthor}
 	\end{textblock}
-	\begin{textblock}{120}[1, 1](225, 297)
-		\includegraphics[width=10cm]{Filigrane}
-	 \end{textblock}
 	\begin{textblock}{140}[0, 1](50, 262)
 		\normalfont	Version: \thedate
 	\end{textblock}
@@ -199,38 +279,111 @@
 	\begin{textblock}{140}[0,1](40, 270)
 		\centering
     \includegraphics[width=5cm]{logo}\\ \bigskip
-		UMR \'Ecologie des forêts de Guyane\\
-		\url{http://www.ecofog.gf}\\[3\baselineskip]
-		Les opinions émises par les auteurs sont personnelles et n'engagent ni l'UMR EcoFoG ni ses tutelles.
-
-    \tiny{Photographie en couverture: Hadrien Lalagüe}
+    #2
 	\end{textblock}
 	\newpage
 }
 
-\usepackage{enumitem}
 
-\usepackage{polyglossia}
-\setmainlanguage[variant=american]{english}
+% Clear page and open an even one (\clearpage opens an odd one)
+\newcommand{\evenpage}{
+  \clearpage
+	\strictpagecheck % slower but efficient detection of odd/even pages
+  \checkoddpage
+  \ifoddpage
+    \thispagestyle{empty}
+    ~\\ % Print a character or the page will not exist
+    \newpage
+  \else
+    % do nothing
+  \fi
+}
+
+% Text blocks
+\RequirePackage[absolute,overlay]{textpos}
+	\setlength{\TPHorizModule}{1mm}
+	\setlength{\TPVertModule}{1mm}
 
 
-\usepackage[style=authoryear-ibid,backend=biber,citestyle=verbose-inote,pageref=true,isbn=false,backref=true,giveninits=true,uniquename=init,maxcitenames=2,maxbibnames=150,sorting=nyt,sortcites=false]{biblatex}
-\addbibresource{references.bib}
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% cslreferences environment required by pandoc > 2.7
+\RequirePackage[strict,autostyle]{csquotes}
+% Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
+\renewbibmacro*{footcite:note}{%
+	\ifnameundef{labelname}
+		{\printfield{label}}
+		{\printnames{labelname}}
+	\setunit*{\nameyeardelim}
+	\iffieldundef{labelyear}
+		{}
+		{\printtext[parens]{\printfield{labelyear}\printfield{userb}}.}
+	\ifsamepage{\the\value{instcount}}{\csuse{cbx@f@\thefield{entrykey}}}
+		{}
+		{\setunit*{\nametitledelim} \printfield[title]{labeltitle}}
+	\setunit*{\addcomma\space}
+	\printtext{
+		\bibstring{seenote}\addnbspace
+		\ref{cbx@\csuse{cbx@f@\thefield{entrykey}}}
+		\iftoggle{cbx:pageref}
+		{
+			\ifsamepage{\the\value{instcount}}	{\csuse{cbx@f@\thefield{entrykey}}}
+			{}
+			{\addcomma\space\bibstring{page}\addnbspace
+			\pageref{cbx@\csuse{cbx@f@\thefield{entrykey}}}
+			}
+		}
+		{}
+	}
+}
+% Normal text in citations, to allow \textcite
+\AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textnormal{#1}}}
+% Add url's to computer softfware and @Misc in general, delete it in other cases
+% in citations...
+\AtEveryCitekey{%
+  \ifentrytype{misc}{%
+  }{%
+  \clearfield{url}%
+  \clearfield{urldate}%
+  }%
+}
+% ... and in bibliography
+\AtEveryBibitem{%
+  \ifentrytype{misc}{%
+  }{%
+  \clearfield{url}%
+  \clearfield{urldate}%
+}%
+}
 
-% Specific commands for EcoFoG style. Must come after biblatex.
-\usepackage{latex/book_template}
 
-% PDF title page to insert
-\usepackage{pdfpages}
+
+%% Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fix the typesetting of the part number
+\renewcommand\partnumberlinebox[2]{#2\ ---\ }
+
+
+
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Font size of side captions and side notes
+\captionnamefont{\scriptsize}	% ignored if subfig is used
+\captiontitlefont{\scriptsize}	% ignored if subfig is used
+\renewcommand{\footnotesize}{\tiny}
+
+
+
+
+
 
 % Hyperref comes last
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyperref}
 \hypersetup{
   pdftitle={Memoir},
   pdfauthor={Authors' names},
-  pdfkeywords={Keyword in English, As a list},
   colorlinks=true,
   linkcolor=Maroon,
   citecolor=Blue,
@@ -250,7 +403,7 @@
 \author{Authors' names}
 
 
-\date{2021-04-26}
+\date{2021-04-27}
 
 
 % End of preamble
@@ -266,13 +419,18 @@
 \includepdf[pages=1]{images/cover.pdf}
 \cleardoublepage
 
-\MainTitlePage[This document is reproducible thanks to:
+\MainTitlePage{This document is reproducible thanks to:
 
 \begin{itemize}
   \item \LaTeX and its class memoir (\url{http://www.ctan.org/pkg/memoir}).
   \item R (\url{http://www.r-project.org/}) and RStudio (\url{http://www.rstudio.com/})
   \item bookdown (\url{http://bookdown.org/})
-\end{itemize}]
+\end{itemize}}{Name of the owner of the logo
+
+\url{http://www.company.com}
+
+An explanatory sentence.
+Leave an empty line for line breaks.}
 
 
 % Before Body
@@ -535,7 +693,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (\te
 \hypertarget{r-code}{%
 \section{R code}\label{r-code}}
 
-R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the ``Insert a new code chunk'' button above the source code window in RStudio.
+R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
 
@@ -558,7 +716,7 @@ The most useful options are:
   \texttt{warning=FALSE} to hide warnings.
 \end{itemize}
 
-The default options are declared in the code snippet named ``Options'' at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
+The default options are declared in the code snippet named \enquote{Options} at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
 The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
 
 \hypertarget{figures}{%
@@ -615,7 +773,7 @@ The figure \ref{fig:pressure2} benefits from an improved caption.
 
 \normalsize
 
-The text in \texttt{fig.cap}, ``Title of figure'' previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
+The text in \texttt{fig.cap}, \enquote{Title of figure} previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
 Captions are limited to a single paragraph.
 
 Figures that are not created by R but come from files are embedded in a piece of code by the \texttt{include\_graphics()} function whose argument is the file containing the image to be displayed.
@@ -807,32 +965,19 @@ Both parameters must therefore be entered in the document header.
 
 \begin{description}
 
-\selectlanguage{french}
-\item[Résumé:]
-Résumé en Français, en quatrième de couverture.
-
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
-
-Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
-
-\selectlanguage{french}
-\item[Mots clés :]
-Mot clé en Français, En liste.
-~\\
-
 \selectlanguage{english}
-\item[Abstract:]
+\item[Abstract]
 English abstract, on the last page.
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
 
 Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
-
-\selectlanguage{english}
-\item[Keywords:]
+\item[Keywords]
 Keyword in English, As a list.
+~\\
 
 \end{description}
+
 
 \end{normalsize}
 
