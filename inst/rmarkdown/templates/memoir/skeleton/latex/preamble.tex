@@ -1,30 +1,7 @@
 %%% Complete the preamble of the LaTeX template
 %%%------------------------------------------------------------------------------
 
-%%% Packages
-\usepackage{lipsum} % Dummy text.
-% Utilisation :
-% Ajouter ici d'éventuels packages LaTeX
 
-
-%%% Environnement "Essentiel" en début de chapitre
-\usepackage[tikz]{bclogo}
-\newenvironment{Essentiel}
-  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{L'essentiel}\parindent0pt}
-  {\end{bclogo}}
-% Utilisation :
-%
-%```{block, type='Essentiel'}
-% Texte à mettre en valeur
-% ```
-
-%%% Blocs de code taille scriptsize
-\let\oldverbatim\verbatim
-\def\verbatim{\oldverbatim\scriptsize}
-% Utilisation :
-% S'applique aux blocs de code et résultats du code R
-% opts_chunk$set(size="scriptsize") s'applique au code et ses résultats
-% Si désaccord sur les résultats, \def\verbatim{...} est prioritaire
 
 
 %%% Langues supplémentaires.
@@ -40,45 +17,3 @@
 %\setotherlanguage[variant=brazilian]{portuguese}
 
 
-% Main title page with filigrane
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\MainTitlePage}[1][]{
-	\SmallMargins % Margins
-	\pagestyle{empty} % No header/footer
-	~\\ % Print a character or the page will not exist
-	\begin{textblock}{2}(30,10)
-		\rule{1pt}{\paperheight-20mm}
-	\end{textblock}
-	\begin{textblock}{140}(50, 45)
-		\flushright
-		\begin{Spacing}{3}
-			{\fontfamily{qtm}\selectfont\fontsize{45}{45}\selectfont \textsc{\thetitle}}
-		\end{Spacing}
-	\end{textblock}
-	\begin{textblock}{140}(50, 125)
-		\flushright
-		{\fontfamily{qtm}\Large \theauthor}
-	\end{textblock}
-	\begin{textblock}{120}[1, 1](225, 297)
-		\includegraphics[width=10cm]{Filigrane}
-	 \end{textblock}
-	\begin{textblock}{140}[0, 1](50, 262)
-		\normalfont	Version: \thedate
-	\end{textblock}
-	\newpage
-	~\\ % Print a character or the page will not exist
-	\begin{textblock}{140}(40, 40)
-		#1
-	\end{textblock}
-	\begin{textblock}{140}[0,1](40, 270)
-		\centering
-    \includegraphics[width=5cm]{logo}\\ \bigskip
-		UMR \'Ecologie des forêts de Guyane\\
-		\url{http://www.ecofog.gf}\\[3\baselineskip]
-		Les opinions émises par les auteurs sont personnelles et n'engagent ni l'UMR EcoFoG ni ses tutelles.
-
-    \tiny{Photographie en couverture: Hadrien Lalagüe}
-	\end{textblock}
-	\newpage
-}

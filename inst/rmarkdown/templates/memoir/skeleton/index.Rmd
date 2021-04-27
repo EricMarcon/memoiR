@@ -3,27 +3,32 @@ title: "Memoir"
 author: "Authors' names"
 date: "`r Sys.Date()`"
 description: "A bookdown template base on LaTeX memoir class."
+# Title page...
 maintitlepage:
   epigraph: |
     This document is reproducible thanks to:
-
     \begin{itemize}
       \item \LaTeX and its class memoir (\url{http://www.ctan.org/pkg/memoir}).
       \item R (\url{http://www.r-project.org/}) and RStudio (\url{http://www.rstudio.com/})
       \item bookdown (\url{http://bookdown.org/})
     \end{itemize}
+  credits: |
+    Name of the owner of the logo
+    
+    \url{http://www.company.com}
+    
+    An explanatory sentence.
+    Leave an empty line for line breaks.
+# ... or a PDF cover
 pdftitlepage: images/cover.pdf
-site: bookdown::bookdown_site
-always_allow_html: yes
-documentclass: memoir
-classoption:
-  - extrafontsizes
-  - onecolumn
-  - openright
+# Language
+lang: en-US # or fr-FR or en-GB
+# Paper, font
 papersize: A4
 fontsize: 11pt
+# Table of contents
 toc-depth: 3
-lang: en-US # or fr-FR or en-GB
+# Bibliography
 bibliography: references.bib
 biblio-style: authoryear-ibid
 cite-style: verbose-inote
@@ -41,27 +46,32 @@ biblatexoptions:
   - sortcites=false
 link-citations: yes
 colorlinks: yes
-graphics: yes
+# Back Cover
+backcover:
+  - language: english
+    abstract: |
+      English abstract, on the last page.
+  
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+  
+      Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+    keywords:
+      - Keyword in English
+      - As a list
+    abstractlabel: Abstract
+    keywordlabel: Keywords
+backcoverfontsize: normalsize
+# Figure cropping may be set to no if ghostcript is not installed
 fig_crop: yes
-resume: |
-  Résumé en Français, en quatrième de couverture.
-  
-  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
-  
-  Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
-mots-cles:
-  - Mot clé en Français
-  - En liste
-abstract: |
-  English abstract, on the last page.
-  
-  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
-  
-  Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
-keywords:
-  - Keyword in English
-  - As a list
-fourthpagefontsize: normalsize
+# Do not modify
+documentclass: memoir
+classoption:
+  - extrafontsizes
+  - onecolumn
+  - openright
+site: bookdown::bookdown_site
+always_allow_html: yes
+graphics: yes
 ---
 
 <!-- HTML code necessary for key messages --> 
