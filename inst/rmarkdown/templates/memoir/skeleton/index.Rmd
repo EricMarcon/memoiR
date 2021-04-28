@@ -46,6 +46,8 @@ biblatexoptions:
   - sortcites=false
 link-citations: yes
 colorlinks: yes
+# Chapter summary text
+chaptersummary: In a Nutshell
 # Back Cover
 backcover:
   - language: english

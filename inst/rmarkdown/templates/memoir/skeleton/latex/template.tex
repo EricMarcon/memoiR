@@ -259,9 +259,13 @@ $if(pdftitlepage)$
 \usepackage{pdfpages}
 $endif$
 
-%%% Blocs de code taille scriptsize
+%%% scriptsize code 
 \let\oldverbatim\verbatim
 \def\verbatim{\oldverbatim\scriptsize}
+% Applies to code blocks and R code results
+% code chunk options size='scriptsize' applies only to R code and results
+% if the code chunk sets a different size, \def\verbatim{...} is prioritary for code results 
+
 
 %%% Environnement "Essentiel" en début de chapitre
 \usepackage[tikz]{bclogo}

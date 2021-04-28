@@ -1,5 +1,11 @@
 # Syntax
 
+```{block, type='Summary'}
+Deliver the take-home message here.
+
+It can contain several paragraphs.
+```
+
 The syntax of _R Mardown_ extended by _Bookdown_ is recalled here.
 
 In RStudio, create a new document of type Document R Markdown. 
@@ -57,6 +63,13 @@ The most useful options are:
 
 The default options are declared in the code snippet named "Options" at the beginning of the Markdown document, in the `opts_chunk$set()` function.
 The `echo` option should be set to `FALSE` by default for a scientific article for example.
+
+When it is `TRUE`, the code is printed as follow
+
+```{r, echo=TRUE}
+2+2
+```
+
 
 
 ## Figures
@@ -191,6 +204,17 @@ EcoFoG templates use the LaTeX package _babel_ which recognizes the language nam
 Pandoc on the other hand uses the IETF codes _fr-FR_ or _en-US_ for limited language support in HTML.
 Both parameters must therefore be entered in the document header.
 
+
+## Chapter summary
+
+The take-home message of each chapter can be displayed in a box, see the beginning of this one.
+The code is that of a code block of type "Summary".
+
+````
+```{block, type='Summary'}`r ''`
+Some text for this block.
+```
+````
 
 ## User documentation
 
