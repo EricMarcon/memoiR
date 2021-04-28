@@ -14,7 +14,8 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Ouvrage Bookdown</a></li>
+        <li><a href="./">Title of the Memoir</a></li>
       after: |
-        <li><a href="https://github.com/EcoFoG/EcofoG" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/GitHubID/Repository" target="blank">Published with bookdown</a></li>
     download: "pdf"
+bookdown::word_document2: default

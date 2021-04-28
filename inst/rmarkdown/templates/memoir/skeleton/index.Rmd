@@ -1,8 +1,9 @@
 --- 
-title: "Memoir"
+title: "Title of the Memoir"
 author: "Authors' names"
 date: "`r Sys.Date()`"
 description: "A bookdown template base on LaTeX memoir class."
+github-repo: GitHubID/Repository
 # Title page...
 maintitlepage:
   epigraph: |
