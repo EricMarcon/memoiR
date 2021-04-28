@@ -65,8 +65,8 @@ $endif$
 
 % Figures
 \usepackage{graphicx,grffile}
-  \graphicspath{{graphics/}}        % Dossier de stockage des figures
-\usepackage{epstopdf}               % Figures eps
+  \graphicspath{{images/}}          % Folder for figures
+\usepackage{epstopdf}               % EPS Figures
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
@@ -77,28 +77,28 @@ $endif$
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Additional packages
-\RequirePackage{natbib}             % Bibliographie avancée (parenthèses, citep...). Avant babel.
-\RequirePackage[utf8]{inputenc}     % Pour les accents
-\RequirePackage[T1]{fontenc}        % Pour les accents
+\RequirePackage{natbib}             % Advanced Bibliography (citep...). Before babel.
+\RequirePackage[utf8]{inputenc}     % For accents
+\RequirePackage[T1]{fontenc}        % For accents
 \RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{breqn}              % Retour à la ligne des équations
-\RequirePackage{url}                % Retour à la ligne des url
-\RequirePackage{hyperref}           % Liens hypertextes, signets PDF
+\RequirePackage{breqn}              % Line breaks in equations
+\RequirePackage{url}                % Line breaks in url's
+\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
   \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
-\RequirePackage{enumitem}           % Espacement dans les listes
+\RequirePackage{enumitem}           % Line spacing in lists
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
 
 % Tables
 \usepackage{longtable,booktabs,tabu}
-\usepackage{caption}                % Après babel
+\usepackage{caption}                % After babel
 % These lines are needed to make table captions work with longtable:
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
 \makeatother
-\usepackage{tabularx}               % Retour à la ligne des tableaux
+\usepackage{tabularx}               % Line breaks in tables
   \renewcommand{\arraystretch}{1.8}
-\usepackage{multirow}               % Fusion des lignes dans les tableaux
+\usepackage{multirow}               % Merged lines in tables
 
 % code command
 \newcommand{\code}[1]{\begingroup \ttfamily #1\endgroup}
@@ -106,7 +106,7 @@ $endif$
 \def\Var{\mathop{\mathrm{Var}}}
 
 \RequirePackage[french, english]{babel}
-  \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel} ou les puces seront des tirets cadratins
+  \frenchbsetup{StandardLists=true} % Necessary with \usepackage[french]{babel} or bullets are hyphens
 
 $if(preamble)$
 % User-adder preamble

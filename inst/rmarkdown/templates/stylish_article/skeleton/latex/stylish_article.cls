@@ -6,7 +6,7 @@
 % ---------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{latex/stylish_article}[06/11/2017, v. 2.1]
+\ProvidesClass{latex/stylish_article}[04/28/2021, v. 2.2]
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
@@ -179,27 +179,27 @@
 }%
 % ---------------------------------------------------------------------
 
-% -------------- Personnalisation EcofoG
+% -------------- EcoFoG style (EcoFoG/EcoFoG on GitHub)
 \setlength{\columnsep}{0.55cm}      % Distance between the two columns of text
 \setlength{\fboxrule}{0.75pt}       % Width of the border around the abstract
 
 \definecolor{color1}{RGB}{0,0,90}   % Color of the article title and sections
 \definecolor{color2}{RGB}{0,20,20}  % Color of the boxes behind the abstract and headings
 
-\newlength{\tocsep}                 % Format de la table des matières
+\newlength{\tocsep}                 % Table of Contents format
 \setlength\tocsep{1.5pc}            % Sets the indentation of the sections in the table of contents
 
-\RequirePackage{tabularx}           % Retour à la ligne des tableaux
+\RequirePackage{tabularx}           % Line breaks in tables
   \renewcommand{\arraystretch}{1.8}
-\RequirePackage{multirow}           % Fusion des lignes dans les tableaux
-\RequirePackage{breqn}              % Retour à la ligne des équations
-\RequirePackage{url}                % Retour à la ligne des url
-\RequirePackage{hyperref}           % Liens hypertextes, signets PDF
+\RequirePackage{multirow}           % Merge lines in tables
+\RequirePackage{breqn}              % Line breaks in equations
+\RequirePackage{url}                % Line breaks in  url's
+\RequirePackage{hyperref}           % Hyperlinks and PDF bookmaks
   \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 
-  \graphicspath{{graphics/}}        % Dossier de stockage des figures
-\RequirePackage{epstopdf}           % Figures eps
-\RequirePackage{enumitem}           % Espacement dans les listes
+  \graphicspath{{images/}}          % Path to figures
+\RequirePackage{epstopdf}           % EPS figures
+\RequirePackage{enumitem}           % Line spacing in lists
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
 
@@ -209,4 +209,4 @@
 \def\Var{\mathop{\mathrm{Var}}}
 
 \RequirePackage[french, english]{babel}
-  \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel} ou les puces seront des tirets cadratins
+  \frenchbsetup{StandardLists=true} % Necessary with \usepackage[french]{babel} or bullets are hyphens
