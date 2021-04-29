@@ -44,9 +44,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.94316065"
-     inkscape:cx="320.59165"
-     inkscape:cy="560"
+     inkscape:zoom="2.1649824"
+     inkscape:cx="614.59123"
+     inkscape:cy="1078.836"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -63,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -72,12 +72,12 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#aa0000;stroke-width:0.26458332"
+       style="fill:#aa0000;stroke-width:0.24524929"
        id="rect74"
-       width="224.70323"
-       height="326.25449"
-       x="-7.0132084"
-       y="-24.485531" />
+       width="211.33911"
+       height="298.04135"
+       x="-0.70237434"
+       y="-0.17025848" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;line-height:1.25;font-family:'Californian FB';-inkscape-font-specification:'Californian FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -88,21 +88,21 @@
          id="tspan66"
          x="36.0033"
          y="43.61311"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.39999962px;font-family:'Californian FB';-inkscape-font-specification:'Californian FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332;fill:#ffffff;fill-opacity:1">Memoir</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.75555556px;font-family:'Californian FB';-inkscape-font-specification:'Californian FB, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332">Memoir  Template</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="117.26086"
+       x="104.0317"
        y="250.43228"
        id="text72"><tspan
          sodipodi:role="line"
          id="tspan70"
-         x="117.26086"
+         x="104.0317"
          y="250.43228"
-         style="stroke-width:0.26458332;fill:#ffffff;fill-opacity:1">Eric Marcon</tspan></text>
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0.26458332">Author's Name</tspan></text>
     <g
        id="g4640"
-       transform="matrix(0.28222222,0,0,0.28222222,157.80295,235.93785)">
+       transform="matrix(0.28222222,0,0,0.28222222,160.4488,235.93785)">
       <path
          id="path4624"
          d="M -64.265748,-371.02536 76.10761,-289.31587 75.65779,-126.3882 -63.815467,-44.229613 -204.41337,-125.93911 v -163.15221 z m 0.44982,-9.30865 -147.689312,86.12747 v 172.25877 L -63.815928,-35.8203 83.87338,-121.94777 v -172.25877 z"
