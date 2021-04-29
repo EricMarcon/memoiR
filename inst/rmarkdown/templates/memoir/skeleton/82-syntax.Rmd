@@ -171,7 +171,7 @@ Bibliographic references in bibtex format must be included in the `.bib` file de
 
     bibliography: references.bib
 
-They can be called in the text, between brackets by the code `[@CitationKey]`, in parentheses [@Xie2016], or without square brackets, in the text, as @Xie2018 .
+They can be called in the text, between brackets by the code `[@CitationKey]`, as sidenotes [@Xie2016], or without square brackets, to include the authors' names in the text, such as @Xie2018 .
 
 Bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line 
@@ -179,12 +179,13 @@ The bibliographic style can be specified, by adding the line
     csl:file_name.csl
     
 in the document header and copying the _.csl_ style file into the project folder.
-Over a thousand styles are available [^41].
+The default style (if no csl is specified) is "chicago-author-date".
+Several thousand styles are available [^41].
 
 [^41]: <https://github.com/citation-style-language/styles>
 
 For PDF documents, the bibliography is handled by LaTeX.
-It cannot be changed, to ensure the homogeneity of the documents produced.
+It is chosen in the header of `index.Rmd`.
 
 
 ## Languages
