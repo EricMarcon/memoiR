@@ -194,6 +194,46 @@ $if(csl-refs)$
   {\par}
 $endif$
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% memoiR format
+
+
+% Chapter Summary environment 
+\usepackage[tikz]{bclogo}
+\newenvironment{Summary}
+  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{chaptersummary}\parindent0pt}
+  {\end{bclogo}}
+% Syntax:
+%
+%```{block, type='Summary'}
+% Deliver message here.
+% ```
+
+
+% scriptsize code 
+\let\oldverbatim\verbatim
+\def\verbatim{\oldverbatim\scriptsize}
+% Applies to code blocks and R code results
+% code chunk options size='scriptsize' applies only to R code and results
+% if the code chunk sets a different size, \def\verbatim{...} is prioritary for code results 
+
+
+% Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Based on memoir, style companion
+\newcommand{\MemoirChapStyle}{companion}
+\newcommand{\MemoirPageStyle}{companion}
+
+% Space between paragraphs
+\RequirePackage{parskip}
+	\abnormalparskip{3pt}
+
+% Adjust margin paragraphs vertical position
+\RequirePackage{marginfix}
+
+
 % Margins
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -245,55 +285,9 @@ $endif$
 
 \makeatother
 
-
 % Figure captions and footnotes in outer margins
 \usepackage[margincaption,outercaption,ragged,wide]{sidecap}
 %\sidecapmargin{outer}
-
-
-
-
-
-% PDF title page to insert
-$if(pdftitlepage)$
-\usepackage{pdfpages}
-$endif$
-
-%%% scriptsize code 
-\let\oldverbatim\verbatim
-\def\verbatim{\oldverbatim\scriptsize}
-% Applies to code blocks and R code results
-% code chunk options size='scriptsize' applies only to R code and results
-% if the code chunk sets a different size, \def\verbatim{...} is prioritary for code results 
-
-
-%%% Environnement "Essentiel" en début de chapitre
-\usepackage[tikz]{bclogo}
-\newenvironment{Essentiel}
-  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{L'essentiel}\parindent0pt}
-  {\end{bclogo}}
-% Utilisation :
-%
-%```{block, type='Essentiel'}
-% Texte à mettre en valeur
-% ```
-
-% Layout
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Based on memoir, style companion
-\newcommand{\MemoirChapStyle}{companion}
-\newcommand{\MemoirPageStyle}{companion}
-
-% Space between paragraphs
-\RequirePackage{parskip}
-	\abnormalparskip{3pt}
-
-% Adjust margin paragraphs vertical position
-\RequirePackage{marginfix}
-
-
-
 
 
 % Main title page with filigrane
@@ -353,8 +347,15 @@ $endif$
 	\setlength{\TPVertModule}{1mm}
 
 
+%% PDF title page to insert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(pdftitlepage)$
+\usepackage{pdfpages}
+$endif$
+
+
 %% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
@@ -405,25 +406,19 @@ $endif$
 }
 
 
-
 %% Table of Contents
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % fix the typesetting of the part number
 \renewcommand\partnumberlinebox[2]{#2\ ---\ }
 
 
-
 % Fonts
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Font size of side captions and side notes
 \captionnamefont{\scriptsize}	% ignored if subfig is used
 \captiontitlefont{\scriptsize}	% ignored if subfig is used
 \renewcommand{\footnotesize}{\tiny}
-
-
-
-
 
 
 % Hyperref comes last
@@ -604,7 +599,6 @@ $endfor$
 
 \end{description}
 $endif$
-
 
 $if(backcoverfontsize)$
 \end{$backcoverfontsize$}
