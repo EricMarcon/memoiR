@@ -91,30 +91,14 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 
-% Geometry package
-$if(geometry)$
-  \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-$endif$
-
 % Listings package
 $if(listings)$
 \usepackage{listings}
 \newcommand{\passthrough}[1]{#1}
 $endif$
 
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
-
 $if(highlighting-macros)$
 $highlighting-macros$
-$endif$
-
-% Tables
-$if(tables)$
-\usepackage{longtable,booktabs,tabu}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 $endif$
 
 % Graphics
