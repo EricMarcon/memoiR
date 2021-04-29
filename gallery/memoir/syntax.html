@@ -4,19 +4,19 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Syntax | Memoir</title>
+  <title>2 Syntax | Title of the Memoir</title>
   <meta name="description" content="A bookdown template base on LaTeX memoir class." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Syntax | Memoir" />
+  <meta property="og:title" content="2 Syntax | Title of the Memoir" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="A bookdown template base on LaTeX memoir class." />
-  
+  <meta name="github-repo" content="GitHubID/Repository" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Syntax | Memoir" />
+  <meta name="twitter:title" content="2 Syntax | Title of the Memoir" />
   
   <meta name="twitter:description" content="A bookdown template base on LaTeX memoir class." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-04-27" />
+<meta name="date" content="2021-04-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Ouvrage Bookdown</a></li>
+<li><a href="./">Title of the Memoir</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
@@ -155,12 +155,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#cross-references"><i class="fa fa-check"></i><b>2.6</b> Cross-references</a></li>
 <li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#bibliography"><i class="fa fa-check"></i><b>2.7</b> Bibliography</a></li>
 <li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.8</b> Languages</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.9</b> User documentation</a></li>
-<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.10</b> Documentation for developers</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.9</b> Chapter summary</a></li>
+<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.10</b> User documentation</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.11</b> Documentation for developers</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/EcoFoG/EcofoG" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/GitHubID/Repository" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -171,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Memoir</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Title of the Memoir</a>
           </h1>
         </div>
 
@@ -181,6 +182,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="syntax" class="section level1">
 <h1><span class="header-section-number">2</span> Syntax</h1>
+<p></p>
+<div class="Summary">
+<p>
+Deliver the take-home message here.
+</p>
+<p>
+It can contain several paragraphs.
+</p>
+</div>
+<p></p>
 <p>The syntax of <em>R Mardown</em> extended by <em>Bookdown</em> is recalled here.</p>
 <p>In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.</p>
@@ -220,11 +231,16 @@ These code chunks can contain R code but also Python code for example: the type 
 </ul>
 <p>The default options are declared in the code snippet named “Options” at the beginning of the Markdown document, in the <code>opts_chunk$set()</code> function.
 The <code>echo</code> option should be set to <code>FALSE</code> by default for a scientific article for example.</p>
+<p>When it is <code>TRUE</code>, the code is printed as follow</p>
+<p></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="syntax.html#cb10-1"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p></p>
 </div>
 <div id="figures" class="section level2">
 <h2><span class="header-section-number">2.3</span> Figures</h2>
 <p></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="syntax.html#cb10-1"></a><span class="kw">plot</span>(pressure)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="syntax.html#cb12-1"></a><span class="kw">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pressure"></span>
 <img src="MyBook_files/figure-html/pressure-1.png" alt="Figure title" width="80%" />
 <p class="caption">
@@ -264,13 +280,13 @@ Always place these files in the <code>images</code> folder for good organization
 The content of the table is in a dataframe.
 The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="syntax.html#cb12-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb12-2"><a href="syntax.html#cb12-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
-<span id="cb12-3"><a href="syntax.html#cb12-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb12-4"><a href="syntax.html#cb12-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, </span>
-<span id="cb12-5"><a href="syntax.html#cb12-5"></a>    <span class="dt">longtable =</span> <span class="ot">TRUE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb12-6"><a href="syntax.html#cb12-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
-<span id="cb12-7"><a href="syntax.html#cb12-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="syntax.html#cb14-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb14-2"><a href="syntax.html#cb14-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
+<span id="cb14-3"><a href="syntax.html#cb14-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb14-4"><a href="syntax.html#cb14-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, </span>
+<span id="cb14-5"><a href="syntax.html#cb14-5"></a>    <span class="dt">longtable =</span> <span class="ot">TRUE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb14-6"><a href="syntax.html#cb14-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb14-7"><a href="syntax.html#cb14-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:kable">Table 2.1: </span>Table created by R
@@ -454,8 +470,16 @@ The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
 Pandoc on the other hand uses the IETF codes <em>fr-FR</em> or <em>en-US</em> for limited language support in HTML.
 Both parameters must therefore be entered in the document header.</p>
 </div>
+<div id="chapter-summary" class="section level2">
+<h2><span class="header-section-number">2.9</span> Chapter summary</h2>
+<p>The take-home message of each chapter can be displayed in a box, see the beginning of this one.
+The code is that of a code block of type “Summary”.</p>
+<pre><code>```{block, type=&#39;Summary&#39;}
+Some text for this block.
+```</code></pre>
+</div>
 <div id="user-documentation" class="section level2">
-<h2><span class="header-section-number">2.9</span> User documentation</h2>
+<h2><span class="header-section-number">2.10</span> User documentation</h2>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
 All the necessary details for writing (writing equations, cross-references, etc.) are given.</li>
@@ -463,7 +487,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 </ul>
 </div>
 <div id="documentation-for-developers" class="section level2">
-<h2><span class="header-section-number">2.10</span> Documentation for developers</h2>
+<h2><span class="header-section-number">2.11</span> Documentation for developers</h2>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>

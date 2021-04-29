@@ -152,6 +152,46 @@
 
 % cslreferences environment required by pandoc > 2.7
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% memoiR format
+
+
+% Chapter Summary environment 
+\usepackage[tikz]{bclogo}
+\newenvironment{Summary}
+  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{chaptersummary}\parindent0pt}
+  {\end{bclogo}}
+% Syntax:
+%
+%```{block, type='Summary'}
+% Deliver message here.
+% ```
+
+
+% scriptsize code 
+\let\oldverbatim\verbatim
+\def\verbatim{\oldverbatim\scriptsize}
+% Applies to code blocks and R code results
+% code chunk options size='scriptsize' applies only to R code and results
+% if the code chunk sets a different size, \def\verbatim{...} is prioritary for code results 
+
+
+% Layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Based on memoir, style companion
+\newcommand{\MemoirChapStyle}{companion}
+\newcommand{\MemoirPageStyle}{companion}
+
+% Space between paragraphs
+\RequirePackage{parskip}
+	\abnormalparskip{3pt}
+
+% Adjust margin paragraphs vertical position
+\RequirePackage{marginfix}
+
+
 % Margins
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -203,49 +243,9 @@
 
 \makeatother
 
-
 % Figure captions and footnotes in outer margins
 \usepackage[margincaption,outercaption,ragged,wide]{sidecap}
 %\sidecapmargin{outer}
-
-
-
-
-
-% PDF title page to insert
-\usepackage{pdfpages}
-
-%%% Blocs de code taille scriptsize
-\let\oldverbatim\verbatim
-\def\verbatim{\oldverbatim\scriptsize}
-
-%%% Environnement "Essentiel" en début de chapitre
-\usepackage[tikz]{bclogo}
-\newenvironment{Essentiel}
-  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{L'essentiel}\parindent0pt}
-  {\end{bclogo}}
-% Utilisation :
-%
-%```{block, type='Essentiel'}
-% Texte à mettre en valeur
-% ```
-
-% Layout
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Based on memoir, style companion
-\newcommand{\MemoirChapStyle}{companion}
-\newcommand{\MemoirPageStyle}{companion}
-
-% Space between paragraphs
-\RequirePackage{parskip}
-	\abnormalparskip{3pt}
-
-% Adjust margin paragraphs vertical position
-\RequirePackage{marginfix}
-
-
-
 
 
 % Main title page with filigrane
@@ -305,8 +305,13 @@
 	\setlength{\TPVertModule}{1mm}
 
 
+%% PDF title page to insert
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pdfpages}
+
+
 %% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
@@ -357,16 +362,14 @@
 }
 
 
-
 %% Table of Contents
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % fix the typesetting of the part number
 \renewcommand\partnumberlinebox[2]{#2\ ---\ }
 
 
-
 % Fonts
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Font size of side captions and side notes
 \captionnamefont{\scriptsize}	% ignored if subfig is used
@@ -374,15 +377,11 @@
 \renewcommand{\footnotesize}{\tiny}
 
 
-
-
-
-
 % Hyperref comes last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyperref}
 \hypersetup{
-  pdftitle={Memoir},
+  pdftitle={Title of the Memoir},
   pdfauthor={Authors' names},
   colorlinks=true,
   linkcolor=Maroon,
@@ -397,13 +396,13 @@
 % Title, author, etc. from YAML to LaTeX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Memoir}
+\title{Title of the Memoir}
 
 
 \author{Authors' names}
 
 
-\date{2021-04-27}
+\date{2021-04-29}
 
 
 % End of preamble
@@ -657,6 +656,16 @@ is not supported by R Markdown.
 \hypertarget{syntax}{%
 \chapter{Syntax}\label{syntax}}
 
+\scriptsize
+
+\begin{Summary}
+Deliver the take-home message here.
+
+It can contain several paragraphs.
+\end{Summary}
+
+\normalsize
+
 The syntax of \emph{R Mardown} extended by \emph{Bookdown} is recalled here.
 
 In RStudio, create a new document of type Document R Markdown.
@@ -718,6 +727,22 @@ The most useful options are:
 
 The default options are declared in the code snippet named \enquote{Options} at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
 The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
+
+When it is \texttt{TRUE}, the code is printed as follow
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\normalsize
 
 \hypertarget{figures}{%
 \section{Figures}\label{figures}}
@@ -905,6 +930,18 @@ EcoFoG templates use the LaTeX package \emph{babel} which recognizes the languag
 Pandoc on the other hand uses the IETF codes \emph{fr-FR} or \emph{en-US} for limited language support in HTML.
 Both parameters must therefore be entered in the document header.
 
+\hypertarget{chapter-summary}{%
+\section{Chapter summary}\label{chapter-summary}}
+
+The take-home message of each chapter can be displayed in a box, see the beginning of this one.
+The code is that of a code block of type \enquote{Summary}.
+
+\begin{verbatim}
+```{block, type='Summary'}
+Some text for this block.
+```
+\end{verbatim}
+
 \hypertarget{user-documentation}{%
 \section{User documentation}\label{user-documentation}}
 
@@ -977,7 +1014,6 @@ Keyword in English, As a list.
 ~\\
 
 \end{description}
-
 
 \end{normalsize}
 
