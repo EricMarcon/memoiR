@@ -46,10 +46,7 @@
 \usepackage{xcolor}
 
 
-% Geometry package
-
 % Listings package
-
 
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -160,7 +157,7 @@
 % Chapter Summary environment 
 \usepackage[tikz]{bclogo}
 \newenvironment{Summary}
-  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{chaptersummary}\parindent0pt}
+  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{In a Nutshell}\parindent0pt}
   {\end{bclogo}}
 % Syntax:
 %
@@ -402,7 +399,7 @@
 \author{Authors' names}
 
 
-\date{2021-04-29}
+\date{2021-04-30}
 
 
 % End of preamble
@@ -896,7 +893,7 @@ Bibliographic references in bibtex format must be included in the \texttt{.bib} 
 bibliography: references.bib
 \end{verbatim}
 
-They can be called in the text, between brackets by the code \texttt{{[}@CitationKey{]}}, in parentheses \autocite{Xie2016}, or without square brackets, in the text, as \textcite{Xie2018} .
+They can be called in the text, between brackets by the code \texttt{{[}@CitationKey{]}}, as sidenotes \autocite{Xie2016}, or without square brackets, to include the authors' names in the text, such as \textcite{Xie2018} .
 
 Bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line
@@ -906,10 +903,11 @@ csl:file_name.csl
 \end{verbatim}
 
 in the document header and copying the \emph{.csl} style file into the project folder.
-Over a thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
+The default style (if no csl is specified) is \enquote{chicago-author-date}.
+Several thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
 
 For PDF documents, the bibliography is handled by LaTeX.
-It cannot be changed, to ensure the homogeneity of the documents produced.
+It is chosen in the header of \texttt{index.Rmd}.
 
 \hypertarget{languages}{%
 \section{Languages}\label{languages}}

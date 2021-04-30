@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-04-29" />
+<meta name="date" content="2021-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -449,14 +449,15 @@ LAst, the <code>full_width = FALSE</code> option allows you to adjust the width 
 <h2><span class="header-section-number">2.7</span> Bibliography</h2>
 <p>Bibliographic references in bibtex format must be included in the <code>.bib</code> file declared in the header of the Markdown document.</p>
 <p>bibliography: references.bib</p>
-<p>They can be called in the text, between brackets by the code <code>[@CitationKey]</code>, in parentheses <span class="citation">(Xie <a href="#ref-Xie2016" role="doc-biblioref">2016</a>)</span>, or without square brackets, in the text, as <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-Xie2018" role="doc-biblioref">2018</a>)</span> .</p>
+<p>They can be called in the text, between brackets by the code <code>[@CitationKey]</code>, as sidenotes <span class="citation">(Xie <a href="#ref-Xie2016" role="doc-biblioref">2016</a>)</span>, or without square brackets, to include the authors’ names in the text, such as <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-Xie2018" role="doc-biblioref">2018</a>)</span> .</p>
 <p>Bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line</p>
 <p>csl:file_name.csl</p>
 <p>in the document header and copying the <em>.csl</em> style file into the project folder.
-Over a thousand styles are available.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+The default style (if no csl is specified) is “chicago-author-date”.
+Several thousand styles are available.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p>For PDF documents, the bibliography is handled by LaTeX.
-It cannot be changed, to ensure the homogeneity of the documents produced.</p>
+It is chosen in the header of <code>index.Rmd</code>.</p>
 </div>
 <div id="languages" class="section level2">
 <h2><span class="header-section-number">2.8</span> Languages</h2>
