@@ -1,11 +1,6 @@
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
 \documentclass[fleqn,10pt]{article} % Document font size and equations flushed left
 
-\setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
-
+\setcounter{tocdepth}{3} % sections, subsections and subsubsections
 
 % Pandoc environments
 \usepackage{framed}
@@ -14,7 +9,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % Code R
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % R Code
 
 % Colored code
 \usepackage{color}
@@ -62,11 +57,17 @@ $if(csl-refs)$
   {\par}
 $endif$
 
+% Polyglossia
+$if(lang)$
+\usepackage{polyglossia}
+\setmainlanguage{$lang$}
+$for(otherlangs)$
+\setotherlanguage{$otherlangs$}
+$endfor$
+$endif$
 
 % Figures
 \usepackage{graphicx,grffile}
-  \graphicspath{{images/}}          % Folder for figures
-\usepackage{epstopdf}               % EPS Figures
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
@@ -77,21 +78,17 @@ $endif$
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Additional packages
-\RequirePackage{natbib}             % Advanced Bibliography (citep...). Before babel.
-\RequirePackage[utf8]{inputenc}     % For accents
-\RequirePackage[T1]{fontenc}        % For accents
+\RequirePackage{natbib}             % Advanced Bibliography (citep...).
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{breqn}              % Line breaks in equations
 \RequirePackage{url}                % Line breaks in url's
-\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
-  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 \RequirePackage{enumitem}           % Line spacing in lists
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
 
 % Tables
 \usepackage{longtable,booktabs,tabu}
-\usepackage{caption}                % After babel
+\usepackage{caption}                % Après babel
 % These lines are needed to make table captions work with longtable:
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
@@ -100,18 +97,15 @@ $endif$
   \renewcommand{\arraystretch}{1.8}
 \usepackage{multirow}               % Merged lines in tables
 
-% code command
-\newcommand{\code}[1]{\begingroup \ttfamily #1\endgroup}
-% Variance
-\def\Var{\mathop{\mathrm{Var}}}
-
-\RequirePackage[french, english]{babel}
-  \frenchbsetup{StandardLists=true} % Necessary with \usepackage[french]{babel} or bullets are hyphens
-
 $if(preamble)$
 % User-adder preamble
 $preamble$
 $endif$
+
+% hyperref comes last
+\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
+  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+
 
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
@@ -126,7 +120,7 @@ $for(author)$$author.name$$sep$\\ $endfor$
 
 \begin{document}
 
-\selectlanguage{$babel$}
+\selectlanguage{$lang$}
 
 \maketitle % Print the title and abstract box
 
@@ -146,14 +140,13 @@ $endif$
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 
-
 $body$
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{mee}
+\bibliographystyle{$biblio-style$}
 \makeatletter
 % The filename has .bib extension that must be eliminated
 \filename@parse{$bibliography$}

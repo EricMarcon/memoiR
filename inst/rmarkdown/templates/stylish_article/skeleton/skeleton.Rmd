@@ -29,31 +29,31 @@ archive: "DOI: xxx/xx"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
-lang: en-US # fr-FR
-babel: english # french 
-keywordlabel: Keywords # Mots-clés
-corrauthorlabel: Corresponding author # Contact
+lang: en-US
+otherlangs: [fr-FR,it]
+keywordlabel: Keywords
+corrauthorlabel: Corresponding author
 bibliography: references.bib
+biblio-style: chicago
 preamble: >
-  \usepackage{textcomp}
-  \DeclareUnicodeCharacter{B0}{\textdegree}
   \usepackage{tabu}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
 always_allow_html: yes
 output:
+  bookdown::pdf_book:
+    template: latex/template.tex
+    citation_package: natbib
+    latex_engine: xelatex
+    keep_tex: yes
+  rmdformats::downcute:
+    use_bookdown: yes
+    lightbox: yes
   bookdown::gitbook:
     config:
       download: "pdf"
       sharing:
         github: yes
-  rmdformats::downcute:
-    use_bookdown: yes
-    lightbox: yes
-  bookdown::pdf_book:
-    template: latex/template.tex
-    citation_package: natbib
-    keep_tex: TRUE
   bookdown::html_document2:
     toc: yes
     toc_float: yes

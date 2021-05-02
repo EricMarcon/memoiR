@@ -8,32 +8,32 @@ abstract: >
 date: "`r format(Sys.time(), '%d %B %Y')`"
 url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
-lang: en-US # fr-FR
-babel: english # french
+lang: en-US
+otherlangs: [fr-FR,it]
 bibliography: references.bib
+biblio-style: chicago
 pdftoc: no
 preamble: >
-  \usepackage{textcomp}
-  \DeclareUnicodeCharacter{B0}{\textdegree}
   \hyphenation{bio-di-ver-si-ty sap-lings}
 always_allow_html: yes
 output:
-  bookdown::word_document2: default
+  bookdown::pdf_book:
+    template: latex/template.tex
+    citation_package: natbib
+    latex_engine: xelatex
+    keep_tex: yes
   rmdformats::downcute:
     use_bookdown: yes
     lightbox: yes
-  bookdown::html_document2:
-    toc: yes
-    toc_float: yes
+  bookdown::word_document2: default
   bookdown::gitbook:
     config:
       download: "pdf"
       sharing:
         github: yes
-  bookdown::pdf_book:
-    template: latex/template.tex
-    citation_package: natbib
-    keep_tex: yes
+  bookdown::html_document2:
+    toc: yes
+    toc_float: yes
 ---
 
 ```{r DoNotModify, include=FALSE}
@@ -354,9 +354,21 @@ The HTML document ignores LaTeX commands.
 
 English and French are supported, to be declared in the document header.
 
-The chosen language has an effect only in LaTeX output: a space is added in front of double punctuation in French, the size of spaces is bigger at the beginning of a sentence in English, etc.
+The main language of the document changes the name of some elements, such as the table of contents.
+The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command: 
+```
+\selectlanguage{english}
+```
 
-LaTeX templates use the LaTeX package _babel_ which recognizes the language names _English_ and _french_.
+The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The `\selectlanguage` command is simply ignored in HTML.
+
+\selectlanguage{french}
+Texte en Français : remarquer l'espace avant les deux points.
+\selectlanguage{english}
+
+
+EcoFoG templates use the LaTeX package _babel_ which recognizes the language names _English_ and _french_.
 Pandoc on the other hand uses the IETF codes _fr-FR_ or _en-US_ for limited language support in HTML.
 Both parameters must therefore be entered in the document header.
 

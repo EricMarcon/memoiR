@@ -1,12 +1,23 @@
 % ---------------------------------------------------------------------
-% SelfArx : Conference proceedings and article templates for
-% personal open-archiving activities
-% September 2012
-% Modifié pour les besoins de l'UMR EcoFoG (Eric Marcon)
+% Adapted from
+% Stylish Article
+% LaTeX Template
+% Version 1.0 (31/1/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% Modified for UMR EcoFoG (Eric Marcon)
+% Version 3 to be used with XeTeX
 % ---------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{latex/stylish_article}[04/28/2021, v. 2.2]
+\ProvidesClass{latex/stylish_article}[05/02/2021, v. 3.0]
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
@@ -17,15 +28,6 @@
 \RequirePackage{times}      % Loads the Times-Roman Fonts
 \RequirePackage{mathptmx}   % Loads the Times-Roman Math Fonts
 \RequirePackage{ifpdf}      % Needed to pick between latex and pdflatex
-
-% ---------------------------------------------------------------------
-\RequirePackage{natbib}         % Bibliographie avancée (parenthèses, citep...). Avant babel.
-\RequirePackage[utf8]{inputenc} % Pour les accents
-\RequirePackage[T1]{fontenc}    % Pour les accents
-\RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{graphicx,xcolor}
-\RequirePackage{booktabs}
-% ---------------------------------------------------------------------
 
 
 % ---------------------------------------------------------------------
@@ -183,30 +185,9 @@
 \setlength{\columnsep}{0.55cm}      % Distance between the two columns of text
 \setlength{\fboxrule}{0.75pt}       % Width of the border around the abstract
 
+\usepackage{xcolor}
 \definecolor{color1}{RGB}{0,0,90}   % Color of the article title and sections
 \definecolor{color2}{RGB}{0,20,20}  % Color of the boxes behind the abstract and headings
 
 \newlength{\tocsep}                 % Table of Contents format
 \setlength\tocsep{1.5pc}            % Sets the indentation of the sections in the table of contents
-
-\RequirePackage{tabularx}           % Line breaks in tables
-  \renewcommand{\arraystretch}{1.8}
-\RequirePackage{multirow}           % Merge lines in tables
-\RequirePackage{breqn}              % Line breaks in equations
-\RequirePackage{url}                % Line breaks in  url's
-\RequirePackage{hyperref}           % Hyperlinks and PDF bookmaks
-  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
-
-  \graphicspath{{images/}}          % Path to figures
-\RequirePackage{epstopdf}           % EPS figures
-\RequirePackage{enumitem}           % Line spacing in lists
-  \setlist[itemize]{noitemsep,nolistsep}
-  \setlist[enumerate]{noitemsep,nolistsep}
-
-% code command
-\newcommand{\code}[1]{\begingroup \ttfamily #1\endgroup}
-% Variance
-\def\Var{\mathop{\mathrm{Var}}}
-
-\RequirePackage[french, english]{babel}
-  \frenchbsetup{StandardLists=true} % Necessary with \usepackage[french]{babel} or bullets are hyphens

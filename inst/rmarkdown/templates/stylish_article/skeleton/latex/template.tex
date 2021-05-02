@@ -1,29 +1,6 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adapted from
-% Stylish Article
-% LaTeX Template
-% Version 1.0 (31/1/13)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Mathias Legrand (legrand.mathias@gmail.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
 \documentclass[fleqn,10pt]{latex/stylish_article} % Document font size and equations flushed left
 
-\setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
-
+\setcounter{tocdepth}{3} % sections, subsections and subsubsections
 
 % Pandoc environments
 \usepackage{framed}
@@ -32,7 +9,10 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % Code R
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % R Code
+
+% Colored code
+\usepackage{color}
 \definecolor{shadecolor}{RGB}{248,248,248}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
@@ -77,6 +57,34 @@ $if(csl-refs)$
   {\par}
 $endif$
 
+% Polyglossia
+$if(lang)$
+\usepackage{polyglossia}
+\setmainlanguage{$lang$}
+$for(otherlangs)$
+\setotherlanguage{$otherlangs$}
+$endfor$
+$endif$
+
+% Figures
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Additional packages
+\RequirePackage{natbib}             % Advanced Bibliography (citep...).
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{breqn}              % Line breaks in equations
+\RequirePackage{url}                % Line breaks in url's
+\RequirePackage{enumitem}           % Line spacing in lists
+  \setlist[itemize]{noitemsep,nolistsep}
+  \setlist[enumerate]{noitemsep,nolistsep}
 
 % Tables
 \usepackage{longtable,booktabs}
@@ -107,21 +115,14 @@ $endif$
 \end{figure}}
 \makeatother
 
-% Figures
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-
 $if(preamble)$
 % User-adder preamble
 $preamble$
 $endif$
+
+% hyperref comes last
+\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
+  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
@@ -163,7 +164,7 @@ $abstract$
 
 \begin{document}
 
-\selectlanguage{$babel$}
+\selectlanguage{$lang$}
 
 \flushbottom % Makes all text pages the same height
 
@@ -177,14 +178,13 @@ $abstract$
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 
-
 $body$
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{mee}
+\bibliographystyle{$biblio-style$}
 \makeatletter
 % The filename has .bib extension that must be eliminated
 \filename@parse{$bibliography$}
