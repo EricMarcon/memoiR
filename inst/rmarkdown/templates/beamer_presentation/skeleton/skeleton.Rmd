@@ -2,21 +2,23 @@
 title: "Title of the Talk"
 author: "Author's name"
 date: "`r format(Sys.time(), '%d %B %Y')`"
-preamble: >
-  \usepackage{textcomp}
-  \DeclareUnicodeCharacter{B0}{\textdegree}
+bibliography: references.bib
+biblio-style: chicago
 output:
+  ioslides_presentation:
+    logo: images/logo.png
+    widescreen: true
+  slidy_presentation:
+    slide_level: 2
   beamer_presentation:
+    citation_package: natbib
+    latex_engine: xelatex
     df_print: kable
     fig_caption: no
     includes:
       in_header: latex/header.tex
     keep_tex: no
     slide_level: 2
-  ioslides_presentation:
-    logo: images/logo.png
-    widescreen: true
-  slidy_presentation: default
 ---
 
 ```{r DoNotModify, include=FALSE}
@@ -84,13 +86,6 @@ set.seed(973)
 
 # First Part
 
-<!-- This comment is needed to avoid a white slide after the first part's title --> 
-<!-- HTML column break --> 
-<style>
-  .forceBreak { -webkit-column-break-after: always; break-after: column; }
-</style>
-
-
 ## R Markdown
 
 This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
@@ -105,7 +100,7 @@ Cell 3       | Cell 4
 ## Slide with Incremental Bullets
 
 > - Bullet 1
-> - Bullet 2
+> - A reference: @Xie2016.
 > - Bullet 3
 
 ## Slide with R Output
@@ -152,3 +147,15 @@ Note:
 
 - `{.flexbox .vcenter}` to center the HTML slide with plot.
 - `out.width='90%'` to reduce the size of the plot in the Two Column Layout slide.
+
+Keep the code below to have a slide for references and allow two-column slides in _ioslides_ (but not in _Slidy_) and allow scrolling oversized slides.
+
+<!-- A slide for references --> 
+`r if (!knitr:::is_latex_output()) '## References {.smaller}'`
+<!-- Styles for HTML slides -->
+<!-- https://stackoverflow.com/questions/38260799/references-page-truncated-in-rmarkdown-ioslides-presentation/38294541#38294541 -->
+<style>
+  .forceBreak { -webkit-column-break-after: always; break-after: column; }
+  slides > slide { overflow: scroll; }
+  slides > slide:not(.nobackground):after { content: ''; }
+</style>
