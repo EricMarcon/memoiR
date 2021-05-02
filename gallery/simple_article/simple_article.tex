@@ -1,11 +1,6 @@
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
 \documentclass[fleqn,10pt]{article} % Document font size and equations flushed left
 
-\setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
-
+\setcounter{tocdepth}{3} % sections, subsections and subsubsections
 
 % Pandoc environments
 \usepackage{framed}
@@ -14,7 +9,7 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % Code R
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % R Code
 
 % Colored code
 \usepackage{color}
@@ -54,11 +49,14 @@
 
 % cslreferences environment required by pandoc > 2.7
 
+% Polyglossia
+\usepackage{polyglossia}
+\setmainlanguage{en-US}
+\setotherlanguage{fr-FR}
+\setotherlanguage{it}
 
 % Figures
 \usepackage{graphicx,grffile}
-  \graphicspath{{images/}}          % Folder for figures
-\usepackage{epstopdf}               % EPS Figures
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
@@ -69,21 +67,17 @@
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Additional packages
-\RequirePackage{natbib}             % Advanced Bibliography (citep...). Before babel.
-\RequirePackage[utf8]{inputenc}     % For accents
-\RequirePackage[T1]{fontenc}        % For accents
+\RequirePackage{natbib}             % Advanced Bibliography (citep...).
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{breqn}              % Line breaks in equations
 \RequirePackage{url}                % Line breaks in url's
-\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
-  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 \RequirePackage{enumitem}           % Line spacing in lists
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
 
 % Tables
 \usepackage{longtable,booktabs,tabu}
-\usepackage{caption}                % After babel
+\usepackage{caption}                % Après babel
 % These lines are needed to make table captions work with longtable:
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
@@ -92,18 +86,13 @@
   \renewcommand{\arraystretch}{1.8}
 \usepackage{multirow}               % Merged lines in tables
 
-% code command
-\newcommand{\code}[1]{\begingroup \ttfamily #1\endgroup}
-% Variance
-\def\Var{\mathop{\mathrm{Var}}}
-
-\RequirePackage[french, english]{babel}
-  \frenchbsetup{StandardLists=true} % Necessary with \usepackage[french]{babel} or bullets are hyphens
-
 % User-adder preamble
-\usepackage{textcomp}
+\hyphenation{bio-di-ver-si-ty sap-lings}
 
-\DeclareUnicodeCharacter{B0}{\textdegree} \hyphenation{bio-di-ver-si-ty sap-lings}
+% hyperref comes last
+\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
+  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+
 
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
@@ -118,7 +107,7 @@ First Author's name\\ Second Author's name
 
 \begin{document}
 
-\selectlanguage{english}
+\selectlanguage{en-US}
 
 \maketitle % Print the title and abstract box
 
@@ -133,7 +122,6 @@ Abstract of the article.
 %----------------------------------------------------------------------------------------
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
-
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -277,7 +265,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpmNVS0C/simple_article/gallery/simple_article/simple_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpbzfAhg/simple_article/gallery/simple_article/simple_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -464,9 +452,22 @@ The HTML document ignores LaTeX commands.
 
 English and French are supported, to be declared in the document header.
 
-The chosen language has an effect only in LaTeX output: a space is added in front of double punctuation in French, the size of spaces is bigger at the beginning of a sentence in English, etc.
+The main language of the document changes the name of some elements, such as the table of contents.
+The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:
 
-LaTeX templates use the LaTeX package \emph{babel} which recognizes the language names \emph{English} and \emph{french}.
+\begin{verbatim}
+\selectlanguage{english}
+\end{verbatim}
+
+The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The \texttt{\textbackslash{}selectlanguage} command is simply ignored in HTML.
+
+\selectlanguage{french}
+
+Texte en Français : remarquer l'espace avant les deux points.
+\selectlanguage{english}
+
+EcoFoG templates use the LaTeX package \emph{babel} which recognizes the language names \emph{English} and \emph{french}.
 Pandoc on the other hand uses the IETF codes \emph{fr-FR} or \emph{en-US} for limited language support in HTML.
 Both parameters must therefore be entered in the document header.
 
@@ -508,7 +509,7 @@ The level 1 title \emph{References} must be added manually to Word files.
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{mee}
+\bibliographystyle{chicago}
 \makeatletter
 % The filename has .bib extension that must be eliminated
 \filename@parse{references.bib}

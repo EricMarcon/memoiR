@@ -6,7 +6,7 @@
     <meta name="generator" content="pandoc" />
 
     
-        <meta name="date" content="2021-04-30" />
+        <meta name="date" content="2021-05-02" />
     
     <title>Title of the Article</title>
 
@@ -2109,7 +2109,7 @@ border: 0;
            <span class="glyphicon glyphicon-user"></span> Second Author’s name
                <br>
       </p>
-         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 30 April 2021</p>
+         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 02 May 2021</p>
          
    
       
@@ -2517,8 +2517,15 @@ The HTML document ignores LaTeX commands.</p>
 <div id="languages" class="section level2">
 <h2><span class="header-section-number">3.11</span> Languages</h2>
 <p>English and French are supported, to be declared in the document header.</p>
-<p>The chosen language has an effect only in LaTeX output: a space is added in front of double punctuation in French, the size of spaces is bigger at the beginning of a sentence in English, etc.</p>
-<p>LaTeX templates use the LaTeX package <em>babel</em> which recognizes the language names <em>English</em> and <em>french</em>.
+<p>The main language of the document changes the name of some elements, such as the table of contents.
+The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:</p>
+<pre><code>\selectlanguage{english}</code></pre>
+<p>The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
+
+<p>Texte en Français : remarquer l’espace avant les deux points.
+</p>
+<p>EcoFoG templates use the LaTeX package <em>babel</em> which recognizes the language names <em>English</em> and <em>french</em>.
 Pandoc on the other hand uses the IETF codes <em>fr-FR</em> or <em>en-US</em> for limited language support in HTML.
 Both parameters must therefore be entered in the document header.</p>
 </div>

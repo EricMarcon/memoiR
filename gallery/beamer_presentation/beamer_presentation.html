@@ -9,7 +9,7 @@
 
 
 
-  <meta name="date" content="2021-04-30" />
+  <meta name="date" content="2021-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -3191,19 +3191,11 @@ slide:not(.current) .plotly.html-widget{
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
       
       <p data-config-presenter><!-- populated from slide_config.json --></p>
-            <p style="margin-top: 6px; margin-left: -2px;">30 April 2021</p>
+            <p style="margin-top: 6px; margin-left: -2px;">02 May 2021</p>
           </hgroup>
   </slide>
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>First Part</h2></hgroup><article  id="first-part">
-
-<!-- This comment is needed to avoid a white slide after the first part's title -->
-
-<!-- HTML column break -->
-
-<style>
-  .forceBreak { -webkit-column-break-after: always; break-after: column; }
-</style>
 
 </article></slide><slide class=""><hgroup><h2>R Markdown</h2></hgroup><article  id="r-markdown">
 
@@ -3230,7 +3222,7 @@ slide:not(.current) .plotly.html-widget{
 
 <ul class = 'build'>
 <li>Bullet 1</li>
-<li>Bullet 2</li>
+<li>A reference: <span class="cite">Xie (2016)</span>.</li>
 <li>Bullet 3</li>
 </ul>
 
@@ -3297,7 +3289,27 @@ slide:not(.current) .plotly.html-widget{
 <ul>
 <li><code>{.flexbox .vcenter}</code> to center the HTML slide with plot.</li>
 <li><code>out.width=&#39;90%&#39;</code> to reduce the size of the plot in the Two Column Layout slide.</li>
-</ul></article></slide>
+</ul>
+
+<p>Keep the code below to have a slide for references and allow two-column slides in <em>ioslides</em> (but not in <em>Slidy</em>) and allow scrolling oversized slides.</p>
+
+<!-- A slide for references -->
+
+</article></slide><slide class=""><hgroup><h2>References</h2></hgroup><article  id="references" class="smaller">
+
+<!-- Styles for HTML slides -->
+
+<!-- https://stackoverflow.com/questions/38260799/references-page-truncated-in-rmarkdown-ioslides-presentation/38294541#38294541 -->
+
+<style>
+  .forceBreak { -webkit-column-break-after: always; break-after: column; }
+  slides > slide { overflow: scroll; }
+  slides > slide:not(.nobackground):after { content: ''; }
+</style>
+
+<div id="refs" class="references">
+<div id="ref-Xie2016">
+<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href='https://github.com/rstudio/bookdown' title=''>https://github.com/rstudio/bookdown</a>.</p></div></div></article></slide>
 
 
   <slide class="backdrop"></slide>

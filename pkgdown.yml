@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   memoiR: memoiR.html
-last_built: 2021-04-30T20:05Z
+last_built: 2021-05-02T18:02Z
 urls:
   reference: https://EricMarcon.github.io/memoiR//reference
   article: https://EricMarcon.github.io/memoiR//articles

@@ -1,29 +1,6 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Adapted from
-% Stylish Article
-% LaTeX Template
-% Version 1.0 (31/1/13)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Mathias Legrand (legrand.mathias@gmail.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
 \documentclass[fleqn,10pt]{latex/stylish_article} % Document font size and equations flushed left
 
-\setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
-
+\setcounter{tocdepth}{3} % sections, subsections and subsubsections
 
 % Pandoc environments
 \usepackage{framed}
@@ -32,7 +9,10 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % Code R
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}, fontsize=\scriptsize} % R Code
+
+% Colored code
+\usepackage{color}
 \definecolor{shadecolor}{RGB}{248,248,248}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
@@ -69,6 +49,31 @@
 
 % cslreferences environment required by pandoc > 2.7
 
+% Polyglossia
+\usepackage{polyglossia}
+\setmainlanguage{en-US}
+\setotherlanguage{fr-FR}
+\setotherlanguage{it}
+
+% Figures
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Additional packages
+\RequirePackage{natbib}             % Advanced Bibliography (citep...).
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{breqn}              % Line breaks in equations
+\RequirePackage{url}                % Line breaks in url's
+\RequirePackage{enumitem}           % Line spacing in lists
+  \setlist[itemize]{noitemsep,nolistsep}
+  \setlist[enumerate]{noitemsep,nolistsep}
 
 % Tables
 \usepackage{longtable,booktabs}
@@ -99,23 +104,12 @@
 \end{figure}}
 \makeatother
 
-% Figures
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-
 % User-adder preamble
-\usepackage{textcomp}
-
-\DeclareUnicodeCharacter{B0}{\textdegree}
-
 \usepackage{tabu} \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend} \hyphenation{bio-di-ver-si-ty sap-lings}
+
+% hyperref comes last
+\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
+  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
@@ -149,7 +143,7 @@ Summary of the article.
 
 \begin{document}
 
-\selectlanguage{english}
+\selectlanguage{en-US}
 
 \flushbottom % Makes all text pages the same height
 
@@ -162,7 +156,6 @@ Summary of the article.
 %----------------------------------------------------------------------------------------
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
-
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
@@ -307,7 +300,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpmNVS0C/stylish_article/gallery/stylish_article/stylish_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpbzfAhg/stylish_article/gallery/stylish_article/stylish_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -538,7 +531,7 @@ The level 1 title \emph{References} must be added manually to Word files.
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{mee}
+\bibliographystyle{chicago}
 \makeatletter
 % The filename has .bib extension that must be eliminated
 \filename@parse{references.bib}
