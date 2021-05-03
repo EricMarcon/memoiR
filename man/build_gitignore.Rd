@@ -6,14 +6,10 @@
 \usage{
 build_gitignore()
 }
-\arguments{
-\item{PDF}{if \code{TRUE} (by default), a link to the PDF output is added.}
-}
 \description{
 Build a .gitignore file suitable for R Markdown projects.
 }
 \details{
-R Markdown files of the project are used to get the title and abstract of the published documents.
-A link to their HTML and, optionally, PDF versions is added.
-Metadata fields are read in the .Rmd files YAML header: title, abstract and \code{URL}.
+The .gitignore file contains the list of files (file name patterns) that must not be controlled by git.
+Run this function once in each project created from a memoiR template, before activating version control.
 }

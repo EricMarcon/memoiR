@@ -13,15 +13,15 @@ build_githubpages(destination = usethis::proj_path("docs"))
 Copy the files produced by knitting to the destination folder.
 }
 \details{
-Produced files are HTML pages and their companions (css, figures, libraries)
-and PDF documents.
+Produced files are HTML pages and their companions (css, figures, libraries) and PDF documents.
 The function moves them all and the \code{README.md} file into the destination folder.
 GitHub Pages allow making a website to present them:
 \itemize{
 \item \code{README.md} is the home page. Make it with \code{\link[=build_index]{build_index()}} to have links to the HTML and PDF outputs.
 \item knit both HTML and PDF versions to avoid dead links.
-\item run \code{build_githubpages()}.
+\item run \code{build_githubpages()} when a document is knitted to move the outputs into the \code{docs} folder.
 \item push to GitHub and activate GitHub Pages on the main branch and the \code{docs} folder.
+The function is useless in book projects: the \emph{Build the Book} (i.e. the \code{\link[bookdown:render_book]{bookdown::render_book()}} function) takes care of every step.
 }
 }
 \examples{

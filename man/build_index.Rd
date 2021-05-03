@@ -14,6 +14,8 @@ Build a README.md file that will be used as index of GitHub Pages.
 }
 \details{
 R Markdown files of the project are used to get the title and abstract of the published documents.
+Run this function once in each project created from a memoiR template, before \code{\link[=build_githubpages]{build_githubpages()}}.
 A link to their HTML and, optionally, PDF versions is added.
 Metadata fields are read in the .Rmd files YAML header: title, abstract and \code{URL}.
+The function is useless in book projects: the \emph{Build the Book} (i.e. the \code{\link[bookdown:render_book]{bookdown::render_book()}} function) takes care of every step.
 }
