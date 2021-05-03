@@ -32,10 +32,9 @@ toc-depth: 3
 # Bibliography
 bibliography: references.bib
 biblio-style: authoryear-ibid
-cite-style: verbose-inote
 biblatexoptions:
   - backend=biber
-  - citestyle=verbose-inote
+  - style=verbose-inote
   - pageref=true
   - isbn=false
   - backref=true
