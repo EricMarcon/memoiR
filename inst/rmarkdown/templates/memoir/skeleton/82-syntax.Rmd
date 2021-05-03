@@ -199,12 +199,22 @@ Several thousand styles are available [^41].
 For PDF documents, the bibliography is handled by BibLaTeX, see section \@ref(index).
 
 
+## Forcing line breaks
+
+Hyphenation is handled automatically in LaTeX.
+If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command `hyphenation` (words are separated by spaces, hyphenation locations are represented by dashes).
+
+If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command `\break` to the line break location.
+Do not leave a space before the command. 
+The HTML document ignores LaTeX commands.
+
+
 ## Languages
 
-English and French are supported, to be declared in the document header.
+Languages are declared in the document header.
 
-The main language of the document changes the name of some elements, such as the table of contents.
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command: 
+The main language of the document (`lang`) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of `otherlangs`) is managed in LaTeX but not in HTML by inserting on a new line the following command: 
 ```
 \selectlanguage{english}
 ```
@@ -212,9 +222,10 @@ The change of language in the document is managed in LaTeX but not in HTML by in
 The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The `\selectlanguage` command is simply ignored in HTML.
 
-EcoFoG templates use the LaTeX package _babel_ which recognizes the language names _English_ and _french_.
-Pandoc on the other hand uses the IETF codes _fr-FR_ or _en-US_ for limited language support in HTML.
-Both parameters must therefore be entered in the document header.
+Language codes are used in the header, such as `en-US` but language names are necessary in `\selectlanguage{}`.
+Name matches are listed in table 3 of the polyglossia package documentation[^1].
+
+[^1]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
 
 
 ## Chapter summary

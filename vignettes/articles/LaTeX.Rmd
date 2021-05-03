@@ -48,7 +48,7 @@ In the _memoir_ template, bibliography is managed by biber and biblatex.
 This appears to be the best solution for long documents, allowing sidenote citations and cross-references from the bibliography to the text containing the citation.
 The bibliographic style is _verbose-inote_[^12] by default: it can be changed in the memoir header.
 
-[^12]: https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/biblatex/doc/examples/73-style-verbose-inote-biber.pdf
+[^12]: https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/examples/73-style-verbose-inote-biber.pdf
 
 In short documents, i.e. articles and presentations, bibtex and natbib are preferred because the advanced formatting abilities of biblatex are not very useful, more citation styles are available (`.bst` files[^13]) and many journals expect them to be used.
 

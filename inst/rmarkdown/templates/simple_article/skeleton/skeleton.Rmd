@@ -286,7 +286,7 @@ In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
 
 ## Bibliography
 
-Bibliographic references included in the `references.bib` file can be called by `[@CitationKey]`, in parentheses [@Xie2016], or without suare brackets, in the text, as @Xie2018 .
+Bibliographic references included in the `references.bib` file can be called by `[@CitationKey]`, in parentheses [@Xie2016], or without square brackets, in the text, as @Xie2018 .
 
 
 The bibliography is processed by Pandoc when producing Word or HTML documents.
@@ -299,11 +299,12 @@ More than a thousand styles are available[^3].
 
 [^3]: <https://github.com/citation-style-language/styles>
 
-For PDF documents, the bibliography is managed by LaTeX.
-The style is included in the template: it is the one from _Methods in Ecology and Evolution_.
-It cannot be changed, to ensure the homogeneity of the documents produced.
+For PDF documents, the bibliography is managed by natbib.
+The style is declared in the header:
 
-To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate _.tex_ file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.
+    biblio-style: chicago
+
+It can be changed as long as the appropriate `.bst` file (by default: `chicago.bst`) is included in the project. 
 
 
 ## LaTeX preamble
@@ -311,23 +312,7 @@ To prepare the submission of a manuscript to a journal, it will be necessary to 
 LaTeX commands can be added in the preamble of the produced LaTeX file, for example to load additional packages.
 These commands are in the `preamble:` section of the Markdown file header.
 
-The default commands allow:
-
-- To use the degree character (example: 20°C):
-```
-\usepackage{textcomp}
-\DeclareUnicodeCharacter{B0}{textdegree}
-```
-- To obtain two-column tables by redefining the `table` environment and loading the _tabu_ package necessary for _kableExtra_:
-```
-\usepackage{tabu}
-\renewenvironment{table}{%
-  \begin{table*}}%
-  {\end{table*}%
-  \ignorespacesafterend
-}
-```
-- To show the use of the hyphenation command:
+The default commands allow to show the use of the hyphenation command:
 ```
 \hyphenation%
   {bio-di-ver-si-ty sap-lings}
@@ -336,8 +321,8 @@ The default commands allow:
 Other commands can be added as needed.
 Warning:
 
-- Comments are not possible.
-- Complex commands (such as `renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+- Comments are not allowed
+- Complex commands (such as `\renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 
 
 ## Forcing line breaks
@@ -352,10 +337,10 @@ The HTML document ignores LaTeX commands.
 
 ## Languages
 
-English and French are supported, to be declared in the document header.
+Languages are declared in the document header.
 
-The main language of the document changes the name of some elements, such as the table of contents.
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command: 
+The main language of the document (`lang`) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of `otherlangs`) is managed in LaTeX but not in HTML by inserting on a new line the following command: 
 ```
 \selectlanguage{english}
 ```
@@ -363,26 +348,20 @@ The change of language in the document is managed in LaTeX but not in HTML by in
 The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The `\selectlanguage` command is simply ignored in HTML.
 
-\selectlanguage{french}
-Texte en Français : remarquer l'espace avant les deux points.
-\selectlanguage{english}
+Language codes are used in the header, such as `en-US` but language names are necessary in `\selectlanguage{}`.
+Name matches are listed in table 3 of the polyglossia package documentation[^1].
 
-
-EcoFoG templates use the LaTeX package _babel_ which recognizes the language names _English_ and _french_.
-Pandoc on the other hand uses the IETF codes _fr-FR_ or _en-US_ for limited language support in HTML.
-Both parameters must therefore be entered in the document header.
+[^1]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
 
 
 # Document types
 
-This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
+This template is designed to work with the Simple Article template in LaTeX and produce documents in PDF, HTML or Word format.
 Use the list of choices in the _Knit_ button to choose the output format.
-
-The Word document can then be modified to comply with the instructions to journal authors: double-spaced, font, etc.
 
 ## PDF Document
 
-The document is formatted for self-archiving of well-formatted articles.
+The document is formatted according to the article LaTeX template.
 
 ## HTML document
 
@@ -390,7 +369,7 @@ The GitBook template is optimized for on-screen reading.
 While writing, prefer knitting to HTML format for its speed of execution.
 A download button is available in the document menu bar: it will work if the document is also knitted in PDF format and if the file name is entered in the download field of the YAML header.
 
-The HMTL Book template is an alternative.
+The HMTL Document and all formats from the **rmdformats** packages are other possibilities.
 
 ## Word document
 
