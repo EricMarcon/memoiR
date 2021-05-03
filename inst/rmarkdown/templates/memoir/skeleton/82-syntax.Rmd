@@ -15,8 +15,20 @@ Click on _From template_: from templates installed by packages.
 The memoiR package templates are displayed: choose *Memoir*.
 
 Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g. `01-intro.Rmd`).
-All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for `99-references.Rmd` which contains the bibliography, placed at the end.
+All Rmd files in the project folder are actually treated as chapters, sorted by file name, including those provided by the template (startup and syntax) which should be deleted except for `99-references.Rmd` which contains the bibliography, placed at the end.
 The `index.Rmd` file is special: it contains the document header and the first chapter.
+
+Each other file starts with a top-level title:
+
+    # Title of the Chapter
+    
+If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:
+
+    # (PART) Title of the Part {-}
+    
+    # Title of the Chapter
+
+Note the `{-}` instruction after the title of the part to avoid having it numbered.
 
 
 ## Write
@@ -34,7 +46,7 @@ A line break marks a paragraph change.
 The different levels of the plan are designated by the number of braces at the beginning of the line: `#` for a level 1 title, `##` for a level 2 title, etc.
 A space separates the hashes and the title text.
 
-Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
+Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
 An empty line is required before the beginning of the list, but the elements of the list are separated by a simple line break.
 Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
 Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.
@@ -129,7 +141,7 @@ Always use the `booktabs = TRUE` argument so that the thickness of the separator
 Since the table contains mathematics (in the name of the first column), the `escape = FALSE` option is necessary.
 
 The `bootstrap_options = "striped"` style option provides more readable tables in HTML.
-LAst, the `full_width = FALSE` option allows you to adjust the width of the table to its content instead of occupying all the available width.
+Last, the `full_width = FALSE` option allows you to adjust the width of the table to its content instead of occupying all the available width.
 
 
 ## Maths
@@ -184,8 +196,7 @@ Several thousand styles are available [^41].
 
 [^41]: <https://github.com/citation-style-language/styles>
 
-For PDF documents, the bibliography is handled by LaTeX.
-It is chosen in the header of `index.Rmd`.
+For PDF documents, the bibliography is handled by BibLaTeX, see section \@ref(index).
 
 
 ## Languages
@@ -216,6 +227,11 @@ The code is that of a code block of type "Summary".
 Some text for this block.
 ```
 ````
+
+Its heading text is set in the preamble: 
+
+    chaptersummary: In a Nutshell
+
 
 ## User documentation
 

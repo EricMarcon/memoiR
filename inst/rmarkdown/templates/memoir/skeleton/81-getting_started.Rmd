@@ -14,29 +14,67 @@ The _references.bib_ file contains the bibliography.
 The basic parameters of the project must be entered in the following files.
 
 
-## index.Rmd
+## index.Rmd {#index}
 
 In the file header, enter the title of the work and the name of the author(s).
 
-    title: "Memoir" 
+    title: "Title of the Memoir" 
     author: "Authors' names"
+    
+The date field may be kept to display the knitting date automatically.
+
+The `github-repo` field contains the name of the repository of the project on GitHub.
+It is used to build a link to the repository from the menu bar of the GitBook version of the document.
+
+The cover will be:
+
+- that of a book if the _maintitlepage_ statement is present. 
+The content of _epigraph_ and _credits_ will be written on page 2, with `images/logo.pdf`.
+- the first page of the PDF file declared in the _pdftitlepage_ instruction if it is present.
+
+Delete one of the two instructions in the header or both covers will be built, like in the gallery[^1].
+
+[^1]: https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf
+
+The languages are specified according to the IETF language tags, such as "en-US".
+The main language (`lang`) is that of the structure of the document, translating elements such as "chapter".
+The other languages (`otherlangs`) can be used to switch language inside the PDF document to benefit from correct hyphenation.
+
 
 LaTeX specific options are:
 
-- _documentclass_: the document class, necessarily _memoir_ for this template. 
-The options of the _memoir_ class are listed, not to be changed normally.
-- _fontfamily_: [font](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ by default.
-- _linestretch_: line spacing, 1 by default.
 - _papersize_: A4.
 - _fontsize_: 11pt.
 - _toc-depth_: number of levels in the table of contents, 3 by default.
-- _lang_: fr-FR, en-US or en-GB (or any valid code[^1]), the main language.
-- _otherlangs_: ignored since pandoc version 2[^2].
-- _graphics_: yes mandatory to use the _graphics_ package needed for figures.
+
+Bibliography is managed by BibLaTeX, whose options should not be changed.
+
+The name of the `.bib` file containing the references is in `bibliography`.
+It must be entered with its `.bib` extension.
+
+The back cover appears in PDF outputs only.
+It is designed to to display abstract and keyword in several languages if necessary.
+The items of `backcover` are a list:
+
+- language: the name of the language, that will be passed to the LaTeX command `\selectlanguage{}`.
+- abstract: the content of the abstract.
+- keywords: a list of keywords.
+- abstractlabel and keywordlabel: the localized text to print before abstract and keywords.
+
+`backcoverfontsize` may be changed better fit the page size, according to the length of the abstracts.
+
+Some options should not be modified, including:
+
+- _documentclass_: the document class is _memoir_ for this template. 
+The options of the _memoir_ class are listed, not to be changed normally.
 - *fig_crop*: yes to allow cropping of excess margins of figures.
-- The back cover will display the abstract in French and English and the associated keywords if the _resume_, _keywords_, _abstract_ and _keywords_ instructions are present;
-- _fourthpagefontsize_ gives the font size of the back cover, normalsize by default, to be adapted according to the length of the summaries.
-The command must be recognized by LaTeX.
+GhostScript must be installed.
+If it is not, or in order to save computing time, the option may be set to `no`.
+
+Some may be added to the header:
+
+- _fontfamily_: [font](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ by default.
+- _linestretch_: line spacing, 1 by default.
 
 [^1]: https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf
 [^2]: https://github.com/jgm/pandoc/issues/4072
@@ -52,14 +90,6 @@ R itself is quoted by `@R-base`.
 - _link-citations_: yes to make the citations hyperlinks.
 - _colorlinks_: yes to make the hyperlinks be displayed in color.
 
-The cover will be:
-
-- Book format if the _maintitlepage_ statement is present. 
-The content of _epigraph_ will be written on page 2.
-- the first page of the PDF file declared in the _pdftitlepage_ instruction if it is present.
-
-Delete one of the two instructions in the header.
-
 For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
 Only the first page of the PDF is used.
 
@@ -67,6 +97,7 @@ Only the first page of the PDF is used.
 ## _bookdown.yml
 
 Enter the name of the Rmd file that will be the result of the merging of all chapters and choose if it should be destroyed after use.
+It will also be the name of the PDF and Word files.
 The default options will suit most uses.
 
     book_filename: "MyBook"
@@ -78,13 +109,8 @@ Otherwise, delete the line.
 
     repo: "https://github.com/GitHubID/Repository"
 
-
-There is no need to fill in the keywords according to the language of the work.
-The _language_ options are supported elsewhere.
-
-    language:
-      ui:
-        chapter_name: "Chapter"
+The knitted files are stored in the output directory.
+`docs` is the good choice for GitHub Pages.
 
 
 ## _output.yml
