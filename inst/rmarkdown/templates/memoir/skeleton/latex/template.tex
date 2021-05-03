@@ -155,11 +155,12 @@ $endfor$
 
 \usepackage{enumitem}
 
+% Polyglossia
 $if(lang)$
 \usepackage{polyglossia}
-\setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
-$for(polyglossia-otherlangs)$
-\setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+\setmainlanguage{$lang$}
+$for(otherlangs)$
+\setotherlanguage{$otherlangs$}
 $endfor$
 $endif$
 
