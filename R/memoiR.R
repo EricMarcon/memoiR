@@ -296,6 +296,9 @@ build_gitignore <- function() {
              "*.snm",
              "*.vrb",
              "",
+             "# Template specific",
+             "packages.bib",
+             "",
              "# Uncomment if CI builds docs/",
              "# docs/")
   
