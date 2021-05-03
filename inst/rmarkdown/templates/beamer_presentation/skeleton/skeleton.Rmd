@@ -19,6 +19,8 @@ output:
       in_header: latex/header.tex
     keep_tex: no
     slide_level: 2
+  powerpoint_presentation:
+    slide_level: 2
 ---
 
 ```{r DoNotModify, include=FALSE}
