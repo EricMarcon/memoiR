@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -105,25 +105,46 @@
 <p>Producing a PDF file from a R Markdown (<code>.Rmd</code>) document requires several steps:</p>
 <ul>
 <li>
-<strong>knitR</strong> runs the code chunks to produce results and figures.</li>
+<strong>knitR</strong> <span class="citation">(Xie 2015)</span> runs the code chunks to produce results and figures.</li>
 <li>
 <strong>bookdown</strong> <span class="citation">(Xie 2016)</span> <span class="citation">(or <strong>rmarkdown</strong>: Xie, Allaire, and Grolemund 2018)</span> produces a plain Markdown document. <strong>memoiR</strong> templates all rely on <strong>bookdown</strong> to benefit from cross references and figure/table numbering.</li>
-<li>Pandoc is run to produce either directly an HTML document or a LaTeX file (<code>.tex</code>). The bibliography of HTML documents is processed by Pandoc at this stage. <strong>memoiR</strong> templates delay it for LaTeX documents. *- A LaTeX engine is run to compile the LaTeX file and produce a PDF document. It uses reference management software (BibTeX or Biber) and a LaTeX package (natbib or biblatex) for bibliography. )</li>
+<li>Pandoc<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> is run to produce either directly an HTML document or a LaTeX file (<code>.tex</code>). The bibliography of HTML documents is processed by Pandoc at this stage<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. <strong>memoiR</strong> templates delay it for LaTeX documents. *- A LaTeX engine is run to compile the LaTeX file and produce a PDF document. It uses reference management software (BibTeX<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> or Biber<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>) and a LaTeX package (natbib<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> or biblatex<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>) for bibliography.</li>
 </ul>
-<p>memoiR templates rely on XeLaTeX to compile LaTeX documents to PDF files. Among XeLaTex advantages over the classical pdflatex engine, including native UTF-8 encoding, language support by Polyglossia rather than Babel (required by pdflatex) is similar to that of Pandoc to produce HTML formats, based on IETF language tags such as “en-US”. In short, this solution is simpler and more robust.</p>
-<p>In the <strong>memoir</strong> template, bibliography is managed by biber and biblatex. This appears to be the best solution for long documents, allowing in-margin citations and cross-references from the bibliography to the text containing the citation. The bibliographic style is <em>verbose-inote</em> by default: it can be changed in the memoir header.</p>
-<p>In short documents, i.e. articles and presentations, bibtex and natbib are preferred because the advanced formatting abilities of biblatex are not very useful, more citation styles are available (<code>.bst</code> files) and many journals expect them to be used.</p>
+<p><strong>memoiR</strong> templates rely on XeLaTeX<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> to compile LaTeX documents to PDF files. Among XeLaTex advantages over the classical pdflatex engine<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>, including native UTF-8 encoding, language support by Polyglossia<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> rather than Babel<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> (required by pdflatex) is similar to that of Pandoc to produce HTML formats, based on IETF language tags<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> such as “en-US”. In short, this solution is simpler and more robust: just fill the <code>lang</code> field in the document header.</p>
+<p>In the <em>memoir</em> template, bibliography is managed by biber and biblatex. This appears to be the best solution for long documents, allowing sidenote citations and cross-references from the bibliography to the text containing the citation. The bibliographic style is <em>verbose-inote</em><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> by default: it can be changed in the memoir header.</p>
+<p>In short documents, i.e. articles and presentations, bibtex and natbib are preferred because the advanced formatting abilities of biblatex are not very useful, more citation styles are available (<code>.bst</code> files<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>) and many journals expect them to be used.</p>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
+<div id="ref-Xie2015">
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.</p>
+</div>
 <div id="ref-Xie2016">
-<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
+<p>———. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
 </div>
 <div id="ref-Xie2018">
 <p>Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.</p>
 </div>
 </div>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://pandoc.org/" class="uri">https://pandoc.org/</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://pandoc.org/MANUAL.html#citations" class="uri">https://pandoc.org/MANUAL.html#citations</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="http://www.bibtex.org/" class="uri">http://www.bibtex.org/</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://en.wikipedia.org/wiki/Biber_(LaTeX)" class="uri">https://en.wikipedia.org/wiki/Biber_(LaTeX)</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#Natbib" class="uri">https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#Natbib</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber" class="uri">https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber</a><a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://en.wikipedia.org/wiki/XeTeX" class="uri">https://en.wikipedia.org/wiki/XeTeX</a><a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://en.wikipedia.org/wiki/PdfTeX" class="uri">https://en.wikipedia.org/wiki/PdfTeX</a><a href="#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://ctan.org/pkg/polyglossia" class="uri">https://ctan.org/pkg/polyglossia</a><a href="#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://ctan.org/pkg/babel" class="uri">https://ctan.org/pkg/babel</a><a href="#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://en.wikipedia.org/wiki/IETF_language_tag" class="uri">https://en.wikipedia.org/wiki/IETF_language_tag</a><a href="#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/examples/73-style-verbose-inote-biber.pdf" class="uri">https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/examples/73-style-verbose-inote-biber.pdf</a><a href="#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://www.reed.edu/cis/help/LaTeX/bibtexstyles.html" class="uri">https://www.reed.edu/cis/help/LaTeX/bibtexstyles.html</a><a href="#fnref13" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
   </div>
 

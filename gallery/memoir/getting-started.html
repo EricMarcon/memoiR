@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Getting Started | Title of the Memoir</title>
-  <meta name="description" content="A bookdown template base on LaTeX memoir class." />
+  <meta name="description" content="1 Getting Started | Title of the Memoir" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Getting Started | Title of the Memoir" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A bookdown template base on LaTeX memoir class." />
+  
   <meta name="github-repo" content="GitHubID/Repository" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="1 Getting Started | Title of the Memoir" />
   
-  <meta name="twitter:description" content="A bookdown template base on LaTeX memoir class." />
+  
   
 
 <meta name="author" content="Authors’ names" />
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a><ul>
-<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#index.rmd"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#index"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
 <li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#bookdown.yml"><i class="fa fa-check"></i><b>1.2</b> _bookdown.yml</a></li>
 <li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#output.yml"><i class="fa fa-check"></i><b>1.3</b> _output.yml</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#multilingual-documents"><i class="fa fa-check"></i><b>1.4</b> Multilingual documents</a></li>
@@ -154,10 +154,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#maths"><i class="fa fa-check"></i><b>2.5</b> Maths</a></li>
 <li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#cross-references"><i class="fa fa-check"></i><b>2.6</b> Cross-references</a></li>
 <li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#bibliography"><i class="fa fa-check"></i><b>2.7</b> Bibliography</a></li>
-<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.8</b> Languages</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.9</b> Chapter summary</a></li>
-<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.10</b> User documentation</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.11</b> Documentation for developers</a></li>
+<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
+<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11</b> User documentation</a></li>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12</b> Documentation for developers</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -191,27 +192,55 @@ The automatic download of missing packages (under Windows: MiKTeX settings, <em>
 All other <em>.Rmd</em> files in the folder contain a chapter: the order of chapters is that of the file names, sorted alphabetically.
 The <em>references.bib</em> file contains the bibliography.</p>
 <p>The basic parameters of the project must be entered in the following files.</p>
-<div id="index.rmd" class="section level2">
+<div id="index" class="section level2">
 <h2><span class="header-section-number">1.1</span> index.Rmd</h2>
 <p>In the file header, enter the title of the work and the name of the author(s).</p>
-<pre><code>title: &quot;Memoir&quot; 
+<pre><code>title: &quot;Title of the Memoir&quot; 
 author: &quot;Authors&#39; names&quot;</code></pre>
+<p>The date field may be kept to display the knitting date automatically.</p>
+<p>The <code>github-repo</code> field contains the name of the repository of the project on GitHub.
+It is used to build a link to the repository from the menu bar of the GitBook version of the document.</p>
+<p>The cover will be:</p>
+<ul>
+<li>that of a book if the <em>maintitlepage</em> statement is present.
+The content of <em>epigraph</em> and <em>credits</em> will be written on page 2, with <code>images/logo.pdf</code>.</li>
+<li>the first page of the PDF file declared in the <em>pdftitlepage</em> instruction if it is present.</li>
+</ul>
+<p>Delete one of the two instructions in the header or both covers will be built, like in the gallery<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>The languages are specified according to the IETF language tags, such as “en-US”.
+The main language (<code>lang</code>) is that of the structure of the document, translating elements such as “chapter”.
+The other languages (<code>otherlangs</code>) can be used to switch language inside the PDF document to benefit from correct hyphenation.</p>
 <p>LaTeX specific options are:</p>
 <ul>
-<li><em>documentclass</em>: the document class, necessarily <em>memoir</em> for this template.
-The options of the <em>memoir</em> class are listed, not to be changed normally.</li>
-<li><em>fontfamily</em>: <a href="https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families">font</a>, <em>lmodern</em> by default.</li>
-<li><em>linestretch</em>: line spacing, 1 by default.</li>
 <li><em>papersize</em>: A4.</li>
 <li><em>fontsize</em>: 11pt.</li>
 <li><em>toc-depth</em>: number of levels in the table of contents, 3 by default.</li>
-<li><em>lang</em>: fr-FR, en-US or en-GB (or any valid code<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>), the main language.</li>
-<li><em>otherlangs</em>: ignored since pandoc version 2<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</li>
-<li><em>graphics</em>: yes mandatory to use the <em>graphics</em> package needed for figures.</li>
-<li><em>fig_crop</em>: yes to allow cropping of excess margins of figures.</li>
-<li>The back cover will display the abstract in French and English and the associated keywords if the <em>resume</em>, <em>keywords</em>, <em>abstract</em> and <em>keywords</em> instructions are present;</li>
-<li><em>fourthpagefontsize</em> gives the font size of the back cover, normalsize by default, to be adapted according to the length of the summaries.
-The command must be recognized by LaTeX.</li>
+</ul>
+<p>Bibliography is managed by BibLaTeX, whose options should not be changed.</p>
+<p>The name of the <code>.bib</code> file containing the references is in <code>bibliography</code>.
+It must be entered with its <code>.bib</code> extension.</p>
+<p>The back cover appears in PDF outputs only.
+It is designed to to display abstract and keyword in several languages if necessary.
+The items of <code>backcover</code> are a list:</p>
+<ul>
+<li>language: the name of the language, that will be passed to the LaTeX command <code>\selectlanguage{}</code>.</li>
+<li>abstract: the content of the abstract.</li>
+<li>keywords: a list of keywords.</li>
+<li>abstractlabel and keywordlabel: the localized text to print before abstract and keywords.</li>
+</ul>
+<p><code>backcoverfontsize</code> may be changed better fit the page size, according to the length of the abstracts.</p>
+<p>Some options should not be modified, including:</p>
+<ul>
+<li><em>documentclass</em>: the document class is <em>memoir</em> for this template.
+The options of the <em>memoir</em> class are listed, not to be changed normally.</li>
+<li><em>fig_crop</em>: yes to allow cropping of excess margins of figures.
+GhostScript must be installed.
+If it is not, or in order to save computing time, the option may be set to <code>no</code>.</li>
+</ul>
+<p>Some may be added to the header:</p>
+<ul>
+<li><em>fontfamily</em>: <a href="https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families">font</a>, <em>lmodern</em> by default.</li>
+<li><em>linestretch</em>: line spacing, 1 by default.</li>
 </ul>
 <p>The parameters of the bibliography are:</p>
 <ul>
@@ -224,30 +253,21 @@ R itself is quoted by <code>@R-base</code>.</li>
 <li><em>link-citations</em>: yes to make the citations hyperlinks.</li>
 <li><em>colorlinks</em>: yes to make the hyperlinks be displayed in color.</li>
 </ul>
-<p>The cover will be:</p>
-<ul>
-<li>Book format if the <em>maintitlepage</em> statement is present.
-The content of <em>epigraph</em> will be written on page 2.</li>
-<li>the first page of the PDF file declared in the <em>pdftitlepage</em> instruction if it is present.</li>
-</ul>
-<p>Delete one of the two instructions in the header.</p>
 <p>For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
 Only the first page of the PDF is used.</p>
 </div>
 <div id="bookdown.yml" class="section level2">
 <h2><span class="header-section-number">1.2</span> _bookdown.yml</h2>
 <p>Enter the name of the Rmd file that will be the result of the merging of all chapters and choose if it should be destroyed after use.
+It will also be the name of the PDF and Word files.
 The default options will suit most uses.</p>
 <pre><code>book_filename: &quot;MyBook&quot;
 delete_merged_file: true</code></pre>
 <p>If the project is hosted on GitHub, indicate its address.
 Otherwise, delete the line.</p>
 <pre><code>repo: &quot;https://github.com/GitHubID/Repository&quot;</code></pre>
-<p>There is no need to fill in the keywords according to the language of the work.
-The <em>language</em> options are supported elsewhere.</p>
-<pre><code>language:
-  ui:
-    chapter_name: &quot;Chapter&quot;</code></pre>
+<p>The knitted files are stored in the output directory.
+<code>docs</code> is the good choice for GitHub Pages.</p>
 </div>
 <div id="output.yml" class="section level2">
 <h2><span class="header-section-number">1.3</span> _output.yml</h2>
@@ -277,8 +297,7 @@ American English and French are activated by default.</p>
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p><a href="https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="getting-started.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a href="https://github.com/jgm/pandoc/issues/4072" class="uri">https://github.com/jgm/pandoc/issues/4072</a><a href="getting-started.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="getting-started.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -303,7 +322,7 @@ American English and French are activated by default.</p>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
 "twitter": true,
 "linkedin": false,

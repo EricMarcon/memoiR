@@ -132,7 +132,7 @@ This template allows writing articles in Markdown\footnote{\url{https://ericmarc
 \section{R Markdown}\label{markdown}}
 
 Markdown is a very simple language for producing various types of documents: HTML, PDF, and Word among others.
-Its documentation is available at the RStudio website\footnote{\url{http://rmarkdown.rstudio.com/articles.html}}.
+Its documentation is available at the RStudio website\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
 
 Markdown is extended by Bookdown\footnote{\url{https://bookdown.org/yihui/bookdown/}}, which allows for book writing and more efficient syntax for articles.
 This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
@@ -265,7 +265,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpIrmOp1/simple_article/gallery/simple_article/simple_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmppL9TZh/simple_article/gallery/simple_article/simple_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -363,7 +363,7 @@ In all cases, the call to the reference is made by the command \texttt{\textback
 \hypertarget{bibliography}{%
 \subsection{Bibliography}\label{bibliography}}
 
-Bibliographic references included in the \texttt{references.bib} file can be called by \texttt{{[}@CitationKey{]}}, in parentheses \citep{Xie2016}, or without suare brackets, in the text, as \citet{Xie2018} .
+Bibliographic references included in the \texttt{references.bib} file can be called by \texttt{{[}@CitationKey{]}}, in parentheses \citep{Xie2016}, or without square brackets, in the text, as \citet{Xie2018} .
 
 The bibliography is processed by Pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line
@@ -375,11 +375,14 @@ csl:file_name.csl
 in the document header and copying the \emph{.csl} style file to the project folder.
 More than a thousand styles are available\footnote{\url{https://github.com/citation-style-language/styles}}.
 
-For PDF documents, the bibliography is managed by LaTeX.
-The style is included in the template: it is the one from \emph{Methods in Ecology and Evolution}.
-It cannot be changed, to ensure the homogeneity of the documents produced.
+For PDF documents, the bibliography is managed by natbib.
+The style is declared in the header:
 
-To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate \emph{.tex} file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.
+\begin{verbatim}
+biblio-style: chicago
+\end{verbatim}
+
+It can be changed as long as the appropriate \texttt{.bst} file (by default: \texttt{chicago.bst}) is included in the project.
 
 \hypertarget{latex-preamble}{%
 \subsection{LaTeX preamble}\label{latex-preamble}}
@@ -387,39 +390,7 @@ To prepare the submission of a manuscript to a journal, it will be necessary to 
 LaTeX commands can be added in the preamble of the produced LaTeX file, for example to load additional packages.
 These commands are in the \texttt{preamble:} section of the Markdown file header.
 
-The default commands allow:
-
-\begin{itemize}
-\tightlist
-\item
-  To use the degree character (example: 20°C):
-\end{itemize}
-
-\begin{verbatim}
-\usepackage{textcomp}
-\DeclareUnicodeCharacter{B0}{textdegree}
-\end{verbatim}
-
-\begin{itemize}
-\tightlist
-\item
-  To obtain two-column tables by redefining the \texttt{table} environment and loading the \emph{tabu} package necessary for \emph{kableExtra}:
-\end{itemize}
-
-\begin{verbatim}
-\usepackage{tabu}
-\renewenvironment{table}{%
-  \begin{table*}}%
-  {\end{table*}%
-  \ignorespacesafterend
-}
-\end{verbatim}
-
-\begin{itemize}
-\tightlist
-\item
-  To show the use of the hyphenation command:
-\end{itemize}
+The default commands allow to show the use of the hyphenation command:
 
 \begin{verbatim}
 \hyphenation%
@@ -432,9 +403,9 @@ Warning:
 \begin{itemize}
 \tightlist
 \item
-  Comments are not possible.
+  Comments are not allowed
 \item
-  Complex commands (such as \texttt{renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+  Complex commands (such as \texttt{\textbackslash{}renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 \end{itemize}
 
 \hypertarget{forcing-line-breaks}{%
@@ -450,10 +421,10 @@ The HTML document ignores LaTeX commands.
 \hypertarget{languages}{%
 \subsection{Languages}\label{languages}}
 
-English and French are supported, to be declared in the document header.
+Languages are declared in the document header.
 
-The main language of the document changes the name of some elements, such as the table of contents.
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:
+The main language of the document (\texttt{lang}) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of \texttt{otherlangs}) is managed in LaTeX but not in HTML by inserting on a new line the following command:
 
 \begin{verbatim}
 \selectlanguage{english}
@@ -462,27 +433,19 @@ The change of language in the document is managed in LaTeX but not in HTML by in
 The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The \texttt{\textbackslash{}selectlanguage} command is simply ignored in HTML.
 
-\selectlanguage{french}
-
-Texte en Français : remarquer l'espace avant les deux points.
-\selectlanguage{english}
-
-EcoFoG templates use the LaTeX package \emph{babel} which recognizes the language names \emph{English} and \emph{french}.
-Pandoc on the other hand uses the IETF codes \emph{fr-FR} or \emph{en-US} for limited language support in HTML.
-Both parameters must therefore be entered in the document header.
+Language codes are used in the header, such as \texttt{en-US} but language names are necessary in \texttt{\textbackslash{}selectlanguage\{\}}.
+Name matches are listed in table 3 of the polyglossia package documentation\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
 
 \hypertarget{document-types}{%
 \section{Document types}\label{document-types}}
 
-This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
+This template is designed to work with the Simple Article template in LaTeX and produce documents in PDF, HTML or Word format.
 Use the list of choices in the \emph{Knit} button to choose the output format.
-
-The Word document can then be modified to comply with the instructions to journal authors: double-spaced, font, etc.
 
 \hypertarget{pdf-document}{%
 \subsection{PDF Document}\label{pdf-document}}
 
-The document is formatted for self-archiving of well-formatted articles.
+The document is formatted according to the article LaTeX template.
 
 \hypertarget{html-document}{%
 \subsection{HTML document}\label{html-document}}
@@ -491,7 +454,7 @@ The GitBook template is optimized for on-screen reading.
 While writing, prefer knitting to HTML format for its speed of execution.
 A download button is available in the document menu bar: it will work if the document is also knitted in PDF format and if the file name is entered in the download field of the YAML header.
 
-The HMTL Book template is an alternative.
+The HMTL Document and all formats from the \textbf{rmdformats} packages are other possibilities.
 
 \hypertarget{word-document}{%
 \subsection{Word document}\label{word-document}}

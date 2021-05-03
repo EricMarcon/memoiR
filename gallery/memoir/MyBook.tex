@@ -120,31 +120,18 @@
 \makeatother
 
 % Include headers (preamble.tex) here
-%%% Complete the preamble of the LaTeX template
-%%%------------------------------------------------------------------------------
-
-
-
-
-%%% Langues supplémentaires.
-% Commenter pour désactiver, décommenter pour activer
-% Référence: https://mirrors.chevalier.io/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf (table 3)
-\usepackage{polyglossia}
-% fr-FR
-\setotherlanguage[]{french}
-% Au choix: Anglais en-GB ou en-US (défaut)
-%\setotherlanguage[variant=british]{english}
-\setotherlanguage[]{english}
-% pt-BR
-%\setotherlanguage[variant=brazilian]{portuguese}
+% Add LaTeX code into the preamble of the document here
+\hyphenation{bio-di-ver-si-ty sap-lings}
 
 \usepackage{enumitem}
 
+% Polyglossia
 \usepackage{polyglossia}
-\setmainlanguage[variant=american]{english}
+\setmainlanguage{en-US}
+\setotherlanguage{fr-FR}
+\setotherlanguage{it}
 
-
-\usepackage[style=authoryear-ibid,backend=biber,citestyle=verbose-inote,pageref=true,isbn=false,backref=true,giveninits=true,uniquename=init,maxcitenames=2,maxbibnames=150,sorting=nyt,sortcites=false]{biblatex}
+\usepackage[backend=biber,style=verbose-inote,pageref=true,isbn=false,backref=true,giveninits=true,uniquename=init,maxcitenames=2,maxbibnames=150,sorting=nyt,sortcites=false]{biblatex}
 \addbibresource{references.bib}
 
 % cslreferences environment required by pandoc > 2.7
@@ -506,46 +493,94 @@ The \emph{references.bib} file contains the bibliography.
 
 The basic parameters of the project must be entered in the following files.
 
-\hypertarget{index.rmd}{%
-\section{index.Rmd}\label{index.rmd}}
+\hypertarget{index}{%
+\section{index.Rmd}\label{index}}
 
 In the file header, enter the title of the work and the name of the author(s).
 
 \begin{verbatim}
-title: "Memoir" 
+title: "Title of the Memoir" 
 author: "Authors' names"
 \end{verbatim}
+
+The date field may be kept to display the knitting date automatically.
+
+The \texttt{github-repo} field contains the name of the repository of the project on GitHub.
+It is used to build a link to the repository from the menu bar of the GitBook version of the document.
+
+The cover will be:
+
+\begin{itemize}
+\tightlist
+\item
+  that of a book if the \emph{maintitlepage} statement is present.
+  The content of \emph{epigraph} and \emph{credits} will be written on page 2, with \texttt{images/logo.pdf}.
+\item
+  the first page of the PDF file declared in the \emph{pdftitlepage} instruction if it is present.
+\end{itemize}
+
+Delete one of the two instructions in the header or both covers will be built, like in the gallery\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
+
+The languages are specified according to the IETF language tags, such as \enquote{en-US}.
+The main language (\texttt{lang}) is that of the structure of the document, translating elements such as \enquote{chapter}.
+The other languages (\texttt{otherlangs}) can be used to switch language inside the PDF document to benefit from correct hyphenation.
 
 LaTeX specific options are:
 
 \begin{itemize}
 \tightlist
 \item
-  \emph{documentclass}: the document class, necessarily \emph{memoir} for this template.
-  The options of the \emph{memoir} class are listed, not to be changed normally.
-\item
-  \emph{fontfamily}: \href{https://en.wikibooks.org/wiki/LaTeX/Fonts\#Font_families}{font}, \emph{lmodern} by default.
-\item
-  \emph{linestretch}: line spacing, 1 by default.
-\item
   \emph{papersize}: A4.
 \item
   \emph{fontsize}: 11pt.
 \item
   \emph{toc-depth}: number of levels in the table of contents, 3 by default.
+\end{itemize}
+
+Bibliography is managed by BibLaTeX, whose options should not be changed.
+
+The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
+It must be entered with its \texttt{.bib} extension.
+
+The back cover appears in PDF outputs only.
+It is designed to to display abstract and keyword in several languages if necessary.
+The items of \texttt{backcover} are a list:
+
+\begin{itemize}
+\tightlist
 \item
-  \emph{lang}: fr-FR, en-US or en-GB (or any valid code\footnote{\url{https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}), the main language.
+  language: the name of the language, that will be passed to the LaTeX command \texttt{\textbackslash{}selectlanguage\{\}}.
 \item
-  \emph{otherlangs}: ignored since pandoc version 2\footnote{\url{https://github.com/jgm/pandoc/issues/4072}}.
+  abstract: the content of the abstract.
 \item
-  \emph{graphics}: yes mandatory to use the \emph{graphics} package needed for figures.
+  keywords: a list of keywords.
+\item
+  abstractlabel and keywordlabel: the localized text to print before abstract and keywords.
+\end{itemize}
+
+\texttt{backcoverfontsize} may be changed better fit the page size, according to the length of the abstracts.
+
+Some options should not be modified, including:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{documentclass}: the document class is \emph{memoir} for this template.
+  The options of the \emph{memoir} class are listed, not to be changed normally.
 \item
   \emph{fig\_crop}: yes to allow cropping of excess margins of figures.
+  GhostScript must be installed.
+  If it is not, or in order to save computing time, the option may be set to \texttt{no}.
+\end{itemize}
+
+Some may be added to the header:
+
+\begin{itemize}
+\tightlist
 \item
-  The back cover will display the abstract in French and English and the associated keywords if the \emph{resume}, \emph{keywords}, \emph{abstract} and \emph{keywords} instructions are present;
+  \emph{fontfamily}: \href{https://en.wikibooks.org/wiki/LaTeX/Fonts\#Font_families}{font}, \emph{lmodern} by default.
 \item
-  \emph{fourthpagefontsize} gives the font size of the back cover, normalsize by default, to be adapted according to the length of the summaries.
-  The command must be recognized by LaTeX.
+  \emph{linestretch}: line spacing, 1 by default.
 \end{itemize}
 
 The parameters of the bibliography are:
@@ -568,19 +603,6 @@ The parameters of the bibliography are:
   \emph{colorlinks}: yes to make the hyperlinks be displayed in color.
 \end{itemize}
 
-The cover will be:
-
-\begin{itemize}
-\tightlist
-\item
-  Book format if the \emph{maintitlepage} statement is present.
-  The content of \emph{epigraph} will be written on page 2.
-\item
-  the first page of the PDF file declared in the \emph{pdftitlepage} instruction if it is present.
-\end{itemize}
-
-Delete one of the two instructions in the header.
-
 For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
 Only the first page of the PDF is used.
 
@@ -588,6 +610,7 @@ Only the first page of the PDF is used.
 \section{\_bookdown.yml}\label{bookdown.yml}}
 
 Enter the name of the Rmd file that will be the result of the merging of all chapters and choose if it should be destroyed after use.
+It will also be the name of the PDF and Word files.
 The default options will suit most uses.
 
 \begin{verbatim}
@@ -602,14 +625,8 @@ Otherwise, delete the line.
 repo: "https://github.com/GitHubID/Repository"
 \end{verbatim}
 
-There is no need to fill in the keywords according to the language of the work.
-The \emph{language} options are supported elsewhere.
-
-\begin{verbatim}
-language:
-  ui:
-    chapter_name: "Chapter"
-\end{verbatim}
+The knitted files are stored in the output directory.
+\texttt{docs} is the good choice for GitHub Pages.
 
 \hypertarget{output.yml}{%
 \section{\_output.yml}\label{output.yml}}
@@ -672,8 +689,24 @@ Click on \emph{From template}: from templates installed by packages.
 The memoiR package templates are displayed: choose \emph{Memoir}.
 
 Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g.~\texttt{01-intro.Rmd}).
-All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for \texttt{99-references.Rmd} which contains the bibliography, placed at the end.
+All Rmd files in the project folder are actually treated as chapters, sorted by file name, including those provided by the template (startup and syntax) which should be deleted except for \texttt{99-references.Rmd} which contains the bibliography, placed at the end.
 The \texttt{index.Rmd} file is special: it contains the document header and the first chapter.
+
+Each other file starts with a top-level title:
+
+\begin{verbatim}
+# Title of the Chapter
+\end{verbatim}
+
+If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:
+
+\begin{verbatim}
+# (PART) Title of the Part {-}
+
+# Title of the Chapter
+\end{verbatim}
+
+Note the \texttt{\{-\}} instruction after the title of the part to avoid having it numbered.
 
 \hypertarget{write}{%
 \section{Write}\label{write}}
@@ -689,7 +722,7 @@ A line break marks a paragraph change.
 The different levels of the plan are designated by the number of braces at the beginning of the line: \texttt{\#} for a level 1 title, \texttt{\#\#} for a level 2 title, etc.
 A space separates the hashes and the title text.
 
-Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
+Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
 An empty line is required before the beginning of the list, but the elements of the list are separated by a simple line break.
 Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
 Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.
@@ -848,7 +881,7 @@ Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the 
 Since the table contains mathematics (in the name of the first column), the \texttt{escape\ =\ FALSE} option is necessary.
 
 The \texttt{bootstrap\_options\ =\ "striped"} style option provides more readable tables in HTML.
-LAst, the \texttt{full\_width\ =\ FALSE} option allows you to adjust the width of the table to its content instead of occupying all the available width.
+Last, the \texttt{full\_width\ =\ FALSE} option allows you to adjust the width of the table to its content instead of occupying all the available width.
 
 \hypertarget{maths}{%
 \section{Maths}\label{maths}}
@@ -906,16 +939,25 @@ in the document header and copying the \emph{.csl} style file into the project f
 The default style (if no csl is specified) is \enquote{chicago-author-date}.
 Several thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
 
-For PDF documents, the bibliography is handled by LaTeX.
-It is chosen in the header of \texttt{index.Rmd}.
+For PDF documents, the bibliography is handled by BibLaTeX, see section \ref{index}.
+
+\hypertarget{forcing-line-breaks}{%
+\section{Forcing line breaks}\label{forcing-line-breaks}}
+
+Hyphenation is handled automatically in LaTeX.
+If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command \texttt{hyphenation} (words are separated by spaces, hyphenation locations are represented by dashes).
+
+If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command \texttt{\textbackslash{}break} to the line break location.
+Do not leave a space before the command.
+The HTML document ignores LaTeX commands.
 
 \hypertarget{languages}{%
 \section{Languages}\label{languages}}
 
-English and French are supported, to be declared in the document header.
+Languages are declared in the document header.
 
-The main language of the document changes the name of some elements, such as the table of contents.
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:
+The main language of the document (\texttt{lang}) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of \texttt{otherlangs}) is managed in LaTeX but not in HTML by inserting on a new line the following command:
 
 \begin{verbatim}
 \selectlanguage{english}
@@ -924,9 +966,8 @@ The change of language in the document is managed in LaTeX but not in HTML by in
 The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The \texttt{\textbackslash{}selectlanguage} command is simply ignored in HTML.
 
-EcoFoG templates use the LaTeX package \emph{babel} which recognizes the language names \emph{English} and \emph{french}.
-Pandoc on the other hand uses the IETF codes \emph{fr-FR} or \emph{en-US} for limited language support in HTML.
-Both parameters must therefore be entered in the document header.
+Language codes are used in the header, such as \texttt{en-US} but language names are necessary in \texttt{\textbackslash{}selectlanguage\{\}}.
+Name matches are listed in table 3 of the polyglossia package documentation\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
 
 \hypertarget{chapter-summary}{%
 \section{Chapter summary}\label{chapter-summary}}
@@ -938,6 +979,12 @@ The code is that of a code block of type \enquote{Summary}.
 ```{block, type='Summary'}
 Some text for this block.
 ```
+\end{verbatim}
+
+Its heading text is set in the preamble:
+
+\begin{verbatim}
+chaptersummary: In a Nutshell
 \end{verbatim}
 
 \hypertarget{user-documentation}{%
@@ -970,7 +1017,6 @@ Some text for this block.
 \backmatter
 \SmallMargins
 
-%
 \twocolumn
 \renewcommand*{\bibfont}{\scriptsize}
 \printbibliography
@@ -1004,9 +1050,7 @@ Some text for this block.
 \item[Abstract]
 English abstract, on the last page.
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
-
-Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+This is a bookdown template base on LaTeX memoir class.
 \item[Keywords]
 Keyword in English, As a list.
 ~\\

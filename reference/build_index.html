@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -157,8 +157,10 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>R Markdown files of the project are used to get the title and abstract of the published documents.
+Run this function once in each project created from a memoiR template, before <code><a href='build_githubpages.html'>build_githubpages()</a></code>.
 A link to their HTML and, optionally, PDF versions is added.
-Metadata fields are read in the .Rmd files YAML header: title, abstract and <code>URL</code>.</p>
+Metadata fields are read in the .Rmd files YAML header: title, abstract and <code>URL</code>.
+The function is useless in book projects: the <em>Build the Book</em> (i.e. the <code><a href='https://pkgs.rstudio.com/bookdown/reference/render_book.html'>bookdown::render_book()</a></code> function) takes care of every step.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

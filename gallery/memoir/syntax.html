@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Syntax | Title of the Memoir</title>
-  <meta name="description" content="A bookdown template base on LaTeX memoir class." />
+  <meta name="description" content="2 Syntax | Title of the Memoir" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Syntax | Title of the Memoir" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="A bookdown template base on LaTeX memoir class." />
+  
   <meta name="github-repo" content="GitHubID/Repository" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Syntax | Title of the Memoir" />
   
-  <meta name="twitter:description" content="A bookdown template base on LaTeX memoir class." />
+  
   
 
 <meta name="author" content="Authors’ names" />
@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a><ul>
-<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#index.rmd"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#index"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
 <li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#bookdown.yml"><i class="fa fa-check"></i><b>1.2</b> _bookdown.yml</a></li>
 <li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#output.yml"><i class="fa fa-check"></i><b>1.3</b> _output.yml</a></li>
 <li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#multilingual-documents"><i class="fa fa-check"></i><b>1.4</b> Multilingual documents</a></li>
@@ -154,10 +154,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="syntax.html"><a href="syntax.html#maths"><i class="fa fa-check"></i><b>2.5</b> Maths</a></li>
 <li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#cross-references"><i class="fa fa-check"></i><b>2.6</b> Cross-references</a></li>
 <li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#bibliography"><i class="fa fa-check"></i><b>2.7</b> Bibliography</a></li>
-<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.8</b> Languages</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.9</b> Chapter summary</a></li>
-<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.10</b> User documentation</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.11</b> Documentation for developers</a></li>
+<li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
+<li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11</b> User documentation</a></li>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12</b> Documentation for developers</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -198,18 +199,25 @@ The wizard allows you to choose between different formats.</p>
 <p>Click on <em>From template</em>: from templates installed by packages.
 The memoiR package templates are displayed: choose <em>Memoir</em>.</p>
 <p>Each chapter of the book is an Rmd file, whose name normally starts with its number (e.g. <code>01-intro.Rmd</code>).
-All Rmd files in the project folder are actually treated as chapters, sorted by filename, including those provided by the template (startup and syntax) which should be deleted except for <code>99-references.Rmd</code> which contains the bibliography, placed at the end.
+All Rmd files in the project folder are actually treated as chapters, sorted by file name, including those provided by the template (startup and syntax) which should be deleted except for <code>99-references.Rmd</code> which contains the bibliography, placed at the end.
 The <code>index.Rmd</code> file is special: it contains the document header and the first chapter.</p>
+<p>Each other file starts with a top-level title:</p>
+<pre><code># Title of the Chapter</code></pre>
+<p>If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:</p>
+<pre><code># (PART) Title of the Part {-}
+
+# Title of the Chapter</code></pre>
+<p>Note the <code>{-}</code> instruction after the title of the part to avoid having it numbered.</p>
 <div id="write" class="section level2">
 <h2><span class="header-section-number">2.1</span> Write</h2>
 <p>The main features of Markdown are summarized here.
-A quick and complete training is offered by RStudio<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+A quick and complete training is offered by RStudio<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <p>The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.</p>
 <p>A line break marks a paragraph change.</p>
 <p>The different levels of the plan are designated by the number of braces at the beginning of the line: <code>#</code> for a level 1 title, <code>##</code> for a level 2 title, etc.
 A space separates the hashes and the title text.</p>
-<p>Bulleted lists are marked by a dash (followed by a space) at the beginning of the line.
+<p>Bullet lists are marked by a dash (followed by a space) at the beginning of the line.
 An empty line is required before the beginning of the list, but the elements of the list are separated by a simple line break.
 Indented lists are created by inserting 4 spaces before the dash at the beginning of the line.
 Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.</p>
@@ -233,14 +241,14 @@ These code chunks can contain R code but also Python code for example: the type 
 The <code>echo</code> option should be set to <code>FALSE</code> by default for a scientific article for example.</p>
 <p>When it is <code>TRUE</code>, the code is printed as follow</p>
 <p></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="syntax.html#cb10-1"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="syntax.html#cb11-1"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p></p>
 </div>
 <div id="figures" class="section level2">
 <h2><span class="header-section-number">2.3</span> Figures</h2>
 <p></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="syntax.html#cb12-1"></a><span class="kw">plot</span>(pressure)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="syntax.html#cb13-1"></a><span class="kw">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pressure"></span>
 <img src="MyBook_files/figure-html/pressure-1.png" alt="Figure title" width="80%" />
 <p class="caption">
@@ -280,13 +288,13 @@ Always place these files in the <code>images</code> folder for good organization
 The content of the table is in a dataframe.
 The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="syntax.html#cb14-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb14-2"><a href="syntax.html#cb14-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
-<span id="cb14-3"><a href="syntax.html#cb14-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb14-4"><a href="syntax.html#cb14-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, </span>
-<span id="cb14-5"><a href="syntax.html#cb14-5"></a>    <span class="dt">longtable =</span> <span class="ot">TRUE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb14-6"><a href="syntax.html#cb14-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
-<span id="cb14-7"><a href="syntax.html#cb14-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="syntax.html#cb15-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb15-2"><a href="syntax.html#cb15-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
+<span id="cb15-3"><a href="syntax.html#cb15-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, </span>
+<span id="cb15-5"><a href="syntax.html#cb15-5"></a>    <span class="dt">longtable =</span> <span class="ot">TRUE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb15-6"><a href="syntax.html#cb15-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb15-7"><a href="syntax.html#cb15-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:kable">Table 2.1: </span>Table created by R
@@ -421,7 +429,7 @@ As with figures, an enhanced legend can be written in a separate paragraph.</p>
 <p>Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
 Since the table contains mathematics (in the name of the first column), the <code>escape = FALSE</code> option is necessary.</p>
 <p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
-LAst, the <code>full_width = FALSE</code> option allows you to adjust the width of the table to its content instead of occupying all the available width.</p>
+Last, the <code>full_width = FALSE</code> option allows you to adjust the width of the table to its content instead of occupying all the available width.</p>
 </div>
 <div id="maths" class="section level2">
 <h2><span class="header-section-number">2.5</span> Maths</h2>
@@ -455,32 +463,40 @@ The bibliographic style can be specified, by adding the line</p>
 <p>csl:file_name.csl</p>
 <p>in the document header and copying the <em>.csl</em> style file into the project folder.
 The default style (if no csl is specified) is “chicago-author-date”.
-Several thousand styles are available.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-<p>For PDF documents, the bibliography is handled by LaTeX.
-It is chosen in the header of <code>index.Rmd</code>.</p>
+Several thousand styles are available.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>For PDF documents, the bibliography is handled by BibLaTeX, see section <a href="getting-started.html#index">1.1</a>.</p>
+</div>
+<div id="forcing-line-breaks" class="section level2">
+<h2><span class="header-section-number">2.8</span> Forcing line breaks</h2>
+<p>Hyphenation is handled automatically in LaTeX.
+If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command <code>hyphenation</code> (words are separated by spaces, hyphenation locations are represented by dashes).</p>
+<p>If LaTeX can’t find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command <code>\break</code> to the line break location.
+Do not leave a space before the command.
+The HTML document ignores LaTeX commands.</p>
 </div>
 <div id="languages" class="section level2">
-<h2><span class="header-section-number">2.8</span> Languages</h2>
-<p>English and French are supported, to be declared in the document header.</p>
-<p>The main language of the document changes the name of some elements, such as the table of contents.
-The change of language in the document is managed in LaTeX but not in HTML by inserting on a new line the following command:</p>
+<h2><span class="header-section-number">2.9</span> Languages</h2>
+<p>Languages are declared in the document header.</p>
+<p>The main language of the document (<code>lang</code>) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of <code>otherlangs</code>) is managed in LaTeX but not in HTML by inserting on a new line the following command:</p>
 <pre><code>\selectlanguage{english}</code></pre>
 <p>The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
-<p>EcoFoG templates use the LaTeX package <em>babel</em> which recognizes the language names <em>English</em> and <em>french</em>.
-Pandoc on the other hand uses the IETF codes <em>fr-FR</em> or <em>en-US</em> for limited language support in HTML.
-Both parameters must therefore be entered in the document header.</p>
+<p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
+Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 </div>
 <div id="chapter-summary" class="section level2">
-<h2><span class="header-section-number">2.9</span> Chapter summary</h2>
+<h2><span class="header-section-number">2.10</span> Chapter summary</h2>
 <p>The take-home message of each chapter can be displayed in a box, see the beginning of this one.
 The code is that of a code block of type “Summary”.</p>
 <pre><code>```{block, type=&#39;Summary&#39;}
 Some text for this block.
 ```</code></pre>
+<p>Its heading text is set in the preamble:</p>
+<p>chaptersummary: In a Nutshell</p>
 </div>
 <div id="user-documentation" class="section level2">
-<h2><span class="header-section-number">2.10</span> User documentation</h2>
+<h2><span class="header-section-number">2.11</span> User documentation</h2>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
 All the necessary details for writing (writing equations, cross-references, etc.) are given.</li>
@@ -488,7 +504,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 </ul>
 </div>
 <div id="documentation-for-developers" class="section level2">
-<h2><span class="header-section-number">2.11</span> Documentation for developers</h2>
+<h2><span class="header-section-number">2.12</span> Documentation for developers</h2>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>
@@ -507,9 +523,10 @@ All the necessary details for writing (writing equations, cross-references, etc.
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a><a href="syntax.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="syntax.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a><a href="syntax.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="syntax.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="syntax.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -534,7 +551,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
 "twitter": true,
 "linkedin": false,

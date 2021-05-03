@@ -2465,46 +2465,29 @@ Indentation of lists indicates their level: </em>, + and - may be replaced by - 
 </div>
 <div id="bibliography" class="section level2">
 <h2><span class="header-section-number">3.8</span> Bibliography</h2>
-<p>Bibliographic references included in the <code>references.bib</code> file can be called by <code>[@CitationKey]</code>, in parentheses <span class="citation">(Xie 2016)</span>, or without suare brackets, in the text, as <span class="citation">Xie, Allaire, and Grolemund (2018)</span> .</p>
+<p>Bibliographic references included in the <code>references.bib</code> file can be called by <code>[@CitationKey]</code>, in parentheses <span class="citation">(Xie 2016)</span>, or without square brackets, in the text, as <span class="citation">Xie, Allaire, and Grolemund (2018)</span> .</p>
 <p>The bibliography is processed by Pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line</p>
 <p>csl:file_name.csl</p>
 <p>in the document header and copying the <em>.csl</em> style file to the project folder.
 More than a thousand styles are available<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
-<p>For PDF documents, the bibliography is managed by LaTeX.
-The style is included in the template: it is the one from <em>Methods in Ecology and Evolution</em>.
-It cannot be changed, to ensure the homogeneity of the documents produced.</p>
-<p>To prepare the submission of a manuscript to a journal, it will be necessary to open the intermediate <em>.tex</em> file produced by Pandoc and to copy the contents of the environment into the template proposed by the journal, which will take care of the formatting.</p>
+<p>For PDF documents, the bibliography is managed by natbib.
+The style is declared in the header:</p>
+<p>biblio-style: chicago</p>
+<p>It can be changed as long as the appropriate <code>.bst</code> file (by default: <code>chicago.bst</code>) is included in the project.</p>
 </div>
 <div id="latex-preamble" class="section level2">
 <h2><span class="header-section-number">3.9</span> LaTeX preamble</h2>
 <p>LaTeX commands can be added in the preamble of the produced LaTeX file, for example to load additional packages.
 These commands are in the <code>preamble:</code> section of the Markdown file header.</p>
-<p>The default commands allow:</p>
-<ul>
-<li>To use the degree character (example: 20°C):</li>
-</ul>
-<pre><code>\usepackage{textcomp}
-\DeclareUnicodeCharacter{B0}{textdegree}</code></pre>
-<ul>
-<li>To obtain two-column tables by redefining the <code>table</code> environment and loading the <em>tabu</em> package necessary for <em>kableExtra</em>:</li>
-</ul>
-<pre><code>\usepackage{tabu}
-\renewenvironment{table}{%
-  \begin{table*}}%
-  {\end{table*}%
-  \ignorespacesafterend
-}</code></pre>
-<ul>
-<li>To show the use of the hyphenation command:</li>
-</ul>
+<p>The default commands allow to show the use of the hyphenation command:</p>
 <pre><code>\hyphenation%
   {bio-di-ver-si-ty sap-lings}</code></pre>
 <p>Other commands can be added as needed.
 Warning:</p>
 <ul>
-<li>Comments are not possible.</li>
-<li>Complex commands (such as <code>renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
+<li>Comments are not allowed</li>
+<li>Complex commands (such as <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
 </ul>
 </div>
 <div id="forcing-line-breaks" class="section level2">
@@ -2517,18 +2500,20 @@ The HTML document ignores LaTeX commands.</p>
 </div>
 <div id="languages" class="section level2">
 <h2><span class="header-section-number">3.11</span> Languages</h2>
-<p>English and French are supported, to be declared in the document header.</p>
-<p>The chosen language has an effect only in LaTeX output: a space is added in front of double punctuation in French, the size of spaces is bigger at the beginning of a sentence in English, etc.</p>
-<p>LaTeX templates use the LaTeX package <em>babel</em> which recognizes the language names <em>English</em> and <em>french</em>.
-Pandoc on the other hand uses the IETF codes <em>fr-FR</em> or <em>en-US</em> for limited language support in HTML.
-Both parameters must therefore be entered in the document header.</p>
+<p>Languages are declared in the document header.</p>
+<p>The main language of the document (<code>lang</code>) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of <code>otherlangs</code>) is managed in LaTeX but not in HTML by inserting on a new line the following command:</p>
+<pre><code>\selectlanguage{english}</code></pre>
+<p>The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
+<p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
+Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 </div>
 <div id="document-types" class="section level1">
 <h1><span class="header-section-number">4</span> Document types</h1>
 <p>This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
 Use the list of choices in the <em>Knit</em> button to choose the output format.</p>
-<p>The Word document can then be modified to comply with the instructions to journal authors: double-spaced, font, etc.</p>
 <div id="pdf-document" class="section level2">
 <h2><span class="header-section-number">4.1</span> PDF Document</h2>
 <p>The document is formatted for self-archiving of well-formatted articles.</p>
@@ -2538,7 +2523,7 @@ Use the list of choices in the <em>Knit</em> button to choose the output format.
 <p>The GitBook template is optimized for on-screen reading.
 While writing, prefer knitting to HTML format for its speed of execution.
 A download button is available in the document menu bar: it will work if the document is also knitted in PDF format and if the file name is entered in the download field of the YAML header.</p>
-<p>The HMTL Book template is an alternative.</p>
+<p>The HMTL Document and all formats from the <strong>rmdformats</strong> packages are other possibilities.</p>
 </div>
 <div id="word-document" class="section level2">
 <h2><span class="header-section-number">4.3</span> Word document</h2>
@@ -2565,9 +2550,10 @@ The level 1 title <em>References</em> must be added manually to Word files.</p>
 <hr />
 <ol>
 <li id="fn1"><p><a href="https://ericmarcon.github.io/travailleR/chap-rediger.html" class="uri">https://ericmarcon.github.io/travailleR/chap-rediger.html</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a href="http://rmarkdown.rstudio.com/articles.html" class="uri">http://rmarkdown.rstudio.com/articles.html</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p><a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 </div>
