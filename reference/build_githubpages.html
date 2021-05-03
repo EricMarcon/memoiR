@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -97,6 +97,18 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/articles/LaTeX.html">Production of LaTeX Documents</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -166,12 +178,12 @@ GitHub Pages allow making a website to present them:</p><ul>
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
 <span class='co'># Make it the current project</span>
 <span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Setting active project to </span><span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmprPRBpD/examplee72266d9dc3'</span><span></span></div><div class='input'><span class='co'># render: knit to downcute</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Setting active project to </span><span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmpx4yspy/example1dc558fb8aac'</span><span></span></div><div class='input'><span class='co'># render: knit to downcute</span>
 <span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>render</a></span><span class='op'>(</span>input<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>pattern<span class='op'>=</span><span class='st'>"*.Rmd"</span><span class='op'>)</span>, 
                   output_format<span class='op'>=</span><span class='st'>"rmdformats::downcute"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>processing file: examplee72266d9dc3.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.....                                                                 |   7%
+#&gt; <span class='message'>processing file: example1dc558fb8aac.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.....                                                                 |   7%
 #&gt;    inline R code fragments
 #&gt; 
 #&gt;   |                                                                              |.........                                                             |  13%
@@ -232,18 +244,18 @@ GitHub Pages allow making a website to present them:</p><ul>
 #&gt;   |                                                                              |......................................................................| 100%
 #&gt;    inline R code fragments
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: examplee72266d9dc3.knit.md</span></div><div class='output co'>#&gt; <span class='warning'>Warning: MathJax doesn't work with self_contained when not using the rmarkdown "default" template.</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS examplee72266d9dc3.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output examplee72266d9dc3.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --wrap preserve --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable 'downcute:true' --variable 'lightbox:true' --variable 'gallery:false' --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 2 --template /Users/runner/work/_temp/Library/rmdformats/templates/template.html --highlight-style pygments --number-sections --variable theme=bootstrap --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmprPRBpD/rmarkdown-stre7233576f16.html --filter /usr/local/bin/pandoc-citeproc </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: examplee72266d9dc3.html</span></div><div class='input'><span class='co'># Build index, HTML only</span>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: example1dc558fb8aac.knit.md</span></div><div class='output co'>#&gt; <span class='warning'>Warning: MathJax doesn't work with self_contained when not using the rmarkdown "default" template.</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS example1dc558fb8aac.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output example1dc558fb8aac.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --wrap preserve --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable 'downcute:true' --variable 'lightbox:true' --variable 'gallery:false' --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 2 --template /Users/runner/work/_temp/Library/rmdformats/templates/template.html --highlight-style pygments --number-sections --variable theme=bootstrap --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpx4yspy/rmarkdown-str1dc5575eda04.html --filter /usr/local/bin/pandoc-citeproc </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: example1dc558fb8aac.html</span></div><div class='input'><span class='co'># Build index, HTML only</span>
 <span class='fu'><a href='build_index.html'>build_index</a></span><span class='op'>(</span>PDF<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Writing </span><span style='color: #0000BB;'>'README.md'</span><span></span></div><div class='input'><span class='co'># Build GitHub Pages</span>
 <span class='fu'>build_githubpages</span><span class='op'>(</span>destination<span class='op'>=</span><span class='st'>"docs"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Output files moved to docs</div><div class='input'><span class='co'># List the GitHub Pages files</span>
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"docs"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "examplee72266d9dc3.html"
-#&gt; [2] "images/logo.pdf"        
-#&gt; [3] "images/logo.png"        
-#&gt; [4] "README.md"              </div><div class='input'><span class='co'># Return to the original working directory and clean up</span>
+</div><div class='output co'>#&gt; [1] "example1dc558fb8aac.html"
+#&gt; [2] "images/logo.pdf"         
+#&gt; [3] "images/logo.png"         
+#&gt; [4] "README.md"               </div><div class='input'><span class='co'># Return to the original working directory and clean up</span>
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div></span></pre>
