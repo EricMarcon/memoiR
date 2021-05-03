@@ -36,8 +36,6 @@ corrauthorlabel: Corresponding author
 bibliography: references.bib
 biblio-style: chicago
 preamble: >
-  \usepackage{tabu}
-  \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
 always_allow_html: yes
 output:

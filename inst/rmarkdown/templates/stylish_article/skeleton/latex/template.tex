@@ -115,6 +115,10 @@ $endif$
 \end{figure}}
 \makeatother
 
+% Full-width tables
+\usepackage{tabu}
+\renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
+  
 $if(preamble)$
 % User-adder preamble
 $preamble$
