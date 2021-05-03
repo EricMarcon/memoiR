@@ -12,6 +12,8 @@ bookdown::epub_book: default
 bookdown::gitbook:
   css: style.css
   config:
+    sharing:
+      github: yes
     toc:
       before: |
         <li><a href="./">Title of the Memoir</a></li>
