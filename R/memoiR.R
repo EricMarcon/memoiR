@@ -119,14 +119,14 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
 #'
 #' Copy the files produced by knitting to the destination folder.
 #'
-#' Produced files are HTML pages and their companions (css, figures, libraries) 
-#' and PDF documents.
+#' Produced files are HTML pages and their companions (css, figures, libraries) and PDF documents.
 #' The function moves them all and the `README.md` file into the destination folder.
 #' GitHub Pages allow making a website to present them:
 #' - `README.md` is the home page. Make it with [build_index()] to have links to the HTML and PDF outputs.
 #' - knit both HTML and PDF versions to avoid dead links.
-#' - run `build_githubpages()`.
+#' - run `build_githubpages()` when a document is knitted to move the outputs into the `docs` folder.
 #' - push to GitHub and activate GitHub Pages on the main branch and the `docs` folder.
+#' The function is useless in book projects: the _Build the Book_ (i.e. the [bookdown::render_book()] function) takes care of every step.
 #'
 #' @param destination destination folder of the knitted documents.
 #'
@@ -219,8 +219,10 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' Build a README.md file that will be used as index of GitHub Pages.
 #'
 #' R Markdown files of the project are used to get the title and abstract of the published documents.
+#' Run this function once in each project created from a memoiR template, before [build_githubpages()].
 #' A link to their HTML and, optionally, PDF versions is added.
 #' Metadata fields are read in the .Rmd files YAML header: title, abstract and `URL`.
+#' The function is useless in book projects: the _Build the Book_ (i.e. the [bookdown::render_book()] function) takes care of every step.
 #'
 #' @param PDF if `TRUE` (by default), a link to the PDF output is added.
 #' 
@@ -257,15 +259,11 @@ build_index <- function(PDF = TRUE) {
 #'
 #' Build a .gitignore file suitable for R Markdown projects. 
 #'
-#' R Markdown files of the project are used to get the title and abstract of the published documents.
-#' A link to their HTML and, optionally, PDF versions is added.
-#' Metadata fields are read in the .Rmd files YAML header: title, abstract and `URL`.
+#' The .gitignore file contains the list of files (file name patterns) that must not be controlled by git.
+#' Run this function once in each project created from a memoiR template, before activating version control.
 #'
-#' @param PDF if `TRUE` (by default), a link to the PDF output is added.
-#' 
 #' @export
 build_gitignore <- function() {
-
   lines <- c("# History files",
              ".Rhistory",
              ".Rapp.history",
