@@ -40,6 +40,13 @@ Make the new folder an RStudio Project: use the menu "File / New Project...", cl
 Articles and slideshows are produced by clicking on the **Knit** button of the Source pane of their Rmd file.
 Memoirs are produced by clicking on the **Build Book** button of the Build pane.
 
+Push your project to GitHub and activate GitHub Pages to make your documents readable online.
+Rely on the following functions to simplify that task:
+
+- `build_gitignore()` to create a `.gitignore` file. Activate git source control then.
+- `build_index()` to create a `README.md` file, that will be the GitHub Pages index.
+- `build-githubpages()` to move knitted documents (articles or slideshows) to the `docs` folder.
+
 
 # Credits
 

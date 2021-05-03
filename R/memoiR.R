@@ -198,7 +198,15 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   pdfFiles <- gsub(".Rmd", ".pdf", RmdFiles)
   if (length(pdfFiles) > 0)
     suppressWarnings(file.rename(from=pdfFiles, to=paste(destination, "/", pdfFiles, sep="")))
-
+  # Move knitted PPTx files
+  PPTxFiles <- gsub(".Rmd", ".pptx", RmdFiles)
+  if (length(PPTxFiles) > 0)
+    suppressWarnings(file.rename(from=PPTxFiles, to=paste(destination, "/", PPTxFiles, sep="")))
+  # Move knitted docx files
+  docxFiles <- gsub(".Rmd", ".docx", RmdFiles)
+  if (length(docxFiles) > 0)
+    suppressWarnings(file.rename(from=docxFiles, to=paste(destination, "/", docxFiles, sep="")))
+  
   # Copy README.md to docs
   file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
 
@@ -242,4 +250,56 @@ build_index <- function(PDF = TRUE) {
     }
   }
   usethis::write_over(usethis::proj_path("README.md"), lines)
+}
+
+
+#' Build .gitignore
+#'
+#' Build a .gitignore file suitable for R Markdown projects. 
+#'
+#' R Markdown files of the project are used to get the title and abstract of the published documents.
+#' A link to their HTML and, optionally, PDF versions is added.
+#' Metadata fields are read in the .Rmd files YAML header: title, abstract and `URL`.
+#'
+#' @param PDF if `TRUE` (by default), a link to the PDF output is added.
+#' 
+#' @export
+build_gitignore <- function() {
+
+  lines <- c("# History files",
+             ".Rhistory",
+             ".Rapp.history",
+             "# Session Data files",
+             ".RData",
+             "# Package file",
+             ".Rbuildignore",
+             "# RStudio files",
+             ".Rproj.user/",
+             "",
+             "# knitr and R markdown default cache directories",
+             "/*_files/",
+             "/*_cache/",
+             "/libs/",
+             "",
+             "# Latex files",
+             "*.aux",
+             "*-blx.bib",
+             "*.log",
+             "*.xml",
+             "*.bbl",
+             "*.bcf",
+             "*.blg",
+             "*.synctex.gz",
+             "*.out",
+             "*.toc",
+             "*-concordance.tex",
+             "*(busy)",
+             "*.nav",
+             "*.snm",
+             "*.vrb",
+             "",
+             "# Uncomment if CI builds docs/",
+             "# docs/")
+  
+  usethis::write_over(usethis::proj_path(".gitignore"), lines)
 }
