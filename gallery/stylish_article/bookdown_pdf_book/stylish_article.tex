@@ -1,4 +1,4 @@
-\documentclass[fleqn,10pt]{article} % Document font size and equations flushed left
+\documentclass[fleqn,10pt]{latex/stylish_article} % Document font size and equations flushed left
 
 \setcounter{tocdepth}{3} % sections, subsections and subsubsections
 
@@ -76,16 +76,38 @@
   \setlist[enumerate]{noitemsep,nolistsep}
 
 % Tables
-\usepackage{longtable,booktabs,tabu}
-\usepackage{caption}                % Après babel
+\usepackage{longtable,booktabs}
+\usepackage{caption}
 % These lines are needed to make table captions work with longtable:
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
 \makeatother
-\usepackage{tabularx}               % Line breaks in tables
-  \renewcommand{\arraystretch}{1.8}
-\usepackage{multirow}               % Merged lines in tables
+% longtable 2 columns
+% https://tex.stackexchange.com/questions/161431/how-to-solve-longtable-is-not-in-1-column-mode-error
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[t]
+\onecolumn
+\begin{minipage}{0.5\textwidth}\scriptsize
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[t]
+\onecolumn
+\begin{minipage}{0.5\textwidth}\scriptsize
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
 
+% Full-width tables
+\usepackage{tabu}
+\renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
+  
 % User-adder preamble
 \hyphenation{bio-di-ver-si-ty sap-lings}
 
@@ -93,27 +115,43 @@
 \RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
   \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 
-
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Title of the Article} % Article title
+\JournalInfo{Publication reference} % Journal information
+\Archive{DOI: xxx/xx} % Additional notes (e.g. copyright, DOI, review/research article)
 
-\author{
-First Author's name\\ Second Author's name
+\PaperTitle{Title of the Article} % Article title
+
+\Authors{
+First Author's name\textsuperscript{1*}\\ Second Author's name\textsuperscript{2}
 } % Authors
+\affiliation{
+\textsuperscript{1}Department / University\\ \hspace{1em} Street address, Zip code, Country.\\\textsuperscript{2}Department / University\\ \hspace{1em} Street address, Zip code, Country.
+}
+\affiliation{*\textbf{Corresponding author}: \href{mailto:name@company.com}{\nolinkurl{name@company.com}}, \url{https://www.company.com}} % Corresponding author
 
+\Keywords{keyword1, keyword2, etc} % Keywords
+\newcommand{\keywordname}{Keywords} % Defines the keywords heading name
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\Abstract{
+Summary of the article.
+}
+
+%----------------------------------------------------------------------------------------
 
 \begin{document}
 
 \selectlanguage{en-US}
 
-\maketitle % Print the title and abstract box
+\flushbottom % Makes all text pages the same height
 
-\begin{abstract}
-Abstract of the article.
-\end{abstract}
+\maketitle % Print the title and abstract box
 
 \tableofcontents % Print the contents section
 
@@ -127,6 +165,7 @@ Abstract of the article.
 \section{Introduction}\label{introduction}}
 
 This template allows writing articles in Markdown\footnote{\url{https://ericmarcon.github.io/travailleR/chap-rediger.html}} format.
+It directly produces well-formatted articles for self-archiving (deposit on HAL for example) or in other formats, for example HTML.
 
 \hypertarget{markdown}{%
 \section{R Markdown}\label{markdown}}
@@ -153,7 +192,7 @@ In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.
 
 Click on \emph{From template}: from templates installed by packages.
-The memoiR package templates are displayed: choose \emph{Simple Article}.
+The memoiR package templates are displayed: choose \emph{Stylish Article}.
 
 It is better to create an RStudio project to benefit from all the possibilities: \emph{File} / \emph{New Project} then use the wizard to create a project from an existing folder.
 
@@ -265,7 +304,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpmBEU7E/simple_article/gallery/simple_article/bookdown_pdf_book/simple_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpmBEU7E/stylish_article/gallery/stylish_article/bookdown_pdf_book/stylish_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -405,7 +444,7 @@ Warning:
 \item
   Comments are not allowed
 \item
-  Complex commands (such as \texttt{\textbackslash{}renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+  Complex commands (e.g.~\texttt{\textbackslash{}renewenvironment}) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 \end{itemize}
 
 \hypertarget{forcing-line-breaks}{%
@@ -433,19 +472,19 @@ The change of language in the document (one of \texttt{otherlangs}) is managed i
 The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The \texttt{\textbackslash{}selectlanguage} command is simply ignored in HTML.
 
-Language codes are used in the header, such as \texttt{en-US} but language names are necessary in \texttt{\textbackslash{}selectlanguage\{\}}.
+Language codes are used in the header, such as \texttt{en-US} but language names are necessary in\break\texttt{\textbackslash{}selectlanguage\{\}}.
 Name matches are listed in table 3 of the polyglossia package documentation\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
 
 \hypertarget{document-types}{%
 \section{Document types}\label{document-types}}
 
-This template is designed to work with the Simple Article template in LaTeX and produce documents in PDF, HTML or Word format.
+This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
 Use the list of choices in the \emph{Knit} button to choose the output format.
 
 \hypertarget{pdf-document}{%
 \subsection{PDF Document}\label{pdf-document}}
 
-The document is formatted according to the article LaTeX template.
+The document is formatted for self-archiving of well-formatted articles.
 
 \hypertarget{html-document}{%
 \subsection{HTML document}\label{html-document}}
