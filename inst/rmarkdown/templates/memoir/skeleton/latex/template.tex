@@ -297,6 +297,11 @@ $endif$
 		\flushright
 		{\fontfamily{qtm}\Large \theauthor}
 	\end{textblock}
+	$if(filigrane)$
+	\begin{textblock}{120}[1, 1](225, 297)
+		\includegraphics[width=10cm]{$filigrane$}
+	 \end{textblock}
+	$endif$
 	\begin{textblock}{140}[0, 1](50, 262)
 		\normalfont	Version: \thedate
 	\end{textblock}
@@ -403,8 +408,8 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Font size of side captions and side notes
-\captionnamefont{\scriptsize}	% ignored if subfig is used
-\captiontitlefont{\scriptsize}	% ignored if subfig is used
+\captionnamefont{\scriptsize}
+\captiontitlefont{\scriptsize}
 \renewcommand{\footnotesize}{\tiny}
 
 
@@ -435,25 +440,15 @@ $endif$
 \urlstyle{same}
 
 
-% Title, author, etc. from YAML to LaTeX
+% Title, author, date from YAML to LaTeX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 $if(title)$
 \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
 
-$if(subtitle)$
-\providecommand{\subtitle}[1]{}
-\subtitle{$subtitle$}
-$endif$
-
 $if(author)$
 \author{$for(author)$$author$$sep$ \and $endfor$}
-$endif$
-
-$if(institute)$
-\providecommand{\institute}[1]{}
-\institute{$for(institute)$$institute$$sep$ \and $endfor$}
 $endif$
 
 \date{$date$}
