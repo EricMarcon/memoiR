@@ -21,7 +21,7 @@ NULL
 #' - "slides": HTML by `rmarkdown::ioslides_presentation` and PDF by `rmarkdown::beamer_presentation`.
 #'
 #' @param template name of the template to knit, e.g. "simple_article".
-#' @param type type of the template to knit. May be "document", "book" or "slides".
+#' @param output_format TODO.
 #' @param destination name of the folder containing GitHub pages or equivalent.
 #' @param gallery name of the subfolder of `destination` to store the knitted documents.
 #'

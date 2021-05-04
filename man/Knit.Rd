@@ -10,7 +10,7 @@ knit_all(destination = usethis::proj_path("docs"), gallery = "gallery")
 
 knit_template(
   template,
-  type,
+  output_format,
   destination = usethis::proj_path("docs"),
   gallery = "gallery"
 )
@@ -22,7 +22,7 @@ knit_template(
 
 \item{template}{name of the template to knit, e.g. "simple_article".}
 
-\item{type}{type of the template to knit. May be "document", "book" or "slides".}
+\item{output_format}{TODO.}
 }
 \description{
 Create documents from templates

@@ -27,7 +27,7 @@ The function is useless in book projects: the \emph{Build the Book} (i.e. the \c
 \examples{
 # Save working directory
 original_wd <- getwd()
-# Get a temporary woking directory
+# Get a temporary working directory
 wd <- tempfile("example")
 # Simulate File > New File > R Markdown... > From Template > Stylish Article
 rmarkdown::draft(wd, template="stylish_article", package="memoiR", edit=FALSE)
