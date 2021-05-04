@@ -41,7 +41,7 @@ Articles and slideshows are produced by clicking on the **Knit** button of the S
 Memoirs are produced by clicking on the **Build Book** button of the Build pane.
 
 Push your project to GitHub and activate GitHub Pages to make your documents readable online.
-Rely on the following functions to simplify that task:
+The following functions help simplify that task:
 
 - `build_gitignore()` to create a `.gitignore` file. Activate git source control then.
 - `build_index()` to create a `README.md` file, that will be the GitHub Pages index.
@@ -50,7 +50,7 @@ Rely on the following functions to simplify that task:
 
 # Credits
 
-The feather in the memoiR package sticker is from [Wikimedia](https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg) under licence[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+The feather in the memoiR package sticker is from [Wikimedia](https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg) under license [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 The [memoir](https://www.ctan.org/pkg/memoir) LaTeX package is on CTAN.
 
