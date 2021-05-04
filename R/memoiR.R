@@ -31,15 +31,32 @@ NULL
 #' @rdname Knit
 #' @export
 knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") {
-  knit_template("simple_article", type="document", destination=destination, gallery=gallery)
-  knit_template("stylish_article", type="document", destination=destination, gallery=gallery)
-  knit_template("memoir", type="book", destination=destination, gallery=gallery)
-  knit_template("beamer_presentation", type="slides", destination=destination, gallery=gallery)
+  knit_template("simple_article", 
+                output_format=c("bookdown::pdf_book", 
+                                "rmdformats::downcute", 
+                                # "bookdown::gitbook", 
+                                "bookdown::html_document2"), 
+                destination=destination, gallery=gallery)
+  knit_template("stylish_article", 
+                output_format=c("bookdown::pdf_book", 
+                                "rmdformats::downcute", 
+                                # "bookdown::gitbook", 
+                                "bookdown::html_document2"), 
+                destination=destination, gallery=gallery)
+  knit_template("memoir", 
+                output_format=c("bookdown::pdf_book", 
+                                "bookdown::gitbook"), 
+                destination=destination, gallery=gallery)
+  knit_template("beamer_presentation", 
+                output_format=c("bookdown::beamer_presentation2", 
+                                "bookdown::ioslides_presentation2", 
+                                "bookdown::slidy_presentation2"), 
+                destination=destination, gallery=gallery)
 }
 
 #' @rdname Knit
 #' @export
-knit_template <- function(template, type, destination=usethis::proj_path("docs"), gallery="gallery") {
+knit_template <- function(template, output_format, destination=usethis::proj_path("docs"), gallery="gallery") {
   # Save knitr.table.format option (for kable)
   knitr_table_format <- options("knitr.table.format")
   # Save working directory
@@ -54,46 +71,63 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
   # Create a draft based on the template
   rmarkdown::draft(template, template=template, package="memoiR", edit=FALSE)
   setwd(template)
-  if (type == "book") {
+  if (template == "memoir") {
     # Delete the useless file created by draft
     unlink(paste(template, ".Rmd", sep=""))
   }
-  # Knit to HTML
-  options(knitr.table.format='html')
-  if (type == "document") {
-    rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                      output_format="rmdformats::downcute",
-                      output_dir=paste(gallery , "/", template, sep=""))
+  
+  # Knit
+  for (format in output_format) {
+    if (format %in% c("bookdown::gitbook", 
+                      "bookdown::html_document2", 
+                      "rmdformats::downcute", 
+                      "bookdown::ioslides_presentation2", 
+                      "bookdown::slidy_presentation2")) {
+      # Knit to HTML
+      options(knitr.table.format="html")
+      if (template == "memoir") {
+        # Book
+        bookdown::render_book(input="index.Rmd",
+                              output_format=format,
+                              output_dir=paste(gallery, "/", 
+                                               template, "/", 
+                                               gsub("::", "_", format),
+                                               sep=""))
+      } else {
+        # Article or presentation
+        rmarkdown::render(input=paste(template, ".Rmd", sep=""),
+                          output_format=format,
+                          output_dir=paste(gallery, "/", 
+                                           template, "/", 
+                                           gsub("::", "_", format),
+                                           sep=""))
+      }
+    }
+    if (format %in% c("bookdown::pdf_book", 
+                      "bookdown::beamer_presentation2",
+                      "bookdown::beamer_presentation2")) {
+      # Knit to PDF
+      options(knitr.table.format="latex")
+      if (template == "memoir") {
+        # Book
+        bookdown::render_book(input="index.Rmd",
+                              output_format=format,
+                              output_dir=paste(gallery, "/", 
+                                               template, "/", 
+                                               gsub("::", "_", format),
+                                               sep=""))
+      } else {
+        # Article or presentation
+        rmarkdown::render(input=paste(template, ".Rmd", sep=""),
+                          output_format=format,
+                          output_dir=paste(gallery, "/", 
+                                           template, "/", 
+                                           gsub("::", "_", format),
+                                           sep=""))
+      }
+    }
   }
-  if (type == "book"){
-    bookdown::render_book(input="index.Rmd",
-                          output_format="bookdown::gitbook",
-                          output_dir=paste(gallery , "/", template, sep=""))
-  }
-  if (type == "slides") {
-    rmarkdown::render(input="beamer_presentation.Rmd",
-                      output_format="rmarkdown::ioslides_presentation",
-                      output_dir=paste(gallery , "/", template, sep=""))
-  }
-  # Knit to pdf
-  options(knitr.table.format='latex')
-  if (type == "document") {
-    rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                      output_format="bookdown::pdf_book",
-                      output_dir=paste(gallery , "/", template, sep=""))
-  }
-  if (type == "book"){
-    bookdown::render_book(input="index.Rmd",
-                          output_format="bookdown::pdf_book",
-                          output_dir=paste(gallery , "/", template, sep=""))
-  }
-  if (type == "slides") {
-    rmarkdown::render(input="beamer_presentation.Rmd",
-                      output_format=rmarkdown::beamer_presentation(
-                        includes=list(in_header="latex/header.tex"),
-                        df_print="kable", fig_caption=FALSE, slide_level=2),
-                      output_dir=paste(gallery , "/", template, sep=""))
-  }
+
   # Copy to destination
   docsDirs <- list.dirs(path=gallery, full.names=TRUE, recursive=TRUE)
   if (length(docsDirs) > 0) {
@@ -135,7 +169,7 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
 #' @examples
 #' # Save working directory
 #' original_wd <- getwd()
-#' # Get a temporary woking directory
+#' # Get a temporary working directory
 #' wd <- tempfile("example")
 #' # Simulate File > New File > R Markdown... > From Template > Stylish Article
 #' rmarkdown::draft(wd, template="stylish_article", package="memoiR", edit=FALSE)
@@ -157,9 +191,18 @@ knit_template <- function(template, type, destination=usethis::proj_path("docs")
 #' setwd(original_wd)
 #' unlink(wd, recursive=TRUE)
 build_githubpages <- function(destination=usethis::proj_path("docs")) {
+
+  # Quit if the project is a book
+  if (file.exists(usethis::proj_path("_bookdown.yml")))
+    stop("Book projects do not need build_githubpages()")
+
+  # Save the working directory
+  OriginalWD <- getwd()
+  # Make the project directory the working directory
+  setwd(usethis::proj_path())
+
   # Create the destination folder
   if (!dir.exists(destination)) dir.create(destination)
-
   # Move knitted html files
   htmlFiles <- list.files(pattern="*.html")
   if (length(htmlFiles) > 0)
@@ -191,7 +234,6 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
     imagesFiles <- list.files("images", full.names = TRUE, recursive=TRUE)
     file.copy(from=imagesFiles, to=paste(destination, "/", imagesFiles, sep = ""), overwrite=TRUE)
   }
-
   # Move knitted pdf files
   RmdFiles <- list.files(pattern="*.Rmd")
   # Change .Rmd files extension
@@ -206,11 +248,12 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   docxFiles <- gsub(".Rmd", ".docx", RmdFiles)
   if (length(docxFiles) > 0)
     suppressWarnings(file.rename(from=docxFiles, to=paste(destination, "/", docxFiles, sep="")))
-  
   # Copy README.md to docs
   file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
 
   cat("Output files moved to", destination)
+  # Restore the working directory
+  getwd(OriginalWD)
 }
 
 
@@ -228,6 +271,13 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' 
 #' @export
 build_index <- function(PDF = TRUE) {
+  # Quit if the project is a book
+  if (file.exists(usethis::proj_path("_bookdown.yml")))
+    stop("Book projects do not need build_index()")
+  # Save the working directory
+  OriginalWD <- getwd()
+  # Make the project directory the working directory
+  setwd(usethis::proj_path())
   # Find the markdown files
   RmdFiles <- list.files(pattern="*.Rmd")
   lines <- character()
@@ -252,6 +302,8 @@ build_index <- function(PDF = TRUE) {
     }
   }
   usethis::write_over(usethis::proj_path("README.md"), lines)
+  # Restore the working directory
+  getwd(OriginalWD)
 }
 
 
