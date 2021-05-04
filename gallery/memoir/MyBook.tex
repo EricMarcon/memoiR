@@ -19,9 +19,8 @@
 
 % Double (or whatever) spacing
 
+% Math
 \usepackage{amssymb, amsmath}
-\usepackage{ifxetex,ifluatex}
-
 % mathspec: arbitrary math fonts
 \usepackage{unicode-math}
 \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
@@ -43,11 +42,14 @@
 
 % Verbatim in note
 
+% Make links footnotes instead of hotlinks:
+
+% Color links
 \usepackage{xcolor}
 
+% Strikeout
 
-% Listings package
-
+% Necessary for code chunks
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -89,6 +91,8 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
+% Listings package
+
 % Tables
 \usepackage{longtable,booktabs,tabu}
 % Fix footnotes in tables (requires footnote package)
@@ -106,15 +110,15 @@
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
-
-
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Prevent overfull lines
+\setlength{\emergencystretch}{3em}  
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+% Number sections
 \setcounter{secnumdepth}{5}
 
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
@@ -123,6 +127,7 @@
 % Add LaTeX code into the preamble of the document here
 \hyphenation{bio-di-ver-si-ty sap-lings}
 
+% Spacing in lists
 \usepackage{enumitem}
 
 % Polyglossia
@@ -131,6 +136,7 @@
 \setotherlanguage{fr-FR}
 \setotherlanguage{it}
 
+% BibLaTeX
 \usepackage[backend=biber,style=verbose-inote,pageref=true,isbn=false,backref=true,giveninits=true,uniquename=init,maxcitenames=2,maxbibnames=150,sorting=nyt,sortcites=false]{biblatex}
 \addbibresource{references.bib}
 
@@ -139,7 +145,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % memoiR format
-
 
 % Chapter Summary environment 
 \usepackage[tikz]{bclogo}
@@ -151,7 +156,6 @@
 %```{block, type='Summary'}
 % Deliver message here.
 % ```
-
 
 % scriptsize code 
 \let\oldverbatim\verbatim
@@ -268,7 +272,6 @@
 	\newpage
 }
 
-
 % Clear page and open an even one (\clearpage opens an odd one)
 \newcommand{\evenpage}{
   \clearpage
@@ -291,6 +294,7 @@
 
 %% PDF title page to insert
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{pdfpages}
 
 
@@ -348,6 +352,7 @@
 
 %% Table of Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % fix the typesetting of the part number
 \renewcommand\partnumberlinebox[2]{#2\ ---\ }
 
@@ -363,6 +368,7 @@
 
 % Hyperref comes last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{hyperref}
 \hypersetup{
   pdftitle={Title of the Memoir},
