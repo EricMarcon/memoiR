@@ -113,6 +113,8 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 Packages <- c( "tidyverse")
 # Install them
 InstallPackages(Packages)
+# Create packages.bib file to reference them as @R-package
+knitr::write_bib(Packages, file="packages.bib")
 
 # knitr options
 knitr::opts_chunk$set(
