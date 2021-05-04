@@ -253,7 +253,7 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 
   cat("Output files moved to", destination)
   # Restore the working directory
-  getwd(OriginalWD)
+  setwd(OriginalWD)
 }
 
 
@@ -303,7 +303,7 @@ build_index <- function(PDF = TRUE) {
   }
   usethis::write_over(usethis::proj_path("README.md"), lines)
   # Restore the working directory
-  getwd(OriginalWD)
+  setwd(OriginalWD)
 }
 
 
