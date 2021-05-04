@@ -104,23 +104,23 @@ set.seed(973)
 
 # Introduction
 
-This template allows writing articles in Markdown[^4] format.
+This template allows writing articles in Markdown[^1] format.
 
-[^4]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
+[^1]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
 
 
 # R Markdown{#markdown}
 
 Markdown is a very simple language for producing various types of documents: HTML, PDF, and Word among others.
-Its documentation is available at the RStudio website[^1].
+Its documentation is available at the RStudio website[^2].
 
-[^1]: <http://rmarkdown.rstudio.com/articles.html>
+[^2]: <http://rmarkdown.rstudio.com/articles.html>
 
 
-Markdown is extended by Bookdown[^2], which allows for book writing and more efficient syntax for articles.
+Markdown is extended by Bookdown[^3], which allows for book writing and more efficient syntax for articles.
 This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
 
-[^2]: <https://bookdown.org/yihui/bookdown/>
+[^3]: <https://bookdown.org/yihui/bookdown/>
 
 
 ## Motivation
@@ -295,9 +295,9 @@ The bibliographic style can be specified, by adding the line
     csl:file_name.csl
     
 in the document header and copying the _.csl_ style file to the project folder.
-More than a thousand styles are available[^3].
+More than a thousand styles are available[^4].
 
-[^3]: <https://github.com/citation-style-language/styles>
+[^4]: <https://github.com/citation-style-language/styles>
 
 For PDF documents, the bibliography is managed by natbib.
 The style is declared in the header:
@@ -349,9 +349,9 @@ The current language has an effect only in LaTeX output: a space is added before
 The `\selectlanguage` command is simply ignored in HTML.
 
 Language codes are used in the header, such as `en-US` but language names are necessary in `\selectlanguage{}`.
-Name matches are listed in table 3 of the polyglossia package documentation[^1].
+Name matches are listed in table 3 of the polyglossia package documentation[^5].
 
-[^1]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
+[^5]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
 
 
 # Document types
