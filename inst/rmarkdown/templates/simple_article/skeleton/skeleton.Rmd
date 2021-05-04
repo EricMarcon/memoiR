@@ -248,8 +248,8 @@ In tables, the `caption` argument of the `kable()` function is used the same way
 
 ## Lists
 
-Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
-Indentation of lists indicates their level: *, + and - may be replaced by - at all levels, but four spaces are needed to nest a list into another.
+Lists are indicated by `*`, `+` and `-` (three hierarchical levels) or numbers `1.`, `i.` and `A.` (numbered lists).
+Indentation of lists indicates their level: `*`, `+` and `-` may be replaced by `-` at all levels, but four spaces are needed to nest a list into another.
 
 * First element of a list
     + sub-list

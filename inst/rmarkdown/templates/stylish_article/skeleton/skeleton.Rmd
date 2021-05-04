@@ -272,8 +272,8 @@ In tables, the `caption` argument of the `kable()` function is used the same way
 
 ## Lists
 
-Lists are indicated by *, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
-Indentation of lists indicates their level: *, + and - may be replaced by - at all levels, but four spaces are needed to nest a list into another.
+Lists are indicated by `*`, `+` and `-` (three hierarchical levels) or numbers `1.`, `i.` and `A.` (numbered lists).
+Indentation of lists indicates their level: `*`, `+` and `-` may be replaced by `-` at all levels, but four spaces are needed to nest a list into another.
 
 * First element of a list
     + sub-list
@@ -346,7 +346,7 @@ Other commands can be added as needed.
 Warning:
 
 - Comments are not allowed
-- Complex commands (such as `\renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+- Complex commands (e.g. `\renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 
 
 ## Forcing line breaks
@@ -372,7 +372,7 @@ The change of language in the document (one of `otherlangs`) is managed in LaTeX
 The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The `\selectlanguage` command is simply ignored in HTML.
 
-Language codes are used in the header, such as `en-US` but language names are necessary in `\selectlanguage{}`.
+Language codes are used in the header, such as `en-US` but language names are necessary in\break`\selectlanguage{}`.
 Name matches are listed in table 3 of the polyglossia package documentation[^1].
 
 [^1]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
