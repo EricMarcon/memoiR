@@ -6,7 +6,7 @@
     <meta name="generator" content="pandoc" />
 
     
-        <meta name="date" content="2021-05-03" />
+        <meta name="date" content="2021-05-04" />
     
     <title>Title of the Article</title>
 
@@ -2109,7 +2109,7 @@ border: 0;
            <span class="glyphicon glyphicon-user"></span> Second Author’s name
                <br>
       </p>
-         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 03 May 2021</p>
+         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 04 May 2021</p>
          
    
       
@@ -2434,8 +2434,8 @@ The text of the caption follows.</p>
 </div>
 <div id="lists" class="section level2">
 <h2><span class="header-section-number">3.5</span> Lists</h2>
-<p>Lists are indicated by <em>, + and - (three hierarchical levels) or numbers 1., i. and A. (numbered lists).
-Indentation of lists indicates their level: </em>, + and - may be replaced by - at all levels, but four spaces are needed to nest a list into another.</p>
+<p>Lists are indicated by <code>*</code>, <code>+</code> and <code>-</code> (three hierarchical levels) or numbers <code>1.</code>, <code>i.</code> and <code>A.</code> (numbered lists).
+Indentation of lists indicates their level: <code>*</code>, <code>+</code> and <code>-</code> may be replaced by <code>-</code> at all levels, but four spaces are needed to nest a list into another.</p>
 <ul>
 <li>First element of a list
 <ul>
@@ -2487,7 +2487,7 @@ These commands are in the <code>preamble:</code> section of the Markdown file he
 Warning:</p>
 <ul>
 <li>Comments are not allowed</li>
-<li>Complex commands (such as <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
+<li>Complex commands (e.g. <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
 </ul>
 </div>
 <div id="forcing-line-breaks" class="section level2">
@@ -2506,7 +2506,7 @@ The change of language in the document (one of <code>otherlangs</code>) is manag
 <pre><code>\selectlanguage{english}</code></pre>
 <p>The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
-<p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
+<p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in<code>\selectlanguage{}</code>.
 Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 </div>

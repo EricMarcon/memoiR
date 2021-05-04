@@ -252,7 +252,7 @@
 		\flushright
 		{\fontfamily{qtm}\Large \theauthor}
 	\end{textblock}
-	\begin{textblock}{140}[0, 1](50, 262)
+		\begin{textblock}{140}[0, 1](50, 262)
 		\normalfont	Version: \thedate
 	\end{textblock}
 	\newpage
@@ -356,8 +356,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Font size of side captions and side notes
-\captionnamefont{\scriptsize}	% ignored if subfig is used
-\captiontitlefont{\scriptsize}	% ignored if subfig is used
+\captionnamefont{\scriptsize}
+\captiontitlefont{\scriptsize}
 \renewcommand{\footnotesize}{\tiny}
 
 
@@ -377,16 +377,14 @@
 \urlstyle{same}
 
 
-% Title, author, etc. from YAML to LaTeX
+% Title, author, date from YAML to LaTeX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Title of the Memoir}
 
-
 \author{Authors' names}
 
-
-\date{2021-05-03}
+\date{2021-05-04}
 
 
 % End of preamble
@@ -519,7 +517,7 @@ The cover will be:
   the first page of the PDF file declared in the \emph{pdftitlepage} instruction if it is present.
 \end{itemize}
 
-Delete one of the two instructions in the header or both covers will be built, like in the gallery\footnote{\url{http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf}}.
+Delete one of the two instructions in the header or both covers will be built, like in the gallery\footnote{\url{https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf}}.
 
 The languages are specified according to the IETF language tags, such as \enquote{en-US}.
 The main language (\texttt{lang}) is that of the structure of the document, translating elements such as \enquote{chapter}.

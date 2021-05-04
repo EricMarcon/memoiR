@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/LaTeX: LaTeX.html
   memoiR: memoiR.html
-last_built: 2021-05-03T16:26Z
+last_built: 2021-05-04T08:36Z
 urls:
   reference: https://EricMarcon.github.io/memoiR//reference
   article: https://EricMarcon.github.io/memoiR//articles
