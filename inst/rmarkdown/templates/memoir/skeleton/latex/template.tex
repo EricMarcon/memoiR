@@ -29,9 +29,8 @@ $if(linestretch)$
 \setstretch{$linestretch$}
 $endif$
 
+% Math
 \usepackage{amssymb, amsmath}
-\usepackage{ifxetex,ifluatex}
-
 % mathspec: arbitrary math fonts
 $if(mathspec)$
 \usepackage{mathspec}
@@ -81,24 +80,35 @@ $endif$
 % Verbatim in note
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
+\VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 
+% Make links footnotes instead of hotlinks:
+$if(links-as-notes)$
+\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+
+% Color links
 $if(colorlinks)$
 \usepackage{xcolor}
 $endif$
 
-$if(verbatim-in-note)$
-\VerbatimFootnotes % allows verbatim text in footnotes
+% Strikeout
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+
+% Necessary for code chunks
+$if(highlighting-macros)$
+$highlighting-macros$
 $endif$
 
 % Listings package
 $if(listings)$
 \usepackage{listings}
 \newcommand{\passthrough}[1]{#1}
-$endif$
-
-$if(highlighting-macros)$
-$highlighting-macros$
 $endif$
 
 % Tables
@@ -122,28 +132,19 @@ $if(graphics)$
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 $endif$
 
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
-
-$if(strikeout)$
-\usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
-$endif$
-
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Prevent overfull lines
+\setlength{\emergencystretch}{3em}  
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
+% Number sections
 $if(numbersections)$
 \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
 
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
@@ -153,6 +154,7 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+% Spacing in lists
 \usepackage{enumitem}
 
 % Polyglossia
@@ -164,6 +166,7 @@ $for(otherlangs)$
 $endfor$
 $endif$
 
+% BibLaTeX
 $if(biblatex)$
 \usepackage[$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
 $for(bibliography)$
@@ -185,7 +188,6 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % memoiR format
 
-
 % Chapter Summary environment 
 \usepackage[tikz]{bclogo}
 \newenvironment{Summary}
@@ -196,7 +198,6 @@ $endif$
 %```{block, type='Summary'}
 % Deliver message here.
 % ```
-
 
 % scriptsize code 
 \let\oldverbatim\verbatim
@@ -318,7 +319,6 @@ $endif$
 	\newpage
 }
 
-
 % Clear page and open an even one (\clearpage opens an odd one)
 \newcommand{\evenpage}{
   \clearpage
@@ -341,6 +341,7 @@ $endif$
 
 %% PDF title page to insert
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 $if(pdftitlepage)$
 \usepackage{pdfpages}
 $endif$
@@ -400,6 +401,7 @@ $endif$
 
 %% Table of Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % fix the typesetting of the part number
 \renewcommand\partnumberlinebox[2]{#2\ ---\ }
 
@@ -415,6 +417,7 @@ $endif$
 
 % Hyperref comes last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{hyperref}
 \hypersetup{
 $if(title-meta)$
