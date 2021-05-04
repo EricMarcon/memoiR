@@ -27,11 +27,6 @@ jobs:
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error", check_dir = "check")
         shell: Rscript {0}
-      - name: Upload gallery artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: gallery
-          path: tests/gallery
       - name: Test coverage
         run: covr::codecov(type="all")
         shell: Rscript {0}
@@ -40,13 +35,13 @@ jobs:
       - name: Pkgdown
         run: pkgdown::build_site(new_process = FALSE)
         shell: Rscript {0}
-      # - name: Build Gallery
-      #   run: memoiR::knit_all()
-      #   shell: Rscript {0}
-      - name: Upload pkgdown artifact
+      - name: Build Gallery
+        run: memoiR::knit_all()
+        shell: Rscript {0}
+      - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
-          name: pkgdown
+          name: site
           path: docs
   checkout-and-deploy:
     runs-on: ubuntu-latest
@@ -54,16 +49,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Download pkgdown artifact
+      - name: Download artifact
         uses: actions/download-artifact@v1
         with:
-          name: pkgdown
+          name: site
           path: docs
-      - name: Download gallery artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: gallery
-          path: docs/gallery
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
