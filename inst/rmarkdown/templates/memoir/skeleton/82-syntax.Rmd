@@ -34,9 +34,9 @@ Note the `{-}` instruction after the title of the part to avoid having it number
 ## Write
 
 The main features of Markdown are summarized here.
-A quick and complete training is offered by RStudio[^402].
+A quick and complete training is offered by RStudio[^821].
 
-[^402]: https://rmarkdown.rstudio.com/lesson-1.html
+[^821]: https://rmarkdown.rstudio.com/lesson-1.html
 
 The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.
@@ -192,9 +192,9 @@ The bibliographic style can be specified, by adding the line
     
 in the document header and copying the _.csl_ style file into the project folder.
 The default style (if no csl is specified) is "chicago-author-date".
-Several thousand styles are available [^41].
+Several thousand styles are available [^822].
 
-[^41]: <https://github.com/citation-style-language/styles>
+[^822]: <https://github.com/citation-style-language/styles>
 
 For PDF documents, the bibliography is handled by BibLaTeX, see section \@ref(index).
 
@@ -223,9 +223,9 @@ The current language has an effect only in LaTeX output: a space is added before
 The `\selectlanguage` command is simply ignored in HTML.
 
 Language codes are used in the header, such as `en-US` but language names are necessary in `\selectlanguage{}`.
-Name matches are listed in table 3 of the polyglossia package documentation[^1].
+Name matches are listed in table 3 of the polyglossia package documentation[^823].
 
-[^1]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
+[^823]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
 
 
 ## Chapter summary
@@ -253,6 +253,6 @@ All the necessary details for writing (writing equations, cross-references, etc.
 
 ## Documentation for developers
 
--  [LaTeX file format customization](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization).
+- [LaTeX file format customization](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization).
 - The [Pandoc manual](https://pandoc.org/MANUAL.html) for possible options in the YAML header.
 

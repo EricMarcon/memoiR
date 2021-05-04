@@ -32,9 +32,9 @@ The cover will be:
 The content of _epigraph_ and _credits_ will be written on page 2, with `images/logo.pdf`.
 - the first page of the PDF file declared in the _pdftitlepage_ instruction if it is present.
 
-Delete one of the two instructions in the header or both covers will be built, like in the gallery[^1].
+Delete one of the two instructions in the header or both covers will be built, like in the gallery[^811].
 
-[^1]: https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf
+[^811]: https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf
 
 The languages are specified according to the IETF language tags, such as "en-US".
 The main language (`lang`) is that of the structure of the document, translating elements such as "chapter".
@@ -75,9 +75,6 @@ Some may be added to the header:
 
 - _fontfamily_: [font](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ by default.
 - _linestretch_: line spacing, 1 by default.
-
-[^1]: https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf
-[^2]: https://github.com/jgm/pandoc/issues/4072
 
 The parameters of the bibliography are:
 
