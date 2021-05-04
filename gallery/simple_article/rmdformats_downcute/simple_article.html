@@ -2118,8 +2118,7 @@ border: 0;
 <div class="page-content has-page-title">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This template allows writing articles in Markdown<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> format.
-It directly produces well-formatted articles for self-archiving (deposit on HAL for example) or in other formats, for example HTML.</p>
+<p>This template allows writing articles in Markdown<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> format.</p>
 </div>
 <div id="markdown" class="section level1">
 <h1><span class="header-section-number">2</span> R Markdown</h1>
@@ -2138,7 +2137,7 @@ This document is made with Markdown in RStudio: knitr processes the Markdown cod
 <p>In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.</p>
 <p>Click on <em>From template</em>: from templates installed by packages.
-The memoiR package templates are displayed: choose <em>Stylish Article</em>.</p>
+The memoiR package templates are displayed: choose <em>Simple Article</em>.</p>
 <p>It is better to create an RStudio project to benefit from all the possibilities: <em>File</em> / <em>New Project</em> then use the wizard to create a project from an existing folder.</p>
 <p>Write the document in RStudio.</p>
 <p>Clicking the <strong>Knit</strong> button in RStudio generates the document in the requested format.</p>
@@ -2487,7 +2486,7 @@ These commands are in the <code>preamble:</code> section of the Markdown file he
 Warning:</p>
 <ul>
 <li>Comments are not allowed</li>
-<li>Complex commands (e.g. <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
+<li>Complex commands (such as <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
 </ul>
 </div>
 <div id="forcing-line-breaks" class="section level2">
@@ -2506,17 +2505,17 @@ The change of language in the document (one of <code>otherlangs</code>) is manag
 <pre><code>\selectlanguage{english}</code></pre>
 <p>The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
-<p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in<code>\selectlanguage{}</code>.
+<p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
 Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 </div>
 <div id="document-types" class="section level1">
 <h1><span class="header-section-number">4</span> Document types</h1>
-<p>This template is designed to work with the Stylish Article template in LaTeX and produce documents in PDF, HTML or Word format.
+<p>This template is designed to work with the Simple Article template in LaTeX and produce documents in PDF, HTML or Word format.
 Use the list of choices in the <em>Knit</em> button to choose the output format.</p>
 <div id="pdf-document" class="section level2">
 <h2><span class="header-section-number">4.1</span> PDF Document</h2>
-<p>The document is formatted for self-archiving of well-formatted articles.</p>
+<p>The document is formatted according to the article LaTeX template.</p>
 </div>
 <div id="html-document" class="section level2">
 <h2><span class="header-section-number">4.2</span> HTML document</h2>
@@ -2550,7 +2549,7 @@ The level 1 title <em>References</em> must be added manually to Word files.</p>
 <hr />
 <ol>
 <li id="fn1"><p><a href="https://ericmarcon.github.io/travailleR/chap-rediger.html" class="uri">https://ericmarcon.github.io/travailleR/chap-rediger.html</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://rmarkdown.rstudio.com/articles.html" class="uri">http://rmarkdown.rstudio.com/articles.html</a><a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p><a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a><a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
 <li id="fn5"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="#fnref5" class="footnote-back">↩︎</a></p></li>
