@@ -5,12 +5,12 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 bibliography: references.bib
 biblio-style: chicago
 output:
-  ioslides_presentation:
+  bookdown::ioslides_presentation2:
     logo: images/logo.png
     widescreen: true
-  slidy_presentation:
+  bookdown::slidy_presentation2:
     slide_level: 2
-  beamer_presentation:
+  bookdown::beamer_presentation2:
     citation_package: natbib
     latex_engine: xelatex
     df_print: kable
@@ -19,7 +19,7 @@ output:
       in_header: latex/header.tex
     keep_tex: no
     slide_level: 2
-  powerpoint_presentation:
+  bookdown::powerpoint_presentation2:
     slide_level: 2
 ---
 
