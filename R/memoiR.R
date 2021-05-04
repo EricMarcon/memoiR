@@ -15,13 +15,13 @@ NULL
 #' These functions are used to test the templates and produce a gallery.
 #' - `knit_template()` produces an HTML and a PDF output of the chosen template.
 #' - `knit_all()` runs knit_template() on all templates of the package.
-#' The `type` argument selects the way templates are rendered:
-#' - "document": HTML by `rmdformats::downcute` and PDF by `bookdown::pdf_book`.
-#' - "book": HTML by `bookdown::gitbook` and PDF by `bookdown::pdf_book`.
-#' - "slides": HTML by `rmarkdown::ioslides_presentation` and PDF by `rmarkdown::beamer_presentation`.
+#' The `output_format` argument selects the way templates are rendered:
+#' - articles may be rendered in HTML by [bookdown::html_document2], [bookdown::gitbook], [rmdformats::downcute] (and others, see the package **rmdformats**) and in PDF by [bookdown::pdf_book].
+#' - books may be rendered in HTML by [bookdown::gitbook] and in PDF by [bookdown::pdf_book].
+#' - slides may be rendered in  HTML by [bookdown::ioslides_presentation2], [bookdown::ioslides_presentation2] and in PDF by [bookdown::beamer_presentation2].
 #'
 #' @param template name of the template to knit, e.g. "simple_article".
-#' @param output_format TODO.
+#' @param output_format A character vector of the output formats to convert to. Each value must be the name of a function producing an output format object, such as "bookdown::pdf_book".  
 #' @param destination name of the folder containing GitHub pages or equivalent.
 #' @param gallery name of the subfolder of `destination` to store the knitted documents.
 #'
@@ -34,14 +34,10 @@ knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") 
   knit_template("simple_article", 
                 output_format=c("bookdown::pdf_book", 
                                 "rmdformats::downcute", 
-                                # "bookdown::gitbook", 
                                 "bookdown::html_document2"), 
                 destination=destination, gallery=gallery)
   knit_template("stylish_article", 
-                output_format=c("bookdown::pdf_book", 
-                                "rmdformats::downcute", 
-                                # "bookdown::gitbook", 
-                                "bookdown::html_document2"), 
+                output_format=c("bookdown::html_document2"), 
                 destination=destination, gallery=gallery)
   knit_template("memoir", 
                 output_format=c("bookdown::pdf_book", 
