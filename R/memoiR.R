@@ -1,6 +1,6 @@
-#' memoiR
+#' Package memoiR
 #'
-#' R Markdown and Bookdown templates to publish documents,
+#' R Bookdown templates to publish documents,
 #' especially relying on the memoir LaTeX package
 #'
 #' @name memoiR
