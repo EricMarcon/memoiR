@@ -22,7 +22,7 @@ knit_template(
 
 \item{template}{name of the template to knit, e.g. "simple_article".}
 
-\item{output_format}{TODO.}
+\item{output_format}{A character vector of the output formats to convert to. Each value must be the name of a function producing an output format object, such as "bookdown::pdf_book".}
 }
 \description{
 Create documents from templates
@@ -32,9 +32,9 @@ These functions are used to test the templates and produce a gallery.
 \itemize{
 \item \code{knit_template()} produces an HTML and a PDF output of the chosen template.
 \item \code{knit_all()} runs knit_template() on all templates of the package.
-The \code{type} argument selects the way templates are rendered:
-\item "document": HTML by \code{rmdformats::downcute} and PDF by \code{bookdown::pdf_book}.
-\item "book": HTML by \code{bookdown::gitbook} and PDF by \code{bookdown::pdf_book}.
-\item "slides": HTML by \code{rmarkdown::ioslides_presentation} and PDF by \code{rmarkdown::beamer_presentation}.
+The \code{output_format} argument selects the way templates are rendered:
+\item articles may be rendered in HTML by \link[bookdown:html_document2]{bookdown::html_document2}, \link[bookdown:gitbook]{bookdown::gitbook}, \link[rmdformats:downcute]{rmdformats::downcute} (and others, see the package \strong{rmdformats}) and in PDF by \link[bookdown:pdf_book]{bookdown::pdf_book}.
+\item books may be rendered in HTML by \link[bookdown:gitbook]{bookdown::gitbook} and in PDF by \link[bookdown:pdf_book]{bookdown::pdf_book}.
+\item slides may be rendered in  HTML by \link[bookdown:html_document2]{bookdown::ioslides_presentation2}, \link[bookdown:html_document2]{bookdown::ioslides_presentation2} and in PDF by \link[bookdown:html_document2]{bookdown::beamer_presentation2}.
 }
 }

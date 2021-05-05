@@ -3,8 +3,8 @@
 \docType{package}
 \name{memoiR}
 \alias{memoiR}
-\title{memoiR}
+\title{Package memoiR}
 \description{
-R Markdown and Bookdown templates to publish documents,
+R Bookdown templates to publish documents,
 especially relying on the memoir LaTeX package
 }

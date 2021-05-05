@@ -35,6 +35,8 @@ rmarkdown::draft(wd, template="stylish_article", package="memoiR", edit=FALSE)
 setwd(wd)
 # Make it the current project
 usethis::proj_set(path = ".", force = TRUE)
+# Build .gitignore
+build_gitignore()
 # render: knit to downcute
 rmarkdown::render(input=list.files(pattern="*.Rmd"), 
                   output_format="rmdformats::downcute")
