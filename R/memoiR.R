@@ -403,17 +403,17 @@ build_ghworkflow <- function() {
     '        run: |',
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
-    '          install.packages(c("memoiR", "tinytex"))',
+    '          install.packages(c("memoiR", "rmdformats", "tinytex"))',
     '          tinytex::install_tinytex()',
     '        shell: Rscript {0}'
   )
-  
+  # render a book or a simple document
   if (is_memoir) {
     lines <- c(lines,
     '      - name: Render pdf book',
     '        run: |',
     '          bookdown::render_book("index.Rmd", "bookdown::pdf_book")',
-    '          shell: Rscript {0}',
+    '        shell: Rscript {0}',
     '      - name: Render gitbook',
     '        run: |',
     '          bookdown::render_book("index.Rmd", "bookdown::gitbook")',
@@ -425,11 +425,10 @@ build_ghworkflow <- function() {
     '        run: |',
     '          RMD_PATH=($(ls | grep "[.]Rmd$"))',
     '          Rscript -e \'for (file in commandArgs(TRUE)) rmarkdown::render(file, "all")\' ${RMD_PATH[*]}',
-    '          Rscript -e \'memoiR::build_githubpages()\'',
-    '          shell: Rscript {0}'
+    '          Rscript -e \'memoiR::build_githubpages()\''
     )
   }
-  
+  # Publish
   lines <- c(lines,
     '      - name: Upload artifact',
     '        uses: actions/upload-artifact@v1',
@@ -438,7 +437,7 @@ build_ghworkflow <- function() {
     '          path: docs',
     '  checkout-and-deploy:',
     '    runs-on: ubuntu-latest',
-    '    needs: renderbook',
+    '    needs: render',
     '    steps:',
     '      - name: Checkout',
     '        uses: actions/checkout@v2',
@@ -454,7 +453,7 @@ build_ghworkflow <- function() {
     '        with:',
     '          email: ${{ secrets.EMAIL }}',
     '          build_dir: docs')
-  
+  # Jekyll site for simple documents
   if (is_memoir) {
     lines <- c(lines,
     '          jekyll: no'
@@ -464,7 +463,7 @@ build_ghworkflow <- function() {
     '          jekyll: yes'
     )
   }
-
+  # Create the workflow file
   dir.create(usethis::proj_path(".github/workflows"), showWarnings=FALSE, recursive=TRUE)
   usethis::write_over(usethis::proj_path(".github/workflows/memoir.yml"), lines)
 }
