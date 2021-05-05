@@ -119,8 +119,8 @@ knitr::write_bib(Packages, file="packages.bib")
 # knitr options
 knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
-  echo = TRUE, # Show R chunks
-  warning=FALSE, # Hide warnings
+  echo = TRUE, # Show/Hide R chunks
+  warning=FALSE, # Show/Hide warnings
   # Books only: figures with side captions
   fig.env='SCfigure', fig.asp=.75,
   # Figure alignment and size

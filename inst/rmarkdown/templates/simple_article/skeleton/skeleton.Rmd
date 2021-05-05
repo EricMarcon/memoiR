@@ -77,10 +77,8 @@ InstallPackages(Packages)
 # knitr options
 knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
-  echo = TRUE, # Show R chunks
-  warning=FALSE, # Hide warnings
-  # Books only: figures with side captions
-  # fig.env='SCfigure', fig.asp=.75,
+  echo = TRUE, # Show/Hide R chunks
+  warning=FALSE, # Show/Hide warnings
   # Figure alignment and size
   fig.align='center', out.width='80%',
   # Graphic device

@@ -5,11 +5,6 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 bibliography: references.bib
 biblio-style: chicago
 output:
-  bookdown::ioslides_presentation2:
-    logo: images/logo.png
-    widescreen: true
-  bookdown::slidy_presentation2:
-    slide_level: 2
   bookdown::beamer_presentation2:
     citation_package: natbib
     latex_engine: xelatex
@@ -19,6 +14,11 @@ output:
       in_header: latex/header.tex
     keep_tex: no
     slide_level: 2
+  bookdown::slidy_presentation2:
+    slide_level: 2
+  bookdown::ioslides_presentation2:
+    logo: images/logo.png
+    widescreen: true
   bookdown::powerpoint_presentation2:
     slide_level: 2
 ---
@@ -64,8 +64,8 @@ InstallPackages(Packages)
 # knitr options
 knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
-  echo = TRUE, # Show R chunks
-  warning=FALSE, # Hide warnings
+  echo = FALSE, # Show/Hide R chunks
+  warning=FALSE, # Show/Hide warnings
   # Figure alignment and size
   fig.align='center', out.width='80%',
   # Graphic device
@@ -91,20 +91,29 @@ set.seed(973)
 ```
 
 
-# First Part
+# Introduction
 
 ## R Markdown
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This is an R Markdown presentation. 
+Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. 
+For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
 
-Table Header | Second Header
------------- | -------------
-Table Cell   | Cell 2
-Cell 3       | Cell 4
+## Beamer Presentation Template
+
+This template has the same features as others in the **memoiR** package except for
+multi-language support (no `lang` item in the header).
+
+See the code of the following slides for some specific code of slides.
+
+
+# Advanced code
 
 ## Slide with Incremental Bullets
+
+Incremental bullets start with `> -` instead of `-`:
 
 > - Bullet 1
 > - A reference: @Xie2016.
@@ -112,13 +121,14 @@ Cell 3       | Cell 4
 
 ## Slide with R Output
 
+R code chunks are displayed as follows:
+
 ```{r cars, echo = TRUE}
 head(cars)
 ```
 
-# Second part
+## Slide with a Centered Plot{.flexbox .vcenter}
 
-## Slide with a Plot{.flexbox .vcenter}
 ```{r pressure}
 plot(pressure)
 ```
@@ -155,7 +165,7 @@ Note:
 - `{.flexbox .vcenter}` to center the HTML slide with plot.
 - `out.width='90%'` to reduce the size of the plot in the Two Column Layout slide.
 
-Keep the code below to have a slide for references and allow two-column slides in _ioslides_ (but not in _Slidy_) and allow scrolling oversized slides.
+Keep the code below to have a slide for references, allow two-column slides in _ioslides_ (but not in _Slidy_) and allow scrolling oversized slides.
 
 <!-- A slide for references --> 
 `r if (!knitr:::is_latex_output()) '## References {.smaller}'`
