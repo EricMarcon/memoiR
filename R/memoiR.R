@@ -354,3 +354,118 @@ build_gitignore <- function() {
   
   usethis::write_over(usethis::proj_path(".gitignore"), lines)
 }
+
+
+#' Build GitHub Action Workflow
+#'
+#' Build a YAML file (`.gihub/workflows/memoir.yml`) to knit the documents 
+#' of the project to GitHub Pages. 
+#
+#' The workflow knits all R Markdown files according their header: all output 
+#' formats are produced and stored into the `gh-pages` branch of the project.
+#' 
+#' All HTML outputs have the same name so the last one knitted overwrites the
+#' previous ones.
+#' Keep only one HTML format in the header of each RMarkdown file.
+#' 
+#' No `DESCRIPTION` file is necessary in the project to install packages.
+#' They must be declared in the options code chunk of each .Rmd file
+#' (index.Rmd for the memoir template).
+#' 
+#' Two secrets must have been stored in the GitHub account:
+#' - GH_PAT: a valid access token,
+#' - EMAIL: the email address to send the workflow results to.
+#'
+#' @export
+build_ghworkflow <- function() {
+  # Is this a book project?
+  is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
+  # Workflow
+  lines <- c(
+    'on:',
+    '  push:',
+    '   branches:',
+    '     - master',
+    '',
+    'name: rmarkdown',
+    '',
+    'jobs:',
+    '  render:',
+    '    runs-on: macOS-latest',
+    '    steps:',
+    '      - name: Checkout repo',
+    '        uses: actions/checkout@v2',
+    '      - name: Setup R',
+    '        uses: r-lib/actions/setup-r@v1',
+    '      - name: Install pandoc',
+    '        uses: r-lib/actions/setup-pandoc@v1',
+    '      - name: Install dependencies',
+    '        run: |',
+    '          options(pkgType = "binary")',
+    '          options(install.packages.check.source = "no")',
+    '          install.packages(c("memoiR", "tinytex"))',
+    '          tinytex::install_tinytex()',
+    '        shell: Rscript {0}'
+  )
+  
+  if (is_memoir) {
+    lines <- c(lines,
+    '      - name: Render pdf book',
+    '        run: |',
+    '          bookdown::render_book("index.Rmd", "bookdown::pdf_book")',
+    '          shell: Rscript {0}',
+    '      - name: Render gitbook',
+    '        run: |',
+    '          bookdown::render_book("index.Rmd", "bookdown::gitbook")',
+    '        shell: Rscript {0}'
+    )
+  } else {
+    lines <- c(lines,
+    '      - name: Render Rmarkdown files',
+    '        run: |',
+    '          RMD_PATH=($(ls | grep "[.]Rmd$"))',
+    '          Rscript -e \'for (file in commandArgs(TRUE)) rmarkdown::render(file, "all")\' ${RMD_PATH[*]}',
+    '          Rscript -e \'memoiR::build_githubpages()\'',
+    '          shell: Rscript {0}'
+    )
+  }
+  
+  lines <- c(lines,
+    '      - name: Upload artifact',
+    '        uses: actions/upload-artifact@v1',
+    '        with:',
+    '          name: ghpages',
+    '          path: docs',
+    '  checkout-and-deploy:',
+    '    runs-on: ubuntu-latest',
+    '    needs: renderbook',
+    '    steps:',
+    '      - name: Checkout',
+    '        uses: actions/checkout@v2',
+    '      - name: Download artifact',
+    '        uses: actions/download-artifact@v1',
+    '        with:',
+    '          name: ghpages',
+    '          path: docs',
+    '      - name: Deploy to GitHub Pages',
+    '        uses: Cecilapp/GitHub-Pages-deploy@v3',
+    '        env:',
+    '          GITHUB_TOKEN: ${{ secrets.GH_PAT }}',
+    '        with:',
+    '          email: ${{ secrets.EMAIL }}',
+    '          build_dir: docs')
+  
+  if (is_memoir) {
+    lines <- c(lines,
+    '          jekyll: no'
+    )
+  } else {
+    lines <- c(lines,
+    '          jekyll: yes'
+    )
+  }
+
+  dir.create(usethis::proj_path(".github/workflows"), showWarnings=FALSE, recursive=TRUE)
+  usethis::write_over(usethis::proj_path(".github/workflows/memoir.yml"), lines)
+}
+
