@@ -24,7 +24,7 @@ Producing a PDF file from a R Markdown (`.Rmd`) document requires several steps:
 - Pandoc[^1] is run to produce either directly an HTML document or a LaTeX file (`.tex`).
 The bibliography of HTML documents is processed by Pandoc at this stage[^2].
 **memoiR** templates delay it for LaTeX documents.
-*- A LaTeX engine is run to compile the LaTeX file and produce a PDF document.
+- A LaTeX engine is run to compile the LaTeX file and produce a PDF document.
 It uses reference management software (BibTeX[^3] or Biber[^4]) and a LaTeX package (natbib[^5] or biblatex[^6]) for bibliography. 
 
 [^1]: https://pandoc.org/
@@ -35,7 +35,7 @@ It uses reference management software (BibTeX[^3] or Biber[^4]) and a LaTeX pack
 [^6]: https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber
 
 **memoiR** templates rely on XeLaTeX[^7] to compile LaTeX documents to PDF files.
-Among XeLaTex advantages over the classical pdflatex engine[^8], including native UTF-8 encoding, language support by Polyglossia[^9] rather than Babel[^10] (required by pdflatex) is similar to that of Pandoc to produce HTML formats, based on IETF language tags[^11] such as "en-US".
+Among XeLaTex advantages over the classical pdflatex engine[^8], including native UTF-8 encoding, the language support by Polyglossia[^9] rather than Babel[^10] (required by pdflatex) is similar to that of Pandoc to produce HTML formats, based on IETF language tags[^11] such as "en-US".
 In short, this solution is simpler and more robust: just fill the `lang` field in the document header.
 
 [^7]: https://en.wikipedia.org/wiki/XeTeX
