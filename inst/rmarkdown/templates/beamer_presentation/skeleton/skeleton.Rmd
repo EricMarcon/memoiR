@@ -2,18 +2,22 @@
 title: "Title of the Talk"
 author: "Author's name"
 date: "`r format(Sys.time(), '%d %B %Y')`"
+url: https://GitHubID.github.io/Repository/
+github-repo: GitHubID/Repository
 bibliography: references.bib
 biblio-style: chicago
 output:
   bookdown::beamer_presentation2:
-    citation_package: natbib
     latex_engine: xelatex
-    df_print: kable
-    fig_caption: no
     includes:
       in_header: latex/header.tex
-    keep_tex: no
+    citation_package: natbib
     slide_level: 2
+    df_print: kable
+    number_sections: no
+    toc: no
+    fig_caption: no
+    keep_tex: no
   bookdown::slidy_presentation2:
     slide_level: 2
   bookdown::ioslides_presentation2:
