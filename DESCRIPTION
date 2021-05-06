@@ -1,6 +1,6 @@
 Package: memoiR
 Title: R Markdown and Bookdown Templates to Publish Documents
-Version: 0.2-4
+Version: 0.3-2
 URL: https://github.com/EricMarcon/memoiR
 BugReports: https://github.com/EricMarcon/memoiR/issues
 Authors@R: 
@@ -9,7 +9,8 @@ Authors@R:
          role = c("aut", "cre"),
          email = "eric.marcon@agroparistech.fr",
          comment = c(ORCID = "0000-0002-5249-321X"))
-Description: What the package does (one paragraph).
+Description: memoiR provides templates to knit articles, slideshows and memoirs. 
+  Helpers allow publishing the documents on GitHub Pages and activate continuous integration easily.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
