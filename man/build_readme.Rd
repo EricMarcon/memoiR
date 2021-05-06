@@ -2,7 +2,7 @@
 % Please edit documentation in R/memoiR.R
 \name{build_readme}
 \alias{build_readme}
-\title{Build Index}
+\title{Build README}
 \usage{
 build_readme(PDF = TRUE)
 }
