@@ -390,7 +390,7 @@
 
 \author{Authors' names}
 
-\date{2021-05-05}
+\date{2021-05-06}
 
 
 % End of preamble
@@ -509,8 +509,15 @@ author: "Authors' names"
 
 The date field may be kept to display the knitting date automatically.
 
+The \texttt{url} field contains the link to the GitHub pages of the project.
+It is used by \texttt{build\_readme()}.
+
 The \texttt{github-repo} field contains the name of the repository of the project on GitHub.
 It is used to build a link to the repository from the menu bar of the GitBook version of the document.
+
+\texttt{description} is used by \texttt{build\_readme()} and to build an HTML meta tag intended for search engines.
+\texttt{cover-image} is the name of an image file that will be used on the first page of the GitBook output.
+Twitter shares use both to build a link to the project.
 
 The cover will be:
 
@@ -1054,7 +1061,7 @@ chaptersummary: In a Nutshell
 \item[Abstract]
 English abstract, on the last page.
 
-This is a bookdown template base on LaTeX memoir class.
+This is a bookdown template based on LaTeX memoir class.
 \item[Keywords]
 Keyword in English, As a list.
 ~\\
