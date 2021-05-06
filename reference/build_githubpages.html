@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4-1</span>
       </span>
     </div>
 
@@ -167,115 +167,6 @@ The function is useless in book projects: the <em>Build the Book</em> (i.e. the 
 </ul>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Simulate the creation of a new project</span>
-<span class='co'># Save working directory</span>
-<span class='va'>original_wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'># Get a temporary working directory</span>
-<span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span>
-<span class='co'># Simulate File &gt; New File &gt; R Markdown... &gt; From Template &gt; Stylish Article</span>
-<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/draft.html'>draft</a></span><span class='op'>(</span><span class='va'>wd</span>, template<span class='op'>=</span><span class='st'>"stylish_article"</span>, package<span class='op'>=</span><span class='st'>"memoiR"</span>, edit<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='co'># Go to temp directory</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
-<span class='co'># Make it the current project</span>
-<span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Setting active project to </span><span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpCtKeMk/example3d8a4dd17cb2'</span><span></span></div><div class='input'>
-<span class='co'>## Sequence of actions to build a complete project</span>
-<span class='co'># Build .gitignore</span>
-<span class='fu'><a href='build_gitignore.html'>build_gitignore</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Writing </span><span style='color: #0000BB;'>'.gitignore'</span><span></span></div><div class='input'><span class='co'>## Activate source control, edit your files, commit</span>
-<span class='co'># Build README, link to HTML output only in this example</span>
-<span class='fu'><a href='build_readme.html'>build_readme</a></span><span class='op'>(</span>PDF<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Writing </span><span style='color: #0000BB;'>'README.md'</span><span></span></div><div class='input'>
-<span class='co'>## Scenario 1: no continuous integration</span>
-<span class='co'># render: knit to downcute (interactively: clic the Knit button)</span>
-<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>render</a></span><span class='op'>(</span>input<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>pattern<span class='op'>=</span><span class='st'>"*.Rmd"</span><span class='op'>)</span>, 
-                  output_format<span class='op'>=</span><span class='st'>"rmdformats::downcute"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>processing file: example3d8a4dd17cb2.Rmd</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%  |                                                                              |.....                                                                 |   7%
-#&gt;    inline R code fragments
-#&gt; 
-#&gt;   |                                                                              |.........                                                             |  13%
-#&gt; label: DoNotModify (with options) 
-#&gt; List of 1
-#&gt;  $ include: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |..............                                                        |  20%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |...................                                                   |  27%
-#&gt; label: Options (with options) 
-#&gt; List of 1
-#&gt;  $ include: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |.......................                                               |  33%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |............................                                          |  40%
-#&gt; label: cars (with options) 
-#&gt; List of 1
-#&gt;  $ echo: logi TRUE
-#&gt; 
-#&gt;   |                                                                              |.................................                                     |  47%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |.....................................                                 |  53%
-#&gt; label: kable (with options) 
-#&gt; List of 2
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ warning: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |..........................................                            |  60%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |...............................................                       |  67%
-#&gt; label: Paracou (with options) 
-#&gt; List of 2
-#&gt;  $ echo   : logi FALSE
-#&gt;  $ warning: logi FALSE
-#&gt; 
-#&gt;   |                                                                              |...................................................                   |  73%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |........................................................              |  80%
-#&gt; label: pressure (with options) 
-#&gt; List of 1
-#&gt;  $ fig.cap: chr "Figure title"
-#&gt; </div><div class='output co'>#&gt;   |                                                                              |.............................................................         |  87%
-#&gt;   ordinary text without R code
-#&gt; 
-#&gt;   |                                                                              |.................................................................     |  93%
-#&gt; label: logo (with options) 
-#&gt; List of 2
-#&gt;  $ fig.cap: chr "A figure from a file"
-#&gt;  $ echo   : logi FALSE
-#&gt; 
-#&gt;   |                                                                              |......................................................................| 100%
-#&gt;    inline R code fragments
-#&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: example3d8a4dd17cb2.knit.md</span></div><div class='output co'>#&gt; <span class='warning'>Warning: MathJax doesn't work with self_contained when not using the rmarkdown "default" template.</span></div><div class='output co'>#&gt; /usr/local/bin/pandoc +RTS -K512m -RTS example3d8a4dd17cb2.utf8.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output example3d8a4dd17cb2.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --wrap preserve --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --variable 'downcute:true' --variable 'lightbox:true' --variable 'gallery:false' --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 2 --template /Users/runner/work/_temp/Library/rmdformats/templates/template.html --highlight-style pygments --number-sections --variable theme=bootstrap --include-in-header /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpCtKeMk/rmarkdown-str3d8a5fbd0f9f.html --filter /usr/local/bin/pandoc-citeproc </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: example3d8a4dd17cb2.html</span></div><div class='input'><span class='co'># Build GitHub Pages</span>
-<span class='fu'>build_githubpages</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Output files moved to /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpCtKeMk/example3d8a4dd17cb2/docs</div><div class='input'><span class='co'># List the GitHub Pages files</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='st'>"docs"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "example3d8a4dd17cb2.html"
-#&gt; [2] "images/logo.pdf"         
-#&gt; [3] "images/logo.png"         
-#&gt; [4] "README.md"               </div><div class='input'><span class='co'>## Commit and push. Outputs will be in /docs of the master branch.</span>
-
-<span class='co'>## Scenario 2: continuous integration</span>
-<span class='co'># Build GitHub Actions workflow</span>
-<span class='fu'><a href='build_ghworkflow.html'>build_ghworkflow</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Writing </span><span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span><span></span></div><div class='input'><span class='co'>## Commit and push: GH Actions will render the documents and store them </span>
-<span class='co'>## in the gh-pages branch.</span>
-
-<span class='co'>## End of the example: cleanup</span>
-<span class='co'># Return to the original working directory and clean up</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
