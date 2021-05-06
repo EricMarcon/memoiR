@@ -44,9 +44,15 @@ Push your project to GitHub and activate GitHub Pages to make your documents rea
 The following functions help simplify that task:
 
 - `build_gitignore()` to create a `.gitignore` file. Activate git source control then.
-- `build_index()` to create a `README.md` file, that will be the GitHub Pages index of articles or slideshows.
+- `build_readme()` to create a `README.md` file, that will be the GitHub Pages index of articles or slideshows.
 - `build-githubpages()` to move knitted documents (articles or slideshows) to the `docs` folder.
 
+Documents can be knitted by GitHub Action if continuous integration in activated:
+
+- In GitHub Settings, enter two secrets:
+    - EMAIL: the email address of the author,
+    - GH-PAT: a valid Personal Access Token.
+- run `build_ghworkflow()` to create the necessary script (`.github/workflows/check.yml`).
 
 # Credits
 
