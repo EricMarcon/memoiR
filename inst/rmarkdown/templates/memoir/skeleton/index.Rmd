@@ -2,7 +2,10 @@
 title: "Title of the Memoir"
 author: "Authors' names"
 date: "`r Sys.Date()`"
+url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
+description: "Bookdown template based on LaTeX memoir class"
+cover-image: "images/logo.png"
 # Title page...
 maintitlepage:
   epigraph: |
@@ -51,7 +54,7 @@ backcover:
     abstract: |
       English abstract, on the last page.
   
-      This is a bookdown template base on LaTeX memoir class.
+      This is a bookdown template based on LaTeX memoir class.
     keywords:
       - Keyword in English
       - As a list

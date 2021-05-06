@@ -23,8 +23,15 @@ In the file header, enter the title of the work and the name of the author(s).
     
 The date field may be kept to display the knitting date automatically.
 
+The `url` field contains the link to the GitHub pages of the project.
+It is used by `build_readme()`.
+
 The `github-repo` field contains the name of the repository of the project on GitHub.
 It is used to build a link to the repository from the menu bar of the GitBook version of the document.
+
+`description` is used by `build_readme()` and to build an HTML meta tag intended for search engines.
+`cover-image` is the name of an image file that will be used on the first page of the GitBook output.
+Twitter shares use both to build a link to the project.
 
 The cover will be:
 

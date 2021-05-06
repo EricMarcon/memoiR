@@ -17,7 +17,7 @@ Produced files are HTML pages and their companions (css, figures, libraries) and
 The function moves them all and the \code{README.md} file into the destination folder.
 GitHub Pages allow making a website to present them:
 \itemize{
-\item \code{README.md} is the home page. Make it with \code{\link[=build_index]{build_index()}} to have links to the HTML and PDF outputs.
+\item \code{README.md} is the home page. Make it with \code{\link[=build_readme]{build_readme()}} to have links to the HTML and PDF outputs.
 \item knit both HTML and PDF versions to avoid dead links.
 \item run \code{build_githubpages()} when a document is knitted to move the outputs into the \code{docs} folder.
 \item push to GitHub and activate GitHub Pages on the main branch and the \code{docs} folder.
@@ -41,7 +41,7 @@ build_gitignore()
 rmarkdown::render(input=list.files(pattern="*.Rmd"), 
                   output_format="rmdformats::downcute")
 # Build index, HTML only
-build_index(PDF=FALSE)
+build_readme(PDF=FALSE)
 # Build GitHub Pages
 build_githubpages(destination="docs")
 # List the GitHub Pages files

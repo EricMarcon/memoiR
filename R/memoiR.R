@@ -152,7 +152,7 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
 #' Produced files are HTML pages and their companions (css, figures, libraries) and PDF documents.
 #' The function moves them all and the `README.md` file into the destination folder.
 #' GitHub Pages allow making a website to present them:
-#' - `README.md` is the home page. Make it with [build_index()] to have links to the HTML and PDF outputs.
+#' - `README.md` is the home page. Make it with [build_readme()] to have links to the HTML and PDF outputs.
 #' - knit both HTML and PDF versions to avoid dead links.
 #' - run `build_githubpages()` when a document is knitted to move the outputs into the `docs` folder.
 #' - push to GitHub and activate GitHub Pages on the main branch and the `docs` folder.
@@ -179,7 +179,7 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
 #' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
 #'                   output_format="rmdformats::downcute")
 #' # Build index, HTML only
-#' build_index(PDF=FALSE)
+#' build_readme(PDF=FALSE)
 #' # Build GitHub Pages
 #' build_githubpages(destination="docs")
 #' # List the GitHub Pages files
@@ -268,10 +268,9 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' @param PDF if `TRUE` (by default), a link to the PDF output is added.
 #' 
 #' @export
-build_index <- function(PDF = TRUE) {
-  # Quit if the project is a book
-  if (file.exists(usethis::proj_path("_bookdown.yml")))
-    stop("Book projects do not need build_index()")
+build_readme <- function(PDF = TRUE) {
+  # Is this a book project?
+  is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
   # Save the working directory
   OriginalWD <- getwd()
   # Make the project directory the working directory
@@ -279,24 +278,39 @@ build_index <- function(PDF = TRUE) {
   # Find the markdown files
   RmdFiles <- list.files(pattern="*.Rmd")
   lines <- character()
-  for (RmdFile in RmdFiles) {
-    yaml_header <- rmarkdown::yaml_front_matter(RmdFile)
-    # Eliminate the extension
-    RmdFileName <- gsub(".Rmd", "", RmdFile)
-    if (PDF) {
-      lines <- c(lines,
-                 paste("# ", yaml_header$title, "\n", sep=""),
-                 yaml_header$abstract,
-                 "Formats:\n",
-                 paste("- [HTML](", yaml_header$url, RmdFileName, ".html)", sep=""),
-                 paste("- [PDF](", yaml_header$url, RmdFileName, ".pdf)\n", sep=""),
-                 "\n")
-    } else{
-      lines <- c(paste("# [", 
-                       yaml_header$title, "](", 
-                       yaml_header$url, RmdFileName, "html)\n", 
-                       sep=""),
-                 yaml_header$abstract)
+  if (is_memoir) {
+    yaml_header <- rmarkdown::yaml_front_matter(usethis::proj_path("index.Rmd"))
+    if (length(yaml_header$backcover))
+      abstract <- yaml_header$backcover[[1]]$abstract
+    else
+      abstract <- ""
+    lines <- c(paste("# [",
+                     yaml_header$title, "](",
+                     yaml_header$url, "/index.html)\n",
+                     sep=""),
+               yaml_header$description,
+               "\n",
+               abstract)
+  } else {
+    for (RmdFile in RmdFiles) {
+      yaml_header <- rmarkdown::yaml_front_matter(RmdFile)
+      # Eliminate the extension
+      RmdFileName <- gsub(".Rmd", "", RmdFile)
+      if (PDF) {
+        lines <- c(lines,
+                   paste("# ", yaml_header$title, "\n", sep=""),
+                   yaml_header$abstract,
+                   "Formats:\n",
+                   paste("- [HTML](", yaml_header$url, RmdFileName, ".html)", sep=""),
+                   paste("- [PDF](", yaml_header$url, RmdFileName, ".pdf)\n", sep=""),
+                   "\n")
+      } else{
+        lines <- c(paste("# [", 
+                         yaml_header$title, "](", 
+                         yaml_header$url, RmdFileName, "html)\n", 
+                         sep=""),
+                   yaml_header$abstract)
+      }
     }
   }
   usethis::write_over(usethis::proj_path("README.md"), lines)
