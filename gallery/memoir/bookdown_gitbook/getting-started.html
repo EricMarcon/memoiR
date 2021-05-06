@@ -203,8 +203,9 @@ It is used by <code>build_readme()</code>.</p>
 <p>The <code>github-repo</code> field contains the name of the repository of the project on GitHub.
 It is used to build a link to the repository from the menu bar of the GitBook version of the document.</p>
 <p><code>description</code> is used by <code>build_readme()</code> and to build an HTML meta tag intended for search engines.
-<code>cover-image</code> is the name of an image file that will be used on the first page of the GitBook output.
-Twitter shares use both to build a link to the project.</p>
+<code>cover-image</code> is the name of an image file that will be used by social networks when the GitBook is shared.
+Twitter uses both to build a link to the project.
+If a PDF file is used as the PDF book cover (see below), a good idea is to export it to PNG and declare the PNG file in <code>cover-image</code>.</p>
 <p>The cover will be:</p>
 <ul>
 <li>that of a book if the <em>maintitlepage</em> statement is present.

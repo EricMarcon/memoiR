@@ -134,9 +134,19 @@
 <li>
 <code><a href="../reference/build_gitignore.html">build_gitignore()</a></code> to create a <code>.gitignore</code> file. Activate git source control then.</li>
 <li>
-<code>build_index()</code> to create a <code>README.md</code> file, that will be the GitHub Pages index of articles or slideshows.</li>
+<code><a href="../reference/build_readme.html">build_readme()</a></code> to create a <code>README.md</code> file, that will be the GitHub Pages index of articles or slideshows.</li>
 <li>
 <code>build-githubpages()</code> to move knitted documents (articles or slideshows) to the <code>docs</code> folder.</li>
+</ul>
+<p>Documents can be knitted by GitHub Action if continuous integration in activated:</p>
+<ul>
+<li>In GitHub Settings, enter two secrets:
+<ul>
+<li>EMAIL: the email address of the author,</li>
+<li>GH-PAT: a valid Personal Access Token.</li>
+</ul>
+</li>
+<li>run <code><a href="../reference/build_ghworkflow.html">build_ghworkflow()</a></code> to create the necessary script (<code>.github/workflows/check.yml</code>).</li>
 </ul>
 </div>
 <div id="credits" class="section level1">
