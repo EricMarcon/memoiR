@@ -24,6 +24,9 @@ knit_template(
 
 \item{output_format}{A character vector of the output formats to convert to. Each value must be the name of a function producing an output format object, such as "bookdown::pdf_book".}
 }
+\value{
+\code{TRUE} if all documents have been knitted and copied to the gallery, invisibly.
+}
 \description{
 Create documents from templates
 }
@@ -37,4 +40,7 @@ The \code{output_format} argument selects the way templates are rendered:
 \item books may be rendered in HTML by \link[bookdown:gitbook]{bookdown::gitbook} and in PDF by \link[bookdown:pdf_book]{bookdown::pdf_book}.
 \item slides may be rendered in  HTML by \link[bookdown:html_document2]{bookdown::ioslides_presentation2}, \link[bookdown:html_document2]{bookdown::ioslides_presentation2} and in PDF by \link[bookdown:html_document2]{bookdown::beamer_presentation2}.
 }
+
+These functions are mainly used for test and documentation purposes.
+In projects based on the templates, use the \emph{Knit} button (articles, presentations) or the \emph{Build the Book} button (memoirs) or \code{\link[bookdown:render_book]{bookdown::render_book()}}.
 }

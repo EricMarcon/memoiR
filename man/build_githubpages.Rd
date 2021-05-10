@@ -9,6 +9,9 @@ build_githubpages(destination = usethis::proj_path("docs"))
 \arguments{
 \item{destination}{destination folder of the knitted documents.}
 }
+\value{
+A vector with the names of the files and directory that were copied if they existed (some may not be knitted), invisibly.
+}
 \description{
 Copy the files produced by knitting to the destination folder.
 }
@@ -23,4 +26,40 @@ GitHub Pages allow making a website to present them:
 \item push to GitHub and activate GitHub Pages on the main branch and the \code{docs} folder.
 The function is useless in book projects: the \emph{Build the Book} (i.e. the \code{\link[bookdown:render_book]{bookdown::render_book()}} function) takes care of every step.
 }
+}
+\examples{
+## Not run: 
+## Simulate the creation of a new project
+# Save working directory
+original_wd <- getwd()
+# Get a temporary working directory
+wd <- tempfile("example")
+# Simulate File > New File > R Markdown... > From Template > Simple Article
+rmarkdown::draft(wd, template="simple_article", package="memoiR", edit=FALSE)
+# Go to temp directory
+setwd(wd)
+# Make it the current project
+usethis::proj_set(path = ".", force = TRUE)
+
+## Sequence of actions to build a complete project
+# Build .gitignore
+build_gitignore()
+## Activate source control, edit your files, commit
+# Build README, link to HTML output only in this example
+build_readme(PDF=FALSE)
+# render: knit to downcute (interactively: clic the Knit button)
+rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+                  output_format="rmdformats::downcute")
+# Build GitHub Pages
+build_githubpages()
+# List the GitHub Pages files
+setwd("docs")
+list.files(recursive=TRUE)
+## Commit and push. Outputs will be in /docs of the master branch.
+## End of the example: cleanup
+# Return to the original working directory and clean up
+setwd(original_wd)
+unlink(wd, recursive=TRUE)
+
+## End(Not run)
 }

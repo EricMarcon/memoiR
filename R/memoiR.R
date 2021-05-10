@@ -20,47 +20,65 @@ NULL
 #' - books may be rendered in HTML by [bookdown::gitbook] and in PDF by [bookdown::pdf_book].
 #' - slides may be rendered in  HTML by [bookdown::ioslides_presentation2], [bookdown::ioslides_presentation2] and in PDF by [bookdown::beamer_presentation2].
 #'
+#' These functions are mainly used for test and documentation purposes.
+#' In projects based on the templates, use the _Knit_ button (articles, presentations) or the _Build the Book_ button (memoirs) or [bookdown::render_book()].
+#' 
 #' @param template name of the template to knit, e.g. "simple_article".
 #' @param output_format A character vector of the output formats to convert to. Each value must be the name of a function producing an output format object, such as "bookdown::pdf_book".  
 #' @param destination name of the folder containing GitHub pages or equivalent.
 #' @param gallery name of the subfolder of `destination` to store the knitted documents.
 #'
+#' @return `TRUE` if all documents have been knitted and copied to the gallery, invisibly.
+#' 
 #' @name Knit
 NULL
 
 #' @rdname Knit
 #' @export
 knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") {
-  knit_template("simple_article", 
-                output_format=c("bookdown::pdf_book", 
-                                "rmdformats::downcute", 
-                                "bookdown::html_document2"), 
-                destination=destination, gallery=gallery)
-  knit_template("stylish_article", 
-                output_format=c("bookdown::pdf_book"), 
-                destination=destination, gallery=gallery)
-  knit_template("memoir", 
-                output_format=c("bookdown::pdf_book", 
-                                "bookdown::gitbook"), 
-                destination=destination, gallery=gallery)
-  knit_template("beamer_presentation", 
-                output_format=c("bookdown::beamer_presentation2", 
-                                "bookdown::ioslides_presentation2", 
-                                "bookdown::slidy_presentation2"), 
-                destination=destination, gallery=gallery)
+  done <- knit_template("simple_article",
+                        output_format=c("bookdown::pdf_book", 
+                                        "rmdformats::downcute", 
+                                        "bookdown::html_document2"), 
+                        destination=destination, gallery=gallery)
+  if (done)
+    done <- knit_template("stylish_article", 
+                          output_format=c("bookdown::pdf_book"), 
+                          destination=destination, gallery=gallery)
+  if (done)
+    done <- knit_template("memoir", 
+                          output_format=c("bookdown::pdf_book", 
+                                          "bookdown::gitbook"), 
+                          destination=destination, gallery=gallery)
+  if (done)
+    done <- knit_template("beamer_presentation", 
+                          output_format=c("bookdown::beamer_presentation2", 
+                                          "bookdown::ioslides_presentation2", 
+                                          "bookdown::slidy_presentation2"), 
+                          destination=destination, gallery=gallery)
+  return(invisible(done))
 }
 
 #' @rdname Knit
 #' @export
 knit_template <- function(template, output_format, destination=usethis::proj_path("docs"), gallery="gallery") {
+  done <- FALSE
   # Save knitr.table.format option (for kable)
   knitr_table_format <- options("knitr.table.format")
   # Save working directory
   OriginalWD <- getwd()
   # Evaluate destination before changing working directory (or lazy evaluation will fail)
   destination <- destination
-  # Go to temp directory
+  # Get temp directory
   tmpdir <- tempdir()
+  # Prepare clean up
+  on.exit({
+    setwd(OriginalWD)
+    unlink(paste(tmpdir, "/", template, sep=""), recursive=TRUE)
+    options(knitr.table.format=knitr_table_format)
+  })
+  
+  # Go to temp directory
   setwd(tmpdir)
   # Clean up the working folder
   unlink(template, recursive=TRUE)
@@ -71,77 +89,79 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
     # Delete the useless file created by draft
     unlink(paste(template, ".Rmd", sep=""))
   }
+  tryCatch({
+    # Knit
+    for (format in output_format) {
+      if (format %in% c("bookdown::gitbook", 
+                        "bookdown::html_document2", 
+                        "rmdformats::downcute", 
+                        "bookdown::ioslides_presentation2", 
+                        "bookdown::slidy_presentation2")) {
+        # Knit to HTML
+        options(knitr.table.format="html")
+        if (template == "memoir") {
+          # Book
+          bookdown::render_book(input="index.Rmd",
+                                output_format=format,
+                                output_dir=paste(gallery, "/", 
+                                                 template, "/", 
+                                                 gsub("::", "_", format),
+                                                 sep=""))
+        } else {
+          # Article or presentation
+          rmarkdown::render(input=paste(template, ".Rmd", sep=""),
+                            output_format=format,
+                            output_dir=paste(gallery, "/", 
+                                             template, "/", 
+                                             gsub("::", "_", format),
+                                             sep=""))
+        }
+      }
+      if (format %in% c("bookdown::pdf_book", 
+                        "bookdown::beamer_presentation2",
+                        "bookdown::beamer_presentation2")) {
+        # Knit to PDF
+        options(knitr.table.format="latex")
+        if (template == "memoir") {
+          # Book
+          bookdown::render_book(input="index.Rmd",
+                                output_format=format,
+                                output_dir=paste(gallery, "/", 
+                                                 template, "/", 
+                                                 gsub("::", "_", format),
+                                                 sep=""))
+        } else {
+          # Article or presentation
+          rmarkdown::render(input=paste(template, ".Rmd", sep=""),
+                            output_format=format,
+                            output_dir=paste(gallery, "/", 
+                                             template, "/", 
+                                             gsub("::", "_", format),
+                                             sep=""))
+        }
+      }
+    }
   
-  # Knit
-  for (format in output_format) {
-    if (format %in% c("bookdown::gitbook", 
-                      "bookdown::html_document2", 
-                      "rmdformats::downcute", 
-                      "bookdown::ioslides_presentation2", 
-                      "bookdown::slidy_presentation2")) {
-      # Knit to HTML
-      options(knitr.table.format="html")
-      if (template == "memoir") {
-        # Book
-        bookdown::render_book(input="index.Rmd",
-                              output_format=format,
-                              output_dir=paste(gallery, "/", 
-                                               template, "/", 
-                                               gsub("::", "_", format),
-                                               sep=""))
-      } else {
-        # Article or presentation
-        rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                          output_format=format,
-                          output_dir=paste(gallery, "/", 
-                                           template, "/", 
-                                           gsub("::", "_", format),
-                                           sep=""))
-      }
+    # Copy to destination
+    docsDirs <- list.dirs(path=gallery, full.names=TRUE, recursive=TRUE)
+    if (length(docsDirs) > 0) {
+      docsFiles <- list.files(gallery, full.names=TRUE, recursive=TRUE)
+      # Create destination under the working directory
+      vapply(paste(destination, "/", docsDirs, sep=""),
+             dir.create,
+             showWarnings=FALSE,
+             recursive=TRUE,
+             FUN.VALUE = TRUE)
+      file.copy(from=docsFiles,
+                to=paste(destination,  "/", docsFiles, sep=""),
+                overwrite=TRUE)
     }
-    if (format %in% c("bookdown::pdf_book", 
-                      "bookdown::beamer_presentation2",
-                      "bookdown::beamer_presentation2")) {
-      # Knit to PDF
-      options(knitr.table.format="latex")
-      if (template == "memoir") {
-        # Book
-        bookdown::render_book(input="index.Rmd",
-                              output_format=format,
-                              output_dir=paste(gallery, "/", 
-                                               template, "/", 
-                                               gsub("::", "_", format),
-                                               sep=""))
-      } else {
-        # Article or presentation
-        rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                          output_format=format,
-                          output_dir=paste(gallery, "/", 
-                                           template, "/", 
-                                           gsub("::", "_", format),
-                                           sep=""))
-      }
-    }
-  }
-
-  # Copy to destination
-  docsDirs <- list.dirs(path=gallery, full.names=TRUE, recursive=TRUE)
-  if (length(docsDirs) > 0) {
-    docsFiles <- list.files(gallery, full.names=TRUE, recursive=TRUE)
-    # Create destination under the working directory
-    vapply(paste(destination, "/", docsDirs, sep=""),
-           dir.create,
-           showWarnings=FALSE,
-           recursive=TRUE,
-           FUN.VALUE = TRUE)
-    file.copy(from=docsFiles,
-              to=paste(destination,  "/", docsFiles, sep=""),
-              overwrite=TRUE)
-  }
-  # Clean up
-  setwd(OriginalWD)
-  unlink(paste(tmpdir, "/", template, sep=""), recursive=TRUE)
-  options(knitr.table.format=knitr_table_format)
+    done <- TRUE
+  },
+  error = function(e) e
+  )
+  
+  return(done)
 }
 
 
@@ -160,15 +180,55 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
 #'
 #' @param destination destination folder of the knitted documents.
 #'
+#' @return A vector with the names of the files and directory that were copied if they existed (some may not be knitted), invisibly.
+#'
 #' @export
+#' @examples
+#' ## Not run: 
+#' ## Simulate the creation of a new project
+#' # Save working directory
+#' original_wd <- getwd()
+#' # Get a temporary working directory
+#' wd <- tempfile("example")
+#' # Simulate File > New File > R Markdown... > From Template > Simple Article
+#' rmarkdown::draft(wd, template="simple_article", package="memoiR", edit=FALSE)
+#' # Go to temp directory
+#' setwd(wd)
+#' # Make it the current project
+#' usethis::proj_set(path = ".", force = TRUE)
+#' 
+#' ## Sequence of actions to build a complete project
+#' # Build .gitignore
+#' build_gitignore()
+#' ## Activate source control, edit your files, commit
+#' # Build README, link to HTML output only in this example
+#' build_readme(PDF=FALSE)
+#' # render: knit to HTML Document (interactively: click the Knit button)
+#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+#'                   output_format="bookdown::html_document2")
+#' # Build GitHub Pages
+#' build_githubpages()
+#' # List the GitHub Pages files
+#' setwd("docs")
+#' list.files(recursive=TRUE)
+#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' ## End of the example: cleanup
+#' # Return to the original working directory and clean up
+#' setwd(original_wd)
+#' unlink(wd, recursive=TRUE)
+#' 
+#' ## End(Not run)
 build_githubpages <- function(destination=usethis::proj_path("docs")) {
 
   # Quit if the project is a book
   if (file.exists(usethis::proj_path("_bookdown.yml")))
     stop("Book projects do not need build_githubpages()")
 
+  processed <- ""
   # Save the working directory
   OriginalWD <- getwd()
+  # Prepare clean up
+  on.exit(setwd(OriginalWD))
   # Make the project directory the working directory
   setwd(usethis::proj_path())
 
@@ -176,15 +236,20 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   if (!dir.exists(destination)) dir.create(destination)
   # Move knitted html files
   htmlFiles <- list.files(pattern="*.html")
-  if (length(htmlFiles) > 0)
+  if (length(htmlFiles) > 0) {
+    processed <- c(processed, htmlFiles)
     file.rename(from=htmlFiles, to=paste(destination, "/", htmlFiles, sep=""))
+  }
   # Copy css files
   cssFiles <- list.files(pattern="*.css")
-  if (length(cssFiles) > 0)
+  if (length(cssFiles) > 0) {
+    processed <- c(processed, cssFiles)
     file.copy(from=cssFiles, to=paste(destination, "/", cssFiles, sep=""), overwrite=TRUE)
+  }
   # Copy generated figures
   html_filesDir <- list.files(pattern="*_files")
   if (length(html_filesDir) > 0) {
+    processed <- c(processed, html_filesDir)
     sapply(paste(destination, "/", html_filesDir, sep=""), dir.create, showWarnings=FALSE)
     sapply(paste(destination, "/", html_filesDir, "/figure-html", sep=""), dir.create, showWarnings=FALSE)
     html_files <- list.files(path=paste(html_filesDir, "/figure-html/", sep=""), full.names = TRUE, recursive=TRUE)
@@ -194,6 +259,7 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   # Copy libs
   libsDirs <- list.dirs(path="libs", full.names=TRUE, recursive=TRUE)
   if (length(libsDirs) > 0) {
+    processed <- c(processed, libsDirs)
     sapply(paste(destination, "/", libsDirs, sep = ""), dir.create, showWarnings=FALSE)
     libsFiles <- list.files("libs", full.names = TRUE, recursive=TRUE)
     file.copy(from=libsFiles, to=paste(destination, "/", libsFiles, sep = ""), overwrite=TRUE)
@@ -201,6 +267,7 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   # Copy static image files. MUST be in /images, may be in subfolders.
   imagesDirs <- list.dirs(path="images", full.names=TRUE, recursive=TRUE)
   if (length(imagesDirs) > 0) {
+    processed <- c(processed, imagesDirs)
     sapply(paste(destination, "/", imagesDirs, sep = ""), dir.create, showWarnings=FALSE)
     imagesFiles <- list.files("images", full.names = TRUE, recursive=TRUE)
     file.copy(from=imagesFiles, to=paste(destination, "/", imagesFiles, sep = ""), overwrite=TRUE)
@@ -209,43 +276,87 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   RmdFiles <- list.files(pattern="*.Rmd")
   # Change .Rmd files extension
   pdfFiles <- gsub(".Rmd", ".pdf", RmdFiles)
-  if (length(pdfFiles) > 0)
+  if (length(pdfFiles) > 0) {
+    processed <- c(processed, pdfFiles)
     suppressWarnings(file.rename(from=pdfFiles, to=paste(destination, "/", pdfFiles, sep="")))
+  }
   # Move knitted PPTx files
   PPTxFiles <- gsub(".Rmd", ".pptx", RmdFiles)
-  if (length(PPTxFiles) > 0)
+  if (length(PPTxFiles) > 0) {
+    processed <- c(processed, PPTxFiles)
     suppressWarnings(file.rename(from=PPTxFiles, to=paste(destination, "/", PPTxFiles, sep="")))
+  }
   # Move knitted docx files
   docxFiles <- gsub(".Rmd", ".docx", RmdFiles)
-  if (length(docxFiles) > 0)
+  if (length(docxFiles) > 0) {
+    processed <- c(processed, PPTxFiles)
     suppressWarnings(file.rename(from=docxFiles, to=paste(destination, "/", docxFiles, sep="")))
+  }
   # Copy README.md to docs
   file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
-
+  processed <- c(processed, "README.md")
+  
   cat("Output files moved to", destination)
-  # Restore the working directory
-  setwd(OriginalWD)
+  return(invisible(processed))
 }
 
 
 #' Build README
 #'
-#' Build a README.md file that will be used as index of GitHub Pages.
+#' Build a `README.md` file that will be used as index of GitHub Pages.
 #'
 #' R Markdown files of the project are used to get the title and abstract of the published documents.
 #' Run this function once in each project created from a memoiR template, before [build_githubpages()].
 #' A link to their HTML and, optionally, PDF versions is added.
 #' Metadata fields are read in the .Rmd files YAML header: title, abstract and `URL`.
-#' The function is useless in book projects: the _Build the Book_ (i.e. the [bookdown::render_book()] function) takes care of every step.
 #'
 #' @param PDF if `TRUE` (by default), a link to the PDF output is added.
 #' 
+#' @return The content of the `README.md` file as a vector of characters, invisibly. Each element is a line of the file.
+#' 
 #' @export
+#' @examples
+#' ## Not run: 
+#' ## Simulate the creation of a new project
+#' # Save working directory
+#' original_wd <- getwd()
+#' # Get a temporary working directory
+#' wd <- tempfile("example")
+#' # Simulate File > New File > R Markdown... > From Template > Simple Article
+#' rmarkdown::draft(wd, template="simple_article", package="memoiR", edit=FALSE)
+#' # Go to temp directory
+#' setwd(wd)
+#' # Make it the current project
+#' usethis::proj_set(path = ".", force = TRUE)
+#' 
+#' ## Sequence of actions to build a complete project
+#' # Build .gitignore
+#' build_gitignore()
+#' ## Activate source control, edit your files, commit
+#' # Build README, link to HTML output only in this example
+#' build_readme(PDF=FALSE)
+#' # render: knit to HTML Document (interactively: click the Knit button)
+#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+#'                   output_format="bookdown::html_document2")
+#' # Build GitHub Pages
+#' build_githubpages()
+#' # List the GitHub Pages files
+#' setwd("docs")
+#' list.files(recursive=TRUE)
+#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' ## End of the example: cleanup
+#' # Return to the original working directory and clean up
+#' setwd(original_wd)
+#' unlink(wd, recursive=TRUE)
+#' 
+#' ## End(Not run)
 build_readme <- function(PDF = TRUE) {
   # Is this a book project?
   is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
   # Save the working directory
   OriginalWD <- getwd()
+  # Prepare clean up
+  on.exit(setwd(OriginalWD))
   # Make the project directory the working directory
   setwd(usethis::proj_path())
   # Find the markdown files
@@ -287,19 +398,55 @@ build_readme <- function(PDF = TRUE) {
     }
   }
   usethis::write_over(usethis::proj_path("README.md"), lines)
-  # Restore the working directory
-  setwd(OriginalWD)
+  return(invisible(lines))
 }
 
 
 #' Build .gitignore
 #'
-#' Build a .gitignore file suitable for R Markdown projects. 
+#' Build a `.gitignore` file suitable for R Markdown projects. 
 #'
 #' The .gitignore file contains the list of files (file name patterns) that must not be controlled by git.
 #' Run this function once in each project created from a memoiR template, before activating version control.
 #'
+#' @return The content of the `.gitignore` file as a vector of characters, invisibly. Each element is a line of the file.
+#' 
 #' @export
+#' @examples
+#' ## Not run: 
+#' ## Simulate the creation of a new project
+#' # Save working directory
+#' original_wd <- getwd()
+#' # Get a temporary working directory
+#' wd <- tempfile("example")
+#' # Simulate File > New File > R Markdown... > From Template > Simple Article
+#' rmarkdown::draft(wd, template="simple_article", package="memoiR", edit=FALSE)
+#' # Go to temp directory
+#' setwd(wd)
+#' # Make it the current project
+#' usethis::proj_set(path = ".", force = TRUE)
+#' 
+#' ## Sequence of actions to build a complete project
+#' # Build .gitignore
+#' build_gitignore()
+#' ## Activate source control, edit your files, commit
+#' # Build README, link to HTML output only in this example
+#' build_readme(PDF=FALSE)
+#' # render: knit to HTML Document (interactively: click the Knit button)
+#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+#'                   output_format="bookdown::html_document2")
+#' # Build GitHub Pages
+#' build_githubpages()
+#' # List the GitHub Pages files
+#' setwd("docs")
+#' list.files(recursive=TRUE)
+#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' ## End of the example: cleanup
+#' # Return to the original working directory and clean up
+#' setwd(original_wd)
+#' unlink(wd, recursive=TRUE)
+#' 
+#' ## End(Not run)
 build_gitignore <- function() {
   lines <- c("# History files",
              ".Rhistory",
@@ -340,6 +487,7 @@ build_gitignore <- function() {
              "# docs/")
   
   usethis::write_over(usethis::proj_path(".gitignore"), lines)
+  return(invisible(lines))
 }
 
 
@@ -363,7 +511,44 @@ build_gitignore <- function() {
 #' - GH_PAT: a valid access token,
 #' - EMAIL: the email address to send the workflow results to.
 #'
+#' @return The content of the YAML file as a vector of characters, invisibly. Each element is a line of the file.
+#' 
 #' @export
+#' @examples
+#' ## Not run: 
+#' ## Simulate the creation of a new project
+#' # Save working directory
+#' original_wd <- getwd()
+#' # Get a temporary working directory
+#' wd <- tempfile("example")
+#' # Simulate File > New File > R Markdown... > From Template > Simple Article
+#' rmarkdown::draft(wd, template="simple_article", package="memoiR", edit=FALSE)
+#' # Go to temp directory
+#' setwd(wd)
+#' # Make it the current project
+#' usethis::proj_set(path = ".", force = TRUE)
+#' 
+#' ## Sequence of actions to build a complete project
+#' # Build .gitignore
+#' build_gitignore()
+#' ## Activate source control, edit your files, commit
+#' # Build README, link to HTML output only in this example
+#' build_readme(PDF=FALSE)
+#' # render: knit to HTML Document (interactively: click the Knit button)
+#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+#'                   output_format="bookdown::html_document2")
+#' # Build GitHub Pages
+#' build_githubpages()
+#' # List the GitHub Pages files
+#' setwd("docs")
+#' list.files(recursive=TRUE)
+#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' ## End of the example: cleanup
+#' # Return to the original working directory and clean up
+#' setwd(original_wd)
+#' unlink(wd, recursive=TRUE)
+#' 
+#' ## End(Not run)
 build_ghworkflow <- function() {
   # Is this a book project?
   is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
@@ -453,5 +638,6 @@ build_ghworkflow <- function() {
   # Create the workflow file
   dir.create(usethis::proj_path(".github/workflows"), showWarnings=FALSE, recursive=TRUE)
   usethis::write_over(usethis::proj_path(".github/workflows/memoir.yml"), lines)
+  return(invisible(lines))
 }
 
