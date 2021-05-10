@@ -184,7 +184,7 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
 #'
 #' @export
 #' @examples
-#' ## Not run: 
+#' \dontrun{
 #' ## Simulate the creation of a new project
 #' # Save working directory
 #' original_wd <- getwd()
@@ -212,12 +212,12 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
 #' setwd("docs")
 #' list.files(recursive=TRUE)
 #' ## Commit and push. Outputs will be in /docs of the master branch.
+#' 
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
 #' unlink(wd, recursive=TRUE)
-#' 
-#' ## End(Not run)
+#' }
 build_githubpages <- function(destination=usethis::proj_path("docs")) {
 
   # Quit if the project is a book
@@ -316,7 +316,6 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' 
 #' @export
 #' @examples
-#' ## Not run: 
 #' ## Simulate the creation of a new project
 #' # Save working directory
 #' original_wd <- getwd()
@@ -329,27 +328,16 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' # Make it the current project
 #' usethis::proj_set(path = ".", force = TRUE)
 #' 
-#' ## Sequence of actions to build a complete project
-#' # Build .gitignore
-#' build_gitignore()
-#' ## Activate source control, edit your files, commit
-#' # Build README, link to HTML output only in this example
-#' build_readme(PDF=FALSE)
-#' # render: knit to HTML Document (interactively: click the Knit button)
-#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
-#'                   output_format="bookdown::html_document2")
-#' # Build GitHub Pages
-#' build_githubpages()
-#' # List the GitHub Pages files
-#' setwd("docs")
-#' list.files(recursive=TRUE)
-#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' # Build README.md file
+#' build_readme()
+#' # Content
+#' readLines("README.md")
+#' 
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
 #' unlink(wd, recursive=TRUE)
 #' 
-#' ## End(Not run)
 build_readme <- function(PDF = TRUE) {
   # Is this a book project?
   is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
@@ -413,7 +401,6 @@ build_readme <- function(PDF = TRUE) {
 #' 
 #' @export
 #' @examples
-#' ## Not run: 
 #' ## Simulate the creation of a new project
 #' # Save working directory
 #' original_wd <- getwd()
@@ -426,27 +413,16 @@ build_readme <- function(PDF = TRUE) {
 #' # Make it the current project
 #' usethis::proj_set(path = ".", force = TRUE)
 #' 
-#' ## Sequence of actions to build a complete project
-#' # Build .gitignore
+#' # Build .gitignore file
 #' build_gitignore()
-#' ## Activate source control, edit your files, commit
-#' # Build README, link to HTML output only in this example
-#' build_readme(PDF=FALSE)
-#' # render: knit to HTML Document (interactively: click the Knit button)
-#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
-#'                   output_format="bookdown::html_document2")
-#' # Build GitHub Pages
-#' build_githubpages()
-#' # List the GitHub Pages files
-#' setwd("docs")
-#' list.files(recursive=TRUE)
-#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' # Content
+#' readLines(".gitignore")
+#' 
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
 #' unlink(wd, recursive=TRUE)
 #' 
-#' ## End(Not run)
 build_gitignore <- function() {
   lines <- c("# History files",
              ".Rhistory",
@@ -515,7 +491,6 @@ build_gitignore <- function() {
 #' 
 #' @export
 #' @examples
-#' ## Not run: 
 #' ## Simulate the creation of a new project
 #' # Save working directory
 #' original_wd <- getwd()
@@ -528,27 +503,16 @@ build_gitignore <- function() {
 #' # Make it the current project
 #' usethis::proj_set(path = ".", force = TRUE)
 #' 
-#' ## Sequence of actions to build a complete project
-#' # Build .gitignore
-#' build_gitignore()
-#' ## Activate source control, edit your files, commit
-#' # Build README, link to HTML output only in this example
-#' build_readme(PDF=FALSE)
-#' # render: knit to HTML Document (interactively: click the Knit button)
-#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
-#'                   output_format="bookdown::html_document2")
-#' # Build GitHub Pages
-#' build_githubpages()
-#' # List the GitHub Pages files
-#' setwd("docs")
-#' list.files(recursive=TRUE)
-#' ## Commit and push. Outputs will be in /docs of the master branch.
+#' # Build GitHub Actions Workflow script
+#' build_ghworkflow()
+#' # Content
+#' readLines(".github/workflows/memoir.yml")
+#' 
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
 #' unlink(wd, recursive=TRUE)
 #' 
-#' ## End(Not run)
 build_ghworkflow <- function() {
   # Is this a book project?
   is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))

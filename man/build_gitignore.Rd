@@ -17,7 +17,6 @@ The .gitignore file contains the list of files (file name patterns) that must no
 Run this function once in each project created from a memoiR template, before activating version control.
 }
 \examples{
-## Not run: 
 ## Simulate the creation of a new project
 # Save working directory
 original_wd <- getwd()
@@ -30,25 +29,14 @@ setwd(wd)
 # Make it the current project
 usethis::proj_set(path = ".", force = TRUE)
 
-## Sequence of actions to build a complete project
-# Build .gitignore
+# Build .gitignore file
 build_gitignore()
-## Activate source control, edit your files, commit
-# Build README, link to HTML output only in this example
-build_readme(PDF=FALSE)
-# render: knit to downcute (interactively: clic the Knit button)
-rmarkdown::render(input=list.files(pattern="*.Rmd"), 
-                  output_format="rmdformats::downcute")
-# Build GitHub Pages
-build_githubpages()
-# List the GitHub Pages files
-setwd("docs")
-list.files(recursive=TRUE)
-## Commit and push. Outputs will be in /docs of the master branch.
+# Content
+readLines(".gitignore")
+
 ## End of the example: cleanup
 # Return to the original working directory and clean up
 setwd(original_wd)
 unlink(wd, recursive=TRUE)
 
-## End(Not run)
 }
