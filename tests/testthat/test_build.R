@@ -3,7 +3,7 @@ testthat::context("Build")
 Sys.setlocale('LC_ALL','C')
 
 # Simulate the creation of a new project
-testthat::test_that("A project can be built", {
+testthat::test_that("A Simple Article can be built", {
   testthat::skip_on_cran()
   # Save working directory
   original_wd <- getwd()
@@ -20,18 +20,18 @@ testthat::test_that("A project can be built", {
   # Build .gitignore
   build_gitignore()
   ## Activate source control, edit your files, commit
-  # Build README, link to HTML output only in this example
-  build_readme(PDF=FALSE)
+  # Build README
+  build_readme()
   
   ## Scenario 1: no continuous integration
-  # render: knit to downcute (interactively: clic the Knit button)
+  # render: knit to downcute (interactively: click the Knit button)
   rmarkdown::render(input=list.files(pattern="*.Rmd"), 
                     output_format="rmdformats::downcute")
+  # render: knit to pdf (interactively: clic the Knit button)
+  rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+                    output_format="bookdown::pdf_book")
   # Build GitHub Pages
   build_githubpages()
-  # List the GitHub Pages files
-  setwd("docs")
-  list.files(recursive=TRUE)
   ## Commit and push. Outputs will be in /docs of the master branch.
   
   ## Scenario 2: continuous integration
@@ -45,3 +45,42 @@ testthat::test_that("A project can be built", {
   setwd(original_wd)
   unlink(wd, recursive=TRUE)
 })
+
+testthat::test_that("A book can be built", {
+  testthat::skip_on_cran()
+  # Save working directory
+  original_wd <- getwd()
+  # Get a temporary working directory
+  wd <- tempfile("example")
+  # Simulate File > New File > R Markdown... > From Template > Memoir
+  rmarkdown::draft(wd, template="memoir", package="memoiR", edit=FALSE)
+  # Go to temp directory
+  setwd(wd)
+  # Make it the current project
+  usethis::proj_set(path = ".", force = TRUE)
+  # Delete the useless skeleton file
+  tmpdir_vec <- strsplit(getwd(), "/", fixed=TRUE)[[1]]
+  skeleton_name <- tmpdir_vec[length(tmpdir_vec)]
+  unlink(paste(skeleton_name, ".Rmd", sep=""))
+  
+  ## Sequence of actions to build a complete project
+  # Build .gitignore
+  build_gitignore()
+  ## Activate source control, edit your files, commit
+  # Build README
+  build_readme()
+  
+  ## Scenario 1: no continuous integration
+  # render: knit (interactively: click the Build the Book button)
+  bookdown::render_book(input="index.Rmd", 
+                    output_format="bookdown::pdf_book")
+  bookdown::render_book(input="index.Rmd", 
+                    output_format="bookdown::gitbook")
+  ## Commit and push. Outputs will be in /docs of the master branch.
+  
+  ## End of the example: cleanup
+  # Return to the original working directory and clean up
+  setwd(original_wd)
+  unlink(wd, recursive=TRUE)
+})
+
