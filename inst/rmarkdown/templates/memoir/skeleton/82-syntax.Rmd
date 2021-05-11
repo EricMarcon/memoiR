@@ -209,7 +209,7 @@ Do not leave a space before the command.
 The HTML document ignores LaTeX commands.
 
 
-## Languages
+## Languages {#sec:languages}
 
 Languages are declared in the document header.
 

@@ -132,21 +132,17 @@ Customize the table of contents in HTML format.
 
 ## Multilingual documents
 
-Only the main language of the document is declared in the header.
-The titles will be written in this language (e.g.: Chapter / Chapitre).
+Languages are declared in the document header.
 
-To use other languages punctually in the text, they must be activated in `preamble.tex` in the `latex` folder.
-American English and French are activated by default.
+The main language of the document (`lang`) changes the name of some elements, such as the table of contents.
+To use other languages in the text, they must be declared in `otherlangs`.
 
-Changing the language has no effect in HTML, but changes punctuation, hyphenation... in PDF output.
-
-To switch to English, insert the following code into the text:
-```
-\selectlanguage{english}
-```
+Changing the language has no effect in HTML, but changes hyphenation in PDF output.
 
 The language change in basic markdown format, 
 ```
 ::: {lang=en-US}
 ```
 is not supported by R Markdown.
+See the correct syntax in section \@ref(sec:languages).
+
