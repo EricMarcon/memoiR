@@ -20,15 +20,27 @@ The `index.Rmd` file is special: it contains the document header and the first c
 
 Each other file starts with a top-level title:
 
-    # Title of the Chapter
-    
+```
+# Title of the Chapter
+```
+
 If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:
 
-    # (PART) Title of the Part {-}
-    
-    # Title of the Chapter
+```
+# (PART) Title of the Part {-}
+  
+# Title of the Chapter
+```
 
 Note the `{-}` instruction after the title of the part to avoid having it numbered.
+
+Appendices are introduced as a special part:
+
+```
+# (APPENDIX) Appendix {-} 
+
+# Title of the first appendix
+```
 
 
 ## Write
