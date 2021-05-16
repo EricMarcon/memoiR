@@ -1,0 +1,10 @@
+Binding: draft_memoir
+Title: Document Project using memoiR
+Subtitle: Choose a document template: Memoir, Article or Presentation
+Icon: feather.png
+OpenFiles: *.Rmd
+
+Parameter: template
+Widget: SelectInput
+Label: Document Type
+Fields: Memoir, Simple Article, Stylish Article, Beamer Presentation

@@ -8,6 +8,26 @@
 NULL
 
 
+#' RStudio Project
+#' 
+#' This function is run by the RStudio project wizard to create a new document project.
+#'
+#' @param path the path to the newly created project
+#' @param ... extra arguments passed by the New Project Wizard
+#'
+#' @return Used for side effects.
+#' @keywords internal
+draft_memoir <- function(path, ...) {
+  # Read dots. Arguments come from inst/rstudio/templates/project/memoir.dcf
+  dots <- list(...)
+  template <- dots[[1]]
+  # Create a draft based on the template
+  templates <- c("simple_article", "stylish_article", "memoir", "beamer_presentation")
+  names(templates) <- c("Simple Article", "Stylish Article", "Memoir", "Beamer Presentation")
+  rmarkdown::draft(path, template=templates[template], package="memoiR", edit=FALSE)
+}
+
+
 #' Knit
 #'
 #' Create documents from templates
