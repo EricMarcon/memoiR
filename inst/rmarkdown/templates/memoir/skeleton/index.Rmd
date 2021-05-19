@@ -40,7 +40,7 @@ fontsize: 11pt
 MemoirChapStyle: companion # or daleif1 with small margins
 MemoirPageStyle: companion # or Ruled with small margins
 # Margins
-largemargins: false        # or false for small margins
+largemargins: true         # or false for small margins
 smallmargin: 1.2in         # outer margin (small)
 largemargin: 3in           # outermargin (large)
 marginnote:  1.8in         # note width in large margin
