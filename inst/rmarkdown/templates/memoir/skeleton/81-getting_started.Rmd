@@ -50,15 +50,28 @@ The other languages (`otherlangs`) can be used to switch language inside the PDF
 
 
 LaTeX specific options are:
-
+- _documentclass_: the document class is _memoir_ for this template. 
+The options of the _memoir_ class are listed, not to be changed normally.
 - _papersize_: A4.
 - _fontsize_: 11pt.
+- _MemoirChapStyle_ and _MemoirPageStyle_ define the style of the document.
+Two styles are favored: _companion_ for documents with large outer margins containing notes, references and captions, or _daleif1_ and _Ruled_ for more classical layouts with small margins.
+- Margins: choose whether to use _largemargins_ or not, and adjust the other parameters according to that.
+Margin values should work well in most cases.
 - _toc-depth_: number of levels in the table of contents, 3 by default.
-
-Bibliography is managed by BibLaTeX, whose options should not be changed.
+- _lot_ and _lof_ to add lists of tables and figures.
 
 The name of the `.bib` file containing the references is in `bibliography`.
 It must be entered with its `.bib` extension.
+
+Bibliography is managed by BibLaTeX, whose options should not be changed except for the style.
+It is `verbose-inote` in documents with large margins to show the full citations in them.
+The citations are called as notes in the text.
+`authoryear-ibid` is suited for small-margin documents: the citations in the text contain author and year, and no footnote is used.
+The line `pageref=true` must be deleted or commented out if this style is used or an error may occur during LaTeX compilation.
+
+`longbibliography` formats the bibliography on two columns with a small font when it is set to `true`.
+If `false`, the regular font is used in a single column with small margins.
 
 The back cover appears in PDF outputs only.
 It is designed to to display abstract and keyword in several languages if necessary.
@@ -73,8 +86,6 @@ The items of `backcover` are a list:
 
 Some options should not be modified, including:
 
-- _documentclass_: the document class is _memoir_ for this template. 
-The options of the _memoir_ class are listed, not to be changed normally.
 - *fig_crop*: yes to allow cropping of excess margins of figures.
 GhostScript must be installed.
 If it is not, or in order to save computing time, the option may be set to `no`.
@@ -84,16 +95,6 @@ Some may be added to the header:
 - _fontfamily_: [font](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ by default.
 - _linestretch_: line spacing, 1 by default.
 
-The parameters of the bibliography are:
-
-- _bibliography_: files containing the references, [references.bib, packages.bib] by default. 
-_package.bib_ is created by the first code chunk of the document: it allows packages declared with identifiers of the form `@R-package` to be cited. 
-R itself is quoted by `@R-base`.
-- _biblio-style_: the bibliographic style, authoryear-ibid by default.
-- _cite-style_: the citation style in the LaTeX document, verbose-inote by default.
-- _biblatexoptions_ contains the list of biblatex options, used to produce the PDF document.
-- _link-citations_: yes to make the citations hyperlinks.
-- _colorlinks_: yes to make the hyperlinks be displayed in color.
 
 For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
 Only the first page of the PDF is used.

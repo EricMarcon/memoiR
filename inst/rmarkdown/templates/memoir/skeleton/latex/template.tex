@@ -83,11 +83,6 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 
-% Make links footnotes instead of hotlinks:
-$if(links-as-notes)$
-\DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
-
 % Color links
 $if(colorlinks)$
 \usepackage{xcolor}
@@ -185,6 +180,7 @@ $if(csl-refs)$
 $endif$
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % memoiR format
 
@@ -211,8 +207,8 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Based on memoir, style companion
-\newcommand{\MemoirChapStyle}{companion}
-\newcommand{\MemoirPageStyle}{companion}
+\newcommand{\MemoirChapStyle}{$MemoirChapStyle$}
+\newcommand{\MemoirPageStyle}{$MemoirPageStyle$}
 
 % Space between paragraphs
 \RequirePackage{parskip}
@@ -244,9 +240,9 @@ $endif$
 \makeatletter
 % 1" margins for the front matter.
 \newcommand*{\SmallMargins}{
-  \setlrmarginsandblock{1in}{1in}{*}
+  \setlrmarginsandblock{$spinemargin$}{$smallmargin$}{*}
   \setmarginnotes{0.1in}{0.1in}{0.1in}
-  \setulmarginsandblock{1.5in}{1in}{*}
+ \setulmarginsandblock{$uppermargin$}{$lowermargin$}{*}
   \checkandfixthelayout
   \ch@ngetext
   \clearpage
@@ -257,11 +253,12 @@ $endif$
 }
 
 % 3" outer margin for the main matter
+$if(largemargins)$
 \newcommand*{\LargeMargins}{
-  \setlrmarginsandblock{1in}{3in}{*}
-  \setmarginnotes{0.2in}{1.8in}{0.1in}
-  \setsidecaps{0.2in}{1.8in}
-  \setulmarginsandblock{1.5in}{1in}{*}
+  \setlrmarginsandblock{$spinemargin$}{$largemargin$}{*}
+  \setmarginnotes{0.2in}{$marginnote$}{0.1in}
+  \setsidecaps{0.2in}{$marginnote$}
+  \setulmarginsandblock{$uppermargin$}{$lowermargin$}{*}
   \checkandfixthelayout
   \ch@ngetext
   \clearpage
@@ -270,12 +267,15 @@ $endif$
   \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
   \pagestyle{\MemoirPageStyle}
 }
-
+$else$
+\newcommand{\LargeMargins}{\SmallMargins}
+$endif$
 \makeatother
 
 % Figure captions and footnotes in outer margins
+$if(largemargins)$
 \usepackage[margincaption,outercaption,ragged,wide]{sidecap}
-%\sidecapmargin{outer}
+$endif$
 
 
 % Main title page with filigrane
@@ -352,6 +352,7 @@ $endif$
 
 \RequirePackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
+$if(largemargins)$
 \renewbibmacro*{footcite:note}{%
 	\ifnameundef{labelname}
 		{\printfield{label}}
@@ -397,7 +398,7 @@ $endif$
   \clearfield{urldate}%
 }%
 }
-
+$endif$
 
 %% Table of Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -409,11 +410,12 @@ $endif$
 % Fonts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+$if(largemargins)$
 % Font size of side captions and side notes
 \captionnamefont{\scriptsize}
 \captiontitlefont{\scriptsize}
 \renewcommand{\footnotesize}{\tiny}
-
+$endif$
 
 % Hyperref comes last
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -515,8 +517,10 @@ $body$
 \SmallMargins
 
 $if(biblatex)$
+$if(longbibliography)$
 \twocolumn
 \renewcommand*{\bibfont}{\scriptsize}
+$endif$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 \onecolumn
 $endif$

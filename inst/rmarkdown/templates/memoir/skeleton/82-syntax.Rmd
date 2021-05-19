@@ -98,7 +98,7 @@ When it is `TRUE`, the code is printed as follow
 
 ## Figures
 
-```{r pressure, fig.cap="Figure title"}
+```{r pressure, fig.cap="A full width figure", out.width="\\widthw"}
 plot(pressure)
 ```
 
@@ -109,12 +109,17 @@ References are made with the command `\@ref(fig:xxx)`.
 The header of the code snippet of the figure \@ref(fig:pressure) is:
 
 ````
-```{r pressure, fig.cap="Title of the figure"}`r ''`
+```{r pressure, fig.cap="Title of the figure, out.width="\\widthw"}`r ''`
 ```
 ````
 
-It contains at least the name of the figure and its caption. 
-If the caption is long, the header is not very readable.
+It contains at least the name of the figure and its caption.
+
+The default width of figures is set in the option chunk in `index.Rmd`.
+It is `out.width='80%'` in this template, i.e. 80% of the width of the text.
+If a full-width figure is needed, including the margin width, use `out.width="\\widthw"` in its code snippet.
+
+If the caption is long, the header is not easy to read.
 Also, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text `(ref:FigureName)`. 
 The figure \@ref(fig:pressure2) benefits from an improved caption.
@@ -251,7 +256,7 @@ Some text for this block.
 ```
 ````
 
-Its heading text is set in the preamble: 
+Its heading text is set in the header of `index.Rmd`: 
 
     chaptersummary: In a Nutshell
 

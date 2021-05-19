@@ -13,7 +13,7 @@ maintitlepage:
     \begin{itemize}
       \item \LaTeX and its class memoir (\url{http://www.ctan.org/pkg/memoir}).
       \item R (\url{http://www.r-project.org/}) and RStudio (\url{http://www.rstudio.com/})
-      \item bookdown (\url{http://bookdown.org/})
+      \item bookdown (\url{http://bookdown.org/}) and memoiR (\url{https://ericmarcon.github.io/memoiR/})
     \end{itemize}
   credits: |
     Name of the owner of the logo
@@ -27,17 +27,37 @@ pdftitlepage: images/cover.pdf
 # Language
 lang: en-US
 otherlangs: [fr-FR,it]
+# LaTeX
+documentclass: memoir
+classoption:
+  - extrafontsizes
+  - onecolumn
+  - openright
 # Paper, font
 papersize: A4
 fontsize: 11pt
+# memoir Style
+MemoirChapStyle: companion # or daleif1 with small margins
+MemoirPageStyle: companion # or Ruled with small margins
+# Margins
+largemargins: false        # or false for small margins
+smallmargin: 1.2in         # outer margin (small)
+largemargin: 3in           # outermargin (large)
+marginnote:  1.8in         # note width in large margin
+spinemargin: 1.2in         # spine margin
+uppermargin: 1.5in         # upper margin
+lowermargin: 1in           # lower margin
 # Table of contents
 toc-depth: 3
+# List of tables / Figures
+lot: false
+lof: true
 # Bibliography
 bibliography: references.bib
 biblatexoptions:
   - backend=biber
-  - style=verbose-inote
-  - pageref=true
+  - style=verbose-inote # or authoryear-ibid with small margins
+  - pageref=true        # Comment out if citation style (e.g. authoryear-ibid) does not support it
   - isbn=false
   - backref=true
   - giveninits=true
@@ -62,18 +82,13 @@ backcover:
     keywordlabel: Keywords
 backcoverfontsize: normalsize
 # Figure cropping may be set to no if ghostscript is not installed
-fig_crop: yes
+fig_crop: true
 # Do not modify
-documentclass: memoir
-classoption:
-  - extrafontsizes
-  - onecolumn
-  - openright
 site: bookdown::bookdown_site
-always_allow_html: yes
-graphics: yes
-link-citations: yes
-colorlinks: yes
+always_allow_html: true
+graphics: true
+link-citations: true
+colorlinks: true
 ---
 
 <!-- HTML code necessary for key messages --> 
@@ -128,8 +143,8 @@ knitr::opts_chunk$set(
   fig.env='SCfigure', fig.asp=.75,
   # Figure alignment and size
   fig.align='center', out.width='80%',
-  # Graphic device
-  dev = "ragg_png",
+  # Graphic devices (ragg_png is better than standard png)
+  dev = c("ragg_png", "pdf"),
   # Code chunk format
   tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
   size="scriptsize", knitr.graphics.auto_pdf = TRUE
