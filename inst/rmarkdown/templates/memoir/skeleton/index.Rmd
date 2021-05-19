@@ -92,7 +92,7 @@ colorlinks: true
 ---
 
 <!-- HTML code necessary for key messages --> 
-<img src="images/key_message.png" alt="image" hidden/>
+<img src="images/trombone.png" alt="image" hidden/>
 
 ```{r DoNotModify, include=FALSE}
 ### Utilities. Do not modify.
