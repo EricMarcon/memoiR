@@ -1,3 +1,11 @@
+# memoiR 0.5-0.9000
+
+## New features
+
+* New Project wizard in RStudio.
+* Customization of memoirs.
+
+
 # memoiR 0.5-0
 
 ## New features
