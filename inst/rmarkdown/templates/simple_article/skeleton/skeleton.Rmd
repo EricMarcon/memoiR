@@ -81,8 +81,8 @@ knitr::opts_chunk$set(
   warning=FALSE, # Show/Hide warnings
   # Figure alignment and size
   fig.align='center', out.width='80%',
-  # Graphic device
-  dev = "ragg_png",
+  # Graphic devices (ragg_png is better than standard png)
+  dev = c("ragg_png", "pdf"),
   # Code chunk format
   tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
   size="scriptsize", knitr.graphics.auto_pdf = TRUE
