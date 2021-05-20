@@ -13,7 +13,8 @@ Gallery:
 
 - Memoir:
     - [HTML GitBook](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_gitbook/index.html)
-    - [PDF](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)
+    - [PDF, small margin layout](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)
+    - [PDF, wide margin layout](https://ericmarcon.github.io/travailleR/travailleR.pdf)
 - Simple article: 
     - [HTML Document](https://ericmarcon.github.io/memoiR/gallery/simple_article/bookdown_html_document2/simple_article.html)
     - [Downcute HTML](https://ericmarcon.github.io/memoiR/gallery/simple_article/rmdformats_downcute/simple_article.html)
