@@ -37,12 +37,12 @@ classoption:
 papersize: A4
 fontsize: 11pt
 # memoir Style
-MemoirChapStyle: companion # or daleif1 with small margins
-MemoirPageStyle: companion # or Ruled with small margins
+MemoirChapStyle: daleif1   # or companion with large margins
+MemoirPageStyle: Ruled     # or companion with large margins
 # Margins
-largemargins: true         # or false for small margins
+largemargins: false        # or true for large margins
 smallmargin: 1.2in         # outer margin (small)
-largemargin: 3in           # outermargin (large)
+largemargin: 3in           # outer margin (large)
 marginnote:  1.8in         # note width in large margin
 spinemargin: 1.2in         # spine margin
 uppermargin: 1.5in         # upper margin
@@ -56,8 +56,8 @@ lof: true
 bibliography: references.bib
 biblatexoptions:
   - backend=biber
-  - style=verbose-inote # or authoryear-ibid with small margins
-  - pageref=true        # Comment out if citation style (e.g. authoryear-ibid) does not support it
+  - style=authoryear-ibid  # or verbose-inote with large margins
+# - pageref=true           # uncomment for verbose-inotes style
   - isbn=false
   - backref=true
   - giveninits=true
@@ -123,6 +123,10 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   x <- def.chunk.hook(x, options)
   ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
+
+# Figures with side captions
+if (rmarkdown::metadata$largemargins)
+  knitr::opts_chunk$set(fig.env='SCfigure')
 ```
 
 ```{r Options, include=FALSE}
@@ -139,17 +143,15 @@ knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
   echo = TRUE, # Show/Hide R chunks
   warning=FALSE, # Show/Hide warnings
-  # Books only: figures with side captions
-  fig.env='SCfigure', fig.asp=.75,
   # Figure alignment and size
-  fig.align='center', out.width='80%',
+  fig.align='center', out.width='80%', fig.asp=.75,
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60),
   size="scriptsize", knitr.graphics.auto_pdf = TRUE
   )
-options(width=50)
+options(width=60)
 
 # ggplot style
 library("tidyverse")
