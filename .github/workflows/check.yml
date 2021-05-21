@@ -39,7 +39,7 @@ jobs:
         run: memoiR::knit_all()
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: site
           path: docs
@@ -49,16 +49,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: 'gh-pages'
       - name: Download artifact
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: site
-          path: docs
       - name: Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
           email: ${{ secrets.EMAIL }}
-          build_dir: docs
+          build_dir: .
           jekyll: no
