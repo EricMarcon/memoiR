@@ -41,10 +41,10 @@ MemoirChapStyle: daleif1   # or companion with large margins
 MemoirPageStyle: Ruled     # or companion with large margins
 # Margins
 largemargins: false        # or true for large margins
-smallmargin: 1.2in         # outer margin (small)
+smallmargin: 1.5in         # outer margin (small).
 largemargin: 3in           # outer margin (large)
 marginnote:  1.8in         # note width in large margin
-spinemargin: 1.2in         # spine margin
+spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.
 uppermargin: 1.5in         # upper margin
 lowermargin: 1in           # lower margin
 # Table of contents
