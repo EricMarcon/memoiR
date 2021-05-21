@@ -16,7 +16,7 @@ maths
 cross-references
 bibliography
 forcing-line-breaks
-languages
+sec:languages
 chapter-summary
 user-documentation
 documentation-for-developers

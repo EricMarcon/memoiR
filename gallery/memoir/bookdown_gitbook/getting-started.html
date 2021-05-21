@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,7 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#cross-references"><i class="fa fa-check"></i><b>2.6</b> Cross-references</a></li>
 <li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#bibliography"><i class="fa fa-check"></i><b>2.7</b> Bibliography</a></li>
 <li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#sec:languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
 <li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
 <li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11</b> User documentation</a></li>
 <li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12</b> Documentation for developers</a></li>
@@ -216,15 +216,26 @@ The content of <em>epigraph</em> and <em>credits</em> will be written on page 2,
 <p>The languages are specified according to the IETF language tags, such as “en-US”.
 The main language (<code>lang</code>) is that of the structure of the document, translating elements such as “chapter”.
 The other languages (<code>otherlangs</code>) can be used to switch language inside the PDF document to benefit from correct hyphenation.</p>
-<p>LaTeX specific options are:</p>
-<ul>
-<li><em>papersize</em>: A4.</li>
-<li><em>fontsize</em>: 11pt.</li>
-<li><em>toc-depth</em>: number of levels in the table of contents, 3 by default.</li>
-</ul>
-<p>Bibliography is managed by BibLaTeX, whose options should not be changed.</p>
+<p>LaTeX specific options are:
+- <em>documentclass</em>: the document class is <em>memoir</em> for this template.
+The options of the <em>memoir</em> class are listed, not to be changed normally.
+- <em>papersize</em>: A4.
+- <em>fontsize</em>: 11pt.
+- <em>MemoirChapStyle</em> and <em>MemoirPageStyle</em> define the style of the document.
+Two styles are favored: <em>companion</em> for documents with large outer margins containing notes, references and captions, or <em>daleif1</em> and <em>Ruled</em> for more classical layouts with small margins.
+- Margins: choose whether to use <em>largemargins</em> or not, and adjust the other parameters according to that.
+Margin values should work well in most cases.
+- <em>toc-depth</em>: number of levels in the table of contents, 3 by default.
+- <em>lot</em> and <em>lof</em> to add lists of tables and figures.</p>
 <p>The name of the <code>.bib</code> file containing the references is in <code>bibliography</code>.
 It must be entered with its <code>.bib</code> extension.</p>
+<p>Bibliography is managed by BibLaTeX, whose options should not be changed except for the style.
+It is <code>verbose-inote</code> in documents with large margins to show the full citations in them.
+The citations are called as notes in the text.
+<code>authoryear-ibid</code> is suited for small-margin documents: the citations in the text contain author and year, and no footnote is used.
+The line <code>pageref=true</code> must be deleted or commented out if this style is used or an error may occur during LaTeX compilation.</p>
+<p><code>longbibliography</code> formats the bibliography on two columns with a small font when it is set to <code>true</code>.
+If <code>false</code>, the regular font is used in a single column with small margins.</p>
 <p>The back cover appears in PDF outputs only.
 It is designed to to display abstract and keyword in several languages if necessary.
 The items of <code>backcover</code> are a list:</p>
@@ -237,8 +248,6 @@ The items of <code>backcover</code> are a list:</p>
 <p><code>backcoverfontsize</code> may be changed better fit the page size, according to the length of the abstracts.</p>
 <p>Some options should not be modified, including:</p>
 <ul>
-<li><em>documentclass</em>: the document class is <em>memoir</em> for this template.
-The options of the <em>memoir</em> class are listed, not to be changed normally.</li>
 <li><em>fig_crop</em>: yes to allow cropping of excess margins of figures.
 GhostScript must be installed.
 If it is not, or in order to save computing time, the option may be set to <code>no</code>.</li>
@@ -247,17 +256,6 @@ If it is not, or in order to save computing time, the option may be set to <code
 <ul>
 <li><em>fontfamily</em>: <a href="https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families">font</a>, <em>lmodern</em> by default.</li>
 <li><em>linestretch</em>: line spacing, 1 by default.</li>
-</ul>
-<p>The parameters of the bibliography are:</p>
-<ul>
-<li><em>bibliography</em>: files containing the references, [references.bib, packages.bib] by default.
-<em>package.bib</em> is created by the first code chunk of the document: it allows packages declared with identifiers of the form <code>@R-package</code> to be cited.
-R itself is quoted by <code>@R-base</code>.</li>
-<li><em>biblio-style</em>: the bibliographic style, authoryear-ibid by default.</li>
-<li><em>cite-style</em>: the citation style in the LaTeX document, verbose-inote by default.</li>
-<li><em>biblatexoptions</em> contains the list of biblatex options, used to produce the PDF document.</li>
-<li><em>link-citations</em>: yes to make the citations hyperlinks.</li>
-<li><em>colorlinks</em>: yes to make the hyperlinks be displayed in color.</li>
 </ul>
 <p>For a student thesis, prepare the cover page with Word, Powerpoint or a DTP program and save it in PDF format, in A4 size.
 Only the first page of the PDF is used.</p>
@@ -287,16 +285,14 @@ Otherwise, delete the line.</p>
 </div>
 <div id="multilingual-documents" class="section level2">
 <h2><span class="header-section-number">1.4</span> Multilingual documents</h2>
-<p>Only the main language of the document is declared in the header.
-The titles will be written in this language (e.g.: Chapter / Chapitre).</p>
-<p>To use other languages punctually in the text, they must be activated in <code>preamble.tex</code> in the <code>latex</code> folder.
-American English and French are activated by default.</p>
-<p>Changing the language has no effect in HTML, but changes punctuation, hyphenation… in PDF output.</p>
-<p>To switch to English, insert the following code into the text:</p>
-<pre><code>\selectlanguage{english}</code></pre>
+<p>Languages are declared in the document header.</p>
+<p>The main language of the document (<code>lang</code>) changes the name of some elements, such as the table of contents.
+To use other languages in the text, they must be declared in <code>otherlangs</code>.</p>
+<p>Changing the language has no effect in HTML, but changes hyphenation in PDF output.</p>
 <p>The language change in basic markdown format,</p>
 <pre><code>::: {lang=en-US}</code></pre>
-<p>is not supported by R Markdown.</p>
+<p>is not supported by R Markdown.
+See the correct syntax in section <a href="syntax.html#sec:languages">2.9</a>.</p>
 
 </div>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-05-10" />
+<meta name="date" content="2021-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -155,7 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="syntax.html"><a href="syntax.html#cross-references"><i class="fa fa-check"></i><b>2.6</b> Cross-references</a></li>
 <li class="chapter" data-level="2.7" data-path="syntax.html"><a href="syntax.html#bibliography"><i class="fa fa-check"></i><b>2.7</b> Bibliography</a></li>
 <li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
-<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
+<li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#sec:languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
 <li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
 <li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11</b> User documentation</a></li>
 <li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12</b> Documentation for developers</a></li>
@@ -205,9 +205,13 @@ The <code>index.Rmd</code> file is special: it contains the document header and 
 <pre><code># Title of the Chapter</code></pre>
 <p>If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:</p>
 <pre><code># (PART) Title of the Part {-}
-
+  
 # Title of the Chapter</code></pre>
 <p>Note the <code>{-}</code> instruction after the title of the part to avoid having it numbered.</p>
+<p>Appendices are introduced as a special part:</p>
+<pre><code># (APPENDIX) Appendix {-} 
+
+# Title of the first appendix</code></pre>
 <div id="write" class="section level2">
 <h2><span class="header-section-number">2.1</span> Write</h2>
 <p>The main features of Markdown are summarized here.
@@ -250,9 +254,9 @@ The <code>echo</code> option should be set to <code>FALSE</code> by default for 
 <p></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="syntax.html#cb13-1"></a><span class="kw">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pressure"></span>
-<img src="MyBook_files/figure-html/pressure-1.png" alt="Figure title" width="80%" />
+<img src="MyBook_files/figure-html/pressure-1.png" alt="A full width figure" width="\widthw" />
 <p class="caption">
-Figure 2.1: Figure title
+Figure 2.1: A full width figure
 </p>
 </div>
 <p></p>
@@ -260,10 +264,13 @@ Figure 2.1: Figure title
 With Bookdown, a label is associated with each figure: its name is <code>fig:xxx</code> where <code>xxx</code> is the name of the R code snippet.
 References are made with the command <code>\@ref(fig:xxx)</code>.</p>
 <p>The header of the code snippet of the figure <a href="syntax.html#fig:pressure">2.1</a> is:</p>
-<pre><code>```{r pressure, fig.cap=&quot;Title of the figure&quot;}
+<pre><code>```{r pressure, fig.cap=&quot;Title of the figure, out.width=&quot;\\widthw&quot;}
 ```</code></pre>
-<p>It contains at least the name of the figure and its caption.
-If the caption is long, the header is not very readable.
+<p>It contains at least the name of the figure and its caption.</p>
+<p>The default width of figures is set in the option chunk in <code>index.Rmd</code>.
+It is <code>out.width='80%'</code> in this template, i.e. 80% of the width of the text.
+If a full-width figure is needed, including the margin width, use <code>out.width="\\widthw"</code> in its code snippet.</p>
+<p>If the caption is long, the header is not easy to read.
 Also, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text <code>(ref:FigureName)</code>.
 The figure <a href="syntax.html#fig:pressure2">2.2</a> benefits from an improved caption.</p>
@@ -291,8 +298,8 @@ The <code>kable</code> function in the <em>knitr</em> package prepares the table
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="syntax.html#cb15-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
 <span id="cb15-2"><a href="syntax.html#cb15-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
 <span id="cb15-3"><a href="syntax.html#cb15-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, </span>
-<span id="cb15-5"><a href="syntax.html#cb15-5"></a>    <span class="dt">longtable =</span> <span class="ot">TRUE</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="dt">longtable =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb15-5"><a href="syntax.html#cb15-5"></a>    <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
 <span id="cb15-6"><a href="syntax.html#cb15-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
 <span id="cb15-7"><a href="syntax.html#cb15-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -474,7 +481,7 @@ If a word is not hyphenated correctly, add its hyphenation in the preamble of th
 Do not leave a space before the command.
 The HTML document ignores LaTeX commands.</p>
 </div>
-<div id="languages" class="section level2">
+<div id="sec:languages" class="section level2">
 <h2><span class="header-section-number">2.9</span> Languages</h2>
 <p>Languages are declared in the document header.</p>
 <p>The main language of the document (<code>lang</code>) changes the name of some elements, such as the table of contents.
@@ -492,7 +499,7 @@ The code is that of a code block of type “Summary”.</p>
 <pre><code>```{block, type=&#39;Summary&#39;}
 Some text for this block.
 ```</code></pre>
-<p>Its heading text is set in the preamble:</p>
+<p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <p>chaptersummary: In a Nutshell</p>
 </div>
 <div id="user-documentation" class="section level2">
