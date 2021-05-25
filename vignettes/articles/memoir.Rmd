@@ -1,0 +1,137 @@
+---
+title: "LaTeX memoir Customization"
+bibliography: memoiR.bib
+output: 
+  rmarkdown::html_document:
+    toc: yes
+    toc_float: yes
+vignette: >
+  %\VignetteIndexEntry{LaTeX}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+set.seed(97310)
+```
+
+The *Memoir* template is based of the LaTeX **memoir** package.
+It is optimized for long documents and is very versatile, with very different possible layouts.
+
+The template can be highly customized by simple changes in the header of `index.Rmd`.
+This short article presents the main features of the customization.
+The details to implement them, namely the options in the header of `index.Rmd` are in the template text.
+
+Two main choices must be made:
+
+- The chapter and page styles.
+Many are proposed by **memoir**.
+- The way margins are used. 
+Large margins host sidenotes rather than footnotes, bibliographic references and figure captions. 
+Small margins remain empty.
+
+The default options produce a small-margin document, with an elaborate chapter style.
+It is presented in the [gallery](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf).
+It can be changed quickly for a [wide-margin layout](https://ericmarcon.github.io/travailleR/travailleR.pdf), whose parameters are given in comments.
+
+
+# Chapter and page styles
+
+Chapter styles define the way top-level titles are presented.
+A [gallery](https://mirrors.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf) is available[^1].
+
+The default chapter style of the template is `daleif1`.
+It is not actually supported natively by **memoir** but its code is added in `preamble.tex`.
+It proposes graphic chapter titles.
+It works well with the  `Ruled` page style, with a page header that recalls the chapter and section titles.
+All page styles are described in the section 7.2 of the **memoir** [manual](https://mirrors.ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf).
+
+An alternative is `companion`, both chapter and page style employed in the large margin layout template.
+
+
+# Margins
+
+A4 or Letter paper stock with 1-inch margin on both sides imply long lines, actually too long to read comfortably.
+Avoid lines other 80 characters by increasing margin width.
+Two options are used:
+
+```
+smallmargin: 1.5in         # outer margin (small).
+spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.
+```
+
+Large margin allow both a narrower text column for readability and putting stuff into them.
+Use `largemargins: true` to use them.
+The outer margin is the set to `largemargin: 3in` and the spine margin may be reduced a bit.
+
+
+# Bibliographic styles
+
+Many bibliographic styles come with **biblatex**, the LATeX package in charge of reference management.
+A [gallery](https://fr.overleaf.com/learn/latex/Biblatex_bibliography_styles) is available.
+
+The style is selected in the options of biblatex:
+
+```
+biblatexoptions:
+  - style=verbose-inote
+  - pageref=true
+```
+
+The default style of the template is a classical author-year one, with the ibidem option, i.e.the authors are not repeated if they are the same as the previous reference.
+When large margins are available, the `verbose-inote` style is appropriate for the reader to have the full references close to the text, including a DOI link.
+
+More styles can be used, including specific styles requiring an extra LaTeX package that is usually installed automatically by LaTeX distributions.
+The `pageref` option must be commented out if the chosen style does not support it or an error may occur during the LaTeX compilation of the document.
+
+
+# Fonts
+
+The default font of the memoir is Computer Modern, the LaTeX standard.
+
+Other fonts may be used.
+They must be installed in a LaTeX package, such as [**tex-gyre**](https://www.ctan.org/pkg/tex-gyre) and its companion **tex-gyre-math**.
+Both provide updated versions of the classical:
+
+- Times New Roman: `Tex Gyre Termes`
+- Century Schoolbook: `Tex Gyre Schola`
+- Palatino: `Tex Gyre Pagella`
+- Helvetica: `Tex Gyre Heros`
+- Courier: `Tex Gyre Cursor`
+- Bookman Old Style: `Tex Gyre Bonum`
+- Avant Garde Gothic: `Tex Gyre Adventor`
+- Zapf Chancery: `Tex Gyre Chorus`
+
+The LaTeX packages must be installed in the LaTeX distribution.
+If **tinytex** installed it, the packages can be installed by R:
+```{r, eval=FALSE}
+tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
+```
+
+This command must be added to the GitHub Action script created by `build_ghworkflow()`, just after `tinytex::install_tinytex()`.
+
+The fonts are declared in the header of `index.Rmd`.
+The math font name is the same as the main font completed with `Math`.
+
+```
+mainfont: TeX Gyre Schola
+mathfont: TeX Gyre Schola Math
+sansfont: TeX Gyre Adventor
+monofont: TeX Gyre Cursor
+```
+
+The main font is a serif font, here Century Schoolbook.
+The sanserif font is actually not used in the template.
+The monotype font is used in the code blocks.
+
+Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly among pages when specific fonts are declared.
+
+
+# Conclusion
+
+Large margins are optimal with the `companion` style and the `verbose-inote` bibliographic style; small margins should be used the default options.
+Much of memoir customization is offered by the template by choosing other styles, and possibly other fonts.
+
+
+# References

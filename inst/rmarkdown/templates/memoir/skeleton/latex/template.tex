@@ -1,4 +1,5 @@
-% template adapted from https://github.com/jgm/pandoc-templates/blob/master/default.latex
+% Template adapted from https://github.com/jgm/pandoc-templates/blob/master/default.latex
+% To be used with XeLaTex in memoiR
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Options for packages loaded elsewhere
@@ -6,6 +7,15 @@
 \PassOptionsToPackage{hyphens}{url}
 $if(colorlinks)$
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+% Right to left support
+$if(dir)$
+  $if(latex-dir-rtl)$
+\PassOptionsToPackage{RTLdocument}{bidi}
+  $endif$
+$endif$
+$if(CJKmainfont)$
+\PassOptionsToPackage{space}{xeCJK}
 $endif$
 
 
@@ -15,13 +25,6 @@ $endif$
   $if(papersize)$$papersize$paper,$endif$
   $for(classoption)$$classoption$$sep$,$endfor$
   ]{$documentclass$}
-
-% Font family: lmodern by default
-$if(fontfamily)$
-\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
 
 % Double (or whatever) spacing
 $if(linestretch)$
@@ -37,12 +40,12 @@ $if(mathspec)$
 $else$
 \usepackage{unicode-math}
 $endif$
-\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 
-% More font families
-$for(fontfamilies)$
-\newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}
-$endfor$
+% Fonts
+\usepackage{lmodern}
+\usepackage{fontspec}
 % Main font
 $if(mainfont)$
 \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
@@ -53,29 +56,27 @@ $if(sansfont)$
 $endif$
 % Specific monotype font
 $if(monofont)$
-\setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
+\setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
 $endif$
 % Specific math font
 $if(mathfont)$
-$if(mathspec)$
+  $if(mathspec)$
 \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$else$
+  $else$
 \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
+  $endif$
 $endif$
 % Chinese, Japanese, Corean fonts
 $if(CJKmainfont)$
-\usepackage{xeCJK}
-\setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+  \usepackage{xeCJK}
+  \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
 $endif$
 
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% Use microtype if available
-\IfFileExists{microtype.sty}{%
+% Use upquote for straight quotes in verbatim environments
+\usepackage{upquote}
+% Use microtype
 \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
 
 % Verbatim in note
 $if(verbatim-in-note)$
@@ -211,18 +212,18 @@ $endif$
 \newcommand{\MemoirPageStyle}{$MemoirPageStyle$}
 
 % Space between paragraphs
-\RequirePackage{parskip}
+\usepackage{parskip}
 	\abnormalparskip{3pt}
 
 % Adjust margin paragraphs vertical position
-\RequirePackage{marginfix}
+\usepackage{marginfix}
 
 
 % Margins
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % allow use of '-',+','/' ans '*' to make simple length computation
-\RequirePackage{calc}
+\usepackage{calc}
 
 % Full-width figures utilities
 \newlength\widthw % full width
@@ -334,7 +335,7 @@ $endif$
 }
 
 % Text blocks
-\RequirePackage[absolute,overlay]{textpos}
+\usepackage[absolute,overlay]{textpos}
 	\setlength{\TPHorizModule}{1mm}
 	\setlength{\TPVertModule}{1mm}
 
@@ -350,7 +351,7 @@ $endif$
 %% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[strict,autostyle]{csquotes}
+\usepackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
 $if(largemargins)$
 \renewbibmacro*{footcite:note}{%
