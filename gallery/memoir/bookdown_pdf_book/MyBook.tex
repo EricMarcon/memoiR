@@ -1,10 +1,12 @@
-% template adapted from https://github.com/jgm/pandoc-templates/blob/master/default.latex
+% Template adapted from https://github.com/jgm/pandoc-templates/blob/master/default.latex
+% To be used with XeLaTex in memoiR
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode=true}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+% Right to left support
 
 
 \documentclass[
@@ -14,31 +16,29 @@
   extrafontsizes,onecolumn,openright
   ]{memoir}
 
-% Font family: lmodern by default
-\usepackage{lmodern}
-
 % Double (or whatever) spacing
 
 % Math
 \usepackage{amssymb, amsmath}
 % mathspec: arbitrary math fonts
 \usepackage{unicode-math}
-\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 
-% More font families
+% Fonts
+\usepackage{lmodern}
+\usepackage{fontspec}
 % Main font
 % Specific sanserif font
 % Specific monotype font
 % Specific math font
 % Chinese, Japanese, Corean fonts
 
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% Use microtype if available
-\IfFileExists{microtype.sty}{%
+% Use upquote for straight quotes in verbatim environments
+\usepackage{upquote}
+% Use microtype
 \usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
 
 % Verbatim in note
 
@@ -210,18 +210,18 @@
 \newcommand{\MemoirPageStyle}{Ruled}
 
 % Space between paragraphs
-\RequirePackage{parskip}
+\usepackage{parskip}
 	\abnormalparskip{3pt}
 
 % Adjust margin paragraphs vertical position
-\RequirePackage{marginfix}
+\usepackage{marginfix}
 
 
 % Margins
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % allow use of '-',+','/' ans '*' to make simple length computation
-\RequirePackage{calc}
+\usepackage{calc}
 
 % Full-width figures utilities
 \newlength\widthw % full width
@@ -309,7 +309,7 @@
 }
 
 % Text blocks
-\RequirePackage[absolute,overlay]{textpos}
+\usepackage[absolute,overlay]{textpos}
 	\setlength{\TPHorizModule}{1mm}
 	\setlength{\TPVertModule}{1mm}
 
@@ -323,7 +323,7 @@
 %% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[strict,autostyle]{csquotes}
+\usepackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
 
 %% Table of Contents
@@ -361,7 +361,7 @@
 
 \author{Authors' names}
 
-\date{2021-05-21}
+\date{2021-05-25}
 
 
 % End of preamble
@@ -513,6 +513,9 @@ LaTeX specific options are:
 The options of the \emph{memoir} class are listed, not to be changed normally.
 - \emph{papersize}: A4.
 - \emph{fontsize}: 11pt.
+- \emph{mainfont} and \emph{mathfont} may replace the standard Computer Modern font.
+Tex Gyre fonts\footnote{\url{https://www.ctan.org/pkg/tex-gyre}} are a good choice.
+Both \textbf{tex-gyre} and \textbf{tex-gyre-math} LaTeX packages must be available.
 - \emph{MemoirChapStyle} and \emph{MemoirPageStyle} define the style of the document.
 Two styles are favored: \emph{companion} for documents with large outer margins containing notes, references and captions, or \emph{daleif1} and \emph{Ruled} for more classical layouts with small margins.
 - Margins: choose whether to use \emph{largemargins} or not, and adjust the other parameters according to that.
@@ -824,8 +827,8 @@ The \texttt{kable} function in the \emph{knitr} package prepares the table for d
 \KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
 \KeywordTok{names}\NormalTok{(iris) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Sepal length ($l_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{, }
     \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris), }\DataTypeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\DataTypeTok{longtable =} \OtherTok{FALSE}\NormalTok{, }
-    \DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{escape =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris), }\DataTypeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{, }
+    \DataTypeTok{escape =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{    }\NormalTok{kableExtra}\OperatorTok{::}\KeywordTok{kable_styling}\NormalTok{(}\DataTypeTok{bootstrap_options =} \StringTok{"striped"}\NormalTok{, }
         \DataTypeTok{full_width =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}

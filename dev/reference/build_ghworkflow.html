@@ -83,7 +83,7 @@ formats are produced and stored into the gh-pages branch of the project." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9002</span>
       </span>
     </div>
 
@@ -110,6 +110,9 @@ formats are produced and stored into the gh-pages branch of the project." />
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/articles/LaTeX.html">Production of LaTeX Documents</a>
+    </li>
+    <li>
+      <a href="../articles/articles/memoir.html">LaTeX memoir Customization</a>
     </li>
   </ul>
 </li>
@@ -181,10 +184,10 @@ They must be declared in the options code chunk of each .Rmd file
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
 <span class='co'># Make it the current project</span>
 <span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Setting active project to </span><span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpN2DFAA/example3f0e5ac5ff9b'</span><span></span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpkLonNQ/example4147202af86c'</span></span></div><div class='input'>
 <span class='co'># Build GitHub Actions Workflow script</span>
 <span class='fu'>build_ghworkflow</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Writing </span><span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span><span></span></div><div class='input'><span class='co'># Content</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing <span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span></span></div><div class='input'><span class='co'># Content</span>
 <span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>".github/workflows/memoir.yml"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "on:"                                                                                                   
 #&gt;  [2] "  push:"                                                                                               
@@ -244,7 +247,7 @@ They must be declared in the options code chunk of each .Rmd file
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

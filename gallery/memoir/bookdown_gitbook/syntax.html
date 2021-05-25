@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-05-21" />
+<meta name="date" content="2021-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,7 +215,7 @@ The <code>index.Rmd</code> file is special: it contains the document header and 
 <div id="write" class="section level2">
 <h2><span class="header-section-number">2.1</span> Write</h2>
 <p>The main features of Markdown are summarized here.
-A quick and complete training is offered by RStudio<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+A quick and complete training is offered by RStudio<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <p>The text is written without any formatting other than line breaks.
 A simple line break has no effect on the document produced: it allows to separate sentences to simplify the tracking of the source code by git.</p>
 <p>A line break marks a paragraph change.</p>
@@ -298,8 +298,8 @@ The <code>kable</code> function in the <em>knitr</em> package prepares the table
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="syntax.html#cb15-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
 <span id="cb15-2"><a href="syntax.html#cb15-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
 <span id="cb15-3"><a href="syntax.html#cb15-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="dt">longtable =</span> <span class="ot">FALSE</span>, </span>
-<span id="cb15-5"><a href="syntax.html#cb15-5"></a>    <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb15-5"><a href="syntax.html#cb15-5"></a>    <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
 <span id="cb15-6"><a href="syntax.html#cb15-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
 <span id="cb15-7"><a href="syntax.html#cb15-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -470,7 +470,7 @@ The bibliographic style can be specified, by adding the line</p>
 <p>csl:file_name.csl</p>
 <p>in the document header and copying the <em>.csl</em> style file into the project folder.
 The default style (if no csl is specified) is “chicago-author-date”.
-Several thousand styles are available.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+Several thousand styles are available.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p>For PDF documents, the bibliography is handled by BibLaTeX, see section <a href="getting-started.html#index">1.1</a>.</p>
 </div>
 <div id="forcing-line-breaks" class="section level2">
@@ -490,7 +490,7 @@ The change of language in the document (one of <code>otherlangs</code>) is manag
 <p>The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
 The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
 <p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
-Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
+Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
 <div id="chapter-summary" class="section level2">
 <h2><span class="header-section-number">2.10</span> Chapter summary</h2>
@@ -530,10 +530,10 @@ All the necessary details for writing (writing equations, cross-references, etc.
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a><a href="syntax.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="syntax.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="syntax.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="3">
+<li id="fn3"><p><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a><a href="syntax.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="syntax.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="syntax.html#fnref5" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
