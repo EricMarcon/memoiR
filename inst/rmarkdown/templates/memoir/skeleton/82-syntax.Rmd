@@ -147,7 +147,7 @@ The `kable` function in the _knitr_ package prepares the table for display and p
 ```{r kable, echo=TRUE, warning=FALSE}
 library("tidyverse")
 names(iris) <- c("Sepal length ($l_s$)", "Width", "Petal length", "Width", "Species")
-knitr::kable(head(iris), caption="Table created by R", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
+knitr::kable(head(iris), caption="Table created by R", booktabs = TRUE, escape = FALSE) %>%
 kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
