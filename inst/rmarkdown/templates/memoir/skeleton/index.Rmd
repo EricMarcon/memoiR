@@ -36,6 +36,8 @@ classoption:
 # Paper, font
 papersize: A4
 fontsize: 11pt
+# mainfont: TeX Gyre Termes       # Times New Roman. LaTeX tex-gyre package must be installed
+# mathfont: TeX Gyre Termes Math  # LaTeX tex-gyre-math package must be installed
 # memoir Style
 MemoirChapStyle: daleif1   # or companion with large margins
 MemoirPageStyle: Ruled     # or companion with large margins

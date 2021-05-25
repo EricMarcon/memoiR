@@ -54,12 +54,17 @@ LaTeX specific options are:
 The options of the _memoir_ class are listed, not to be changed normally.
 - _papersize_: A4.
 - _fontsize_: 11pt.
+- _mainfont_ and _mathfont_ may replace the standard Computer Modern font.
+Tex Gyre fonts[^812] are a good choice.
+Both **tex-gyre** and **tex-gyre-math** LaTeX packages must be available.
 - _MemoirChapStyle_ and _MemoirPageStyle_ define the style of the document.
 Two styles are favored: _companion_ for documents with large outer margins containing notes, references and captions, or _daleif1_ and _Ruled_ for more classical layouts with small margins.
 - Margins: choose whether to use _largemargins_ or not, and adjust the other parameters according to that.
 Margin values should work well in most cases.
 - _toc-depth_: number of levels in the table of contents, 3 by default.
 - _lot_ and _lof_ to add lists of tables and figures.
+
+[^812]: https://www.ctan.org/pkg/tex-gyre
 
 The name of the `.bib` file containing the references is in `bibliography`.
 It must be entered with its `.bib` extension.
