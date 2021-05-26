@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9004</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 <div id="fonts" class="section level1">
 <h1 class="hasAnchor">
 <a href="#fonts" class="anchor"></a>Fonts</h1>
-<p>The default font of the memoir is Computer Modern, the LaTeX standard.</p>
+<p>The default font of the memoir is Computer Modern (actually, an update of it), the LaTeX standard.</p>
 <p>Other fonts may be used. They must be installed in a LaTeX package, such as <a href="https://www.ctan.org/pkg/tex-gyre"><strong>tex-gyre</strong></a> and its companion <strong>tex-gyre-math</strong>. Both provide updated versions of the classical:</p>
 <ul>
 <li>Times New Roman: <code>Tex Gyre Termes</code>
@@ -167,12 +167,18 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>.</p>
-<p>The fonts are declared in the header of <code>index.Rmd</code>. The math font name is the same as the main font completed with <code>Math</code>.</p>
-<pre><code>mainfont: TeX Gyre Schola
-mathfont: TeX Gyre Schola Math</code></pre>
-<p>The main font is a serif font, here Century Schoolbook. The monotype font is used in code blocks, and in code included in the text. It may be <code>monofont: TeX Gyre Cursor</code>, but the default font usually is usually better.</p>
+<p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces in lower case. The main font options allow building the actual file names and are not likely ot be changed.</p>
+<pre><code>mainfont: texgyretermes
+mainfontoptions:
+  - Extension=.otf
+  - UprightFont=*-regular
+  - BoldFont=*-bold
+  - BoldItalicFont=*-bolditalic
+mathfont: texgyretermes-math.otf</code></pre>
+<p>The math font name is fully specified, with no options.</p>
+<p>A monotype font may be declared to be used in code blocks, and in code included in the text. It may be <code>monofont: texgyrecursor</code>, completed by an identical <code>monofontoptions</code> list, but the default font is usually better.</p>
 <p>Note that long tables (<code>longtable = TRUE</code> argument in the <code>kable()</code> function to render tables) may not be cut correctly accross pages when specific fonts are declared.</p>
-<p>The font size is 14pt by default. Decrease it if necessary, depending on the font type, the margin width and personal preferences. 12pt seems a better choice with large margins.</p>
+<p>The font size is 12pt by default. Change it if necessary, depending on the font type, the margin width and personal preferences.</p>
 </div>
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">
