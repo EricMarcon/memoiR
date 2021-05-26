@@ -131,6 +131,7 @@ plot(pressure)
 
 The text in `fig.cap`, "Title of figure" previously, is replaced by `(ref:pressure)` _within the quotation marks_ and the caption is entered in a paragraph starting with `(ref:pressure)` followed by a space.
 Captions are limited to a single paragraph.
+They should not contain bibliographic references or references to the figures may not find them: if necessary, cite the source of a figure in the text.
 
 Figures that are not created by R but come from files are embedded in a piece of code by the `include_graphics()` function whose argument is the file containing the image to be displayed.
 Always place these files in the `images` folder for good organization.

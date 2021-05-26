@@ -1,6 +1,5 @@
 ---
 title: "LaTeX memoir Customization"
-bibliography: memoiR.bib
 output: 
   rmarkdown::html_document:
     toc: yes
@@ -39,7 +38,7 @@ It can be changed quickly for a [wide-margin layout](https://ericmarcon.github.i
 # Chapter and page styles
 
 Chapter styles define the way top-level titles are presented.
-A [gallery](https://mirrors.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf) is available[^1].
+A [gallery](https://mirrors.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf) is available.
 
 The default chapter style of the template is `daleif1`.
 It is not actually supported natively by **memoir** but its code is added in `preamble.tex`.
@@ -104,7 +103,7 @@ Both provide updated versions of the classical:
 - Zapf Chancery: `Tex Gyre Chorus`
 
 The LaTeX packages must be installed in the LaTeX distribution.
-If **tinytex** installed it, the packages can be installed by R:
+If **tinytex** installed it, it can do that too:
 ```{r, eval=FALSE}
 tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
 ```
@@ -123,7 +122,7 @@ The main font is a serif font, here Century Schoolbook.
 The monotype font is used in code blocks, and in code included in the text.
 It may be `monofont: TeX Gyre Cursor`, but the default font usually is usually better.
 
-Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly among pages when specific fonts are declared.
+Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly accross pages when specific fonts are declared.
 
 The font size is 11 by default.
 Increase it if necessary, depending on the font type, the margin width and personal preferences.
@@ -131,8 +130,5 @@ Increase it if necessary, depending on the font type, the margin width and perso
 
 # Conclusion
 
-Large margins are optimal with the `companion` style and the `verbose-inote` bibliographic style; small margins should be used the default options.
+Large margins are optimal with the `companion` style and the `verbose-inote` bibliographic style; small margins should be used with the default options of the template.
 Much of memoir customization is offered by the template by choosing other styles, and possibly other fonts.
-
-
-# References
