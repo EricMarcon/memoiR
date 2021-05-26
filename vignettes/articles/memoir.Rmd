@@ -125,6 +125,9 @@ It may be `monofont: TeX Gyre Cursor`, but the default font usually is usually b
 
 Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly among pages when specific fonts are declared.
 
+The font size is 11 by default.
+Increase it if necessary, depending on the font type, the margin width and personal preferences.
+
 
 # Conclusion
 
