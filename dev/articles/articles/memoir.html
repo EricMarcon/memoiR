@@ -117,7 +117,7 @@
 <div id="chapter-and-page-styles" class="section level1">
 <h1 class="hasAnchor">
 <a href="#chapter-and-page-styles" class="anchor"></a>Chapter and page styles</h1>
-<p>Chapter styles define the way top-level titles are presented. A <a href="https://mirrors.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf">gallery</a> is available[^1].</p>
+<p>Chapter styles define the way top-level titles are presented. A <a href="https://mirrors.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf">gallery</a> is available.</p>
 <p>The default chapter style of the template is <code>daleif1</code>. It is not actually supported natively by <strong>memoir</strong> but its code is added in <code>preamble.tex</code>. It proposes graphic chapter titles. It works well with the <code>Ruled</code> page style, with a page header that recalls the chapter and section titles. All page styles are described in the section 7.2 of the <strong>memoir</strong> <a href="https://mirrors.ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf">manual</a>.</p>
 <p>An alternative is <code>companion</code>, both chapter and page style employed in the large margin layout template.</p>
 </div>
@@ -163,7 +163,7 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 <li>Zapf Chancery: <code>Tex Gyre Chorus</code>
 </li>
 </ul>
-<p>The LaTeX packages must be installed in the LaTeX distribution. If <strong>tinytex</strong> installed it, the packages can be installed by R:</p>
+<p>The LaTeX packages must be installed in the LaTeX distribution. If <strong>tinytex</strong> installed it, it can do that too:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>.</p>
@@ -171,16 +171,12 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 <pre><code>mainfont: TeX Gyre Schola
 mathfont: TeX Gyre Schola Math</code></pre>
 <p>The main font is a serif font, here Century Schoolbook. The monotype font is used in code blocks, and in code included in the text. It may be <code>monofont: TeX Gyre Cursor</code>, but the default font usually is usually better.</p>
-<p>Note that long tables (<code>longtable = TRUE</code> argument in the <code>kable()</code> function to render tables) may not be cut correctly among pages when specific fonts are declared.</p>
+<p>Note that long tables (<code>longtable = TRUE</code> argument in the <code>kable()</code> function to render tables) may not be cut correctly accross pages when specific fonts are declared.</p>
 </div>
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h1>
-<p>Large margins are optimal with the <code>companion</code> style and the <code>verbose-inote</code> bibliographic style; small margins should be used the default options. Much of memoir customization is offered by the template by choosing other styles, and possibly other fonts.</p>
-</div>
-<div id="references" class="section level1">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
+<p>Large margins are optimal with the <code>companion</code> style and the <code>verbose-inote</code> bibliographic style; small margins should be used with the default options of the template. Much of memoir customization is offered by the template by choosing other styles, and possibly other fonts.</p>
 </div>
   </div>
 
