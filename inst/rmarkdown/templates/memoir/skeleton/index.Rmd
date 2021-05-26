@@ -35,20 +35,21 @@ classoption:
   - openright
 # Paper, font
 papersize: A4
-fontsize: 11pt
-# mainfont: TeX Gyre Termes       # Times New Roman. LaTeX tex-gyre package must be installed
-# mathfont: TeX Gyre Termes Math  # LaTeX tex-gyre-math package must be installed
+fontsize: 14pt                    # or 12pt for large margins
+# Fonts installed by a package. LaTeX tex-gyre package must be installed for:
+# mainfont: TeX Gyre Termes       # Times New Roman for the text
+# mathfont: TeX Gyre Termes Math  # Times New Roman for equations
 # memoir Style
-MemoirChapStyle: daleif1   # or companion with large margins
-MemoirPageStyle: Ruled     # or companion with large margins
+MemoirChapStyle: daleif1          # or companion with large margins
+MemoirPageStyle: Ruled            # or companion with large margins
 # Margins
-largemargins: false        # or true for large margins
-smallmargin: 1.5in         # outer margin (small).
-largemargin: 3in           # outer margin (large)
-marginnote:  1.8in         # note width in large margin
-spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.
-uppermargin: 1.5in         # upper margin
-lowermargin: 1in           # lower margin
+largemargins: false               # or true for large margins
+smallmargin: 1.5in                # outer margin (small).
+largemargin: 3in                  # outer margin (large)
+marginnote:  1.8in                # note width in large margin
+spinemargin: 1.5in                # spine margin. Reduce to 1.2 with large margins.
+uppermargin: 1.5in                # upper margin
+lowermargin: 1in                  # lower margin
 # Table of contents
 toc-depth: 3
 # List of tables / Figures
