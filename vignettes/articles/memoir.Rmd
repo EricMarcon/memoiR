@@ -113,7 +113,7 @@ This command must be added to the GitHub Action script created by `build_ghworkf
 The fonts are declared in the header of `index.Rmd`.
 XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages.
 They must be declared by their file names, which are in general their names without spaces in lower case.
-The main font options allow building the actual file names and are not likely ot be changed.
+The main font options allow building the actual file names and are not likely to be changed.
 
 ```
 mainfont: texgyretermes
@@ -129,7 +129,7 @@ The math font name is fully specified, with no options.
 A monotype font may be declared to be used in code blocks, and in code included in the text.
 It may be `monofont: texgyrecursor`, completed by an identical `monofontoptions` list, but the default font is usually better.
 
-Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly accross pages when specific fonts are declared.
+Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly across pages when specific fonts are declared.
 
 The font size is 12pt by default.
 Change it if necessary, depending on the font type, the margin width and personal preferences.
