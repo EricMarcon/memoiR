@@ -167,7 +167,7 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>.</p>
-<p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces in lower case. The main font options allow building the actual file names and are not likely ot be changed.</p>
+<p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces in lower case. The main font options allow building the actual file names and are not likely to be changed.</p>
 <pre><code>mainfont: texgyretermes
 mainfontoptions:
   - Extension=.otf
@@ -177,7 +177,7 @@ mainfontoptions:
 mathfont: texgyretermes-math.otf</code></pre>
 <p>The math font name is fully specified, with no options.</p>
 <p>A monotype font may be declared to be used in code blocks, and in code included in the text. It may be <code>monofont: texgyrecursor</code>, completed by an identical <code>monofontoptions</code> list, but the default font is usually better.</p>
-<p>Note that long tables (<code>longtable = TRUE</code> argument in the <code>kable()</code> function to render tables) may not be cut correctly accross pages when specific fonts are declared.</p>
+<p>Note that long tables (<code>longtable = TRUE</code> argument in the <code>kable()</code> function to render tables) may not be cut correctly across pages when specific fonts are declared.</p>
 <p>The font size is 12pt by default. Change it if necessary, depending on the font type, the margin width and personal preferences.</p>
 </div>
 <div id="conclusion" class="section level1">
