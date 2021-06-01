@@ -216,20 +216,22 @@ The content of <em>epigraph</em> and <em>credits</em> will be written on page 2,
 <p>The languages are specified according to the IETF language tags, such as “en-US”.
 The main language (<code>lang</code>) is that of the structure of the document, translating elements such as “chapter”.
 The other languages (<code>otherlangs</code>) can be used to switch language inside the PDF document to benefit from correct hyphenation.</p>
-<p>LaTeX specific options are:
-- <em>documentclass</em>: the document class is <em>memoir</em> for this template.
-The options of the <em>memoir</em> class are listed, not to be changed normally.
-- <em>papersize</em>: A4.
-- <em>fontsize</em>: 11pt.
-- <em>mainfont</em> and <em>mathfont</em> may replace the standard Computer Modern font.
+<p>LaTeX specific options are:</p>
+<ul>
+<li><em>documentclass</em>: the document class is <em>memoir</em> for this template.
+The options of the <em>memoir</em> class are listed, not to be changed normally.</li>
+<li><em>papersize</em>: A4.</li>
+<li><em>fontsize</em>: 11pt.</li>
+<li><em>mainfont</em> and <em>mathfont</em> may replace the standard Computer Modern font.
 Tex Gyre fonts<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> are a good choice.
-Both <strong>tex-gyre</strong> and <strong>tex-gyre-math</strong> LaTeX packages must be available.
-- <em>MemoirChapStyle</em> and <em>MemoirPageStyle</em> define the style of the document.
-Two styles are favored: <em>companion</em> for documents with large outer margins containing notes, references and captions, or <em>daleif1</em> and <em>Ruled</em> for more classical layouts with small margins.
-- Margins: choose whether to use <em>largemargins</em> or not, and adjust the other parameters according to that.
-Margin values should work well in most cases.
-- <em>toc-depth</em>: number of levels in the table of contents, 3 by default.
-- <em>lot</em> and <em>lof</em> to add lists of tables and figures.</p>
+Both <strong>tex-gyre</strong> and <strong>tex-gyre-math</strong> LaTeX packages must be available.</li>
+<li><em>MemoirChapStyle</em> and <em>MemoirPageStyle</em> define the style of the document.
+Two styles are favored: <em>companion</em> for documents with large outer margins containing notes, references and captions, or <em>daleif1</em> and <em>Ruled</em> for more classical layouts with small margins.</li>
+<li>Margins: choose whether to use <em>largemargins</em> or not, and adjust the other parameters according to that.
+Margin values should work well in most cases.</li>
+<li><em>toc-depth</em>: number of levels in the table of contents, 3 by default.</li>
+<li><em>lot</em> and <em>lof</em> to add lists of tables and figures.</li>
+</ul>
 <p>The name of the <code>.bib</code> file containing the references is in <code>bibliography</code>.
 It must be entered with its <code>.bib</code> extension.</p>
 <p>Bibliography is managed by BibLaTeX, whose options should not be changed except for the style.

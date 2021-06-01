@@ -509,19 +509,31 @@ The main language (\texttt{lang}) is that of the structure of the document, tran
 The other languages (\texttt{otherlangs}) can be used to switch language inside the PDF document to benefit from correct hyphenation.
 
 LaTeX specific options are:
-- \emph{documentclass}: the document class is \emph{memoir} for this template.
-The options of the \emph{memoir} class are listed, not to be changed normally.
-- \emph{papersize}: A4.
-- \emph{fontsize}: 11pt.
-- \emph{mainfont} and \emph{mathfont} may replace the standard Computer Modern font.
-Tex Gyre fonts\footnote{\url{https://www.ctan.org/pkg/tex-gyre}} are a good choice.
-Both \textbf{tex-gyre} and \textbf{tex-gyre-math} LaTeX packages must be available.
-- \emph{MemoirChapStyle} and \emph{MemoirPageStyle} define the style of the document.
-Two styles are favored: \emph{companion} for documents with large outer margins containing notes, references and captions, or \emph{daleif1} and \emph{Ruled} for more classical layouts with small margins.
-- Margins: choose whether to use \emph{largemargins} or not, and adjust the other parameters according to that.
-Margin values should work well in most cases.
-- \emph{toc-depth}: number of levels in the table of contents, 3 by default.
-- \emph{lot} and \emph{lof} to add lists of tables and figures.
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{documentclass}: the document class is \emph{memoir} for this template.
+  The options of the \emph{memoir} class are listed, not to be changed normally.
+\item
+  \emph{papersize}: A4.
+\item
+  \emph{fontsize}: 11pt.
+\item
+  \emph{mainfont} and \emph{mathfont} may replace the standard Computer Modern font.
+  Tex Gyre fonts\footnote{\url{https://www.ctan.org/pkg/tex-gyre}} are a good choice.
+  Both \textbf{tex-gyre} and \textbf{tex-gyre-math} LaTeX packages must be available.
+\item
+  \emph{MemoirChapStyle} and \emph{MemoirPageStyle} define the style of the document.
+  Two styles are favored: \emph{companion} for documents with large outer margins containing notes, references and captions, or \emph{daleif1} and \emph{Ruled} for more classical layouts with small margins.
+\item
+  Margins: choose whether to use \emph{largemargins} or not, and adjust the other parameters according to that.
+  Margin values should work well in most cases.
+\item
+  \emph{toc-depth}: number of levels in the table of contents, 3 by default.
+\item
+  \emph{lot} and \emph{lof} to add lists of tables and figures.
+\end{itemize}
 
 The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
 It must be entered with its \texttt{.bib} extension.
