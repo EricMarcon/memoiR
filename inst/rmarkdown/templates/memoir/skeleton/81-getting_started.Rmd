@@ -50,7 +50,8 @@ The other languages (`otherlangs`) can be used to switch language inside the PDF
 
 
 LaTeX specific options are:
-- _documentclass_: the document class is _memoir_ for this template. 
+
+- _documentclass_: the document class is _memoir_ for this template.
 The options of the _memoir_ class are listed, not to be changed normally.
 - _papersize_: A4.
 - _fontsize_: 11pt.
