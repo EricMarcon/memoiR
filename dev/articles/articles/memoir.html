@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9004</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9007</span>
       </span>
     </div>
 
@@ -144,29 +144,29 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 <h1 class="hasAnchor">
 <a href="#fonts" class="anchor"></a>Fonts</h1>
 <p>The default font of the memoir is Computer Modern (actually, an update of it), the LaTeX standard.</p>
-<p>Other fonts may be used. They must be installed in a LaTeX package, such as <a href="https://www.ctan.org/pkg/tex-gyre"><strong>tex-gyre</strong></a> and its companion <strong>tex-gyre-math</strong>. Both provide updated versions of the classical:</p>
+<p>Other fonts may be used: the <a href="https://tug.org/FontCatalogue/alphfonts.html">LaTeX font catalogue</a> is their gallery. They must be installed in a LaTeX package, such as <a href="https://www.ctan.org/pkg/tex-gyre"><strong>tex-gyre</strong></a> and its companion <strong>tex-gyre-math</strong>. Both provide updated versions of the classical:</p>
 <ul>
-<li>Times New Roman: <code>Tex Gyre Termes</code>
+<li>Times New Roman: <a href="https://tug.org/FontCatalogue/texgyretermes/"><code>Tex Gyre Termes</code></a>
 </li>
-<li>Century Schoolbook: <code>Tex Gyre Schola</code>
+<li>Century Schoolbook: <a href="https://tug.org/FontCatalogue/texgyreschola/"><code>Tex Gyre Schola</code></a>
 </li>
-<li>Palatino: <code>Tex Gyre Pagella</code>
+<li>Palatino: <a href="https://tug.org/FontCatalogue/texgyrepagella/"><code>Tex Gyre Pagella</code></a>
 </li>
-<li>Helvetica: <code>Tex Gyre Heros</code>
+<li>Helvetica: <a href="https://tug.org/FontCatalogue/texgyreheros/"><code>Tex Gyre Heros</code></a>
 </li>
-<li>Courier: <code>Tex Gyre Cursor</code>
+<li>Courier: <a href="https://tug.org/FontCatalogue/texgyrecursor/"><code>Tex Gyre Cursor</code></a>
 </li>
-<li>Bookman Old Style: <code>Tex Gyre Bonum</code>
+<li>Bookman Old Style: <a href="https://tug.org/FontCatalogue/texgyrebonum/"><code>Tex Gyre Bonum</code></a>
 </li>
-<li>Avant Garde Gothic: <code>Tex Gyre Adventor</code>
+<li>Avant Garde Gothic: <a href="https://tug.org/FontCatalogue/texgyreadventor/"><code>Tex Gyre Adventor</code></a>
 </li>
-<li>Zapf Chancery: <code>Tex Gyre Chorus</code>
+<li>Zapf Chancery: <a href="https://tug.org/FontCatalogue/texgyrechorus/"><code>Tex Gyre Chorus</code></a>
 </li>
 </ul>
 <p>The LaTeX packages must be installed in the LaTeX distribution. If <strong>tinytex</strong> installed it, it can do that too:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>.</p>
+<p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>. <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code> does it automatically if it recognizes the font, see below.</p>
 <p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces in lower case. The main font options allow building the actual file names and are not likely to be changed.</p>
 <pre><code>mainfont: texgyretermes
 mainfontoptions:
@@ -179,6 +179,53 @@ mathfont: texgyretermes-math.otf</code></pre>
 <p>A monotype font may be declared to be used in code blocks, and in code included in the text. It may be <code>monofont: texgyrecursor</code>, completed by an identical <code>monofontoptions</code> list, but the default font is usually better.</p>
 <p>Note that long tables (<code>longtable = TRUE</code> argument in the <code>kable()</code> function to render tables) may not be cut correctly across pages when specific fonts are declared.</p>
 <p>The font size is 12pt by default. Change it if necessary, depending on the font type, the margin width and personal preferences.</p>
+</div>
+<div id="github-actions-workflow" class="section level1">
+<h1 class="hasAnchor">
+<a href="#github-actions-workflow" class="anchor"></a>GitHub Actions workflow</h1>
+<p>The memoir can be produced by GitHub Actions and made visible in GitHub Pages by the <code>memoir.yml</code> script (in <code>.github\workflows</code>) created by <code>build_ghworklow()</code>.</p>
+<p>The script installs tinytex, a low-weight TeXLive distribution, with the <strong>tinytex</strong> R package. Neither additional fonts nor language support beyond English are installed by default. <code>build_ghworklow()</code> adds the necessary commands in the script (basically, install LaTeX packages) by reading the fonts and languages options in the header of the document and recognizing the LaTeX packages they need.</p>
+<p>Support is necessarily limited. Supported languages and fonts are listed here. Other ones can be used in a memoir, but the <code>memoir.yml</code> script will have to be edited manually to allow GitHub Actions to work properly.</p>
+<div id="supported-languages" class="section level2">
+<h2 class="hasAnchor">
+<a href="#supported-languages" class="anchor"></a>Supported languages</h2>
+<p>The hyphenation pattern of a language must be installed in the LaTeX distribution. If it is not, text will just not be hyphenized. Supported languages are:</p>
+<ul>
+<li>
+<code>de</code>: German,</li>
+<li>
+<code>fr</code>: French,</li>
+<li>
+<code>it</code>: Italian,</li>
+<li>
+<code>pt</code>: Portuguese,</li>
+<li>
+<code>sp</code>: Spanish.</li>
+</ul>
+<p>English is supported natively.</p>
+</div>
+<div id="supported-fonts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#supported-fonts" class="anchor"></a>Supported fonts</h2>
+<p>Font file names are used to find the corresponding package and install it. For instance, <code>mainfont: texgyretermes</code>, as all fonts whose name starts with <code>texgyre</code> needs the <strong>tex-gyre</strong> LaTeX package.</p>
+<p>Supported font families are listed here with their name (the file name pattern) and their LaTeX package:</p>
+<ul>
+<li>DejaVu (<code>dejavu*</code>): <strong>dejavu-otf</strong>
+</li>
+<li>Garamond (<code>GaramondLibre*</code>): <strong>garamond-libre</strong>
+</li>
+<li>Garamond Math (<code>Garamond-Math*</code>): <strong>garamond-math</strong>
+</li>
+<li>KP-fonts (<code>kp*</code>): <strong>kpfonts-otf</strong>
+</li>
+<li>Libertine (<code>LinBiolinum*</code>, <code>LinLibertine*</code>): <strong>libertine</strong>
+</li>
+<li>TeX Gyre (<code>texgyre*</code>): <strong>tex-gyre</strong>
+</li>
+<li>TeX Gyre Math (<code>texgyre-math*</code>): <strong>tex-gyre-math</strong>
+</li>
+</ul>
+</div>
 </div>
 <div id="conclusion" class="section level1">
 <h1 class="hasAnchor">

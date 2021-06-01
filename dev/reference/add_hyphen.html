@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • memoiR</title>
+<title>Add hyphenation patterns — add_hyphen • memoiR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Add hyphenation patterns — add_hyphen" />
+<meta property="og:description" content="This function is called by build_ghworkflow() to install hyphenation patterns." />
 <meta property="og:image" content="https://EricMarcon.github.io/memoiR/logo.svg" />
 
 
@@ -66,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -136,46 +137,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/EricMarcon/memoiR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Add hyphenation patterns</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EricMarcon/memoiR/blob/master/R/memoiR.R'><code>R/memoiR.R</code></a></small>
+    <div class="hidden name"><code>add_hyphen.Rd</code></div>
     </div>
 
-    <div id="memoir-05-09007" class="section level1">
-<h1 class="page-header" data-toc-text="0.5-0.9007">
-<a href="#memoir-05-09007" class="anchor"></a>memoiR 0.5-0.9007<small> Unreleased </small>
-</h1>
-<div id="new-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
-<ul>
-<li>New Project wizard in RStudio.</li>
-<li>Customization of memoirs.</li>
-</ul>
-</div>
-</div>
-    <div id="memoir-05-0" class="section level1">
-<h1 class="page-header" data-toc-text="0.5-0">
-<a href="#memoir-05-0" class="anchor"></a>memoiR 0.5-0<small> 2021-05-11 </small>
-</h1>
-<div id="new-features-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
-<ul>
-<li>Simple article, Stylish article, Memoir and Beamer templates.</li>
-<li>XeLaTex and polyglossia for all templates.</li>
-<li>Function to build GitHub Pages with knitted documents.</li>
-<li>Functions to build <code>.gitignore</code>, <code>README.md</code> and GitHub Actions workflow.</li>
-</ul>
-</div>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>This function is called by <code><a href='build_ghworkflow.html'>build_ghworkflow()</a></code> to install hyphenation patterns.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>add_hyphen</span><span class='op'>(</span><span class='va'>lang</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>lang</th>
+      <td><p>a language code, such as "fr-FR"</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A line of the GitHub Actions script to install the hyphenation package.
+<code>NULL</code> if <code>lang</code> is not recognized.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 
