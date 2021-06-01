@@ -504,10 +504,10 @@ add_hyphen <- function(lang) {
                            it = "hyphen-italian",
                            pt = "hyphen-portuguese",
                            sp = "hyphen-spanish")
-  if (!is.null(hyphen_package)) {
-    return(paste('          tinytex::tlmgr_install("', hyphen_package, '")', sep=""))
-  } else {
+  if (is.null(hyphen_package)) {
     return(NULL)
+  } else {
+    return(paste('          tinytex::tlmgr_install("', hyphen_package, '")', sep=""))
   }
 }
 
@@ -553,10 +553,10 @@ add_font <- function(font) {
   }
   
   # Build the line
-  if (!is.null(font_package)) {
-    return(paste('          tinytex::tlmgr_install("', font_package, '")', sep=""))
-  } else {
+  if (is.null(font_package)) {
     return(NULL)
+  } else {
+    return(paste('          tinytex::tlmgr_install("', font_package, '")', sep=""))
   }
 }
 
@@ -607,8 +607,23 @@ add_font <- function(font) {
 #' unlink(wd, recursive=TRUE)
 #' 
 build_ghworkflow <- function() {
+  
+  # Save the working directory
+  OriginalWD <- getwd()
+  # Prepare clean up
+  on.exit(setwd(OriginalWD))
+  # Make the project directory the working directory
+  setwd(usethis::proj_path())
+  
   # Is this a book project?
-  is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
+  is_memoir <- file.exists("_bookdown.yml")
+  # Find the header
+  if (is_memoir) {
+    yaml_header <- rmarkdown::yaml_front_matter("index.Rmd")
+  } else {
+    Rmd_files <- list.files(pattern="*.Rmd")
+    yaml_header <- rmarkdown::yaml_front_matter(Rmd_files[1])
+  }
   
   # Workflow
   lines <- c(
@@ -637,7 +652,6 @@ build_ghworkflow <- function() {
     '          tinytex::install_tinytex()')
   
   # Read languages in header
-  yaml_header <- rmarkdown::yaml_front_matter(usethis::proj_path("index.Rmd"))
   langs <- c(yaml_header$lang, yaml_header$otherlangs)
   # Add hyphenation packages
   for (lang in langs) {
@@ -645,14 +659,14 @@ build_ghworkflow <- function() {
   }
   
   # Read fonts in header
-  yaml_header <- rmarkdown::yaml_front_matter(usethis::proj_path("index.Rmd"))
-  # Add font packages
   font_packages <- lapply(
     c(yaml_header$mainfont, yaml_header$monofont, yaml_header$mathfont),
     add_font)
-  # Eliminate duplicates
-  font_packages <- unique(simplify2array(font_packages))
-  lines <- c(lines, font_packages)
+  if (length(font_packages) > 0) {
+    # Eliminate duplicates
+    font_packages <- unique(simplify2array(font_packages))
+    lines <- c(lines, font_packages)
+  } 
   
   lines <- c(lines,
     '        shell: Rscript {0}'
@@ -718,7 +732,7 @@ build_ghworkflow <- function() {
   }
   
   # Create the workflow file
-  dir.create(usethis::proj_path(".github/workflows"), showWarnings=FALSE, recursive=TRUE)
-  usethis::write_over(usethis::proj_path(".github/workflows/memoir.yml"), lines)
+  dir.create(".github/workflows", showWarnings=FALSE, recursive=TRUE)
+  usethis::write_over(".github/workflows/memoir.yml", lines)
   return(invisible(lines))
 }
