@@ -25,7 +25,8 @@ testthat::test_that("A Simple Article can be built", {
   
   ## Scenario 1: no continuous integration
   # render: knit to downcute (interactively: click the Knit button)
-  rmarkdown::render(input=list.files(pattern="*.Rmd"), 
+  if (require("rmdformats"))
+    rmarkdown::render(input=list.files(pattern="*.Rmd"), 
                     output_format="rmdformats::downcute")
   # render: knit to pdf (interactively: clic the Knit button)
   rmarkdown::render(input=list.files(pattern="*.Rmd"), 
