@@ -89,18 +89,18 @@ The `pageref` option must be commented out if the chosen style does not support 
 
 The default font of the memoir is Computer Modern (actually, an update of it), the LaTeX standard.
 
-Other fonts may be used.
+Other fonts may be used: the [LaTeX font catalogue](https://tug.org/FontCatalogue/alphfonts.html) is their gallery.
 They must be installed in a LaTeX package, such as [**tex-gyre**](https://www.ctan.org/pkg/tex-gyre) and its companion **tex-gyre-math**.
 Both provide updated versions of the classical:
 
-- Times New Roman: `Tex Gyre Termes`
-- Century Schoolbook: `Tex Gyre Schola`
-- Palatino: `Tex Gyre Pagella`
-- Helvetica: `Tex Gyre Heros`
-- Courier: `Tex Gyre Cursor`
-- Bookman Old Style: `Tex Gyre Bonum`
-- Avant Garde Gothic: `Tex Gyre Adventor`
-- Zapf Chancery: `Tex Gyre Chorus`
+- Times New Roman: [`Tex Gyre Termes`](https://tug.org/FontCatalogue/texgyretermes/)
+- Century Schoolbook: [`Tex Gyre Schola`](https://tug.org/FontCatalogue/texgyreschola/)
+- Palatino: [`Tex Gyre Pagella`](https://tug.org/FontCatalogue/texgyrepagella/)
+- Helvetica: [`Tex Gyre Heros`](https://tug.org/FontCatalogue/texgyreheros/)
+- Courier: [`Tex Gyre Cursor`](https://tug.org/FontCatalogue/texgyrecursor/)
+- Bookman Old Style: [`Tex Gyre Bonum`](https://tug.org/FontCatalogue/texgyrebonum/)
+- Avant Garde Gothic: [`Tex Gyre Adventor`](https://tug.org/FontCatalogue/texgyreadventor/)
+- Zapf Chancery: [`Tex Gyre Chorus`](https://tug.org/FontCatalogue/texgyrechorus/)
 
 The LaTeX packages must be installed in the LaTeX distribution.
 If **tinytex** installed it, it can do that too:
@@ -109,6 +109,7 @@ tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
 ```
 
 This command must be added to the GitHub Action script created by `build_ghworkflow()`, just after `tinytex::install_tinytex()`.
+`build_ghworkflow()` does it automatically if it recognizes the font, see below.
 
 The fonts are declared in the header of `index.Rmd`.
 XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages.
@@ -133,6 +134,48 @@ Note that long tables (`longtable = TRUE` argument in the `kable()` function to 
 
 The font size is 12pt by default.
 Change it if necessary, depending on the font type, the margin width and personal preferences.
+
+
+# GitHub Actions workflow
+
+The memoir can be produced by GitHub Actions and made visible in GitHub Pages by the `memoir.yml` script (in `.github\workflows`) created by `build_ghworklow()`.
+
+The script installs tinytex, a low-weight TeXLive distribution, with the **tinytex** R package.
+Neither additional fonts nor language support beyond English are installed by default.
+`build_ghworklow()` adds the necessary commands in the script (basically, install LaTeX packages) by reading the fonts and languages options in the header of the document and recognizing the LaTeX packages they need.
+
+Support is necessarily limited.
+Supported languages and fonts are listed here.
+Other ones can be used in a memoir, but the `memoir.yml` script will have to be edited manually to allow GitHub Actions to work properly.
+
+## Supported languages
+
+The hyphenation pattern of a language must be installed in the LaTeX distribution.
+If it is not, text will just not be hyphenized.
+Supported languages are:
+
+- `de`: German,
+- `fr`: French,
+- `it`: Italian,
+- `pt`: Portuguese,
+- `sp`: Spanish.
+
+English is supported natively.
+
+## Supported fonts
+
+Font file names are used to find the corresponding package and install it.
+For instance, `mainfont: texgyretermes`, as all fonts whose name starts with `texgyre` needs the **tex-gyre** LaTeX package.
+
+Supported font families are listed here with their name (the file name pattern) and their LaTeX package:
+
+- DejaVu (`dejavu*`): **dejavu-otf**
+- Garamond (`GaramondLibre*`): **garamond-libre**
+- Garamond Math (`Garamond-Math*`): **garamond-math**
+- KP-fonts (`kp*`): **kpfonts-otf**
+- Libertine (`LinBiolinum*`, `LinLibertine*`): **libertine**
+- TeX Gyre (`texgyre*`): **tex-gyre**
+- TeX Gyre Math (`texgyre-math*`): **tex-gyre-math**
 
 
 # Conclusion

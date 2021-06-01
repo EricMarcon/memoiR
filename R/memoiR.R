@@ -544,11 +544,11 @@ add_font <- function(font) {
       substr(font, start=1, stop=12) == "LinLibertine") {
     font_package <- "libertine"
   }
-  # tex-gyre
+  # TeX Gyre
   if (substr(font, start=1, stop=7) == "texgyre") {
     font_package <- "tex-gyre"
-    # tex-gyre-math
-    if (substr(font, nchar(font)-3, nchar(font)) == "math")
+    # TeX Gyre math
+    if (substr(font, nchar(font)-4, nchar(font)) == "-math")
       font_package <- "tex-gyre-math"
   }
   
