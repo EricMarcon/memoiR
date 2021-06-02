@@ -56,7 +56,9 @@ spinemargin: 1.5in                 # spine margin. Reduce to 1.2 with large marg
 uppermargin: 1.5in                 # upper margin
 lowermargin: 1in                   # lower margin
 # Table of contents
-toc-depth: 3
+toc-depth: 2
+# Section numbering
+secnum-depth: section
 # List of tables / Figures
 lot: false
 lof: true

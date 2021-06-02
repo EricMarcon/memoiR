@@ -62,7 +62,9 @@ Both **tex-gyre** and **tex-gyre-math** LaTeX packages must be available.
 Two styles are favored: _companion_ for documents with large outer margins containing notes, references and captions, or _daleif1_ and _Ruled_ for more classical layouts with small margins.
 - Margins: choose whether to use _largemargins_ or not, and adjust the other parameters according to that.
 Margin values should work well in most cases.
-- _toc-depth_: number of levels in the table of contents, 3 by default.
+- _toc-depth_: number of levels in the table of contents, 2 by default (i.e. `###` subsections are shown).
+- _secnum-depth_: The lowest numbered level in the document. Default is `section` (i.e. `##`). 
+Alternatives are `chapter` (i.e. `#`), `subsection` (i.e. `###`) or `subsubsection` (i.e. `####`).
 - _lot_ and _lof_ to add lists of tables and figures.
 
 [^812]: https://www.ctan.org/pkg/tex-gyre
