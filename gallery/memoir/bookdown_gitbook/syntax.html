@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-06-01" />
+<meta name="date" content="2021-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,8 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
 <li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#sec:languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
 <li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11</b> User documentation</a></li>
-<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12</b> Documentation for developers</a></li>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.11</b> Documentation</a><ul>
+<li class="chapter" data-level="2.11.1" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11.1</b> User documentation</a></li>
+<li class="chapter" data-level="2.11.2" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.11.2</b> Documentation for developers</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -297,11 +299,11 @@ The content of the table is in a dataframe.
 The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="syntax.html#cb15-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb15-2"><a href="syntax.html#cb15-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, </span>
+<span id="cb15-2"><a href="syntax.html#cb15-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>,</span>
 <span id="cb15-3"><a href="syntax.html#cb15-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb15-4"><a href="syntax.html#cb15-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>,</span>
 <span id="cb15-5"><a href="syntax.html#cb15-5"></a>    <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb15-6"><a href="syntax.html#cb15-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, </span>
+<span id="cb15-6"><a href="syntax.html#cb15-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
 <span id="cb15-7"><a href="syntax.html#cb15-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
@@ -503,21 +505,24 @@ Some text for this block.
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <p>chaptersummary: In a Nutshell</p>
 </div>
-<div id="user-documentation" class="section level2">
-<h2><span class="header-section-number">2.11</span> User documentation</h2>
+<div id="documentation" class="section level2">
+<h2><span class="header-section-number">2.11</span> Documentation</h2>
+<div id="user-documentation" class="section level3">
+<h3><span class="header-section-number">2.11.1</span> User documentation</h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
 All the necessary details for writing (writing equations, cross-references, etc.) are given.</li>
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level2">
-<h2><span class="header-section-number">2.12</span> Documentation for developers</h2>
+<div id="documentation-for-developers" class="section level3">
+<h3><span class="header-section-number">2.11.2</span> Documentation for developers</h3>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>
 </ul>
 
+</div>
 </div>
 </div>
 <h3>References</h3>

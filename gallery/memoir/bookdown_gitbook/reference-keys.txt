@@ -18,5 +18,6 @@ bibliography
 forcing-line-breaks
 sec:languages
 chapter-summary
+documentation
 user-documentation
 documentation-for-developers

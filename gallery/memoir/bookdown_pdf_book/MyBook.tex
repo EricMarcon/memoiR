@@ -113,8 +113,8 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% Number sections
-\setcounter{secnumdepth}{5}
+% Number sections for memoir (secnumdepth counter is ignored)
+\setsecnumdepth{section}
 
 % Set default figure placement to htbp
 \makeatletter
@@ -361,7 +361,7 @@
 
 \author{Authors' names}
 
-\date{2021-06-01}
+\date{2021-06-02}
 
 
 % End of preamble
@@ -403,7 +403,7 @@ Leave an empty line for line breaks.}
 \LargeMargins
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 
@@ -530,7 +530,10 @@ LaTeX specific options are:
   Margins: choose whether to use \emph{largemargins} or not, and adjust the other parameters according to that.
   Margin values should work well in most cases.
 \item
-  \emph{toc-depth}: number of levels in the table of contents, 3 by default.
+  \emph{toc-depth}: number of levels in the table of contents, 2 by default (i.e.~\texttt{\#\#\#} subsections are shown).
+\item
+  \emph{secnum-depth}: The lowest numbered level in the document. Default is \texttt{section} (i.e.~\texttt{\#\#}).
+  Alternatives are \texttt{chapter} (i.e.~\texttt{\#}), \texttt{subsection} (i.e.~\texttt{\#\#\#}) or \texttt{subsubsection} (i.e.~\texttt{\#\#\#\#}).
 \item
   \emph{lot} and \emph{lof} to add lists of tables and figures.
 \end{itemize}
@@ -838,11 +841,11 @@ The \texttt{kable} function in the \emph{knitr} package prepares the table for d
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
-\KeywordTok{names}\NormalTok{(iris) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Sepal length ($l_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{, }
+\KeywordTok{names}\NormalTok{(iris) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Sepal length ($l_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
     \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris), }\DataTypeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{, }
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris), }\DataTypeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{,}
     \DataTypeTok{escape =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{    }\NormalTok{kableExtra}\OperatorTok{::}\KeywordTok{kable_styling}\NormalTok{(}\DataTypeTok{bootstrap_options =} \StringTok{"striped"}\NormalTok{, }
+\StringTok{    }\NormalTok{kableExtra}\OperatorTok{::}\KeywordTok{kable_styling}\NormalTok{(}\DataTypeTok{bootstrap_options =} \StringTok{"striped"}\NormalTok{,}
         \DataTypeTok{full_width =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -981,8 +984,11 @@ Its heading text is set in the header of \texttt{index.Rmd}:
 chaptersummary: In a Nutshell
 \end{verbatim}
 
+\hypertarget{documentation}{%
+\section{Documentation}\label{documentation}}
+
 \hypertarget{user-documentation}{%
-\section{User documentation}\label{user-documentation}}
+\subsection{User documentation}\label{user-documentation}}
 
 \begin{itemize}
 \tightlist
@@ -994,7 +1000,7 @@ chaptersummary: In a Nutshell
 \end{itemize}
 
 \hypertarget{documentation-for-developers}{%
-\section{Documentation for developers}\label{documentation-for-developers}}
+\subsection{Documentation for developers}\label{documentation-for-developers}}
 
 \begin{itemize}
 \tightlist
