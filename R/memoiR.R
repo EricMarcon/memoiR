@@ -487,6 +487,79 @@ build_gitignore <- function() {
 }
 
 
+#' Add hyphenation patterns
+#' 
+#' This function is called by [build_ghworkflow()] to install hyphenation patterns.
+#'
+#' @param lang a language code, such as "fr-FR"
+#'
+#' @return A line of the GitHub Actions script to install the hyphenation package. 
+#' `NULL` if `lang` is not recognized.
+#' @keywords internal
+add_hyphen <- function(lang) {
+  lang_2 <- substr(lang, start=1, stop=2)
+  hyphen_package <- switch(lang_2,
+                           de = "hyphen-german",
+                           fr = "hyphen-french",
+                           it = "hyphen-italian",
+                           pt = "hyphen-portuguese",
+                           sp = "hyphen-spanish")
+  if (is.null(hyphen_package)) {
+    return(NULL)
+  } else {
+    return(paste('          tinytex::tlmgr_install("', hyphen_package, '")', sep=""))
+  }
+}
+
+
+#' Add fonts
+#' 
+#' This function is called by [build_ghworkflow()] to install fonts.
+#'
+#' @param font a font file name
+#'
+#' @return A line of the GitHub Actions script to install the font package. 
+#' `NULL` if `font` is not recognized.
+#' @keywords internal
+add_font <- function(font) {
+  # Reference: https://r2src.github.io/top10fonts/
+  # DejaVu
+  if (substr(font, start=1, stop=6) == "dejavu") {
+    font_package <- "dejavu-otf"
+  }
+  # Garamond Libre
+  if (substr(font, start=1, stop=13) == "GaramondLibre") {
+    font_package <- "garamond-libre"
+  }
+  # Garamond Math
+  if (substr(font, start=1, stop=13) == "Garamond-Math") {
+    font_package <- "garamond-math"
+  }
+  # KP-fonts
+  if (substr(font, start=1, stop=2) == "Kp") {
+    font_package <- "kpfonts-otf"
+  }
+  # Libertine
+  if (substr(font, start=1, stop=11) == "LinBiolinum" |
+      substr(font, start=1, stop=12) == "LinLibertine") {
+    font_package <- "libertine"
+  }
+  # TeX Gyre
+  if (substr(font, start=1, stop=7) == "texgyre") {
+    font_package <- "tex-gyre"
+    # TeX Gyre math
+    if (substr(font, nchar(font)-4, nchar(font)) == "-math")
+      font_package <- "tex-gyre-math"
+  }
+  
+  # Build the line
+  if (is.null(font_package)) {
+    return(NULL)
+  } else {
+    return(paste('          tinytex::tlmgr_install("', font_package, '")', sep=""))
+  }
+}
+
 #' Build GitHub Action Workflow
 #'
 #' Build a YAML file (`.gihub/workflows/memoir.yml`) to knit the documents 
@@ -534,8 +607,24 @@ build_gitignore <- function() {
 #' unlink(wd, recursive=TRUE)
 #' 
 build_ghworkflow <- function() {
+  
+  # Save the working directory
+  OriginalWD <- getwd()
+  # Prepare clean up
+  on.exit(setwd(OriginalWD))
+  # Make the project directory the working directory
+  setwd(usethis::proj_path())
+  
   # Is this a book project?
-  is_memoir <- file.exists(usethis::proj_path("_bookdown.yml"))
+  is_memoir <- file.exists("_bookdown.yml")
+  # Find the header
+  if (is_memoir) {
+    yaml_header <- rmarkdown::yaml_front_matter("index.Rmd")
+  } else {
+    Rmd_files <- list.files(pattern="*.Rmd")
+    yaml_header <- rmarkdown::yaml_front_matter(Rmd_files[1])
+  }
+  
   # Workflow
   lines <- c(
     'on:',
@@ -560,9 +649,29 @@ build_ghworkflow <- function() {
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
     '          install.packages(c("memoiR", "rmdformats", "tinytex"))',
-    '          tinytex::install_tinytex()',
+    '          tinytex::install_tinytex()')
+  
+  # Read languages in header
+  langs <- c(yaml_header$lang, yaml_header$otherlangs)
+  # Add hyphenation packages
+  for (lang in langs) {
+    lines <- c(lines, add_hyphen(lang))
+  }
+  
+  # Read fonts in header
+  font_packages <- lapply(
+    c(yaml_header$mainfont, yaml_header$monofont, yaml_header$mathfont),
+    add_font)
+  if (length(font_packages) > 0) {
+    # Eliminate duplicates
+    font_packages <- unique(simplify2array(font_packages))
+    lines <- c(lines, font_packages)
+  } 
+  
+  lines <- c(lines,
     '        shell: Rscript {0}'
   )
+  
   # render a book or a simple document
   if (is_memoir) {
     lines <- c(lines,
@@ -584,6 +693,7 @@ build_ghworkflow <- function() {
     '          Rscript -e \'memoiR::build_githubpages()\''
     )
   }
+  
   # Publish
   lines <- c(lines,
     '      - name: Upload artifact',
@@ -609,6 +719,7 @@ build_ghworkflow <- function() {
     '        with:',
     '          email: ${{ secrets.EMAIL }}',
     '          build_dir: docs')
+  
   # Jekyll site for simple documents
   if (is_memoir) {
     lines <- c(lines,
@@ -619,9 +730,9 @@ build_ghworkflow <- function() {
     '          jekyll: yes'
     )
   }
+  
   # Create the workflow file
-  dir.create(usethis::proj_path(".github/workflows"), showWarnings=FALSE, recursive=TRUE)
-  usethis::write_over(usethis::proj_path(".github/workflows/memoir.yml"), lines)
+  dir.create(".github/workflows", showWarnings=FALSE, recursive=TRUE)
+  usethis::write_over(".github/workflows/memoir.yml", lines)
   return(invisible(lines))
 }
-

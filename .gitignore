@@ -21,6 +21,7 @@ vignettes/*.R
 vignettes/*_files/
 vignettes/articles/*.html
 vignettes/articles/*.pdf
+vignettes/articles/*cache/
 vignettes/articles/*_files/
 # knitr and R markdown default cache directories
 /*_cache/

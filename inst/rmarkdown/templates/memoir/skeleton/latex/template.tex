@@ -133,11 +133,9 @@ $endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% Number sections
-$if(numbersections)$
-\setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$else$
-\setcounter{secnumdepth}{0}
+% Number sections for memoir (secnumdepth counter is ignored)
+$if(secnum-depth)$
+\setsecnumdepth{$secnum-depth$}
 $endif$
 
 % Set default figure placement to htbp

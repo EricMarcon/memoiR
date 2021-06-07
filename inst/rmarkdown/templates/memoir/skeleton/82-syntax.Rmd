@@ -262,14 +262,16 @@ Its heading text is set in the header of `index.Rmd`:
     chaptersummary: In a Nutshell
 
 
-## User documentation
+## Documentation
+
+### User documentation
 
 - The book [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie, the author of **bookdown** and **knitr**. 
 All the necessary details for writing (writing equations, cross-references, etc.) are given.
 - The [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for the syntax.
 
 
-## Documentation for developers
+### Documentation for developers
 
 - [LaTeX file format customization](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization).
 - The [Pandoc manual](https://pandoc.org/MANUAL.html) for possible options in the YAML header.
