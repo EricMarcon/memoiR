@@ -83,7 +83,7 @@ formats are produced and stored into the gh-pages branch of the project." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5-0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0-0</span>
       </span>
     </div>
 
@@ -110,6 +110,9 @@ formats are produced and stored into the gh-pages branch of the project." />
   <ul class="dropdown-menu" role="menu">
     <li>
       <a href="../articles/articles/LaTeX.html">Production of LaTeX Documents</a>
+    </li>
+    <li>
+      <a href="../articles/articles/memoir.html">LaTeX memoir Customization</a>
     </li>
   </ul>
 </li>
@@ -181,10 +184,10 @@ They must be declared in the options code chunk of each .Rmd file
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
 <span class='co'># Make it the current project</span>
 <span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span><span> Setting active project to </span><span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpD5qDYA/example4834476ade24'</span><span></span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp4sFvAx/example489638fdcbca'</span></span></div><div class='input'>
 <span class='co'># Build GitHub Actions Workflow script</span>
 <span class='fu'>build_ghworkflow</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>✔</span><span> Writing </span><span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span><span></span></div><div class='input'><span class='co'># Content</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing <span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span></span></div><div class='input'><span class='co'># Content</span>
 <span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>".github/workflows/memoir.yml"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "on:"                                                                                                   
 #&gt;  [2] "  push:"                                                                                               
@@ -209,42 +212,44 @@ They must be declared in the options code chunk of each .Rmd file
 #&gt; [21] "          options(install.packages.check.source = \"no\")"                                             
 #&gt; [22] "          install.packages(c(\"memoiR\", \"rmdformats\", \"tinytex\"))"                                
 #&gt; [23] "          tinytex::install_tinytex()"                                                                  
-#&gt; [24] "        shell: Rscript {0}"                                                                            
-#&gt; [25] "      - name: Render Rmarkdown files"                                                                  
-#&gt; [26] "        run: |"                                                                                        
-#&gt; [27] "          RMD_PATH=($(ls | grep \"[.]Rmd$\"))"                                                         
-#&gt; [28] "          Rscript -e 'for (file in commandArgs(TRUE)) rmarkdown::render(file, \"all\")' ${RMD_PATH[*]}"
-#&gt; [29] "          Rscript -e 'memoiR::build_githubpages()'"                                                    
-#&gt; [30] "      - name: Upload artifact"                                                                         
-#&gt; [31] "        uses: actions/upload-artifact@v1"                                                              
-#&gt; [32] "        with:"                                                                                         
-#&gt; [33] "          name: ghpages"                                                                               
-#&gt; [34] "          path: docs"                                                                                  
-#&gt; [35] "  checkout-and-deploy:"                                                                                
-#&gt; [36] "    runs-on: ubuntu-latest"                                                                            
-#&gt; [37] "    needs: render"                                                                                     
-#&gt; [38] "    steps:"                                                                                            
-#&gt; [39] "      - name: Checkout"                                                                                
-#&gt; [40] "        uses: actions/checkout@v2"                                                                     
-#&gt; [41] "      - name: Download artifact"                                                                       
-#&gt; [42] "        uses: actions/download-artifact@v1"                                                            
-#&gt; [43] "        with:"                                                                                         
-#&gt; [44] "          name: ghpages"                                                                               
-#&gt; [45] "          path: docs"                                                                                  
-#&gt; [46] "      - name: Deploy to GitHub Pages"                                                                  
-#&gt; [47] "        uses: Cecilapp/GitHub-Pages-deploy@v3"                                                         
-#&gt; [48] "        env:"                                                                                          
-#&gt; [49] "          GITHUB_TOKEN: ${{ secrets.GH_PAT }}"                                                         
-#&gt; [50] "        with:"                                                                                         
-#&gt; [51] "          email: ${{ secrets.EMAIL }}"                                                                 
-#&gt; [52] "          build_dir: docs"                                                                             
-#&gt; [53] "          jekyll: yes"                                                                                 </div><div class='input'>
+#&gt; [24] "          tinytex::tlmgr_install(\"hyphen-french\")"                                                   
+#&gt; [25] "          tinytex::tlmgr_install(\"hyphen-italian\")"                                                  
+#&gt; [26] "        shell: Rscript {0}"                                                                            
+#&gt; [27] "      - name: Render Rmarkdown files"                                                                  
+#&gt; [28] "        run: |"                                                                                        
+#&gt; [29] "          RMD_PATH=($(ls | grep \"[.]Rmd$\"))"                                                         
+#&gt; [30] "          Rscript -e 'for (file in commandArgs(TRUE)) rmarkdown::render(file, \"all\")' ${RMD_PATH[*]}"
+#&gt; [31] "          Rscript -e 'memoiR::build_githubpages()'"                                                    
+#&gt; [32] "      - name: Upload artifact"                                                                         
+#&gt; [33] "        uses: actions/upload-artifact@v1"                                                              
+#&gt; [34] "        with:"                                                                                         
+#&gt; [35] "          name: ghpages"                                                                               
+#&gt; [36] "          path: docs"                                                                                  
+#&gt; [37] "  checkout-and-deploy:"                                                                                
+#&gt; [38] "    runs-on: ubuntu-latest"                                                                            
+#&gt; [39] "    needs: render"                                                                                     
+#&gt; [40] "    steps:"                                                                                            
+#&gt; [41] "      - name: Checkout"                                                                                
+#&gt; [42] "        uses: actions/checkout@v2"                                                                     
+#&gt; [43] "      - name: Download artifact"                                                                       
+#&gt; [44] "        uses: actions/download-artifact@v1"                                                            
+#&gt; [45] "        with:"                                                                                         
+#&gt; [46] "          name: ghpages"                                                                               
+#&gt; [47] "          path: docs"                                                                                  
+#&gt; [48] "      - name: Deploy to GitHub Pages"                                                                  
+#&gt; [49] "        uses: Cecilapp/GitHub-Pages-deploy@v3"                                                         
+#&gt; [50] "        env:"                                                                                          
+#&gt; [51] "          GITHUB_TOKEN: ${{ secrets.GH_PAT }}"                                                         
+#&gt; [52] "        with:"                                                                                         
+#&gt; [53] "          email: ${{ secrets.EMAIL }}"                                                                 
+#&gt; [54] "          build_dir: docs"                                                                             
+#&gt; [55] "          jekyll: yes"                                                                                 </div><div class='input'>
 <span class='co'>## End of the example: cleanup</span>
 <span class='co'># Return to the original working directory and clean up</span>
 <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
