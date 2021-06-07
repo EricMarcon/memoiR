@@ -10,15 +10,22 @@ vignette: >
 # Content
 
 This package provides templates to publish well-formatted documents both in HTML and PDF formats. 
-Documents can be produced locally or hosted on GitHub.
-GitHub actions can be used for automatic updates.
+Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.
+
+Long documents are the main purpose of this package.
+Along with a GitBook version to be read online, their PDF version based on the LaTeX class **memoir** can be highly customized (see examples [1](https://ericmarcon.github.io/travailleR/travailleR.pdf) and [2](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)).
+
+Functions are provided to make the publication of the documents on GitHub very easy, including their continuous integration.
 
 Templates include:
 
-- "Stylish Article": an article for self archiving. The HTML versions are optimized to be read online and the PDF version is a two-column, well formatted article to be printed.
-- "Simple Article":  simpler than the stylish article. The HTML versions are the same and the PDF version follows the classical 'article' LaTeX template.
+- "Memoir": a book template based on memoir. 
+The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.
+- "Stylish Article": an article for self archiving. 
+The HTML versions are optimized to be read online and the PDF version is a two-column, well formatted article to be printed.
+- "Simple Article":  simpler than the stylish article. 
+The HTML versions are the same and the PDF version follows the classical 'article' LaTeX template.
 - "Beamer Slideshow": the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.
-- "Memoir": a book template based on memoir. The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.
 
 Available HTML formats for articles are:
 
@@ -29,13 +36,17 @@ Available HTML formats for articles are:
 
 # Getting started
 
-In RStudio, create a new R Markdown document and chose the appropriate template in the wizard.
+In RStudio, either:
 
-Use the menu "File > New File... > R Markdown...", click on _From template_ and pick up the template you want in the list.
-
-Chose the location to create the document and the name of its directory.
-
-Make the new folder an RStudio Project: use the menu "File / New Project...", click on "Existing Directory" and select the directory created previously.
+- create a new R Markdown document and chose the appropriate template in the wizard:
+    - Use the menu "File > New File... > R Markdown...", click on _From template_ and pick up the template you want in the list.
+    - Choose the location to create the document and the name of its directory.
+    - Make the new folder an RStudio Project: use the menu "File / New Project...", click on "Existing Directory" and select the directory created previously.
+    
+- or directly create a project with the appropriate wizard:
+    - Use the menu "File > New Project > New Diretory > Document Project using memoiR".
+    - Chose the location to create the document and the name of its directory.
+    - Choose the document type in the list.
 
 Articles and slideshows are produced by clicking on the **Knit** button of the Source pane of their Rmd file.
 Memoirs are produced by clicking on the **Build Book** button of the Build pane.
@@ -47,7 +58,7 @@ The following functions help simplify that task:
 - `build_readme()` to create a `README.md` file, that will be the GitHub Pages index of articles or slideshows.
 - `build-githubpages()` to move knitted documents (articles or slideshows) to the `docs` folder.
 
-Documents can be knitted by GitHub Action if continuous integration in activated:
+Documents can be knitted by GitHub Action if continuous integration is activated:
 
 - In GitHub Settings, enter two secrets:
     - EMAIL: the email address of the author,
