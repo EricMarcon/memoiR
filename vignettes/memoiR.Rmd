@@ -13,7 +13,7 @@ This package provides templates to publish well-formatted documents both in HTML
 Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.
 
 Long documents are the main purpose of this package.
-Along with a GitBook version to be read online, their PDF version based on the LaTeX class **memoir** can be highly customized (see examples [1](https://ericmarcon.github.io/travailleR/travailleR.pdf) and [2](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)).
+Along with a GitBook version to be read online, their PDF version based on the LaTeX class **memoir** can be highly customized (see examples [1](https://ericmarcon.github.io/travailleR/travailleR.pdf) and [2](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf)).
 
 Functions are provided to make the publication of the documents on GitHub very easy, including their continuous integration.
 
