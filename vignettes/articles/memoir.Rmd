@@ -60,14 +60,14 @@ smallmargin: 1.5in         # outer margin (small).
 spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.
 ```
 
-Large margin allow both a narrower text column for readability and putting stuff into them.
+Large margins allow both a narrower text column for readability and putting stuff into them.
 Use `largemargins: true` to use them.
-The outer margin is the set to `largemargin: 3in` and the spine margin may be reduced a bit.
+The outer margin is then set to `largemargin: 3in` and the spine margin may be reduced a bit.
 
 
 # Bibliographic styles
 
-Many bibliographic styles come with **biblatex**, the LATeX package in charge of reference management.
+Many bibliographic styles come with **biblatex**, the LaTeX package in charge of reference management.
 A [gallery](https://fr.overleaf.com/learn/latex/Biblatex_bibliography_styles) is available.
 
 The style is selected in the options of biblatex:
@@ -78,7 +78,7 @@ biblatexoptions:
   - pageref=true
 ```
 
-The default style of the template is a classical author-year one, with the ibidem option, i.e.the authors are not repeated if they are the same as the previous reference.
+The default style of the template is a classical author-year style, with the ibidem option, i.e. the authors are not repeated if they are the same as in the previous reference.
 When large margins are available, the `verbose-inote` style is appropriate for the reader to have the full references close to the text, including a DOI link.
 
 More styles can be used, including specific styles requiring an extra LaTeX package that is usually installed automatically by LaTeX distributions.
@@ -113,7 +113,7 @@ This command must be added to the GitHub Action script created by `build_ghworkf
 
 The fonts are declared in the header of `index.Rmd`.
 XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages.
-They must be declared by their file names, which are in general their names without spaces in lower case.
+They must be declared by their file names, which are in general their names without spaces, in lower case.
 The main font options allow building the actual file names and are not likely to be changed.
 
 ```
@@ -151,7 +151,7 @@ Other ones can be used in a memoir, but the `memoir.yml` script will have to be 
 ## Supported languages
 
 The hyphenation pattern of a language must be installed in the LaTeX distribution.
-If it is not, text will just not be hyphenized.
+If it is not, text will just not be hyphenated.
 Supported languages are:
 
 - `de`: German,
