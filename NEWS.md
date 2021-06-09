@@ -1,3 +1,10 @@
+# memoiR 1.0-0.9000
+
+## New features
+
+* Logo on the last page of memoirs is optional (delete cover-image: in header).
+
+
 # memoiR 1.0-0
 
 ## New features
