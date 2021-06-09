@@ -84,6 +84,17 @@ When large margins are available, the `verbose-inote` style is appropriate for t
 More styles can be used, including specific styles requiring an extra LaTeX package that is usually installed automatically by LaTeX distributions.
 The `pageref` option must be commented out if the chosen style does not support it or an error may occur during the LaTeX compilation of the document.
 
+If verbose citations in large margins are wanted but another bibliographic style is desired, `style` can be replaced by two separate instructions for citation and bibliographic styles, such as:
+
+```
+biblatexoptions:
+  - citestyle=verbose-inote
+  - pageref=true
+  - bibstyle=apa
+```
+
+Note that the apa style requires the **biblatex-apa** package installed in the LaTeX distribution.
+
 
 # Fonts
 
