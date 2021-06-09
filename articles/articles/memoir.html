@@ -138,6 +138,12 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
   - pageref=true</code></pre>
 <p>The default style of the template is a classical author-year style, with the ibidem option, i.e. the authors are not repeated if they are the same as in the previous reference. When large margins are available, the <code>verbose-inote</code> style is appropriate for the reader to have the full references close to the text, including a DOI link.</p>
 <p>More styles can be used, including specific styles requiring an extra LaTeX package that is usually installed automatically by LaTeX distributions. The <code>pageref</code> option must be commented out if the chosen style does not support it or an error may occur during the LaTeX compilation of the document.</p>
+<p>If verbose citations in large margins are wanted but another bibliographic style is desired, <code>style</code> can be replaced by two separate instructions for citation and bibliographic styles, such as:</p>
+<pre><code>biblatexoptions:
+  - citestyle=verbose-inote
+  - pageref=true
+  - bibstyle=apa</code></pre>
+<p>Note that the apa style requires the <strong>biblatex-apa</strong> package installed in the LaTeX distribution.</p>
 </div>
 <div id="fonts" class="section level1">
 <h1 class="hasAnchor">
@@ -163,7 +169,7 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 </li>
 </ul>
 <p>The LaTeX packages must be installed in the LaTeX distribution. If <strong>tinytex</strong> installed it, it can do that too:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>. <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code> does it automatically if it recognizes the font, see below.</p>
 <p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces, in lower case. The main font options allow building the actual file names and are not likely to be changed.</p>
