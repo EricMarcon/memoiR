@@ -280,6 +280,7 @@ $endif$
 % Main title page with filigrane
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+$if(maintitlepage)$
 \newcommand{\MainTitlePage}[2]{
 	\SmallMargins % Margins
 	\pagestyle{empty} % No header/footer
@@ -317,6 +318,7 @@ $endif$
 	\end{textblock}
 	\newpage
 }
+$endif$
 
 % Clear page and open an even one (\clearpage opens an odd one)
 \newcommand{\evenpage}{
@@ -580,6 +582,9 @@ $if(backcoverfontsize)$
 \end{$backcoverfontsize$}
 $endif$
 
+$if(cover-image)$
 \vspace*{\fill}
 \centering\includegraphics[width=.3\textwidth]{images/logo}
+$endif$
+
 \end{document}
