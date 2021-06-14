@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0-0.9000</span>
       </span>
     </div>
 
@@ -109,13 +109,15 @@
 <div id="content" class="section level1">
 <h1 class="hasAnchor">
 <a href="#content" class="anchor"></a>Content</h1>
-<p>This package provides templates to publish well-formatted documents both in HTML and PDF formats. Documents can be produced locally or hosted on GitHub. GitHub actions can be used for automatic updates.</p>
+<p>This package provides templates to publish well-formatted documents both in HTML and PDF formats. Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.</p>
+<p>Long documents are the main purpose of this package. Along with a GitBook version to be read online, their PDF version based on the LaTeX class <strong>memoir</strong> can be highly customized (see examples <a href="https://ericmarcon.github.io/travailleR/travailleR.pdf">1</a> and <a href="https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf">2</a>).</p>
+<p>Functions are provided to make the publication of the documents on GitHub very easy, including their continuous integration.</p>
 <p>Templates include:</p>
 <ul>
+<li>“Memoir”: a book template based on memoir. The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.</li>
 <li>“Stylish Article”: an article for self archiving. The HTML versions are optimized to be read online and the PDF version is a two-column, well formatted article to be printed.</li>
 <li>“Simple Article”: simpler than the stylish article. The HTML versions are the same and the PDF version follows the classical ‘article’ LaTeX template.</li>
 <li>“Beamer Slideshow”: the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.</li>
-<li>“Memoir”: a book template based on memoir. The HTML version is a GitBook and the PDF version is formatted by the memoir LaTeX template.</li>
 </ul>
 <p>Available HTML formats for articles are:</p>
 <ul>
@@ -128,10 +130,23 @@
 <div id="getting-started" class="section level1">
 <h1 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h1>
-<p>In RStudio, create a new R Markdown document and chose the appropriate template in the wizard.</p>
-<p>Use the menu “File &gt; New File… &gt; R Markdown…”, click on <em>From template</em> and pick up the template you want in the list.</p>
-<p>Chose the location to create the document and the name of its directory.</p>
-<p>Make the new folder an RStudio Project: use the menu “File / New Project…”, click on “Existing Directory” and select the directory created previously.</p>
+<p>In RStudio, either:</p>
+<ul>
+<li>create a new R Markdown document and chose the appropriate template in the wizard:
+<ul>
+<li>Use the menu “File &gt; New File… &gt; R Markdown…”, click on <em>From template</em> and pick up the template you want in the list.</li>
+<li>Choose the location to create the document and the name of its directory.</li>
+<li>Make the new folder an RStudio Project: use the menu “File / New Project…”, click on “Existing Directory” and select the directory created previously.</li>
+</ul>
+</li>
+<li>or directly create a project with the appropriate wizard:
+<ul>
+<li>Use the menu “File &gt; New Project &gt; New Diretory &gt; Document Project using memoiR”.</li>
+<li>Chose the location to create the document and the name of its directory.</li>
+<li>Choose the document type in the list.</li>
+</ul>
+</li>
+</ul>
 <p>Articles and slideshows are produced by clicking on the <strong>Knit</strong> button of the Source pane of their Rmd file. Memoirs are produced by clicking on the <strong>Build Book</strong> button of the Build pane.</p>
 <p>Push your project to GitHub and activate GitHub Pages to make your documents readable online. The following functions help simplify that task:</p>
 <ul>
@@ -142,7 +157,7 @@
 <li>
 <code>build-githubpages()</code> to move knitted documents (articles or slideshows) to the <code>docs</code> folder.</li>
 </ul>
-<p>Documents can be knitted by GitHub Action if continuous integration in activated:</p>
+<p>Documents can be knitted by GitHub Action if continuous integration is activated:</p>
 <ul>
 <li>In GitHub Settings, enter two secrets:
 <ul>
@@ -158,6 +173,7 @@
 <a href="#credits" class="anchor"></a>Credits</h1>
 <p>The feather in the memoiR package sticker is from <a href="https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg">Wikimedia</a> under license <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
 <p>The <a href="https://www.ctan.org/pkg/memoir">memoir</a> LaTeX package is on CTAN.</p>
+<p>The <a href="https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf">Stylish Article</a> template is adapted from <a href="http://www.latextemplates.com/template/stylish-article">LaTeX Templates</a>, that in turn adapted it from a LaTeX class by Mathias Legrand. Its licence is <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.</p>
 </div>
 <div id="full-documentation" class="section level1">
 <h1 class="hasAnchor">

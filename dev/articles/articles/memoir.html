@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5-0.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0-0.9000</span>
       </span>
     </div>
 
@@ -127,18 +127,24 @@
 <p>A4 or Letter paper stock with 1-inch margin on both sides imply long lines, actually too long to read comfortably. Avoid lines other 80 characters by increasing margin width. Two options are used:</p>
 <pre><code>smallmargin: 1.5in         # outer margin (small).
 spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</code></pre>
-<p>Large margin allow both a narrower text column for readability and putting stuff into them. Use <code>largemargins: true</code> to use them. The outer margin is the set to <code>largemargin: 3in</code> and the spine margin may be reduced a bit.</p>
+<p>Large margins allow both a narrower text column for readability and putting stuff into them. Use <code>largemargins: true</code> to use them. The outer margin is then set to <code>largemargin: 3in</code> and the spine margin may be reduced a bit.</p>
 </div>
 <div id="bibliographic-styles" class="section level1">
 <h1 class="hasAnchor">
 <a href="#bibliographic-styles" class="anchor"></a>Bibliographic styles</h1>
-<p>Many bibliographic styles come with <strong>biblatex</strong>, the LATeX package in charge of reference management. A <a href="https://fr.overleaf.com/learn/latex/Biblatex_bibliography_styles">gallery</a> is available.</p>
+<p>Many bibliographic styles come with <strong>biblatex</strong>, the LaTeX package in charge of reference management. A <a href="https://fr.overleaf.com/learn/latex/Biblatex_bibliography_styles">gallery</a> is available.</p>
 <p>The style is selected in the options of biblatex:</p>
 <pre><code>biblatexoptions:
   - style=verbose-inote
   - pageref=true</code></pre>
-<p>The default style of the template is a classical author-year one, with the ibidem option, i.e.the authors are not repeated if they are the same as the previous reference. When large margins are available, the <code>verbose-inote</code> style is appropriate for the reader to have the full references close to the text, including a DOI link.</p>
+<p>The default style of the template is a classical author-year style, with the ibidem option, i.e. the authors are not repeated if they are the same as in the previous reference. When large margins are available, the <code>verbose-inote</code> style is appropriate for the reader to have the full references close to the text, including a DOI link.</p>
 <p>More styles can be used, including specific styles requiring an extra LaTeX package that is usually installed automatically by LaTeX distributions. The <code>pageref</code> option must be commented out if the chosen style does not support it or an error may occur during the LaTeX compilation of the document.</p>
+<p>If verbose citations in large margins are wanted but another bibliographic style is desired, <code>style</code> can be replaced by two separate instructions for citation and bibliographic styles, such as:</p>
+<pre><code>biblatexoptions:
+  - citestyle=verbose-inote
+  - pageref=true
+  - bibstyle=apa</code></pre>
+<p>Note that the apa style requires the <strong>biblatex-apa</strong> package installed in the LaTeX distribution.</p>
 </div>
 <div id="fonts" class="section level1">
 <h1 class="hasAnchor">
@@ -164,10 +170,10 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 </li>
 </ul>
 <p>The LaTeX packages must be installed in the LaTeX distribution. If <strong>tinytex</strong> installed it, it can do that too:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This command must be added to the GitHub Action script created by <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html">tinytex::install_tinytex()</a></code>. <code><a href="../../reference/build_ghworkflow.html">build_ghworkflow()</a></code> does it automatically if it recognizes the font, see below.</p>
-<p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces in lower case. The main font options allow building the actual file names and are not likely to be changed.</p>
+<p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces, in lower case. The main font options allow building the actual file names and are not likely to be changed.</p>
 <pre><code>mainfont: texgyretermes
 mainfontoptions:
   - Extension=.otf
@@ -189,7 +195,7 @@ mathfont: texgyretermes-math.otf</code></pre>
 <div id="supported-languages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#supported-languages" class="anchor"></a>Supported languages</h2>
-<p>The hyphenation pattern of a language must be installed in the LaTeX distribution. If it is not, text will just not be hyphenized. Supported languages are:</p>
+<p>The hyphenation pattern of a language must be installed in the LaTeX distribution. If it is not, text will just not be hyphenated. Supported languages are:</p>
 <ul>
 <li>
 <code>de</code>: German,</li>
