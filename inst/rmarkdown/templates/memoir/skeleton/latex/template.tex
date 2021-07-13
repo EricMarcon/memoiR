@@ -299,16 +299,16 @@ $if(maintitlepage)$
     \includegraphics[width=\paperwidth/2]{$maintitlepage.filigrane$}
   \end{textblock*}
   \begin{textblock*}{\paperwidth*2/3}(\spinemargin, \paperheight/2)
-    {\fontfamily{qtm}\Huge \theauthor}
+    {\fontfamily{qtm}\huge\theauthor}
   \end{textblock*}
   $else$
   \begin{textblock*}{\paperwidth*2/3}(\paperwidth/5, \paperheight/2)
     \flushright
-    {\fontfamily{qtm}\Huge \theauthor}
+    {\fontfamily{qtm}\huge\theauthor}
   \end{textblock*}
   $endif$
   \begin{textblock*}{\paperwidth*2/3}[0, 1](\spinemargin, \uppermargin+\textheight)
-    \normalfont \thedate
+    \normalfont\thedate
   \end{textblock*}
   ~\\ % Print a character or the page will not exist
   \newpage
