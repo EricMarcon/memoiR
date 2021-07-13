@@ -121,48 +121,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-% Include headers (preamble.tex) here
-% Add LaTeX code into the preamble of the document here
-\hyphenation{bio-di-ver-si-ty sap-lings}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% memoiR dalef3 chapter style 
-% https://ctan.crest.fr/tex-archive/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
-\usepackage{soul}
-\definecolor{nicered}{rgb}{.647,.129,.149}
-\makeatletter
-\newlength\dlf@normtxtw
-\setlength\dlf@normtxtw{\textwidth}
-\def\myhelvetfont{\def\sfdefault{mdput}}
-\newsavebox{\feline@chapter}
-\newcommand\feline@chapter@marker[1][4cm]{%
-  \sbox\feline@chapter{%
-    \resizebox{!}{#1}{\fboxsep=1pt%
-	  \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
-	}}%
-  \rotatebox{90}{%
-    \resizebox{%
-	  \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
-	{!}{\scshape\so\@chapapp}}\quad%
-  \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
- }
-\newcommand\feline@chm[1][4cm]{%
-  \sbox\feline@chapter{\feline@chapter@marker[#1]}%
-  \makebox[0pt][l]{% aka \rlap
-    \makebox[1cm][r]{\usebox\feline@chapter}%
-  }}
-\makechapterstyle{daleif1}{
-  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
-  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
-  \renewcommand\chapternamenum{}
-  \renewcommand\printchaptername{}
-  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
-  \renewcommand\afterchapternum{\par\vskip\midchapskip}
-  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
-}
-\makeatother
-
 % Spacing in lists
 \usepackage{enumitem}
 
@@ -211,7 +169,7 @@
 
 % Space between paragraphs
 \usepackage{parskip}
-	\abnormalparskip{3pt}
+  \abnormalparskip{3pt}
 
 % Adjust margin paragraphs vertical position
 \usepackage{marginfix}
@@ -247,7 +205,7 @@
   \clearpage
   \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
   \footnotesatfoot
-  \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
+  \chapterstyle{\MemoirChapStyle}  % Chapter and page styles must be recalled
   \pagestyle{\MemoirPageStyle}
 }
 
@@ -261,43 +219,50 @@
 % Main title page with filigrane
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Text blocks
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+
 \newcommand{\MainTitlePage}[2]{
-	\SmallMargins % Margins
-	\pagestyle{empty} % No header/footer
-	~\\ % Print a character or the page will not exist
-	\begin{textblock}{2}(30,10)
-		\rule{1pt}{\paperheight-20mm}
-	\end{textblock}
-	\begin{textblock}{140}(50, 45)
-		\flushright
-		\begin{Spacing}{3}
-			{\fontfamily{qtm}\selectfont\fontsize{45}{45}\selectfont \textsc{\thetitle}}
-		\end{Spacing}
-	\end{textblock}
-	\begin{textblock}{140}(50, 125)
-		\flushright
-		{\fontfamily{qtm}\Large \theauthor}
-	\end{textblock}
-		\begin{textblock}{140}[0, 1](50, 262)
-		\normalfont	Version: \thedate
-	\end{textblock}
-	\newpage
-	~\\ % Print a character or the page will not exist
-	\begin{textblock}{140}(40, 40)
-		#1
-	\end{textblock}
-	\begin{textblock}{140}[0,1](40, 270)
-		\centering
-    \includegraphics[width=5cm]{logo}\\ \bigskip
+  \SmallMargins % Margins
+  \pagestyle{empty} % No header/footer
+  \textblockorigin{\stockwidth-\paperwidth-\trimedge}{\trimtop} % recto
+  \begin{textblock*}{2mm}(\spinemargin/2,\uppermargin/2)
+    \rule{1pt}{\paperheight-\uppermargin}
+  \end{textblock*}
+  \begin{textblock*}{\paperwidth*2/3}(\paperwidth/5, \paperheight/4)
+    \flushright
+    \begin{Spacing}{3}
+      {\fontfamily{qtm}\selectfont\fontsize{45}{45}\selectfont\textsc{\thetitle}}
+    \end{Spacing}
+  \end{textblock*}
+    \begin{textblock*}{\paperwidth*2/3}(\paperwidth/5, \paperheight/2)
+    \flushright
+    {\fontfamily{qtm}\Huge \theauthor}
+  \end{textblock*}
+    \begin{textblock*}{\paperwidth*2/3}[0, 1](\spinemargin, \uppermargin+\textheight)
+    \normalfont \thedate
+  \end{textblock*}
+  ~\\ % Print a character or the page will not exist
+  \newpage
+  \textblockorigin{\trimedge}{\trimtop} % verso
+  \begin{textblock*}{\textwidth}(\paperwidth-\spinemargin-\textwidth, \uppermargin)
+    #1
+  \end{textblock*}
+  \begin{textblock*}{\textwidth}[0,1](\paperwidth-\spinemargin-\textwidth, \uppermargin+\textheight+\footskip)
+    \centering
+    \includegraphics[width=\paperwidth/4]{logo}\\ \bigskip
     #2
-	\end{textblock}
-	\newpage
+  \end{textblock*}
+  ~\\ % Print a character or the page will not exist
+  \newpage
 }
 
 % Clear page and open an even one (\clearpage opens an odd one)
 \newcommand{\evenpage}{
   \clearpage
-	\strictpagecheck % slower but efficient detection of odd/even pages
+  \strictpagecheck % slower but efficient detection of odd/even pages
   \checkoddpage
   \ifoddpage
     \thispagestyle{empty}
@@ -307,11 +272,6 @@
     % do nothing
   \fi
 }
-
-% Text blocks
-\usepackage[absolute,overlay]{textpos}
-	\setlength{\TPHorizModule}{1mm}
-	\setlength{\TPVertModule}{1mm}
 
 
 %% PDF title page to insert
@@ -361,7 +321,51 @@
 
 \author{Authors' names}
 
-\date{2021-06-14}
+\date{2021-07-13}
+
+
+% Include headers (preamble.tex) here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add LaTeX code into the preamble of the document here
+\hyphenation{bio-di-ver-si-ty sap-lings}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% memoiR dalef3 chapter style 
+% https://ctan.crest.fr/tex-archive/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
+\usepackage{soul}
+\definecolor{nicered}{rgb}{.647,.129,.149}
+\makeatletter
+\newlength\dlf@normtxtw
+\setlength\dlf@normtxtw{\textwidth}
+\def\myhelvetfont{\def\sfdefault{mdput}}
+\newsavebox{\feline@chapter}
+\newcommand\feline@chapter@marker[1][4cm]{%
+  \sbox\feline@chapter{%
+    \resizebox{!}{#1}{\fboxsep=1pt%
+	  \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
+	}}%
+  \rotatebox{90}{%
+    \resizebox{%
+	  \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
+	{!}{\scshape\so\@chapapp}}\quad%
+  \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
+ }
+\newcommand\feline@chm[1][4cm]{%
+  \sbox\feline@chapter{\feline@chapter@marker[#1]}%
+  \makebox[0pt][l]{% aka \rlap
+    \makebox[1cm][r]{\usebox\feline@chapter}%
+  }}
+\makechapterstyle{daleif1}{
+  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
+  \renewcommand\afterchapternum{\par\vskip\midchapskip}
+  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+}
+\makeatother
 
 
 % End of preamble
