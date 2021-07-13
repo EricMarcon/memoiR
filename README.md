@@ -29,3 +29,5 @@ Gallery:
     - [PDF (Beamer)](https://ericmarcon.github.io/memoiR/gallery/beamer_presentation/bookdown_beamer_presentation2/beamer_presentation.pdf)
 
 A quick [introduction](https://ericmarcon.github.io/memoiR/articles/memoiR.html) is in `vignette("memoiR")`.
+
+The development version documentation is available [here](https://ericmarcon.github.io/memoiR/dev/).
