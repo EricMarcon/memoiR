@@ -44,7 +44,7 @@ In RStudio, either:
     - Make the new folder an RStudio Project: use the menu "File / New Project...", click on "Existing Directory" and select the directory created previously.
     
 - or directly create a project with the appropriate wizard:
-    - Use the menu "File > New Project > New Diretory > Document Project using memoiR".
+    - Use the menu "File > New Project > New Directory > Document Project using memoiR".
     - Chose the location to create the document and the name of its directory.
     - Choose the document type in the list.
 

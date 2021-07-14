@@ -1,8 +1,8 @@
-# memoiR 1.0-0.9001
+# memoiR 1.0-0.9002
 
 ## New features
 
-* Logo on the last page of memoirs is optional (delete cover-image: in header).
+* Logo on the last page of memoirs is optional (delete `cover-image:` in header).
 * Paper and Stock sizes may be different in Memoir. See the customization [article](https://ericmarcon.github.io/memoiR/articles/articles/memoir.html).
 
 
