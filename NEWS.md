@@ -1,4 +1,4 @@
-# memoiR 1.0-0.9002
+# memoiR 1.0-0.9003
 
 ## New features
 
