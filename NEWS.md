@@ -1,3 +1,10 @@
+# memoiR 1.1-1
+
+## Bug Correction
+
+* `build_ghworkflow()` failed if no font was declared in a memoir header.
+
+
 # memoiR 1.1-0
 
 ## New features

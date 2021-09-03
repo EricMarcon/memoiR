@@ -522,6 +522,7 @@ add_hyphen <- function(lang) {
 #' `NULL` if `font` is not recognized.
 #' @keywords internal
 add_font <- function(font) {
+  font_package <- NULL
   # Reference: https://r2src.github.io/top10fonts/
   # DejaVu
   if (substr(font, start=1, stop=6) == "dejavu") {
@@ -662,6 +663,8 @@ build_ghworkflow <- function() {
   font_packages <- lapply(
     c(yaml_header$mainfont, yaml_header$monofont, yaml_header$mathfont),
     add_font)
+  # Eliminate NULLs
+  font_packages <- font_packages[-which(sapply(font_packages, is.null))]
   if (length(font_packages) > 0) {
     # Eliminate duplicates
     font_packages <- unique(simplify2array(font_packages))

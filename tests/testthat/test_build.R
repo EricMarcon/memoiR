@@ -79,6 +79,12 @@ testthat::test_that("A book can be built", {
                     output_format="bookdown::gitbook")
   ## Commit and push. Outputs will be in /docs of the master branch.
   
+  ## Scenario 2: continuous integration
+  # Build GitHub Actions workflow
+  build_ghworkflow()
+  ## Commit and push: GH Actions will render the documents and store them 
+  ## in the gh-pages branch.
+  
   ## End of the example: cleanup
   # Return to the original working directory and clean up
   setwd(original_wd)
