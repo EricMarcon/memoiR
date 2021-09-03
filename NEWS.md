@@ -1,4 +1,4 @@
-# memoiR 1.1-1
+# memoiR 1.1-2
 
 ## Bug Correction
 

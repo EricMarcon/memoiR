@@ -663,8 +663,10 @@ build_ghworkflow <- function() {
   font_packages <- lapply(
     c(yaml_header$mainfont, yaml_header$monofont, yaml_header$mathfont),
     add_font)
-  # Eliminate NULLs
-  font_packages <- font_packages[-which(sapply(font_packages, is.null))]
+  if (length(font_packages) > 0) {
+    # Eliminate NULLs
+    font_packages <- font_packages[-which(sapply(font_packages, is.null))]
+  }
   if (length(font_packages) > 0) {
     # Eliminate duplicates
     font_packages <- unique(simplify2array(font_packages))

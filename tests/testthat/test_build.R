@@ -90,4 +90,3 @@ testthat::test_that("A book can be built", {
   setwd(original_wd)
   unlink(wd, recursive=TRUE)
 })
-
