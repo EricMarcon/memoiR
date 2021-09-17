@@ -321,7 +321,7 @@
 
 \author{Authors' names}
 
-\date{2021-07-26}
+\date{2021-09-17}
 
 
 % Include headers (preamble.tex) here
@@ -512,6 +512,13 @@ The languages are specified according to the IETF language tags, such as \enquot
 The main language (\texttt{lang}) is that of the structure of the document, translating elements such as \enquote{chapter}.
 The other languages (\texttt{otherlangs}) can be used to switch language inside the PDF document to benefit from correct hyphenation.
 
+The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
+It must be entered with its \texttt{.bib} extension.
+
+The default citation style in HTML outputs is \texttt{chicago-author-date.csl}.
+Any valid csl file can be used: uncomment the line and enter the file name.
+Note that PDF outputs use their own style: see below.
+
 LaTeX specific options are:
 
 \begin{itemize}
@@ -541,9 +548,6 @@ LaTeX specific options are:
 \item
   \emph{lot} and \emph{lof} to add lists of tables and figures.
 \end{itemize}
-
-The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
-It must be entered with its \texttt{.bib} extension.
 
 Bibliography is managed by BibLaTeX, whose options should not be changed except for the style.
 It is \texttt{verbose-inote} in documents with large margins to show the full citations in them.

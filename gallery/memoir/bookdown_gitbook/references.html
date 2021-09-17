@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>References | Title of the Memoir</title>
   <meta name="description" content="Bookdown template based on LaTeX memoir class" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="References | Title of the Memoir" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://GitHubID.github.io/Repository/" />
-  <meta property="og:image" content="https://GitHubID.github.io/Repository//images/logo.png" />
+  <meta property="og:image" content="https://GitHubID.github.io/Repository/images/logo.png" />
   <meta property="og:description" content="Bookdown template based on LaTeX memoir class" />
   <meta name="github-repo" content="GitHubID/Repository" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="References | Title of the Memoir" />
   
   <meta name="twitter:description" content="Bookdown template based on LaTeX memoir class" />
-  <meta name="twitter:image" content="https://GitHubID.github.io/Repository//images/logo.png" />
+  <meta name="twitter:image" content="https://GitHubID.github.io/Repository/images/logo.png" />
 
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-07-26" />
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="syntax.html"/>
 
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -140,11 +140,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a><ul>
-<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#index"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
-<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#bookdown.yml"><i class="fa fa-check"></i><b>1.2</b> _bookdown.yml</a></li>
-<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#output.yml"><i class="fa fa-check"></i><b>1.3</b> _output.yml</a></li>
-<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#multilingual-documents"><i class="fa fa-check"></i><b>1.4</b> Multilingual documents</a></li>
+<li class="chapter" data-level="1" data-path="getting_started.html"><a href="getting_started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting_started.html"><a href="getting_started.html#index"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
+<li class="chapter" data-level="1.2" data-path="getting_started.html"><a href="getting_started.html#bookdown.yml"><i class="fa fa-check"></i><b>1.2</b> _bookdown.yml</a></li>
+<li class="chapter" data-level="1.3" data-path="getting_started.html"><a href="getting_started.html#output.yml"><i class="fa fa-check"></i><b>1.3</b> _output.yml</a></li>
+<li class="chapter" data-level="1.4" data-path="getting_started.html"><a href="getting_started.html#multilingual-documents"><i class="fa fa-check"></i><b>1.4</b> Multilingual documents</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="syntax.html"><a href="syntax.html"><i class="fa fa-check"></i><b>2</b> Syntax</a><ul>
 <li class="chapter" data-level="2.1" data-path="syntax.html"><a href="syntax.html#write"><i class="fa fa-check"></i><b>2.1</b> Write</a></li>
@@ -215,7 +215,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -255,6 +254,10 @@ gitbook.start({
 "text": null
 },
 "download": ["MyBook.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
