@@ -48,6 +48,13 @@ The languages are specified according to the IETF language tags, such as "en-US"
 The main language (`lang`) is that of the structure of the document, translating elements such as "chapter".
 The other languages (`otherlangs`) can be used to switch language inside the PDF document to benefit from correct hyphenation.
 
+The name of the `.bib` file containing the references is in `bibliography`.
+It must be entered with its `.bib` extension.
+
+The default citation style in HTML outputs is `chicago-author-date.csl`. 
+Any valid csl file can be used: uncomment the line and enter the file name.
+Note that PDF outputs use their own style: see below.
+
 
 LaTeX specific options are:
 
@@ -68,9 +75,6 @@ Alternatives are `chapter` (i.e. `#`), `subsection` (i.e. `###`) or `subsubsecti
 - _lot_ and _lof_ to add lists of tables and figures.
 
 [^812]: https://www.ctan.org/pkg/tex-gyre
-
-The name of the `.bib` file containing the references is in `bibliography`.
-It must be entered with its `.bib` extension.
 
 Bibliography is managed by BibLaTeX, whose options should not be changed except for the style.
 It is `verbose-inote` in documents with large margins to show the full citations in them.

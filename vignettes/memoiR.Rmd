@@ -56,7 +56,7 @@ The following functions help simplify that task:
 
 - `build_gitignore()` to create a `.gitignore` file. Activate git source control then.
 - `build_readme()` to create a `README.md` file, that will be the GitHub Pages index of articles or slideshows.
-- `build-githubpages()` to move knitted documents (articles or slideshows) to the `docs` folder.
+- `build_githubpages()` to move knitted documents (articles or slideshows) to the `docs` folder.
 
 Documents can be knitted by GitHub Action if continuous integration is activated:
 

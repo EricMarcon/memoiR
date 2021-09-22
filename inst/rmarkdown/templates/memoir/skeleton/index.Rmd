@@ -27,6 +27,10 @@ pdftitlepage: images/cover.pdf
 # Language
 lang: en-US
 otherlangs: [fr-FR,it]
+# Bibliography
+bibliography: references.bib
+# Citation style in HTML
+# citation-style: chicago-author-date.csl # By default.
 # LaTeX
 documentclass: memoir
 classoption:
@@ -63,7 +67,6 @@ secnum-depth: section
 lot: false
 lof: true
 # Bibliography
-bibliography: references.bib
 biblatexoptions:
   - backend=biber
   - style=authoryear-ibid  # or verbose-inote with large margins
