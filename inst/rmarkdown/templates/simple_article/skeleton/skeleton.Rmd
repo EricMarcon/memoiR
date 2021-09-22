@@ -317,6 +317,20 @@ The default commands allow to show the use of the hyphenation command:
 ```
 
 Other commands can be added as needed.
+Preprints may need double spacing and line numbers.
+To force double space between lines, add:
+
+```
+  \usepackage{setspace}
+  \doublespacing
+```
+
+To have line numbers in the left margin of the text:
+```
+  \usepackage{lineno}
+  \linenumbers
+```
+
 Warning:
 
 - Comments are not allowed
