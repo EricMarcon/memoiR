@@ -34,7 +34,7 @@ Small margins remain empty.
 
 The default options produce a small-margin document, with an elaborate chapter style.
 It is presented in the [gallery](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf).
-It can be changed quickly for a [wide-margin layout](https://ericmarcon.github.io/travailleR/travailleR.pdf), whose parameters are given in comments.
+It can be changed quickly for a [wide-margin layout](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf), whose parameters are given in comments.
 
 The full set of settings is described below.
 
