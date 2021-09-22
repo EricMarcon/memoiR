@@ -18,25 +18,33 @@ affiliation:
       Street address,
       Zip code,
       Country.
+# Corresponding Author
 corrauthor:
     email: name@company.com
     url: https://www.company.com
 abstract: >
   Summary of the article.
 keywords: [keyword1, keyword2, etc]
+# First Page Header
 journalinfo: "Publication reference"
 archive: "DOI: xxx/xx"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
+# Language
 lang: en-US
 otherlangs: [fr-FR,it]
 keywordlabel: Keywords
 corrauthorlabel: Corresponding author
+# Bibliography
 bibliography: references.bib
 biblio-style: chicago
+# LaTeX
+toc-depth: 3
+fontsize: 10pt
 preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
+# Do not modify
 always_allow_html: yes
 output:
   bookdown::pdf_book:
@@ -247,7 +255,7 @@ A figure can use the full width of the page by adding the following options to t
 
 Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
-```{r logo, fig.cap="A figure from a file", echo=FALSE}
+```{r logo, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
 knitr::include_graphics("images/logo.png")
 ```
 

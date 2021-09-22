@@ -7,6 +7,7 @@
 ## New features
 
 * Double space and line numbers in PDF Simple Articles are documented.
+* Font size and table of contents depth can be changed in PDF articles.
 
 
 # memoiR 1.1-2
