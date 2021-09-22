@@ -187,6 +187,7 @@ mainfontoptions:
   - UprightFont=*-regular
   - BoldFont=*-bold
   - BoldItalicFont=*-bolditalic
+  - ItalicFont=*-italic
 mathfont: texgyretermes-math.otf
 ```
 The math font name is fully specified, with no options.
