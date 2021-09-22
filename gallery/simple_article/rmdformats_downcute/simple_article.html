@@ -6,7 +6,7 @@
     <meta name="generator" content="pandoc" />
 
     
-        <meta name="date" content="2021-09-17" />
+        <meta name="date" content="2021-09-22" />
     
     <title>Title of the Article</title>
 
@@ -2106,7 +2106,7 @@ border: 0;
            <span class="glyphicon glyphicon-user"></span> Second Author’s name
                <br>
       </p>
-         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 17 September 2021</p>
+         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 22 September 2021</p>
          
    
       
@@ -2480,7 +2480,14 @@ These commands are in the <code>preamble:</code> section of the Markdown file he
 <pre><code>\hyphenation%
   {bio-di-ver-si-ty sap-lings}</code></pre>
 <p>Other commands can be added as needed.
-Warning:</p>
+Preprints may need double spacing and line numbers.
+To force double space between lines, add:</p>
+<pre><code>  \usepackage{setspace}
+  \doublespacing</code></pre>
+<p>To have line numbers in the left margin of the text:</p>
+<pre><code>  \usepackage{lineno}
+  \linenumbers</code></pre>
+<p>Warning:</p>
 <ul>
 <li>Comments are not allowed</li>
 <li>Complex commands (such as <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>

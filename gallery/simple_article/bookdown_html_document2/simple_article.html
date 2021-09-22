@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2021-09-17" />
+<meta name="date" content="2021-09-22" />
 
 <title>Title of the Article</title>
 
@@ -1729,7 +1729,7 @@ div.tocify {
 <h1 class="title toc-ignore">Title of the Article</h1>
 <h4 class="author">First Author’s name</h4>
 <h4 class="author">Second Author’s name</h4>
-<h4 class="date">17 September 2021</h4>
+<h4 class="date">22 September 2021</h4>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 <p>Abstract of the article.</p>
@@ -2105,7 +2105,14 @@ These commands are in the <code>preamble:</code> section of the Markdown file he
 <pre><code>\hyphenation%
   {bio-di-ver-si-ty sap-lings}</code></pre>
 <p>Other commands can be added as needed.
-Warning:</p>
+Preprints may need double spacing and line numbers.
+To force double space between lines, add:</p>
+<pre><code>  \usepackage{setspace}
+  \doublespacing</code></pre>
+<p>To have line numbers in the left margin of the text:</p>
+<pre><code>  \usepackage{lineno}
+  \linenumbers</code></pre>
+<p>Warning:</p>
 <ul>
 <li>Comments are not allowed</li>
 <li>Complex commands (such as <code>\renewenvironment</code>) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.</li>
