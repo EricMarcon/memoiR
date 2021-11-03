@@ -47,6 +47,7 @@ mainfontoptions:
   - UprightFont=*-regular
   - BoldFont=*-bold
   - BoldItalicFont=*-bolditalic
+  - ItalicFont=*-italic
 # mathfont: texgyretermes-math.otf # Times New Roman for equations
 # memoir Style
 MemoirChapStyle: daleif1           # or companion with large margins
