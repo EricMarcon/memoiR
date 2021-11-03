@@ -645,6 +645,8 @@ build_ghworkflow <- function() {
     '      - name: Install pandoc',
     '        uses: r-lib/actions/setup-pandoc@v1',
     '      - name: Install dependencies',
+    '        env:',
+    '          GITHUB_PAT: ${{ secrets.GH_PAT }}',
     '        run: |',
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
