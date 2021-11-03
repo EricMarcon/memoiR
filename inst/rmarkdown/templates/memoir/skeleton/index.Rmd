@@ -79,6 +79,7 @@ biblatexoptions:
   - maxbibnames=150
   - sorting=nyt
   - sortcites=false
+longbibliography: false    # if true, two columns and smaller font in PDF
 # Chapter summary text
 chaptersummary: In a Nutshell
 # Back Cover
@@ -94,7 +95,7 @@ backcover:
     abstractlabel: Abstract
     keywordlabel: Keywords
 backcoverfontsize: normalsize
-# Figure cropping may be set to no if ghostscript is not installed
+# Figure cropping may be set to false if ghostscript is not installed
 fig_crop: true
 # Do not modify
 site: bookdown::bookdown_site
@@ -156,6 +157,7 @@ knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
   echo = TRUE, # Show/Hide R chunks
   warning=FALSE, # Show/Hide warnings
+  messages=FALSE, # Show/Hide messages
   # Figure alignment and size
   fig.align='center', out.width='80%', fig.asp=.75,
   # Graphic devices (ragg_png is better than standard png)
@@ -211,4 +213,3 @@ The button's drop-down list allows you to create all documents or limit yourself
 <!-- The \mainmatter command marks the beginning of the LaTeX document body--> 
 <!-- It must not be deleted-->
 \mainmatter
- 

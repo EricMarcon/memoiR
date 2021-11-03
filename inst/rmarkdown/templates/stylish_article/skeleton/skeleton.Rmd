@@ -101,6 +101,7 @@ knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
   echo = TRUE, # Show/Hide R chunks
   warning=FALSE, # Show/Hide warnings
+  messages=FALSE, # Show/Hide messages
   # Figure alignment and size
   fig.align='center', out.width='80%',
   # Graphic devices (ragg_png is better than standard png)
