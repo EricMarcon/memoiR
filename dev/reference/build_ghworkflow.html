@@ -83,7 +83,7 @@ formats are produced and stored into the gh-pages branch of the project." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1-2.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1-2.9002</span>
       </span>
     </div>
 
@@ -173,83 +173,88 @@ They must be declared in the options code chunk of each .Rmd file
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Simulate the creation of a new project</span>
-<span class='co'># Save working directory</span>
-<span class='va'>original_wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'># Get a temporary working directory</span>
-<span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span>
-<span class='co'># Simulate File &gt; New File &gt; R Markdown... &gt; From Template &gt; Simple Article</span>
-<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/draft.html'>draft</a></span><span class='op'>(</span><span class='va'>wd</span>, template<span class='op'>=</span><span class='st'>"simple_article"</span>, package<span class='op'>=</span><span class='st'>"memoiR"</span>, edit<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='co'># Go to temp directory</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
-<span class='co'># Make it the current project</span>
-<span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpUhz4Ze/exampleb0fc5236fd69'</span></span></div><div class='input'>
-<span class='co'># Build GitHub Actions Workflow script</span>
-<span class='fu'>build_ghworkflow</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing <span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span></span></div><div class='input'><span class='co'># Content</span>
-<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>".github/workflows/memoir.yml"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "on:"                                                                                                   
-#&gt;  [2] "  push:"                                                                                               
-#&gt;  [3] "   branches:"                                                                                          
-#&gt;  [4] "     - master"                                                                                         
-#&gt;  [5] ""                                                                                                      
-#&gt;  [6] "name: rmarkdown"                                                                                       
-#&gt;  [7] ""                                                                                                      
-#&gt;  [8] "jobs:"                                                                                                 
-#&gt;  [9] "  render:"                                                                                             
-#&gt; [10] "    runs-on: macOS-latest"                                                                             
-#&gt; [11] "    steps:"                                                                                            
-#&gt; [12] "      - name: Checkout repo"                                                                           
-#&gt; [13] "        uses: actions/checkout@v2"                                                                     
-#&gt; [14] "      - name: Setup R"                                                                                 
-#&gt; [15] "        uses: r-lib/actions/setup-r@v1"                                                                
-#&gt; [16] "      - name: Install pandoc"                                                                          
-#&gt; [17] "        uses: r-lib/actions/setup-pandoc@v1"                                                           
-#&gt; [18] "      - name: Install dependencies"                                                                    
-#&gt; [19] "        run: |"                                                                                        
-#&gt; [20] "          options(pkgType = \"binary\")"                                                               
-#&gt; [21] "          options(install.packages.check.source = \"no\")"                                             
-#&gt; [22] "          install.packages(c(\"memoiR\", \"rmdformats\", \"tinytex\"))"                                
-#&gt; [23] "          tinytex::install_tinytex()"                                                                  
-#&gt; [24] "          tinytex::tlmgr_install(\"hyphen-french\")"                                                   
-#&gt; [25] "          tinytex::tlmgr_install(\"hyphen-italian\")"                                                  
-#&gt; [26] "        shell: Rscript {0}"                                                                            
-#&gt; [27] "      - name: Render Rmarkdown files"                                                                  
-#&gt; [28] "        run: |"                                                                                        
-#&gt; [29] "          RMD_PATH=($(ls | grep \"[.]Rmd$\"))"                                                         
-#&gt; [30] "          Rscript -e 'for (file in commandArgs(TRUE)) rmarkdown::render(file, \"all\")' ${RMD_PATH[*]}"
-#&gt; [31] "          Rscript -e 'memoiR::build_githubpages()'"                                                    
-#&gt; [32] "      - name: Upload artifact"                                                                         
-#&gt; [33] "        uses: actions/upload-artifact@v1"                                                              
-#&gt; [34] "        with:"                                                                                         
-#&gt; [35] "          name: ghpages"                                                                               
-#&gt; [36] "          path: docs"                                                                                  
-#&gt; [37] "  checkout-and-deploy:"                                                                                
-#&gt; [38] "    runs-on: ubuntu-latest"                                                                            
-#&gt; [39] "    needs: render"                                                                                     
-#&gt; [40] "    steps:"                                                                                            
-#&gt; [41] "      - name: Checkout"                                                                                
-#&gt; [42] "        uses: actions/checkout@v2"                                                                     
-#&gt; [43] "      - name: Download artifact"                                                                       
-#&gt; [44] "        uses: actions/download-artifact@v1"                                                            
-#&gt; [45] "        with:"                                                                                         
-#&gt; [46] "          name: ghpages"                                                                               
-#&gt; [47] "          path: docs"                                                                                  
-#&gt; [48] "      - name: Deploy to GitHub Pages"                                                                  
-#&gt; [49] "        uses: Cecilapp/GitHub-Pages-deploy@v3"                                                         
-#&gt; [50] "        env:"                                                                                          
-#&gt; [51] "          GITHUB_TOKEN: ${{ secrets.GH_PAT }}"                                                         
-#&gt; [52] "        with:"                                                                                         
-#&gt; [53] "          email: ${{ secrets.EMAIL }}"                                                                 
-#&gt; [54] "          build_dir: docs"                                                                             
-#&gt; [55] "          jekyll: yes"                                                                                 </div><div class='input'>
-<span class='co'>## End of the example: cleanup</span>
-<span class='co'># Return to the original working directory and clean up</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>## Simulate the creation of a new project</span></span>
+<span class='r-in'><span class='co'># Save working directory</span></span>
+<span class='r-in'><span class='va'>original_wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Get a temporary working directory</span></span>
+<span class='r-in'><span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Simulate File &gt; New File &gt; R Markdown... &gt; From Template &gt; Simple Article</span></span>
+<span class='r-in'><span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/draft.html'>draft</a></span><span class='op'>(</span><span class='va'>wd</span>, template<span class='op'>=</span><span class='st'>"simple_article"</span>, package<span class='op'>=</span><span class='st'>"memoiR"</span>, edit<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Go to temp directory</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Make it the current project</span></span>
+<span class='r-in'><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpOZIUuB/example4bd240c1284d'</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Build GitHub Actions Workflow script</span></span>
+<span class='r-in'><span class='fu'>build_ghworkflow</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Writing <span style='color: #0000BB;'>'.github/workflows/memoir.yml'</span></span>
+<span class='r-in'><span class='co'># Content</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>".github/workflows/memoir.yml"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "on:"                                                                                                   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] "  push:"                                                                                               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "   branches:"                                                                                          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] "     - master"                                                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] ""                                                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] "name: rmarkdown"                                                                                       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] ""                                                                                                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "jobs:"                                                                                                 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "  render:"                                                                                             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] "    runs-on: macOS-latest"                                                                             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [11] "    steps:"                                                                                            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [12] "      - name: Checkout repo"                                                                           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "        uses: actions/checkout@v2"                                                                     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [14] "      - name: Setup R"                                                                                 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [15] "        uses: r-lib/actions/setup-r@v1"                                                                </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [16] "      - name: Install pandoc"                                                                          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "        uses: r-lib/actions/setup-pandoc@v1"                                                           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [18] "      - name: Install dependencies"                                                                    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [19] "        env:"                                                                                          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [20] "          GITHUB_PAT: ${{ secrets.GH_PAT }}"                                                           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "        run: |"                                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [22] "          options(pkgType = \"binary\")"                                                               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [23] "          options(install.packages.check.source = \"no\")"                                             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [24] "          install.packages(c(\"memoiR\", \"rmdformats\", \"tinytex\"))"                                </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "          tinytex::install_tinytex()"                                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [26] "          tinytex::tlmgr_install(\"hyphen-french\")"                                                   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [27] "          tinytex::tlmgr_install(\"hyphen-italian\")"                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [28] "        shell: Rscript {0}"                                                                            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [29] "      - name: Render Rmarkdown files"                                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [30] "        run: |"                                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [31] "          RMD_PATH=($(ls | grep \"[.]Rmd$\"))"                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [32] "          Rscript -e 'for (file in commandArgs(TRUE)) rmarkdown::render(file, \"all\")' ${RMD_PATH[*]}"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [33] "          Rscript -e 'memoiR::build_githubpages()'"                                                    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [34] "      - name: Upload artifact"                                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [35] "        uses: actions/upload-artifact@v1"                                                              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [36] "        with:"                                                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [37] "          name: ghpages"                                                                               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [38] "          path: docs"                                                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [39] "  checkout-and-deploy:"                                                                                </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [40] "    runs-on: ubuntu-latest"                                                                            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [41] "    needs: render"                                                                                     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [42] "    steps:"                                                                                            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [43] "      - name: Checkout"                                                                                </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [44] "        uses: actions/checkout@v2"                                                                     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [45] "      - name: Download artifact"                                                                       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [46] "        uses: actions/download-artifact@v1"                                                            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [47] "        with:"                                                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [48] "          name: ghpages"                                                                               </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [49] "          path: docs"                                                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [50] "      - name: Deploy to GitHub Pages"                                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [51] "        uses: Cecilapp/GitHub-Pages-deploy@v3"                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [52] "        env:"                                                                                          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [53] "          GITHUB_TOKEN: ${{ secrets.GH_PAT }}"                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [54] "        with:"                                                                                         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [55] "          email: ${{ secrets.EMAIL }}"                                                                 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [56] "          build_dir: docs"                                                                             </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [57] "          jekyll: yes"                                                                                 </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## End of the example: cleanup</span></span>
+<span class='r-in'><span class='co'># Return to the original working directory and clean up</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

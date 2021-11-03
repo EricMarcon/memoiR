@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1-2.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1-2.9002</span>
       </span>
     </div>
 
@@ -168,39 +168,42 @@ A link to their HTML and, optionally, PDF versions is added.
 Metadata fields are read in the .Rmd files YAML header: title, abstract and <code>URL</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Simulate the creation of a new project</span>
-<span class='co'># Save working directory</span>
-<span class='va'>original_wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'># Get a temporary working directory</span>
-<span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span>
-<span class='co'># Simulate File &gt; New File &gt; R Markdown... &gt; From Template &gt; Simple Article</span>
-<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/draft.html'>draft</a></span><span class='op'>(</span><span class='va'>wd</span>, template<span class='op'>=</span><span class='st'>"simple_article"</span>, package<span class='op'>=</span><span class='st'>"memoiR"</span>, edit<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='co'># Go to temp directory</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span>
-<span class='co'># Make it the current project</span>
-<span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpUhz4Ze/exampleb0fc41c76e48'</span></span></div><div class='input'>
-<span class='co'># Build README.md file</span>
-<span class='fu'>build_readme</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>✔</span> Writing <span style='color: #0000BB;'>'README.md'</span></span></div><div class='input'><span class='co'># Content</span>
-<span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>"README.md"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "# Title of the Article"                                                  
-#&gt;  [2] ""                                                                        
-#&gt;  [3] "Abstract of the article."                                                
-#&gt;  [4] ""                                                                        
-#&gt;  [5] "Formats:"                                                                
-#&gt;  [6] ""                                                                        
-#&gt;  [7] "- [HTML](https://GitHubID.github.io/Repository/exampleb0fc41c76e48.html)"
-#&gt;  [8] "- [PDF](https://GitHubID.github.io/Repository/exampleb0fc41c76e48.pdf)"  
-#&gt;  [9] ""                                                                        
-#&gt; [10] ""                                                                        
-#&gt; [11] ""                                                                        </div><div class='input'>
-<span class='co'>## End of the example: cleanup</span>
-<span class='co'># Return to the original working directory and clean up</span>
-<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'>## Simulate the creation of a new project</span></span>
+<span class='r-in'><span class='co'># Save working directory</span></span>
+<span class='r-in'><span class='va'>original_wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Get a temporary working directory</span></span>
+<span class='r-in'><span class='va'>wd</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Simulate File &gt; New File &gt; R Markdown... &gt; From Template &gt; Simple Article</span></span>
+<span class='r-in'><span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/draft.html'>draft</a></span><span class='op'>(</span><span class='va'>wd</span>, template<span class='op'>=</span><span class='st'>"simple_article"</span>, package<span class='op'>=</span><span class='st'>"memoiR"</span>, edit<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Go to temp directory</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>wd</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Make it the current project</span></span>
+<span class='r-in'><span class='fu'>usethis</span><span class='fu'>::</span><span class='fu'><a href='https://usethis.r-lib.org/reference/proj_utils.html'>proj_set</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"."</span>, force <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Setting active project to <span style='color: #0000BB;'>'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpOZIUuB/example4bd250715bd0'</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Build README.md file</span></span>
+<span class='r-in'><span class='fu'>build_readme</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> <span style='color: #00BB00;'>✔</span> Writing <span style='color: #0000BB;'>'README.md'</span></span>
+<span class='r-in'><span class='co'># Content</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/readLines.html'>readLines</a></span><span class='op'>(</span><span class='st'>"README.md"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "# Title of the Article"                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [2] ""                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [3] "Abstract of the article."                                                </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [4] ""                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "Formats:"                                                                </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [6] ""                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "- [HTML](https://GitHubID.github.io/Repository/example4bd250715bd0.html)"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [8] "- [PDF](https://GitHubID.github.io/Repository/example4bd250715bd0.pdf)"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] ""                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [10] ""                                                                        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [11] ""                                                                        </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## End of the example: cleanup</span></span>
+<span class='r-in'><span class='co'># Return to the original working directory and clean up</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>setwd</a></span><span class='op'>(</span><span class='va'>original_wd</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/unlink.html'>unlink</a></span><span class='op'>(</span><span class='va'>wd</span>, recursive<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
