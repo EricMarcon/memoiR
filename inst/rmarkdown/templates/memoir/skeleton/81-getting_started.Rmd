@@ -140,7 +140,12 @@ Customize the table of contents in HTML format.
         before: |
           <li><a href="./">Bookdown book</a></li>
         after: |
-          <li><a href="https://github.com/GitHubID/Repository
+          <li><a href="https://github.com/GitHubID/Repository"
+
+Update the repository in the bs4 book options.
+
+    bookdown::bs4_book:
+     repo: https://github.com/GitHubID/Repository
 
 
 ## Multilingual documents

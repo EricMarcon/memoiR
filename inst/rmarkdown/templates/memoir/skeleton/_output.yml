@@ -20,4 +20,9 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/GitHubID/Repository" target="blank">Published with bookdown</a></li>
     download: "pdf"
+bookdown::bs4_book:
+  css: bs4_style.css
+  theme:
+    primary: "#096B72"
+  repo: https://github.com/GitHubID/Repository
 bookdown::word_document2: default

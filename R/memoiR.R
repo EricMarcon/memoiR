@@ -37,7 +37,7 @@ draft_memoir <- function(path, ...) {
 #' - `knit_all()` runs knit_template() on all templates of the package.
 #' The `output_format` argument selects the way templates are rendered:
 #' - articles may be rendered in HTML by [bookdown::html_document2], [bookdown::gitbook], [rmdformats::downcute] (and others, see the package **rmdformats**) and in PDF by [bookdown::pdf_book].
-#' - books may be rendered in HTML by [bookdown::gitbook] and in PDF by [bookdown::pdf_book].
+#' - books may be rendered in HTML by [bookdown::gitbook] or [bookdown::bs4_book] and in PDF by [bookdown::pdf_book].
 #' - slides may be rendered in  HTML by [bookdown::ioslides_presentation2], [bookdown::ioslides_presentation2] and in PDF by [bookdown::beamer_presentation2].
 #'
 #' These functions are mainly used for test and documentation purposes.

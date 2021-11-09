@@ -1,4 +1,4 @@
-# memoiR 1.1-2.9002
+# memoiR 1.1-2.9003
 
 ## Bug Correction
 
@@ -6,6 +6,7 @@
 
 ## New features
 
+* Bootstrap 4 HTML output is available for memoirs.
 * Double space and line numbers in PDF Simple Articles are documented.
 * Font size and table of contents depth can be changed in PDF articles.
 * More options in headers:
