@@ -321,7 +321,7 @@
 
 \author{Authors' names}
 
-\date{2021-11-03}
+\date{2021-11-09}
 
 
 % Include headers (preamble.tex) here
@@ -632,7 +632,14 @@ config:
     before: |
       <li><a href="./">Bookdown book</a></li>
     after: |
-      <li><a href="https://github.com/GitHubID/Repository
+      <li><a href="https://github.com/GitHubID/Repository"
+\end{verbatim}
+
+Update the repository in the bs4 book options.
+
+\begin{verbatim}
+bookdown::bs4_book:
+ repo: https://github.com/GitHubID/Repository
 \end{verbatim}
 
 \hypertarget{multilingual-documents}{%
