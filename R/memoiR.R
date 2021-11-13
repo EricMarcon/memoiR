@@ -68,7 +68,8 @@ knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") 
   if (done)
     done <- knit_template("memoir", 
                           output_format=c("bookdown::pdf_book", 
-                                          "bookdown::gitbook"), 
+                                          "bookdown::gitbook",
+                                          "bookdown::bs4_book"), 
                           destination=destination, gallery=gallery)
   if (done)
     done <- knit_template("beamer_presentation", 
@@ -114,6 +115,7 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
     for (format in output_format) {
       if (format %in% c("bookdown::gitbook", 
                         "bookdown::html_document2", 
+                        "bookdown::bs4_book", 
                         "rmdformats::downcute", 
                         "bookdown::ioslides_presentation2", 
                         "bookdown::slidy_presentation2")) {
