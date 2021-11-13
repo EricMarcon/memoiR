@@ -13,7 +13,7 @@ Gallery:
 
 - Memoir:
     - [HTML GitBook](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_gitbook/index.html)
-    - [HTML Bootstrap 4 book](https://https://mastering-shiny.org/)
+    - [HTML Bootstrap 4 book](https://mastering-shiny.org/)
     - [PDF, small-margin layout](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)
     - [PDF, wide-margin layout](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf)
 - Simple article: 
