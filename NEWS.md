@@ -1,3 +1,10 @@
+# memoiR 1.1-3.9000
+
+## New features
+
+* `urlcolor: blue` in beamer presentations.
+
+
 # memoiR 1.1-3
 
 ## Bug Correction

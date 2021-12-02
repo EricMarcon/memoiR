@@ -6,6 +6,7 @@ url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
 bibliography: references.bib
 biblio-style: chicago
+urlcolor: blue
 output:
   bookdown::beamer_presentation2:
     latex_engine: xelatex
