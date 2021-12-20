@@ -1,8 +1,12 @@
-# memoiR 1.1-3.9000
+# memoiR 1.1-3.9001
 
 ## New features
 
 * `urlcolor: blue` in beamer presentations.
+
+## Improvements
+
+* r-lib/actions v2 in `build_ghworkflow()`.
 
 
 # memoiR 1.1-3
