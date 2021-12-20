@@ -321,7 +321,7 @@
 
 \author{Authors' names}
 
-\date{2021-12-02}
+\date{2021-12-20}
 
 
 % Include headers (preamble.tex) here
@@ -401,6 +401,7 @@ Leave an empty line for line breaks.}
 
 
 
+
 % Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -429,9 +430,9 @@ The \textbf{bookdown} package must be installed from CRAN or GitHub:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{# or the development version}
-\CommentTok{# devtools::install_github('rstudio/bookdown')}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
+\CommentTok{\# or the development version}
+\CommentTok{\# devtools::install\_github(\textquotesingle{}rstudio/bookdown\textquotesingle{})}
 \end{Highlighting}
 \end{Shaded}
 
@@ -508,8 +509,8 @@ The cover will be:
 
 Delete one of the two instructions in the header or both covers will be built, like in the gallery\footnote{\url{https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf}}.
 
-The languages are specified according to the IETF language tags, such as \enquote{en-US}.
-The main language (\texttt{lang}) is that of the structure of the document, translating elements such as \enquote{chapter}.
+The languages are specified according to the IETF language tags, such as ``en-US''.
+The main language (\texttt{lang}) is that of the structure of the document, translating elements such as ``chapter''.
 The other languages (\texttt{otherlangs}) can be used to switch language inside the PDF document to benefit from correct hyphenation.
 
 The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
@@ -734,7 +735,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (\te
 \hypertarget{r-code}{%
 \section{R code}\label{r-code}}
 
-R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
+R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the ``Insert a new code chunk'' button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
 
@@ -757,7 +758,7 @@ The most useful options are:
   \texttt{warning=FALSE} to hide warnings.
 \end{itemize}
 
-The default options are declared in the code snippet named \enquote{Options} at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
+The default options are declared in the code snippet named ``Options'' at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
 The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
 
 When it is \texttt{TRUE}, the code is printed as follow
@@ -766,7 +767,7 @@ When it is \texttt{TRUE}, the code is printed as follow
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{2}
+\DecValTok{2} \SpecialCharTok{+} \DecValTok{2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -783,7 +784,7 @@ When it is \texttt{TRUE}, the code is printed as follow
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(pressure)}
+\FunctionTok{plot}\NormalTok{(pressure)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -835,7 +836,7 @@ The figure \ref{fig:pressure2} benefits from an improved caption.
 
 \normalsize
 
-The text in \texttt{fig.cap}, \enquote{Title of figure} previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
+The text in \texttt{fig.cap}, ``Title of figure'' previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
 Captions are limited to a single paragraph.
 They should not contain bibliographic references or references to the figures may not find them: if necessary, cite the source of a figure in the text.
 
@@ -855,13 +856,13 @@ The \texttt{kable} function in the \emph{knitr} package prepares the table for d
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
-\KeywordTok{names}\NormalTok{(iris) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Sepal length ($l_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
+\FunctionTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length ($l\_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
     \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris), }\DataTypeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\DataTypeTok{booktabs =} \OtherTok{TRUE}\NormalTok{,}
-    \DataTypeTok{escape =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{    }\NormalTok{kableExtra}\OperatorTok{::}\KeywordTok{kable_styling}\NormalTok{(}\DataTypeTok{bootstrap_options =} \StringTok{"striped"}\NormalTok{,}
-        \DataTypeTok{full_width =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
+        \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -948,7 +949,7 @@ csl:file_name.csl
 \end{verbatim}
 
 in the document header and copying the \emph{.csl} style file into the project folder.
-The default style (if no csl is specified) is \enquote{chicago-author-date}.
+The default style (if no csl is specified) is ``chicago-author-date''.
 Several thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
 
 For PDF documents, the bibliography is handled by BibLaTeX, see section \ref{index}.
@@ -985,7 +986,7 @@ Name matches are listed in table 3 of the polyglossia package documentation\foot
 \section{Chapter summary}\label{chapter-summary}}
 
 The take-home message of each chapter can be displayed in a box, see the beginning of this one.
-The code is that of a code block of type \enquote{Summary}.
+The code is that of a code block of type ``Summary''.
 
 \begin{verbatim}
 ```{block, type='Summary'}
@@ -1047,6 +1048,7 @@ chaptersummary: In a Nutshell
 
 % After-body (LaTeX code inclusion)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 

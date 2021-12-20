@@ -24,7 +24,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2021-12-02" />
+<meta name="date" content="2021-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="getting_started.html"/>
 <link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,7 +51,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -58,18 +58,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -89,7 +89,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -122,6 +122,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -140,13 +162,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="getting_started.html"><a href="getting_started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a><ul>
+<li class="chapter" data-level="1" data-path="getting_started.html"><a href="getting_started.html"><i class="fa fa-check"></i><b>1</b> Getting Started</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="getting_started.html"><a href="getting_started.html#index"><i class="fa fa-check"></i><b>1.1</b> index.Rmd</a></li>
 <li class="chapter" data-level="1.2" data-path="getting_started.html"><a href="getting_started.html#bookdown.yml"><i class="fa fa-check"></i><b>1.2</b> _bookdown.yml</a></li>
 <li class="chapter" data-level="1.3" data-path="getting_started.html"><a href="getting_started.html#output.yml"><i class="fa fa-check"></i><b>1.3</b> _output.yml</a></li>
 <li class="chapter" data-level="1.4" data-path="getting_started.html"><a href="getting_started.html#multilingual-documents"><i class="fa fa-check"></i><b>1.4</b> Multilingual documents</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="syntax.html"><a href="syntax.html"><i class="fa fa-check"></i><b>2</b> Syntax</a><ul>
+<li class="chapter" data-level="2" data-path="syntax.html"><a href="syntax.html"><i class="fa fa-check"></i><b>2</b> Syntax</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="syntax.html"><a href="syntax.html#write"><i class="fa fa-check"></i><b>2.1</b> Write</a></li>
 <li class="chapter" data-level="2.2" data-path="syntax.html"><a href="syntax.html#r-code"><i class="fa fa-check"></i><b>2.2</b> R code</a></li>
 <li class="chapter" data-level="2.3" data-path="syntax.html"><a href="syntax.html#figures"><i class="fa fa-check"></i><b>2.3</b> Figures</a></li>
@@ -157,7 +181,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
 <li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#sec:languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
 <li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.11</b> Documentation</a><ul>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.11</b> Documentation</a>
+<ul>
 <li class="chapter" data-level="2.11.1" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11.1</b> User documentation</a></li>
 <li class="chapter" data-level="2.11.2" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.11.2</b> Documentation for developers</a></li>
 </ul></li>
@@ -183,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="syntax" class="section level1">
+<div id="syntax" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Syntax</h1>
 <p></p>
 <div class="Summary">
@@ -214,7 +239,7 @@ The <code>index.Rmd</code> file is special: it contains the document header and 
 <pre><code># (APPENDIX) Appendix {-} 
 
 # Title of the first appendix</code></pre>
-<div id="write" class="section level2">
+<div id="write" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Write</h2>
 <p>The main features of Markdown are summarized here.
 A quick and complete training is offered by RStudio<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
@@ -229,7 +254,7 @@ Indented lists are created by inserting 4 spaces before the dash at the beginnin
 Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.</p>
 <p>In the text, the italicized parts are surrounded by a star or an underscore (<code>*italic*</code>), while two stars mark the bold.</p>
 </div>
-<div id="r-code" class="section level2">
+<div id="r-code" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> R code</h2>
 <p>R code is included in code chunks (<em>code chunks</em>) that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
@@ -247,14 +272,14 @@ These code chunks can contain R code but also Python code for example: the type 
 The <code>echo</code> option should be set to <code>FALSE</code> by default for a scientific article for example.</p>
 <p>When it is <code>TRUE</code>, the code is printed as follow</p>
 <p></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="syntax.html#cb12-1"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="syntax.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p></p>
 </div>
-<div id="figures" class="section level2">
+<div id="figures" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Figures</h2>
 <p></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="syntax.html#cb14-1"></a><span class="kw">plot</span>(pressure)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="syntax.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:pressure"></span>
 <img src="MyBook_files/figure-html/pressure-1.png" alt="A full width figure" width="\widthw" />
 <p class="caption">
@@ -291,20 +316,20 @@ They should not contain bibliographic references or references to the figures ma
 <p>Figures that are not created by R but come from files are embedded in a piece of code by the <code>include_graphics()</code> function whose argument is the file containing the image to be displayed.
 Always place these files in the <code>images</code> folder for good organization.</p>
 </div>
-<div id="tables" class="section level2">
+<div id="tables" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Tables</h2>
 <p>The horizontal - and vertical separators | allow to draw a table according to the Markdown syntax, but it is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
 The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="syntax.html#cb16-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb16-2"><a href="syntax.html#cb16-2"></a><span class="kw">names</span>(iris) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>,</span>
-<span id="cb16-3"><a href="syntax.html#cb16-3"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb16-4"><a href="syntax.html#cb16-4"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris), <span class="dt">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="dt">booktabs =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb16-5"><a href="syntax.html#cb16-5"></a>    <span class="dt">escape =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb16-6"><a href="syntax.html#cb16-6"></a><span class="st">    </span>kableExtra<span class="op">::</span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
-<span id="cb16-7"><a href="syntax.html#cb16-7"></a>        <span class="dt">full_width =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="syntax.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb16-2"><a href="syntax.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>,</span>
+<span id="cb16-3"><a href="syntax.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb16-4"><a href="syntax.html#cb16-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iris), <span class="at">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-5"><a href="syntax.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="syntax.html#cb16-6" aria-hidden="true" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb16-7"><a href="syntax.html#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:kable">Table 2.1: </span>Table created by R
@@ -433,7 +458,7 @@ setosa
 </tr>
 </tbody>
 </table>
-
+<p></p>
 <p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table is given a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="syntax.html#tab:kable">2.1</a>).
 As with figures, an enhanced legend can be written in a separate paragraph.</p>
 <p>Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
@@ -441,7 +466,7 @@ Since the table contains mathematics (in the name of the first column), the <cod
 <p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
 Last, the <code>full_width = FALSE</code> option allows you to adjust the width of the table to its content instead of occupying all the available width.</p>
 </div>
-<div id="maths" class="section level2">
+<div id="maths" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Maths</h2>
 <p>Equations in LaTeX format can be inserted in line, like <span class="math inline">\(A=\pi r^2\)</span> (code: <code>$A=\pi r^2$</code>) or isolated (the $ are doubled) like <span class="math display">\[e^{i \pi} = -1.\]</span></p>
 <p>They can be numbered: see equation <a href="syntax.html#eq:disk">(2.1)</a>, using the <code>\equation</code> environment.</p>
@@ -455,7 +480,7 @@ Last, the <code>full_width = FALSE</code> option allows you to adjust the width 
   (\#eq:disk)
 \end{equation}</code></pre>
 </div>
-<div id="cross-references" class="section level2">
+<div id="cross-references" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Cross-references</h2>
 <p>Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with <code>fig:</code> and <code>tab:</code>.</p>
 <p>For equations, the label is added manually by the code <code>(\#eq:xxx)</code> before the end of the equation.</p>
@@ -463,20 +488,20 @@ Last, the <code>full_width = FALSE</code> option allows you to adjust the width 
 <p>Bookmarks can also be placed freely in the text with the command <code>(ref:zzz)</code>.</p>
 <p>In all cases, the call to the reference is made by the command <code>\@ref(ref:zzz)</code>.</p>
 </div>
-<div id="bibliography" class="section level2">
+<div id="bibliography" class="section level2" number="2.7">
 <h2><span class="header-section-number">2.7</span> Bibliography</h2>
 <p>Bibliographic references in bibtex format must be included in the <code>.bib</code> file declared in the header of the Markdown document.</p>
-<p>bibliography: references.bib</p>
-<p>They can be called in the text, between brackets by the code <code>[@CitationKey]</code>, as sidenotes <span class="citation">(Xie <a href="#ref-Xie2016" role="doc-biblioref">2016</a>)</span>, or without square brackets, to include the authors’ names in the text, such as <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-Xie2018" role="doc-biblioref">2018</a>)</span> .</p>
+<pre><code>bibliography: references.bib</code></pre>
+<p>They can be called in the text, between brackets by the code <code>[@CitationKey]</code>, as sidenotes <span class="citation">(<a href="#ref-Xie2016" role="doc-biblioref">Xie 2016</a>)</span>, or without square brackets, to include the authors’ names in the text, such as <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-Xie2018" role="doc-biblioref">2018</a>)</span> .</p>
 <p>Bibliography is handled by pandoc when producing Word or HTML documents.
 The bibliographic style can be specified, by adding the line</p>
-<p>csl:file_name.csl</p>
+<pre><code>csl:file_name.csl</code></pre>
 <p>in the document header and copying the <em>.csl</em> style file into the project folder.
 The default style (if no csl is specified) is “chicago-author-date”.
-Several thousand styles are available.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+Several thousand styles are available <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>For PDF documents, the bibliography is handled by BibLaTeX, see section <a href="getting_started.html#index">1.1</a>.</p>
 </div>
-<div id="forcing-line-breaks" class="section level2">
+<div id="forcing-line-breaks" class="section level2" number="2.8">
 <h2><span class="header-section-number">2.8</span> Forcing line breaks</h2>
 <p>Hyphenation is handled automatically in LaTeX.
 If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command <code>hyphenation</code> (words are separated by spaces, hyphenation locations are represented by dashes).</p>
@@ -484,7 +509,7 @@ If a word is not hyphenated correctly, add its hyphenation in the preamble of th
 Do not leave a space before the command.
 The HTML document ignores LaTeX commands.</p>
 </div>
-<div id="sec:languages" class="section level2">
+<div id="sec:languages" class="section level2" number="2.9">
 <h2><span class="header-section-number">2.9</span> Languages</h2>
 <p>Languages are declared in the document header.</p>
 <p>The main language of the document (<code>lang</code>) changes the name of some elements, such as the table of contents.
@@ -495,7 +520,7 @@ The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
 <p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
 Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
-<div id="chapter-summary" class="section level2">
+<div id="chapter-summary" class="section level2" number="2.10">
 <h2><span class="header-section-number">2.10</span> Chapter summary</h2>
 <p>The take-home message of each chapter can be displayed in a box, see the beginning of this one.
 The code is that of a code block of type “Summary”.</p>
@@ -503,11 +528,11 @@ The code is that of a code block of type “Summary”.</p>
 Some text for this block.
 ```</code></pre>
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
-<p>chaptersummary: In a Nutshell</p>
+<pre><code>chaptersummary: In a Nutshell</code></pre>
 </div>
-<div id="documentation" class="section level2">
+<div id="documentation" class="section level2" number="2.11">
 <h2><span class="header-section-number">2.11</span> Documentation</h2>
-<div id="user-documentation" class="section level3">
+<div id="user-documentation" class="section level3" number="2.11.1">
 <h3><span class="header-section-number">2.11.1</span> User documentation</h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
@@ -515,7 +540,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level3">
+<div id="documentation-for-developers" class="section level3" number="2.11.2">
 <h3><span class="header-section-number">2.11.2</span> Documentation for developers</h3>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
@@ -526,12 +551,12 @@ All the necessary details for writing (writing equations, cross-references, etc.
 </div>
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Xie2016">
-<p>Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Xie2016" class="csl-entry">
+Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
 </div>
-<div id="ref-Xie2018">
-<p>Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.</p>
+<div id="ref-Xie2018" class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
 </div>
 </div>
 <div class="footnotes">
