@@ -4,6 +4,7 @@
 ![R-CMD-check](https://github.com/EricMarcon/memoiR/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/github/EricMarcon/memoiR/branch/master/graphs/badge.svg)](https://codecov.io/github/EricMarcon/memoiR)
 [![CRAN version](http://www.r-pkg.org/badges/version/memoiR)](https://CRAN.r-project.org/package=memoiR)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/memoiR)](https://CRAN.R-project.org/grand-total/package=memoiR)
 [![](http://cranlogs.r-pkg.org/badges/memoiR)](https://CRAN.R-project.org/package=memoiR)
 
 
