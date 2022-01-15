@@ -1,4 +1,8 @@
-# memoiR 1.1-3.9001
+# memoiR 1.1-3.9002
+
+## Bug Correction
+
+* In all templates, knitr `message` option was spelled `messages`. Corrected.
 
 ## New features
 

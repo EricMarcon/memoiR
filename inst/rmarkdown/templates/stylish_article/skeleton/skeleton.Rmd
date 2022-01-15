@@ -100,25 +100,25 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 ```{r Options, include=FALSE}
 ### Customized options for this document
 # Add necessary packages here
-Packages <- c( "tidyverse")
+Packages <- c("tidyverse")
 # Install them
 InstallPackages(Packages)
 
 # knitr options
 knitr::opts_chunk$set(
-  cache=FALSE, # Cache chunk results
-  echo = TRUE, # Show/Hide R chunks
-  warning=FALSE, # Show/Hide warnings
-  message=FALSE, # Show/Hide messages
+  cache = FALSE,   # Cache chunk results
+  echo = TRUE,     # Show/Hide R chunks
+  warning = FALSE, # Show/Hide warnings
+  message = FALSE, # Show/Hide messages
   # Figure alignment and size
-  fig.align='center', out.width='80%',
+  fig.align = 'center', out.width = '80%',
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
-  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  tidy = TRUE, tidy.opts = list(blank=FALSE, width.cutoff=50),
+  size = "scriptsize", knitr.graphics.auto_pdf = TRUE
   )
-options(width=50)
+options(width = 50)
 
 # ggplot style
 library("tidyverse")

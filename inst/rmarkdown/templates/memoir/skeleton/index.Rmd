@@ -147,7 +147,7 @@ if (rmarkdown::metadata$largemargins)
 ```{r Options, include=FALSE}
 ### Customized options for this document
 # Add necessary packages here
-Packages <- c( "tidyverse")
+Packages <- c("tidyverse")
 # Install them
 InstallPackages(Packages)
 # Create packages.bib file to reference them as @R-package
@@ -155,19 +155,19 @@ knitr::write_bib(Packages, file="packages.bib")
 
 # knitr options
 knitr::opts_chunk$set(
-  cache=FALSE, # Cache chunk results
-  echo = TRUE, # Show/Hide R chunks
-  warning=FALSE, # Show/Hide warnings
-  message=FALSE, # Show/Hide messages
+  cache = FALSE,   # Cache chunk results
+  echo = TRUE,     # Show/Hide R chunks
+  warning = FALSE, # Show/Hide warnings
+  message = FALSE, # Show/Hide messages
   # Figure alignment and size
-  fig.align='center', out.width='80%', fig.asp=.75,
+  fig.align = 'center', out.width = '80%', fig.asp = .75,
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60),
-  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  tidy = TRUE, tidy.opts = list(blank=FALSE, width.cutoff=60),
+  size = "scriptsize", knitr.graphics.auto_pdf = TRUE
   )
-options(width=60)
+options(width = 60)
 
 # ggplot style
 library("tidyverse")
