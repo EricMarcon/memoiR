@@ -1,12 +1,12 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 2.14.2
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
-  articles/LaTeX: LaTeX.html
-  articles/memoir: memoir.html
+  LaTeX: LaTeX.html
+  memoir: memoir.html
   memoiR: memoiR.html
-last_built: 2021-11-16T11:13Z
+last_built: 2022-01-20T12:55Z
 urls:
-  reference: https://EricMarcon.github.io/memoiR//reference
-  article: https://EricMarcon.github.io/memoiR//articles
+  reference: https://EricMarcon.github.io/memoiR/reference
+  article: https://EricMarcon.github.io/memoiR/articles
 
