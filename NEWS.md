@@ -1,3 +1,10 @@
+# memoiR 1.1-4.9000
+
+## Bug Correction
+
+* In article templates, check that `lang` is declared before selecting it.
+
+
 # memoiR 1.1-4
 
 ## Bug Correction
