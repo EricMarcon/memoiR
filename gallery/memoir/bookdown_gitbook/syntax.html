@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Syntax | Title of the Memoir</title>
   <meta name="description" content="Bookdown template based on LaTeX memoir class" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Syntax | Title of the Memoir" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://GitHubID.github.io/Repository/" />
   <meta property="og:image" content="https://GitHubID.github.io/Repository/images/logo.png" />
   <meta property="og:description" content="Bookdown template based on LaTeX memoir class" />
   <meta name="github-repo" content="GitHubID/Repository" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2022-02-03" />
+<meta name="date" content="2022-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="getting_started.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -208,8 +207,8 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="syntax" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Syntax</h1>
+<div id="syntax" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Syntax<a href="syntax.html#syntax" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p></p>
 <div class="Summary">
 <p>
@@ -239,8 +238,8 @@ The <code>index.Rmd</code> file is special: it contains the document header and 
 <pre><code># (APPENDIX) Appendix {-} 
 
 # Title of the first appendix</code></pre>
-<div id="write" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Write</h2>
+<div id="write" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Write<a href="syntax.html#write" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The main features of Markdown are summarized here.
 A quick and complete training is offered by RStudio<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <p>The text is written without any formatting other than line breaks.
@@ -254,8 +253,8 @@ Indented lists are created by inserting 4 spaces before the dash at the beginnin
 Last, numbered lists are created in the same way by replacing the hyphens by numbers, whose value does not matter.</p>
 <p>In the text, the italicized parts are surrounded by a star or an underscore (<code>*italic*</code>), while two stars mark the bold.</p>
 </div>
-<div id="r-code" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> R code</h2>
+<div id="r-code" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> R code<a href="syntax.html#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R code is included in code chunks (<em>code chunks</em>) that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:</p>
@@ -276,8 +275,8 @@ The <code>echo</code> option should be set to <code>FALSE</code> by default for 
 <pre><code>## [1] 4</code></pre>
 <p></p>
 </div>
-<div id="figures" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Figures</h2>
+<div id="figures" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Figures<a href="syntax.html#figures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="syntax.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:pressure"></span>
@@ -316,8 +315,8 @@ They should not contain bibliographic references or references to the figures ma
 <p>Figures that are not created by R but come from files are embedded in a piece of code by the <code>include_graphics()</code> function whose argument is the file containing the image to be displayed.
 Always place these files in the <code>images</code> folder for good organization.</p>
 </div>
-<div id="tables" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Tables</h2>
+<div id="tables" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Tables<a href="syntax.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The horizontal - and vertical separators | allow to draw a table according to the Markdown syntax, but it is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
@@ -466,8 +465,8 @@ Since the table contains mathematics (in the name of the first column), the <cod
 <p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
 Last, the <code>full_width = FALSE</code> option allows you to adjust the width of the table to its content instead of occupying all the available width.</p>
 </div>
-<div id="maths" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Maths</h2>
+<div id="maths" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Maths<a href="syntax.html#maths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Equations in LaTeX format can be inserted in line, like <span class="math inline">\(A=\pi r^2\)</span> (code: <code>$A=\pi r^2$</code>) or isolated (the $ are doubled) like <span class="math display">\[e^{i \pi} = -1.\]</span></p>
 <p>They can be numbered: see equation <a href="syntax.html#eq:disk">(2.1)</a>, using the <code>\equation</code> environment.</p>
 <p><span class="math display" id="eq:disk">\[\begin{equation}
@@ -480,16 +479,16 @@ Last, the <code>full_width = FALSE</code> option allows you to adjust the width 
   (\#eq:disk)
 \end{equation}</code></pre>
 </div>
-<div id="cross-references" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Cross-references</h2>
+<div id="cross-references" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Cross-references<a href="syntax.html#cross-references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with <code>fig:</code> and <code>tab:</code>.</p>
 <p>For equations, the label is added manually by the code <code>(\#eq:xxx)</code> before the end of the equation.</p>
 <p>Sections can be tagged by ending their title with <code>{#yyy}</code>.</p>
 <p>Bookmarks can also be placed freely in the text with the command <code>(ref:zzz)</code>.</p>
 <p>In all cases, the call to the reference is made by the command <code>\@ref(ref:zzz)</code>.</p>
 </div>
-<div id="bibliography" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Bibliography</h2>
+<div id="bibliography" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Bibliography<a href="syntax.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Bibliographic references in bibtex format must be included in the <code>.bib</code> file declared in the header of the Markdown document.</p>
 <pre><code>bibliography: references.bib</code></pre>
 <p>They can be called in the text, between brackets by the code <code>[@CitationKey]</code>, as sidenotes <span class="citation">(<a href="#ref-Xie2016" role="doc-biblioref">Xie 2016</a>)</span>, or without square brackets, to include the authors’ names in the text, such as <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-Xie2018" role="doc-biblioref">2018</a>)</span> .</p>
@@ -501,16 +500,16 @@ The default style (if no csl is specified) is “chicago-author-date”.
 Several thousand styles are available <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>For PDF documents, the bibliography is handled by BibLaTeX, see section <a href="getting_started.html#index">1.1</a>.</p>
 </div>
-<div id="forcing-line-breaks" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Forcing line breaks</h2>
+<div id="forcing-line-breaks" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Forcing line breaks<a href="syntax.html#forcing-line-breaks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hyphenation is handled automatically in LaTeX.
 If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command <code>hyphenation</code> (words are separated by spaces, hyphenation locations are represented by dashes).</p>
 <p>If LaTeX can’t find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command <code>\break</code> to the line break location.
 Do not leave a space before the command.
 The HTML document ignores LaTeX commands.</p>
 </div>
-<div id="sec:languages" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> Languages</h2>
+<div id="sec:languages" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Languages<a href="syntax.html#sec:languages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Languages are declared in the document header.</p>
 <p>The main language of the document (<code>lang</code>) changes the name of some elements, such as the table of contents.
 The change of language in the document (one of <code>otherlangs</code>) is managed in LaTeX but not in HTML by inserting on a new line the following command:</p>
@@ -520,8 +519,8 @@ The <code>\selectlanguage</code> command is simply ignored in HTML.</p>
 <p>Language codes are used in the header, such as <code>en-US</code> but language names are necessary in <code>\selectlanguage{}</code>.
 Name matches are listed in table 3 of the polyglossia package documentation<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 </div>
-<div id="chapter-summary" class="section level2" number="2.10">
-<h2><span class="header-section-number">2.10</span> Chapter summary</h2>
+<div id="chapter-summary" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Chapter summary<a href="syntax.html#chapter-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The take-home message of each chapter can be displayed in a box, see the beginning of this one.
 The code is that of a code block of type “Summary”.</p>
 <pre><code>```{block, type=&#39;Summary&#39;}
@@ -530,18 +529,18 @@ Some text for this block.
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <pre><code>chaptersummary: In a Nutshell</code></pre>
 </div>
-<div id="documentation" class="section level2" number="2.11">
-<h2><span class="header-section-number">2.11</span> Documentation</h2>
-<div id="user-documentation" class="section level3" number="2.11.1">
-<h3><span class="header-section-number">2.11.1</span> User documentation</h3>
+<div id="documentation" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Documentation<a href="syntax.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="user-documentation" class="section level3 hasAnchor" number="2.11.1">
+<h3><span class="header-section-number">2.11.1</span> User documentation<a href="syntax.html#user-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
 All the necessary details for writing (writing equations, cross-references, etc.) are given.</li>
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level3" number="2.11.2">
-<h3><span class="header-section-number">2.11.2</span> Documentation for developers</h3>
+<div id="documentation-for-developers" class="section level3 hasAnchor" number="2.11.2">
+<h3><span class="header-section-number">2.11.2</span> Documentation for developers<a href="syntax.html#documentation-for-developers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>
@@ -550,7 +549,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 </div>
 </div>
 </div>
-<h3>References</h3>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Xie2016" class="csl-entry">
 Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
