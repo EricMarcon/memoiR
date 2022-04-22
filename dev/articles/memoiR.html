@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,18 +41,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">memoiR</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1-2.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1-4.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/memoiR.html">Get started</a>
 </li>
@@ -58,17 +54,17 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/articles/LaTeX.html">Production of LaTeX Documents</a>
+      <a href="../articles/LaTeX.html">Production of LaTeX Documents</a>
     </li>
     <li>
-      <a href="../articles/articles/memoir.html">LaTeX memoir Customization</a>
+      <a href="../articles/customize.html">LaTeX memoir Customization</a>
     </li>
   </ul>
 </li>
@@ -78,7 +74,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/EricMarcon/memoiR/">
+  <a href="https://github.com/EricMarcon/memoiR/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -93,24 +89,24 @@
 
       
 
-      </header><script src="memoiR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R Markdown and Bookdown Templates to Publish Documents</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/memoiR/blob/master/vignettes/memoiR.Rmd"><code>vignettes/memoiR.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/memoiR/blob/HEAD/vignettes/memoiR.Rmd" class="external-link"><code>vignettes/memoiR.Rmd</code></a></small>
       <div class="hidden name"><code>memoiR.Rmd</code></div>
 
     </div>
 
     
     
-<div id="content" class="section level1">
-<h1 class="hasAnchor">
-<a href="#content" class="anchor"></a>Content</h1>
+<div class="section level2">
+<h2 id="content">Content<a class="anchor" aria-label="anchor" href="#content"></a>
+</h2>
 <p>This package provides templates to publish well-formatted documents both in HTML and PDF formats. Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.</p>
-<p>Long documents are the main purpose of this package. Along with a GitBook or Bootstrap 4 version to be read online, their PDF version based on the LaTeX class <strong>memoir</strong> can be highly customized (see examples <a href="https://ericmarcon.github.io/travailleR/travailleR.pdf">1</a> and <a href="https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf">2</a>).</p>
+<p>Long documents are the main purpose of this package. Along with a GitBook or Bootstrap 4 version to be read online, their PDF version based on the LaTeX class <strong>memoir</strong> can be highly customized (see examples <a href="https://ericmarcon.github.io/travailleR/travailleR.pdf" class="external-link">1</a> and <a href="https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf" class="external-link">2</a>).</p>
 <p>Functions are provided to make the publication of the documents on GitHub very easy, including their continuous integration.</p>
 <p>Templates include:</p>
 <ul>
@@ -121,15 +117,15 @@
 </ul>
 <p>Available HTML formats for articles are:</p>
 <ul>
-<li>GitBook: <code><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html">bookdown::gitbook</a></code>
+<li>GitBook: <code><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html" class="external-link">bookdown::gitbook</a></code>
 </li>
-<li>Bookdown’s HTML format (<code><a href="https://pkgs.rstudio.com/bookdown/reference/html_document2.html">bookdown::html_document2</a></code>)</li>
-<li>Any format from the <strong>rmdformats</strong> package. <code><a href="https://rdrr.io/pkg/rmdformats/man/downcute.html">rmdformats::downcute</a></code> is by default. See the package documentation for other possibilities.</li>
+<li>Bookdown’s HTML format (<code><a href="https://pkgs.rstudio.com/bookdown/reference/html_document2.html" class="external-link">bookdown::html_document2</a></code>)</li>
+<li>Any format from the <strong>rmdformats</strong> package. <code><a href="https://rdrr.io/pkg/rmdformats/man/downcute.html" class="external-link">rmdformats::downcute</a></code> is by default. See the package documentation for other possibilities.</li>
 </ul>
 </div>
-<div id="getting-started" class="section level1">
-<h1 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting started</h1>
+<div class="section level2">
+<h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h2>
 <p>In RStudio, either:</p>
 <ul>
 <li>create a new R Markdown document and chose the appropriate template in the wizard:
@@ -168,16 +164,16 @@
 <li>run <code><a href="../reference/build_ghworkflow.html">build_ghworkflow()</a></code> to create the necessary script (<code>.github/workflows/check.yml</code>).</li>
 </ul>
 </div>
-<div id="credits" class="section level1">
-<h1 class="hasAnchor">
-<a href="#credits" class="anchor"></a>Credits</h1>
-<p>The feather in the memoiR package sticker is from <a href="https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg">Wikimedia</a> under license <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
-<p>The <a href="https://www.ctan.org/pkg/memoir">memoir</a> LaTeX package is on CTAN.</p>
-<p>The <a href="https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf">Stylish Article</a> template is adapted from <a href="http://www.latextemplates.com/template/stylish-article">LaTeX Templates</a>, that in turn adapted it from a LaTeX class by Mathias Legrand. Its licence is <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>.</p>
+<div class="section level2">
+<h2 id="credits">Credits<a class="anchor" aria-label="anchor" href="#credits"></a>
+</h2>
+<p>The feather in the memoiR package sticker is from <a href="https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg" class="external-link">Wikimedia</a> under license <a href="https://creativecommons.org/licenses/by-sa/3.0/" class="external-link">CC BY-SA 3.0</a>.</p>
+<p>The <a href="https://www.ctan.org/pkg/memoir" class="external-link">memoir</a> LaTeX package is on CTAN.</p>
+<p>The <a href="https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf" class="external-link">Stylish Article</a> template is adapted from <a href="http://www.latextemplates.com/template/stylish-article" class="external-link">LaTeX Templates</a>, that in turn adapted it from a LaTeX class by <a href="https://www.mcgill.ca/mecheng/people/staff/mathias-legrand" class="external-link">Mathias Legrand</a>. Its licence is <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" class="external-link">CC BY-NC-SA 3.0</a>.</p>
 </div>
-<div id="full-documentation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#full-documentation" class="anchor"></a>Full documentation</h1>
+<div class="section level2">
+<h2 id="full-documentation">Full documentation<a class="anchor" aria-label="anchor" href="#full-documentation"></a>
+</h2>
 <p><a href="https://EricMarcon.github.io/memoiR/" class="uri">https://EricMarcon.github.io/memoiR/</a></p>
 </div>
   </div>
@@ -193,11 +189,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Eric Marcon.</p>
+  <p></p>
+<p>Developed by Eric Marcon.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -205,6 +203,8 @@
 
   
 
+
+  
 
   </body>
 </html>
