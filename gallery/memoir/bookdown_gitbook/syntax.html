@@ -23,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2022-04-22" />
+<meta name="date" content="2022-05-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -295,7 +295,12 @@ References are made with the command <code>\@ref(fig:xxx)</code>.</p>
 <p>It contains at least the name of the figure and its caption.</p>
 <p>The default width of figures is set in the option chunk in <code>index.Rmd</code>.
 It is <code>out.width='80%'</code> in this template, i.e. 80% of the width of the text.
-If a full-width figure is needed, including the margin width, use <code>out.width="\\widthw"</code> in its code snippet.</p>
+If a full-width figure is needed, including the margin width, use <code>out.width='\\widthw'</code> in its code chunk header.</p>
+<p>When large margins are used, figure captions are set in the margins of PDF outputs.
+Margins can be used to enlarge a figure: add knitr options <code>out.width='\\widthw'</code> and <code>fig.env='figure'</code> in the code chunk header.
+The caption is then inserted below the figure.
+Small figures can be put in the margin by the option <code>fig.env='marginfigure'</code>.
+These changes are ignored in the HTML output.</p>
 <p>If the caption is long, the header is not easy to read.
 Also, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text <code>(ref:FigureName)</code>.
