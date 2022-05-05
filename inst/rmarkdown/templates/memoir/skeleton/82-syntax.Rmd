@@ -117,7 +117,13 @@ It contains at least the name of the figure and its caption.
 
 The default width of figures is set in the option chunk in `index.Rmd`.
 It is `out.width='80%'` in this template, i.e. 80% of the width of the text.
-If a full-width figure is needed, including the margin width, use `out.width="\\widthw"` in its code snippet.
+If a full-width figure is needed, including the margin width, use `out.width='\\widthw'` in its code chunk header.
+
+When large margins are used, figure captions are set in the margins of PDF outputs.
+Margins can be used to enlarge a figure: add knitr options `out.width='\\widthw'` and `fig.env='figure'` in the code chunk header.
+The caption is then inserted below the figure.
+Small figures can be put in the margin by the option `fig.env='marginfigure'`.
+These changes are ignored in the HTML output.
 
 If the caption is long, the header is not easy to read.
 Also, the caption is limited to simple text.
