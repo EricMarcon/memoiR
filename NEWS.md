@@ -1,4 +1,8 @@
-# memoiR 1.1-4.9001
+# memoiR 1.1-4.9002
+
+## Improvements
+
+* full-width figures supported in memoirs.
 
 ## Bug Correction
 

@@ -88,7 +88,7 @@ The most useful options are:
 The default options are declared in the code snippet named "Options" at the beginning of the Markdown document, in the `opts_chunk$set()` function.
 The `echo` option should be set to `FALSE` by default for a scientific article for example.
 
-When it is `TRUE`, the code is printed as follow
+When it is `TRUE`, the code is printed as follows
 
 ```{r, echo=TRUE}
 2+2
@@ -98,7 +98,7 @@ When it is `TRUE`, the code is printed as follow
 
 ## Figures
 
-```{r pressure, fig.cap="A full width figure", out.width="\\widthw"}
+```{r pressure, fig.cap="A figure"}
 plot(pressure)
 ```
 
@@ -109,7 +109,7 @@ References are made with the command `\@ref(fig:xxx)`.
 The header of the code snippet of the figure \@ref(fig:pressure) is:
 
 ````
-```{r pressure, fig.cap="Title of the figure, out.width="\\widthw"}`r ''`
+```{r pressure, fig.cap="Title of the figure"}`r ''`
 ```
 ````
 
@@ -119,8 +119,9 @@ The default width of figures is set in the option chunk in `index.Rmd`.
 It is `out.width='80%'` in this template, i.e. 80% of the width of the text.
 If a full-width figure is needed, including the margin width, use `out.width='\\widthw'` in its code chunk header.
 
-When large margins are used, figure captions are set in the margins of PDF outputs.
+When large margins are used in memoirs, figure captions are set in the margins of PDF outputs.
 Margins can be used to enlarge a figure: add knitr options `out.width='\\widthw'` and `fig.env='figure'` in the code chunk header.
+Figure alignment must be `fig.align = 'center'` (which is by default).
 The caption is then inserted below the figure.
 Small figures can be put in the margin by the option `fig.env='marginfigure'`.
 These changes are ignored in the HTML output.

@@ -139,6 +139,37 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
 
+# Output hook for full-width figures
+defOut <- knitr::knit_hooks$get("plot")
+knitr::knit_hooks$set(
+  plot = function(x, options) {
+    # Apply the original hook
+    x <- defOut(x, options)
+    # Only full-width figures
+    if (options$out.width == "\\widthw") {
+      # Modify output of the original hook, see code on:
+      # https://github.com/yihui/knitr/blob/master/R/hooks-latex.R
+      # Modify align1 output with align=center. Original code:
+      # switch(a, left = '\n\n', center = '\n\n{\\centering ', right = '\n\n\\hfill{}', '\n')
+      # replace centering by a minipage
+      x  <- gsub(
+        "\\n\\n\\{\\\\centering",
+        "\\\\setbox0=\\\\hbox\\{\\\\begin\\{minipage\\}\\[h\\]\\{\\\\widthw\\}\\\\centering",
+        x
+      )
+      # Modify align2 output with align=center. Original code:
+      # switch(a, left = '\\hfill{}\n\n', '\n\n}\n\n', right = '\n\n', '')
+      # replace } by the necessary code to place the minipage
+      x  <- gsub(
+        "\\n\\n\\}\\n\\n",
+        "\\\\end\\{minipage\\}\\}\\\\needspace\\{\\\\ht0+\\\\dp0+2\\\\baselineskip\\}\\\\definesHSpace\\\\hspace\\{-\\\\rf\\}\\\\box0",
+        x
+      )
+    }
+    return(x)
+  }
+)
+
 # Figures with side captions
 if (rmarkdown::metadata$largemargins)
   knitr::opts_chunk$set(fig.env='SCfigure')
