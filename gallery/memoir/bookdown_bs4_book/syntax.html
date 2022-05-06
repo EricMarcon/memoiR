@@ -151,7 +151,7 @@ These code chunks can contain R code but also Python code for example: the type 
 </ul>
 <p>The default options are declared in the code snippet named “Options” at the beginning of the Markdown document, in the <code>opts_chunk$set()</code> function.
 The <code>echo</code> option should be set to <code>FALSE</code> by default for a scientific article for example.</p>
-<p>When it is <code>TRUE</code>, the code is printed as follow</p>
+<p>When it is <code>TRUE</code>, the code is printed as follows</p>
 <p></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span></code></pre></div>
@@ -167,8 +167,8 @@ The <code>echo</code> option should be set to <code>FALSE</code> by default for 
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pressure</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:pressure"></span>
-<img src="MyBook_files/figure-html/pressure-1.png" alt="A full width figure" width="\widthw"><p class="caption">
-Figure 2.1: A full width figure
+<img src="MyBook_files/figure-html/pressure-1.png" alt="A figure" width="80%"><p class="caption">
+Figure 2.1: A figure
 </p>
 </div>
 <p></p>
@@ -176,14 +176,15 @@ Figure 2.1: A full width figure
 With Bookdown, a label is associated with each figure: its name is <code>fig:xxx</code> where <code>xxx</code> is the name of the R code snippet.
 References are made with the command <code>\@ref(fig:xxx)</code>.</p>
 <p>The header of the code snippet of the figure <a href="syntax.html#fig:pressure">2.1</a> is:</p>
-<pre><code>```{r pressure, fig.cap="Title of the figure, out.width="\\widthw"}
+<pre><code>```{r pressure, fig.cap="Title of the figure"}
 ```</code></pre>
 <p>It contains at least the name of the figure and its caption.</p>
 <p>The default width of figures is set in the option chunk in <code>index.Rmd</code>.
 It is <code>out.width='80%'</code> in this template, i.e. 80% of the width of the text.
 If a full-width figure is needed, including the margin width, use <code>out.width='\\widthw'</code> in its code chunk header.</p>
-<p>When large margins are used, figure captions are set in the margins of PDF outputs.
+<p>When large margins are used in memoirs, figure captions are set in the margins of PDF outputs.
 Margins can be used to enlarge a figure: add knitr options <code>out.width='\\widthw'</code> and <code>fig.env='figure'</code> in the code chunk header.
+Figure alignment must be <code>fig.align = 'center'</code> (which is by default).
 The caption is then inserted below the figure.
 Small figures can be put in the margin by the option <code>fig.env='marginfigure'</code>.
 These changes are ignored in the HTML output.</p>
@@ -500,7 +501,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2022-05-05.</p>
+    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2022-05-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

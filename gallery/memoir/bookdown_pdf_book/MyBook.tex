@@ -321,7 +321,7 @@
 
 \author{Authors' names}
 
-\date{2022-05-05}
+\date{2022-05-06}
 
 
 % Include headers (preamble.tex) here
@@ -761,7 +761,7 @@ The most useful options are:
 The default options are declared in the code snippet named ``Options'' at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
 The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
 
-When it is \texttt{TRUE}, the code is printed as follow
+When it is \texttt{TRUE}, the code is printed as follows
 
 \scriptsize
 
@@ -790,11 +790,11 @@ When it is \texttt{TRUE}, the code is printed as follow
 
 \begin{figure}
 
-{\centering \includegraphics[width=\widthw]{MyBook_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{MyBook_files/figure-latex/pressure-1} 
 
 }
 
-\caption{A full width figure}\label{fig:pressure}
+\caption{A figure}\label{fig:pressure}
 \end{figure}
 
 \normalsize
@@ -806,7 +806,7 @@ References are made with the command \texttt{\textbackslash{}@ref(fig:xxx)}.
 The header of the code snippet of the figure \ref{fig:pressure} is:
 
 \begin{verbatim}
-```{r pressure, fig.cap="Title of the figure, out.width="\\widthw"}
+```{r pressure, fig.cap="Title of the figure"}
 ```
 \end{verbatim}
 
@@ -816,8 +816,9 @@ The default width of figures is set in the option chunk in \texttt{index.Rmd}.
 It is \texttt{out.width=\textquotesingle{}80\%\textquotesingle{}} in this template, i.e.~80\% of the width of the text.
 If a full-width figure is needed, including the margin width, use \texttt{out.width=\textquotesingle{}\textbackslash{}\textbackslash{}widthw\textquotesingle{}} in its code chunk header.
 
-When large margins are used, figure captions are set in the margins of PDF outputs.
+When large margins are used in memoirs, figure captions are set in the margins of PDF outputs.
 Margins can be used to enlarge a figure: add knitr options \texttt{out.width=\textquotesingle{}\textbackslash{}\textbackslash{}widthw\textquotesingle{}} and \texttt{fig.env=\textquotesingle{}figure\textquotesingle{}} in the code chunk header.
+Figure alignment must be \texttt{fig.align\ =\ \textquotesingle{}center\textquotesingle{}} (which is by default).
 The caption is then inserted below the figure.
 Small figures can be put in the margin by the option \texttt{fig.env=\textquotesingle{}marginfigure\textquotesingle{}}.
 These changes are ignored in the HTML output.
