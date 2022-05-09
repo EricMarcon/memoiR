@@ -1,8 +1,9 @@
-# memoiR 1.1-4.9002
+# memoiR 1.1-4.9003
 
 ## Improvements
 
 * full-width figures supported in memoirs.
+* bs4_book css added to memoir template to support *Summary* block style.
 
 ## Bug Correction
 
