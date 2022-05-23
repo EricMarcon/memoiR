@@ -1,9 +1,10 @@
-# memoiR 1.1-4.9003
+# memoiR 1.1-4.9004
 
 ## Improvements
 
 * full-width figures supported in memoirs.
 * bs4_book css added to memoir template to support *Summary* block style.
+* date format is localized by `build_ghworkflow()`. 
 
 ## Bug Correction
 

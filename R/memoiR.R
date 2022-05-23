@@ -696,10 +696,22 @@ build_ghworkflow <- function() {
   } else {
     lines <- c(lines,
     '      - name: Render Rmarkdown files',
-    '        run: |',
-    '          RMD_PATH=($(ls | grep "[.]Rmd$"))',
-    '          Rscript -e \'for (file in commandArgs(TRUE)) rmarkdown::render(file, "all")\' ${RMD_PATH[*]}',
-    '          Rscript -e \'memoiR::build_githubpages()\''
+    '        run: |'
+    )
+    if (!is.null(langs)) {
+      # Set the main language for date format
+      lines <- c(
+        lines,
+        paste(
+    '          Sys.setlocale("LC_TIME", gsub("-", "_",',
+          langs[1]
+          )
+        )
+    }
+    lines <- c(lines,
+    '          lapply(list.files(pattern="*.Rmd"), function(file) rmarkdown::render(file, "all"))',
+    '          memoiR::build_githubpages()',
+    '        shell: Rscript {0}',
     )
   }
   
