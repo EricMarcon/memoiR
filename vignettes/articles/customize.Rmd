@@ -5,7 +5,7 @@ output:
     toc: yes
     toc_float: yes
 vignette: >
-  %\VignetteIndexEntry{LaTeX}
+  %\VignetteIndexEntry{Customize}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
