@@ -702,16 +702,17 @@ build_ghworkflow <- function() {
       # Set the main language for date format
       lines <- c(
         lines,
-        paste(
-    '          Sys.setlocale("LC_TIME", gsub("-", "_",',
-          langs[1]
+        paste0(
+    '          Sys.setlocale("LC_TIME", "',
+          gsub("-", "_", langs[1]),
+          '")'
           )
         )
     }
     lines <- c(lines,
     '          lapply(list.files(pattern="*.Rmd"), function(file) rmarkdown::render(file, "all"))',
     '          memoiR::build_githubpages()',
-    '        shell: Rscript {0}',
+    '        shell: Rscript {0}'
     )
   }
   
@@ -739,7 +740,8 @@ build_ghworkflow <- function() {
     '          GITHUB_TOKEN: ${{ secrets.GH_PAT }}',
     '        with:',
     '          email: ${{ secrets.EMAIL }}',
-    '          build_dir: docs')
+    '          build_dir: docs'
+    )
   
   # Jekyll site for simple documents
   if (is_memoir) {
