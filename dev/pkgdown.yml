@@ -5,8 +5,9 @@ articles:
   LaTeX: LaTeX.html
   customize: customize.html
   figures: figures.html
+  upgrade: upgrade.html
   memoiR: memoiR.html
-last_built: 2022-05-24T06:42Z
+last_built: 2022-05-24T16:05Z
 urls:
   reference: https://EricMarcon.github.io/memoiR/reference
   article: https://EricMarcon.github.io/memoiR/articles

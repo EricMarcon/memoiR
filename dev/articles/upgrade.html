@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Figures in memoirs with large margins • memoiR</title>
+<title>Upgrade a Project • memoiR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Figures in memoirs with large margins">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Upgrade a Project">
 <meta property="og:description" content="memoiR">
 <meta property="og:image" content="https://EricMarcon.github.io/memoiR/logo.svg">
 <meta name="robots" content="noindex">
@@ -98,55 +98,43 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Figures in memoirs with large margins</h1>
+      <h1 data-toc-skip>Upgrade a Project</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/memoiR/blob/HEAD/vignettes/articles/figures.Rmd" class="external-link"><code>vignettes/articles/figures.Rmd</code></a></small>
-      <div class="hidden name"><code>figures.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/EricMarcon/memoiR/blob/HEAD/vignettes/articles/upgrade.Rmd" class="external-link"><code>vignettes/articles/upgrade.Rmd</code></a></small>
+      <div class="hidden name"><code>upgrade.Rmd</code></div>
 
     </div>
 
     
     
-<p>Large margins in PDF memoirs allow storing references and footnotes (actually sidenotes) while improving readability of the text in a narrower column. An example is <a href="https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf" class="external-link">here</a>.</p>
-<p>By default, figures cover the width of the text column and their caption is placed inside the margin. Two alternative layouts are available: margin figures and full-width figures that extend into the margin.</p>
+<p>Document projects made by <strong>memoiR</strong> can be knitted without the package, which is used only to create them. Yet, new versions of the package may support new features that should be included in an existing project. Upgrading a document project to a new version of <strong>memoiR</strong> may be done according to two different strategies. This may take some time so do it only if necessary and keep a copy of the old version of the project.</p>
 <div class="section level2">
-<h2 id="layouts">Layouts<a class="anchor" aria-label="anchor" href="#layouts"></a>
+<h2 id="create-a-new-project">Create a new project<a class="anchor" aria-label="anchor" href="#create-a-new-project"></a>
 </h2>
-<p>This copy of a page with all three types of figures illustrates their differences. <img src="figures.png"><!-- --></p>
+<p>The simplest solution consists of creating a new project from scratch with an updated version of the package. Then, copy and paste the content of the old project:</p>
+<ul>
+<li>memoir chapters (<code>.Rmd</code> files) and text from the <code>index.Rmd</code> files in memoirs,</li>
+<li>text of <code>.Rmd</code> files from article or presentation projects</li>
+<li>the yaml headers of <code>.Rmd</code> files: they contain the parameters of the project (its title, its language…)</li>
+</ul>
+<p>Run the commands again: <code><a href="../reference/build_gitignore.html">build_gitignore()</a></code> to build the <code>.gitignore</code> file, <code><a href="../reference/build_ghworkflow.html">build_ghworkflow()</a></code> to activate continuous integration, <code><a href="../reference/build_readme.html">build_readme()</a></code> for the <code>README.md</code> file.</p>
 </div>
 <div class="section level2">
-<h2 id="syntax">Syntax<a class="anchor" aria-label="anchor" href="#syntax"></a>
+<h2 id="upgrade-the-helper-files-of-an-existing-project">Upgrade the helper files of an existing project<a class="anchor" aria-label="anchor" href="#upgrade-the-helper-files-of-an-existing-project"></a>
 </h2>
-<p>Default figures are declared in code chunks which contain the appropriate code: <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>, <code>ggplot()</code> or <code>include_graphics()</code>. The chunk header contains the figure caption or, better, a reference to it. The referenced caption, declared outside the chunk by <code>(ref:chunk_label)</code>, allows all text formats and contents. Its only limit is that it must be a single paragraph.</p>
-<div class="section level3">
-<h3 id="standard-figure">Standard figure<a class="anchor" aria-label="anchor" href="#standard-figure"></a>
-</h3>
-<p>This code produces a standard figure.</p>
-<pre><code>(ref:pressure1) Standard figure
-```{r pressure1, fig.cap="(ref:pressure1)", echo=FALSE}
-plot(pressure)
-```</code></pre>
+<p>In the alternative strategy, the existing project is modified to assess the new helper files from the package.</p>
+<p>Create a new project of the same type as the project to upgrade, e.g. “Stylish Article”. Copy files from the new project to the same folder of the old one:</p>
+<ul>
+<li>replace the content of the <code>latex</code> folder (but do not overwrite your changes in <code>preamble.tex</code>, <code>before_body.tex</code> and <code>after_body.tex</code>).</li>
+<li>upgrade the <code>.css</code> files.</li>
+<li>add any new file that do not exist in the old project, e.g. <code>bs4_style.css</code> to allow Bootstrap 4 style in memoirs.</li>
+</ul>
 </div>
-<div class="section level3">
-<h3 id="margin-figure">Margin figure<a class="anchor" aria-label="anchor" href="#margin-figure"></a>
-</h3>
-<p>A margin figure is obtained by changing the figure environment (<code>fig.env='marginfigure'</code>) in the code chunk options.</p>
-<pre><code>(ref:pressure2) Margin figure
-```{r pressure2, fig.cap="(ref:pressure2)", fig.env='marginfigure', echo=FALSE}
-plot(pressure)
-```</code></pre>
-</div>
-<div class="section level3">
-<h3 id="full-width-figure">Full-width figure<a class="anchor" aria-label="anchor" href="#full-width-figure"></a>
-</h3>
-<p>A full-width figure is obtained by changing the figure environment (<code>fig.env='figure'</code>) and width (<code>out.width='\\widthw'</code>).</p>
-<pre><code>(ref:pressure3) Full-width figure
-```{r pressure3, fig.cap="(ref:pressure3)", fig.env='figure', out.width='\\widthw', echo=FALSE}
-plot(pressure)
-```</code></pre>
-<p>The figure must be centered (<code>fig.align='center'</code>), which is by default in <strong>memoiR</strong> templates.</p>
-</div>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h2>
+<p>Existing document projects can be upgraded to benefit from new features of a recent <strong>memoiR</strong> version, at the price of copying new files from the package. Changes in modified files, e.g. new options in the yaml header of an existing <code>.Rmd</code> file require comparing the new and old file structures and updating the new files line by line.</p>
 </div>
   </div>
 
