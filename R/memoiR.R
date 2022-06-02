@@ -654,7 +654,7 @@ build_ghworkflow <- function() {
     '        run: |',
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
-    '          install.packages(c("memoiR", "rmdformats", "tinytex"))',
+    '          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))',
     '          tinytex::install_tinytex()')
   
   # Read languages in header
