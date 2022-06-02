@@ -1,6 +1,6 @@
 Package: memoiR
 Title: R Markdown and Bookdown Templates to Publish Documents
-Version: 1.1-4.9006
+Version: 1.1-4.9007
 URL: https://github.com/EricMarcon/memoiR
 BugReports: https://github.com/EricMarcon/memoiR/issues
 Authors@R: 
@@ -23,6 +23,8 @@ Imports:
   rmarkdown,
   usethis
 Suggests: 
+  distill,
+  downlit,
   knitr,
   pkgdown,
   rmdformats,

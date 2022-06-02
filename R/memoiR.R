@@ -63,7 +63,8 @@ knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") 
                         destination=destination, gallery=gallery)
   if (done)
     done <- knit_template("stylish_article", 
-                          output_format=c("bookdown::pdf_book"), 
+                          output_format=c("bookdown::pdf_book", 
+                                          "bookdown::html_document2"), 
                           destination=destination, gallery=gallery)
   if (done)
     done <- knit_template("memoir", 

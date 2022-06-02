@@ -61,8 +61,11 @@ output:
       sharing:
         github: yes
   bookdown::html_document2:
+    base_format: distill::distill_article
     toc: yes
     toc_float: yes
+    code_folding: yes
+    highlight_downlit: yes    
   bookdown::word_document2: default
 ---
 
@@ -256,11 +259,17 @@ A figure can use the full width of the page by adding the following options to t
 
 Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
+<aside>
 ```{r logo, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
 knitr::include_graphics("images/logo.png")
 ```
+</aside>
 
 Systematically place these files in the `images` folder for the automation of GitHub pages.
+
+In the HTML output, figure \@ref(fig:logo) is located in the margin of the document thanks to the advanced formatting possibilities of the **distill**[^6] package. 
+
+[^6]: https://rstudio.github.io/distill/
 
 
 ## Captions
@@ -352,7 +361,7 @@ The default commands allow to show the use of the hyphenation command:
 Other commands can be added as needed.
 Warning:
 
-- Comments are not allowed
+- Comments are not allowed.
 - Complex commands (e.g. `\renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 
 

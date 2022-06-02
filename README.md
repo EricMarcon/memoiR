@@ -17,14 +17,16 @@ Gallery:
     - [HTML Bootstrap 4 book](https://mastering-shiny.org/)
     - [PDF, small-margin layout](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)
     - [PDF, wide-margin layout](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf)
-- Simple article: 
+- Simple Article: 
     - [HTML Document](https://ericmarcon.github.io/memoiR/gallery/simple_article/bookdown_html_document2/simple_article.html)
     - [Downcute HTML](https://ericmarcon.github.io/memoiR/gallery/simple_article/rmdformats_downcute/simple_article.html)
+    - The [distill article](https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_html_document2/stylish_article.html) format which is the Stylish Article default, is available too.
     - The HTML Gitbook format is similar to that of the [memoir](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_gitbook/index.html) template
     - [PDF](https://ericmarcon.github.io/memoiR/gallery/simple_article/bookdown_pdf_book/simple_article.pdf)
-- Stylish article: 
+- Stylish Article: 
     - [PDF](https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf)
-    - HTML outputs are identical to those of the Simple Article
+    - [distill](https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_html_document2/stylish_article.html)
+    - Other HTML outputs are identical to those of the Simple Article.
 - Beamer Presentation: 
     - [HTML IOSlide](https://ericmarcon.github.io/memoiR/gallery/beamer_presentation/bookdown_ioslides_presentation2/beamer_presentation.html)
     - [HTML Slidy](https://ericmarcon.github.io/memoiR/gallery/beamer_presentation/bookdown_slidy_presentation2/beamer_presentation.html)

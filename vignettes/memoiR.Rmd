@@ -32,6 +32,7 @@ Available HTML formats for articles are:
 - GitBook: `bookdown::gitbook`
 - Bookdown's HTML format (`bookdown::html_document2`)
 - Any format from the **rmdformats** package. `rmdformats::downcute` is by default. See the package documentation for other possibilities.
+- distill article from the **distill** package (`base_format: distill::distill_article` option in `bookdown::html_document2`).
 
 
 # Getting started
