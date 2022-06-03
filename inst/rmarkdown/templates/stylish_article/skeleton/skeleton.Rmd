@@ -152,7 +152,7 @@ Its documentation is available at the RStudio website[^2].
 
 
 Markdown is extended by Bookdown[^3], which allows for book writing and more efficient syntax for articles.
-This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
+This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LaTeX compiles it into PDF.
 
 [^3]: <https://bookdown.org/yihui/bookdown/>
 
