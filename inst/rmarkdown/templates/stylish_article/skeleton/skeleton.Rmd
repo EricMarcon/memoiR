@@ -319,9 +319,7 @@ For equations, the label is added manually by the code `(\#eq:xxx)` before the e
 
 Sections can be tagged by ending their title with `{#yyy}`.
 
-Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
-
-In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
+In all cases, the call to the reference is made by the command `\@ref()`.
 
 
 ## Bibliography
