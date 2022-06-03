@@ -2,3 +2,13 @@ url: https://EricMarcon.github.io/memoiR/
 
 development:
   mode: auto
+
+articles:
+- title: Articles
+  navbar: ~
+  contents:
+  - articles/articles
+  - articles/customize
+  - articles/figures
+  - articles/upgrade
+  - articles/LaTeX
