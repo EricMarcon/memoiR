@@ -3,11 +3,12 @@ pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   LaTeX: LaTeX.html
+  articles: articles.html
   customize: customize.html
   figures: figures.html
   upgrade: upgrade.html
   memoiR: memoiR.html
-last_built: 2022-06-02T09:50Z
+last_built: 2022-06-03T12:34Z
 urls:
   reference: https://EricMarcon.github.io/memoiR/reference
   article: https://EricMarcon.github.io/memoiR/articles
