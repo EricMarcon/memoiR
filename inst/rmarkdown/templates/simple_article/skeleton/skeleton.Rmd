@@ -267,7 +267,7 @@ Leave an empty line before and after the list, but not between its items.
 
 ## Math
 
-Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1$$.
+Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1.$$
 
 They can be numbered, see equation \@ref(eq:disk), using the `equation` environment:
 
