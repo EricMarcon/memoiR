@@ -109,10 +109,11 @@ InstallPackages(Packages)
 
 # knitr options
 knitr::opts_chunk$set(
-  cache = FALSE,   # Cache chunk results
-  echo = TRUE,     # Show/Hide R chunks
-  warning = FALSE, # Show/Hide warnings
-  message = FALSE, # Show/Hide messages
+  cache =   FALSE,    # Cache chunk results
+  include = TRUE,     # Show/Hide chunks
+  echo =    TRUE,     # Show/Hide code
+  warning = FALSE,    # Show/Hide warnings
+  message = FALSE,    # Show/Hide messages
   # Figure alignment and size
   fig.align = 'center', out.width = '80%',
   # Graphic devices (ragg_png is better than standard png)
