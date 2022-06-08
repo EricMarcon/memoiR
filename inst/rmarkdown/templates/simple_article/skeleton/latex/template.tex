@@ -97,6 +97,9 @@ $endif$
   \renewcommand{\arraystretch}{1.8}
 \usepackage{multirow}               % Merged lines in tables
 
+% Prevent overfull lines
+\setlength{\emergencystretch}{3em}
+
 $if(preamble)$
 % User-adder preamble
 $preamble$
