@@ -38,7 +38,7 @@ These functions are used to test the templates and produce a gallery.
 The \code{output_format} argument selects the way templates are rendered:
 \item articles may be rendered in HTML by \link[bookdown:html_document2]{bookdown::html_document2}, \link[bookdown:gitbook]{bookdown::gitbook}, \link[rmdformats:downcute]{rmdformats::downcute} (and others, see the package \strong{rmdformats}) and in PDF by \link[bookdown:pdf_book]{bookdown::pdf_book}.
 \item books may be rendered in HTML by \link[bookdown:gitbook]{bookdown::gitbook} or \link[bookdown:bs4_book]{bookdown::bs4_book} and in PDF by \link[bookdown:pdf_book]{bookdown::pdf_book}.
-\item slides may be rendered in  HTML by \link[bookdown:html_document2]{bookdown::ioslides_presentation2}, \link[bookdown:html_document2]{bookdown::ioslides_presentation2} and in PDF by \link[bookdown:html_document2]{bookdown::beamer_presentation2}.
+\item slides may be rendered in  HTML by \link[bookdown:html_document2]{bookdown::slidy_presentation2}, \link[bookdown:html_document2]{bookdown::ioslides_presentation2} and in PDF by \link[bookdown:html_document2]{bookdown::beamer_presentation2}.
 }
 
 These functions are mainly used for test and documentation purposes.
