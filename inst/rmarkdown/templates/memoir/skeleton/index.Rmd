@@ -104,6 +104,7 @@ always_allow_html: true
 graphics: true
 link-citations: true
 colorlinks: true
+csquotes: true
 ---
 
 <!-- HTML code necessary for key messages --> 

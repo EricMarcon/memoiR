@@ -46,6 +46,7 @@ preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 # Do not modify
 always_allow_html: yes
+csquotes: true
 output:
   bookdown::pdf_book:
     template: latex/template.tex

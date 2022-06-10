@@ -23,6 +23,7 @@ pdftoc: false
 toc-depth: 3
 # Do not modify
 always_allow_html: yes
+csquotes: true
 output:
   bookdown::pdf_book:
     template: latex/template.tex
