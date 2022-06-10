@@ -155,6 +155,10 @@ $for(otherlangs)$
 $endfor$
 $endif$
 
+% localized quotes
+\usepackage[strict,autostyle]{csquotes}
+\MakeOuterQuote{"}
+
 % BibLaTeX
 $if(biblatex)$
 \usepackage[$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
@@ -352,7 +356,6 @@ $endif$
 %% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
 $if(largemargins)$
 \renewbibmacro*{footcite:note}{%
