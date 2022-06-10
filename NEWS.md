@@ -1,4 +1,4 @@
-# memoiR 1.1-4.9009
+# memoiR 1.1-4.9010
 
 ## Improvements
 
@@ -7,6 +7,9 @@
 * date format is localized by `build_ghworkflow()`.
 * distill format allowed for HTML articles.
 * better prevention of overfull lines in PDF articles.
+* Local tocs in PDF memoirs.
+* Localized quotes in PDF.
+* `urlcolor: blue` available in all templates.
 
 ## Bug Correction
 
