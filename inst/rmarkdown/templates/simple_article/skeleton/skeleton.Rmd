@@ -21,6 +21,8 @@ preamble: >
 pdftoc: false
 # If true, choose its depth
 toc-depth: 3
+# URL color
+urlcolor: blue
 # Do not modify
 always_allow_html: yes
 csquotes: true

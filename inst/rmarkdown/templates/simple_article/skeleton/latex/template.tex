@@ -110,7 +110,11 @@ $endif$
 
 % hyperref comes last
 \usepackage {hyperref}           % Hypertext links, PDF bookmarks
-  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+  \hypersetup{%
+    $if(urlcolor)$urlcolor=$urlcolor$,$endif$%
+    linkcolor=black,citecolor=black,colorlinks=true%
+  }
+
 
 
 %----------------------------------------------------------------------------------------
