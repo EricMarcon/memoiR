@@ -433,13 +433,23 @@ Some text for this block.
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <pre><code>chaptersummary: In a Nutshell</code></pre>
 </div>
-<div id="documentation" class="section level2" number="2.11">
+<div id="local-table-of-contents" class="section level2" number="2.11">
 <h2>
-<span class="header-section-number">2.11</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.11</span> Local table of contents<a class="anchor" aria-label="anchor" href="#local-table-of-contents"><i class="fas fa-link"></i></a>
 </h2>
-<div id="user-documentation" class="section level3" number="2.11.1">
+<p>At the beginning of each chapter of the PDF document, a local table of content can be added with the following code:</p>
+<pre><code>\toc{1}</code></pre>
+<p>It is ignored in HTML.
+1 is the depth of the table of contents: sections of the chapters are included.
+It can be changed for 2 to display subsections too, and so on.</p>
+</div>
+<div id="documentation" class="section level2" number="2.12">
+<h2>
+<span class="header-section-number">2.12</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
+</h2>
+<div id="user-documentation" class="section level3" number="2.12.1">
 <h3>
-<span class="header-section-number">2.11.1</span> User documentation<a class="anchor" aria-label="anchor" href="#user-documentation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.12.1</span> User documentation<a class="anchor" aria-label="anchor" href="#user-documentation"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
@@ -447,9 +457,9 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level3" number="2.11.2">
+<div id="documentation-for-developers" class="section level3" number="2.12.2">
 <h3>
-<span class="header-section-number">2.11.2</span> Documentation for developers<a class="anchor" aria-label="anchor" href="#documentation-for-developers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.12.2</span> Documentation for developers<a class="anchor" aria-label="anchor" href="#documentation-for-developers"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -477,10 +487,11 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <li><a class="nav-link" href="#forcing-line-breaks"><span class="header-section-number">2.8</span> Forcing line breaks</a></li>
 <li><a class="nav-link" href="#sec:languages"><span class="header-section-number">2.9</span> Languages</a></li>
 <li><a class="nav-link" href="#chapter-summary"><span class="header-section-number">2.10</span> Chapter summary</a></li>
+<li><a class="nav-link" href="#local-table-of-contents"><span class="header-section-number">2.11</span> Local table of contents</a></li>
 <li>
-<a class="nav-link" href="#documentation"><span class="header-section-number">2.11</span> Documentation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#user-documentation"><span class="header-section-number">2.11.1</span> User documentation</a></li>
-<li><a class="nav-link" href="#documentation-for-developers"><span class="header-section-number">2.11.2</span> Documentation for developers</a></li>
+<a class="nav-link" href="#documentation"><span class="header-section-number">2.12</span> Documentation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#user-documentation"><span class="header-section-number">2.12.1</span> User documentation</a></li>
+<li><a class="nav-link" href="#documentation-for-developers"><span class="header-section-number">2.12.2</span> Documentation for developers</a></li>
 </ul>
 </li>
 </ul>
@@ -500,7 +511,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2022-06-08.</p>
+    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2022-06-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

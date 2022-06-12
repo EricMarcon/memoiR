@@ -55,6 +55,9 @@
 \setotherlanguage{fr-FR}
 \setotherlanguage{it}
 
+% localized quotes
+\usepackage[strict,autostyle]{csquotes}
+
 % Figures
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -67,11 +70,11 @@
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Additional packages
-\RequirePackage{natbib}             % Advanced Bibliography (citep...).
-\RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{breqn}              % Line breaks in equations
-\RequirePackage{url}                % Line breaks in url's
-\RequirePackage{enumitem}           % Line spacing in lists
+\usepackage {natbib}             % Advanced Bibliography (citep...).
+\usepackage {amsmath,amsfonts,amssymb}
+\usepackage {breqn}              % Line breaks in equations
+\usepackage {url}                % Line breaks in url's
+\usepackage {enumitem}           % Line spacing in lists
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
 
@@ -93,8 +96,12 @@
 \hyphenation{bio-di-ver-si-ty sap-lings}
 
 % hyperref comes last
-\RequirePackage{hyperref}           % Hypertext links, PDF bookmarks
-  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
+\usepackage {hyperref}           % Hypertext links, PDF bookmarks
+  \hypersetup{%
+    urlcolor=blue,%
+    linkcolor=black,citecolor=black,colorlinks=true%
+  }
+
 
 
 %----------------------------------------------------------------------------------------
@@ -267,7 +274,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpUeL1ku/simple_article/gallery/simple_article/bookdown_pdf_book/simple_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp6QFzcs/simple_article/gallery/simple_article/bookdown_pdf_book/simple_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -309,7 +316,7 @@ The text of the caption follows.
 
 In the figure chunk heading, the caption is called in the \texttt{fig.cap} field:
 
-\{r ChunkName, fig.cap=``(ref:ChunkName)''\}
+\{r ChunkName, fig.cap=\enquote{(ref:ChunkName)}\}
 
 In tables, the \texttt{caption} argument of the \texttt{kable()} function is used the same way.
 
@@ -475,7 +482,7 @@ The HMTL Document and all formats from the \textbf{rmdformats} packages are othe
 \subsection{Word document}\label{word-document}}
 
 Its content can be formatted or copied into a template.
-The standard text styles are ``First Paragraph'' and ``Body Text''.
+The standard text styles are \enquote{First Paragraph} and \enquote{Body Text}.
 
 The advantage of the Word format is to produce a manuscript for journals that do not support LaTeX.
 The bibliographic style of the journal is most likely available in \emph{.csl} format, which minimizes manual preparation.

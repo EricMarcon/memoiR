@@ -18,6 +18,7 @@ bibliography
 forcing-line-breaks
 sec:languages
 chapter-summary
+local-table-of-contents
 documentation
 user-documentation
 documentation-for-developers

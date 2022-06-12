@@ -130,6 +130,9 @@
 \setotherlanguage{fr-FR}
 \setotherlanguage{it}
 
+% localized quotes
+\usepackage[strict,autostyle]{csquotes}
+
 % BibLaTeX
 \usepackage[backend=biber,style=authoryear-ibid,isbn=false,backref=true,giveninits=true,uniquename=init,maxcitenames=2,maxbibnames=150,sorting=nyt,sortcites=false]{biblatex}
 \addbibresource{references.bib}
@@ -158,6 +161,43 @@
 % Applies to code blocks and R code results
 % code chunk options size='scriptsize' applies only to R code and results
 % if the code chunk sets a different size, \def\verbatim{...} is prioritary for code results 
+
+
+% memoiR dalef3 chapter style 
+% https://ctan.crest.fr/tex-archive/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
+\usepackage{soul}
+\definecolor{nicered}{rgb}{.647,.129,.149}
+\makeatletter
+\newlength\dlf@normtxtw
+\setlength\dlf@normtxtw{\textwidth}
+\def\myhelvetfont{\def\sfdefault{mdput}}
+\newsavebox{\feline@chapter}
+\newcommand\feline@chapter@marker[1][4cm]{%
+  \sbox\feline@chapter{%
+    \resizebox{!}{#1}{\fboxsep=1pt%
+	  \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
+	}}%
+  \rotatebox{90}{%
+    \resizebox{%
+	  \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
+	{!}{\scshape\so\@chapapp}}\quad%
+  \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
+ }
+\newcommand\feline@chm[1][4cm]{%
+  \sbox\feline@chapter{\feline@chapter@marker[#1]}%
+  \makebox[0pt][l]{% aka \rlap
+    \makebox[1cm][r]{\usebox\feline@chapter}%
+  }}
+\makechapterstyle{daleif1}{
+  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
+  \renewcommand\afterchapternum{\par\vskip\midchapskip}
+  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+}
+\makeatother
 
 
 % Layout
@@ -214,6 +254,17 @@
 \makeatother
 
 % Figure captions and footnotes in outer margins
+
+
+% Local toc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{titletoc}
+\newcommand{\toc}[1]{%
+  \startcontents[chapters]%
+  \printcontents[chapters]{}{1}[#1]{}%
+  ~\newline%
+}
 
 
 % Main title page with filigrane
@@ -283,7 +334,6 @@
 %% Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[strict,autostyle]{csquotes}
 % Repeated citation as author-year-title instead of author-title (modification of footcite:note in verbose-inote.cbx)
 
 %% Table of Contents
@@ -307,7 +357,7 @@
   colorlinks=true,
   linkcolor=Maroon,
   citecolor=Blue,
-  urlcolor=Blue,
+  urlcolor=blue,
   breaklinks=true}
 
 % Don't use monospace font for urls
@@ -321,51 +371,13 @@
 
 \author{Authors' names}
 
-\date{2022-06-08}
+\date{2022-06-12}
 
 
 % Include headers (preamble.tex) here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Add LaTeX code into the preamble of the document here
 \hyphenation{bio-di-ver-si-ty sap-lings}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% memoiR dalef3 chapter style 
-% https://ctan.crest.fr/tex-archive/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
-\usepackage{soul}
-\definecolor{nicered}{rgb}{.647,.129,.149}
-\makeatletter
-\newlength\dlf@normtxtw
-\setlength\dlf@normtxtw{\textwidth}
-\def\myhelvetfont{\def\sfdefault{mdput}}
-\newsavebox{\feline@chapter}
-\newcommand\feline@chapter@marker[1][4cm]{%
-  \sbox\feline@chapter{%
-    \resizebox{!}{#1}{\fboxsep=1pt%
-	  \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
-	}}%
-  \rotatebox{90}{%
-    \resizebox{%
-	  \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
-	{!}{\scshape\so\@chapapp}}\quad%
-  \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
- }
-\newcommand\feline@chm[1][4cm]{%
-  \sbox\feline@chapter{\feline@chapter@marker[#1]}%
-  \makebox[0pt][l]{% aka \rlap
-    \makebox[1cm][r]{\usebox\feline@chapter}%
-  }}
-\makechapterstyle{daleif1}{
-  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
-  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
-  \renewcommand\chapternamenum{}
-  \renewcommand\printchaptername{}
-  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
-  \renewcommand\afterchapternum{\par\vskip\midchapskip}
-  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
-}
-\makeatother
 
 
 % End of preamble
@@ -509,8 +521,8 @@ The cover will be:
 
 Delete one of the two instructions in the header or both covers will be built, like in the gallery\footnote{\url{https://ericmarcon.github.io/memoiR/gallery/memoir/MyBook.pdf}}.
 
-The languages are specified according to the IETF language tags, such as ``en-US''.
-The main language (\texttt{lang}) is that of the structure of the document, translating elements such as ``chapter''.
+The languages are specified according to the IETF language tags, such as \enquote{en-US}.
+The main language (\texttt{lang}) is that of the structure of the document, translating elements such as \enquote{chapter}.
 The other languages (\texttt{otherlangs}) can be used to switch language inside the PDF document to benefit from correct hyphenation.
 
 The name of the \texttt{.bib} file containing the references is in \texttt{bibliography}.
@@ -735,7 +747,7 @@ In the text, the italicized parts are surrounded by a star or an underscore (\te
 \hypertarget{r-code}{%
 \section{R code}\label{r-code}}
 
-R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the ``Insert a new code chunk'' button above the source code window in RStudio.
+R code is included in code chunks (\emph{code chunks}) that are easily created by clicking on the \enquote{Insert a new code chunk} button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
 
@@ -758,7 +770,7 @@ The most useful options are:
   \texttt{warning=FALSE} to hide warnings.
 \end{itemize}
 
-The default options are declared in the code snippet named ``Options'' at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
+The default options are declared in the code snippet named \enquote{Options} at the beginning of the Markdown document, in the \texttt{opts\_chunk\$set()} function.
 The \texttt{echo} option should be set to \texttt{FALSE} by default for a scientific article for example.
 
 When it is \texttt{TRUE}, the code is printed as follows
@@ -843,7 +855,7 @@ The figure \ref{fig:pressure2} benefits from an improved caption.
 
 \normalsize
 
-The text in \texttt{fig.cap}, ``Title of figure'' previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
+The text in \texttt{fig.cap}, \enquote{Title of figure} previously, is replaced by \texttt{(ref:pressure)} \emph{within the quotation marks} and the caption is entered in a paragraph starting with \texttt{(ref:pressure)} followed by a space.
 Captions are limited to a single paragraph.
 They should not contain bibliographic references or references to the figures may not find them: if necessary, cite the source of a figure in the text.
 
@@ -954,7 +966,7 @@ csl:file_name.csl
 \end{verbatim}
 
 in the document header and copying the \emph{.csl} style file into the project folder.
-The default style (if no csl is specified) is ``chicago-author-date''.
+The default style (if no csl is specified) is \enquote{chicago-author-date}.
 Several thousand styles are available \footnote{\url{https://github.com/citation-style-language/styles}}.
 
 For PDF documents, the bibliography is handled by BibLaTeX, see section \ref{index}.
@@ -991,7 +1003,7 @@ Name matches are listed in table 3 of the polyglossia package documentation\foot
 \section{Chapter summary}\label{chapter-summary}}
 
 The take-home message of each chapter can be displayed in a box, see the beginning of this one.
-The code is that of a code block of type ``Summary''.
+The code is that of a code block of type \enquote{Summary}.
 
 \begin{verbatim}
 ```{block, type='Summary'}
@@ -1004,6 +1016,19 @@ Its heading text is set in the header of \texttt{index.Rmd}:
 \begin{verbatim}
 chaptersummary: In a Nutshell
 \end{verbatim}
+
+\hypertarget{local-table-of-contents}{%
+\section{Local table of contents}\label{local-table-of-contents}}
+
+At the beginning of each chapter of the PDF document, a local table of content can be added with the following code:
+
+\begin{verbatim}
+\toc{1}
+\end{verbatim}
+
+It is ignored in HTML.
+1 is the depth of the table of contents: sections of the chapters are included.
+It can be changed for 2 to display subsections too, and so on.
 
 \hypertarget{documentation}{%
 \section{Documentation}\label{documentation}}

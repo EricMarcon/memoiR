@@ -23,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2022-06-08" />
+<meta name="date" content="2022-06-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,10 +180,11 @@ div.csl-indent {
 <li class="chapter" data-level="2.8" data-path="syntax.html"><a href="syntax.html#forcing-line-breaks"><i class="fa fa-check"></i><b>2.8</b> Forcing line breaks</a></li>
 <li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#sec:languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
 <li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
-<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.11</b> Documentation</a>
+<li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#local-table-of-contents"><i class="fa fa-check"></i><b>2.11</b> Local table of contents</a></li>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.12</b> Documentation</a>
 <ul>
-<li class="chapter" data-level="2.11.1" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.11.1</b> User documentation</a></li>
-<li class="chapter" data-level="2.11.2" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.11.2</b> Documentation for developers</a></li>
+<li class="chapter" data-level="2.12.1" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.12.1</b> User documentation</a></li>
+<li class="chapter" data-level="2.12.2" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12.2</b> Documentation for developers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -534,18 +535,26 @@ Some text for this block.
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <pre><code>chaptersummary: In a Nutshell</code></pre>
 </div>
-<div id="documentation" class="section level2 hasAnchor" number="2.11">
-<h2><span class="header-section-number">2.11</span> Documentation<a href="syntax.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="user-documentation" class="section level3 hasAnchor" number="2.11.1">
-<h3><span class="header-section-number">2.11.1</span> User documentation<a href="syntax.html#user-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="local-table-of-contents" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Local table of contents<a href="syntax.html#local-table-of-contents" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At the beginning of each chapter of the PDF document, a local table of content can be added with the following code:</p>
+<pre><code>\toc{1}</code></pre>
+<p>It is ignored in HTML.
+1 is the depth of the table of contents: sections of the chapters are included.
+It can be changed for 2 to display subsections too, and so on.</p>
+</div>
+<div id="documentation" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> Documentation<a href="syntax.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="user-documentation" class="section level3 hasAnchor" number="2.12.1">
+<h3><span class="header-section-number">2.12.1</span> User documentation<a href="syntax.html#user-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
 All the necessary details for writing (writing equations, cross-references, etc.) are given.</li>
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level3 hasAnchor" number="2.11.2">
-<h3><span class="header-section-number">2.11.2</span> Documentation for developers<a href="syntax.html#documentation-for-developers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="documentation-for-developers" class="section level3 hasAnchor" number="2.12.2">
+<h3><span class="header-section-number">2.12.2</span> Documentation for developers<a href="syntax.html#documentation-for-developers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>
