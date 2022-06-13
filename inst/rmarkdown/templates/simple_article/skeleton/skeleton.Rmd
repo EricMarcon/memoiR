@@ -27,6 +27,11 @@ urlcolor: blue
 always_allow_html: yes
 csquotes: true
 output:
+  bookdown::html_document2:
+    toc: yes
+    toc_float: yes
+    css: style.css
+    code_folding: show
   bookdown::pdf_book:
     template: latex/template.tex
     citation_package: natbib
@@ -41,9 +46,6 @@ output:
       download: "pdf"
       sharing:
         github: yes
-  bookdown::html_document2:
-    toc: yes
-    toc_float: yes
 ---
 
 ```{r DoNotModify, include=FALSE}

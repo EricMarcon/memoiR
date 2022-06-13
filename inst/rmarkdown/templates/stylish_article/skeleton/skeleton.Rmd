@@ -65,8 +65,8 @@ output:
     base_format: distill::distill_article
     toc: yes
     toc_float: yes
-    code_folding: yes
-    highlight_downlit: yes    
+    code_folding: show
+    highlight_downlit: yes
   bookdown::word_document2: default
 ---
 
