@@ -369,7 +369,9 @@ $if(maintitlepage)$
   \end{textblock*}
   \begin{textblock*}{\textwidth}[0,1](\paperwidth-\spinemargin-\textwidth, \uppermargin+\textheight+\footskip)
     \centering
-    \includegraphics[width=\paperwidth/4]{logo}\\ \bigskip
+    $if(maintitlepage.logo)$
+      \includegraphics[width=\paperwidth/4]{logo}\\ \bigskip
+    $endif$
     #2
   \end{textblock*}
   ~\\ % Print a character or the page will not exist

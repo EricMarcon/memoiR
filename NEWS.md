@@ -1,4 +1,4 @@
-# memoiR 1.1-4.9012
+# memoiR 1.1-4.9013
 
 ## Improvements
 
@@ -10,6 +10,7 @@
 * Local tocs in PDF memoirs.
 * Localized quotes in PDF.
 * `urlcolor: blue` available in all templates.
+* the logo in the epigraph of the PDF output of memoirs is now declared in the YAML header.
 
 ## Bug Correction
 
