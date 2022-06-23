@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">memoiR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1-4.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1-4.9012</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,8 @@
 <p>Or build a cover based on the options declared as <code>maintitlepage</code>. The title and authors of the document will be printed with the current date on the cover page. An illustration (example <a href="https://ericmarcon.github.io/travailleR/travailleR.pdf" class="external-link">here</a> can be added at the bottom right of the page, declared as <code>filigrane</code>:</p>
 <pre><code><span class="va">maintitlepage</span><span class="op">:</span>
   <span class="va">filigrane</span><span class="op">:</span> <span class="va">images</span><span class="op">/</span><span class="va">filigrane.png</span></code></pre>
-<p>The verso page is made of an epigraph at the top and credits at the bottom. Their content must be written in plain LaTeX rather than Markdown. Build on the template.</p>
+<p>The verso page is made of an epigraph at the top and credits at the bottom. Their content must be written in plain LaTeX rather than Markdown. Build on the template. Note that the <code>maintitlepage:</code> key must contain something to be taken into account, so if you use none of <code>epigraph:</code>, <code>credits</code> or <code>filigrane:</code>, just write:</p>
+<pre><code><span class="va">maintitlepage</span><span class="op">:</span> <span class="va">true</span></code></pre>
 <p>Of course, only one of the two covers should be kept even though the template prints both. Delete or comment out the undesired option, either <code>pdftitlepage</code> or the whole <code>maintitlepage</code>.</p>
 </div>
 <div class="section level3">
@@ -193,7 +194,7 @@ spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.</co
 </li>
 </ul>
 <p>The LaTeX packages must be installed in the LaTeX distribution. If <strong>tinytex</strong> installed it, it can do that too:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">tinytex</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tinytex/man/tlmgr.html" class="external-link">tlmgr_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tex-gyre"</span>, <span class="st">"tex-gyre-math"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This command must be added to the GitHub Action script created by <code><a href="../reference/build_ghworkflow.html">build_ghworkflow()</a></code>, just after <code><a href="https://rdrr.io/pkg/tinytex/man/install_tinytex.html" class="external-link">tinytex::install_tinytex()</a></code>. <code><a href="../reference/build_ghworkflow.html">build_ghworkflow()</a></code> does it automatically if it recognizes the font, see below.</p>
 <p>The fonts are declared in the header of <code>index.Rmd</code>. XeLaTeX is not able to find fonts by their name if they are not installed at the system level, namely when installed by packages. They must be declared by their file names, which are in general their names without spaces, in lower case. The main font options allow building the actual file names and are not likely to be changed.</p>
