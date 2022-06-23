@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">memoiR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1-4.9012</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1-4.9013</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
 <p>Or build a cover based on the options declared as <code>maintitlepage</code>. The title and authors of the document will be printed with the current date on the cover page. An illustration (example <a href="https://ericmarcon.github.io/travailleR/travailleR.pdf" class="external-link">here</a> can be added at the bottom right of the page, declared as <code>filigrane</code>:</p>
 <pre><code><span class="va">maintitlepage</span><span class="op">:</span>
   <span class="va">filigrane</span><span class="op">:</span> <span class="va">images</span><span class="op">/</span><span class="va">filigrane.png</span></code></pre>
-<p>The verso page is made of an epigraph at the top and credits at the bottom. Their content must be written in plain LaTeX rather than Markdown. Build on the template. Note that the <code>maintitlepage:</code> key must contain something to be taken into account, so if you use none of <code>epigraph:</code>, <code>credits</code> or <code>filigrane:</code>, just write:</p>
+<p>The verso page is made of an epigraph at the top and credits at the bottom. Their content must be written in plain LaTeX rather than Markdown. Build on the template. A logo can be added to the credits. Note that the <code>maintitlepage:</code> key must contain something to be taken into account, so if you use none of <code>epigraph:</code>, <code>credits</code>, <code>logo</code> or <code>filigrane:</code>, just write:</p>
 <pre><code><span class="va">maintitlepage</span><span class="op">:</span> <span class="va">true</span></code></pre>
 <p>Of course, only one of the two covers should be kept even though the template prints both. Delete or comment out the undesired option, either <code>pdftitlepage</code> or the whole <code>maintitlepage</code>.</p>
 </div>
