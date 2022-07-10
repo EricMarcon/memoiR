@@ -1,5 +1,5 @@
 pandoc: 2.14.2
-pkgdown: 2.0.4
+pkgdown: 2.0.5
 pkgdown_sha: ~
 articles:
   LaTeX: LaTeX.html
@@ -8,7 +8,7 @@ articles:
   figures: figures.html
   upgrade: upgrade.html
   memoiR: memoiR.html
-last_built: 2022-06-23T13:45Z
+last_built: 2022-07-10T11:54Z
 urls:
   reference: https://EricMarcon.github.io/memoiR/reference
   article: https://EricMarcon.github.io/memoiR/articles
