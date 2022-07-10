@@ -28,7 +28,7 @@ testthat::test_that("A Simple Article can be built", {
   if (require("rmdformats"))
     rmarkdown::render(input=list.files(pattern="*.Rmd"), 
                     output_format="rmdformats::downcute")
-  # render: knit to pdf (interactively: clic the Knit button)
+  # render: knit to pdf (interactively: click the Knit button)
   rmarkdown::render(input=list.files(pattern="*.Rmd"), 
                     output_format="bookdown::pdf_book")
   # Build GitHub Pages
