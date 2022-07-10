@@ -291,14 +291,13 @@ An example is given here, to define the Pythagorean theorem.
 For a right triangle, if $c$ denotes the length of the hypotenuse
 and $a$ and $b$ denote the lengths of the other two sides, we have
 
-$$a^2 + b^2 = c^3$$
+$$a^2 + b^2 = c^2$$
 :::
 
 These boxes are included in the document as fenced blocks, whose syntax is as follows:
 ```
-(ref:pythkao) Pythagorean theorem
-
-:::{#pythkao .greybox data-latex='[frametitle=(ref:pythkao)]' title='(ref:pythkao)'}
+:::{#pythkao .greybox data-latex='[frametitle=Pythagorean theorem]'
+title='Pythagorean theorem'}
 For a right triangle, if $c$ denotes the length of the hypotenuse
 and $a$ and $b$ denote the lengths of the other two sides, we have
 
@@ -309,10 +308,13 @@ $$a^2 + b^2 = c^3$$
 The text block is delimited by `:::` instead of the backquotes of code chunks.
 The header of the block contains its name, prefixed by `#`.
 The type of block follows, here: `.greybox`.
-Arguments `data-latex` and `title` contain the title of the box in the PDF and HTML outputs, so a referenced text is useful to avoid repeating it.
+Arguments `data-latex` and `title` contain the title of the box in the PDF and HTML outputs, so a referenced text caption is useful to avoid repeating it.
+Enter it in a paragraph starting with `(ref:pythkao)` followed by a space. 
+Then, call the text with the code `(ref:pythkao)`.
+This technique is identical to that used for elaborate figure captions.
 Note the particular syntax of the title in the PDF output.
 
-Grey text boxes (`.greybox`) are allowed by default.
+Grey text boxes (`.greybox`) are provided by the memoir template.
 Advanced users can define other colored boxes, say a yellow box, following the next steps:
 
 - Obtain the HTML code of the color, for instance with a color picker[^824]. `ffff66` is suitable for yellow.
@@ -320,7 +322,15 @@ Advanced users can define other colored boxes, say a yellow box, following the n
 ```
 \definecolor{yellow}{HTML}{FFFF66}
 ```
-- Also define the text box environment by duplicating the `greybox` item and replacing `grey` with `yellow` three times.
+- Also define the text box environment by duplicating the `greybox` item and replacing `grey` with `yellow` three times:
+```
+\newmdenv[
+	style=boxstyle,
+	backgroundcolor=yellow,
+	frametitlebackgroundcolor=yellow,
+]{yellowbox}
+
+```
 - In `style.css`, duplicate all lines that define "Grey text box", including the starting and ending comment lines.
 Replace `.greybox` with `.yellowbox` everywhere, "Grey" with "Yellow" in the comments and change the `background-color` with `#ffff66`.
 - In the text, use the same syntax as above but declare the class of the fenced block as `.yellowbox` instead of `.greybox`.
