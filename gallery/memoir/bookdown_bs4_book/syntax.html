@@ -443,13 +443,63 @@ Some text for this block.
 1 is the depth of the table of contents: sections of the chapters are included.
 It can be changed for 2 to display subsections too, and so on.</p>
 </div>
-<div id="documentation" class="section level2" number="2.12">
+<div id="boxed-text" class="section level2" number="2.12">
 <h2>
-<span class="header-section-number">2.12</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.12</span> Boxed text<a class="anchor" aria-label="anchor" href="#boxed-text"><i class="fas fa-link"></i></a>
 </h2>
-<div id="user-documentation" class="section level3" number="2.12.1">
+<p>Boxed text allows summarizing important points out of the main text.
+An example is given here, to define the Pythagorean theorem.</p>
+
+<div id="pythkao" class="greybox" title="Pythagorean theorem">
+<p>For a right triangle, if <span class="math inline">\(c\)</span> denotes the length of the hypotenuse
+and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> denote the lengths of the other two sides, we have</p>
+<p><span class="math display">\[a^2 + b^2 = c^2\]</span></p>
+</div>
+<p>These boxes are included in the document as fenced blocks, whose syntax is as follows:</p>
+<pre><code>:::{#pythkao .greybox data-latex='[frametitle=Pythagorean theorem]'
+title='Pythagorean theorem'}
+For a right triangle, if $c$ denotes the length of the hypotenuse
+and $a$ and $b$ denote the lengths of the other two sides, we have
+
+$$a^2 + b^2 = c^3$$
+:::</code></pre>
+<p>The text block is delimited by <code>:::</code> instead of the backquotes of code chunks.
+The header of the block contains its name, prefixed by <code>#</code>.
+The type of block follows, here: <code>.greybox</code>.
+Arguments <code>data-latex</code> and <code>title</code> contain the title of the box in the PDF and HTML outputs, so a referenced text caption is useful to avoid repeating it.
+Enter it in a paragraph starting with <code>(ref:pythkao)</code> followed by a space.
+Then, call the text with the code <code>(ref:pythkao)</code>.
+This technique is identical to that used for elaborate figure captions.
+Note the particular syntax of the title in the PDF output.</p>
+<p>Grey text boxes (<code>.greybox</code>) are provided by the memoir template.
+Advanced users can define other colored boxes, say a yellow box, following the next steps:</p>
+<ul>
+<li>Obtain the HTML code of the color, for instance with a color picker<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.w3schools.com/colors/colors_picker.asp" class="uri"&gt;https://www.w3schools.com/colors/colors_picker.asp&lt;/a&gt;&lt;/p&gt;'><sup>6</sup></a>. <code>ffff66</code> is suitable for yellow.</li>
+<li>In <code>latex/preamble.tex</code>, define the color by adding the following line below that defining the grey color:</li>
+</ul>
+<pre><code>\definecolor{yellow}{HTML}{FFFF66}</code></pre>
+<ul>
+<li>Also define the text box environment by duplicating the <code>greybox</code> item and replacing <code>grey</code> with <code>yellow</code> three times:</li>
+</ul>
+<pre><code>\newmdenv[
+    style=boxstyle,
+    backgroundcolor=yellow,
+    frametitlebackgroundcolor=yellow,
+]{yellowbox}
+</code></pre>
+<ul>
+<li>In <code>style.css</code>, duplicate all lines that define “Grey text box”, including the starting and ending comment lines.
+Replace <code>.greybox</code> with <code>.yellowbox</code> everywhere, “Grey” with “Yellow” in the comments and change the <code>background-color</code> with <code>#ffff66</code>.</li>
+<li>In the text, use the same syntax as above but declare the class of the fenced block as <code>.yellowbox</code> instead of <code>.greybox</code>.</li>
+</ul>
+</div>
+<div id="documentation" class="section level2" number="2.13">
+<h2>
+<span class="header-section-number">2.13</span> Documentation<a class="anchor" aria-label="anchor" href="#documentation"><i class="fas fa-link"></i></a>
+</h2>
+<div id="user-documentation" class="section level3" number="2.13.1">
 <h3>
-<span class="header-section-number">2.12.1</span> User documentation<a class="anchor" aria-label="anchor" href="#user-documentation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.13.1</span> User documentation<a class="anchor" aria-label="anchor" href="#user-documentation"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
@@ -457,9 +507,9 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level3" number="2.12.2">
+<div id="documentation-for-developers" class="section level3" number="2.13.2">
 <h3>
-<span class="header-section-number">2.12.2</span> Documentation for developers<a class="anchor" aria-label="anchor" href="#documentation-for-developers"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.13.2</span> Documentation for developers<a class="anchor" aria-label="anchor" href="#documentation-for-developers"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -488,10 +538,11 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <li><a class="nav-link" href="#sec:languages"><span class="header-section-number">2.9</span> Languages</a></li>
 <li><a class="nav-link" href="#chapter-summary"><span class="header-section-number">2.10</span> Chapter summary</a></li>
 <li><a class="nav-link" href="#local-table-of-contents"><span class="header-section-number">2.11</span> Local table of contents</a></li>
+<li><a class="nav-link" href="#boxed-text"><span class="header-section-number">2.12</span> Boxed text</a></li>
 <li>
-<a class="nav-link" href="#documentation"><span class="header-section-number">2.12</span> Documentation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#user-documentation"><span class="header-section-number">2.12.1</span> User documentation</a></li>
-<li><a class="nav-link" href="#documentation-for-developers"><span class="header-section-number">2.12.2</span> Documentation for developers</a></li>
+<a class="nav-link" href="#documentation"><span class="header-section-number">2.13</span> Documentation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#user-documentation"><span class="header-section-number">2.13.1</span> User documentation</a></li>
+<li><a class="nav-link" href="#documentation-for-developers"><span class="header-section-number">2.13.2</span> Documentation for developers</a></li>
 </ul>
 </li>
 </ul>

@@ -19,6 +19,7 @@ forcing-line-breaks
 sec:languages
 chapter-summary
 local-table-of-contents
+boxed-text
 documentation
 user-documentation
 documentation-for-developers

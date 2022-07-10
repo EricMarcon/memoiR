@@ -267,6 +267,28 @@
 }
 
 
+% Text boxes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define a style for mdframed boxes
+\mdfdefinestyle{boxstyle}{
+	skipabove=1.5\topskip,
+	skipbelow=.5\topskip,
+	rightmargin=0pt,
+	leftmargin=0pt,
+	innerrightmargin=7pt,
+	innerleftmargin=7pt,
+	topline=false,
+	bottomline=false,
+	rightline=false,
+	leftline=false,
+	frametitlerule=true,
+	linecolor=black,
+	fontcolor=black,
+	frametitlealignment=\noindent
+}
+
+
 % Main title page with filigrane
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -378,6 +400,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Add LaTeX code into the preamble of the document here
 \hyphenation{bio-di-ver-si-ty sap-lings}
+
+% Define colors for text boxes
+\definecolor{grey}{HTML}{F5F5F5}
+
+% Define text box environments
+\newmdenv[
+	style=boxstyle,
+	backgroundcolor=grey,
+	frametitlebackgroundcolor=grey,
+]{greybox}
 
 
 % End of preamble
@@ -1029,6 +1061,82 @@ At the beginning of each chapter of the PDF document, a local table of content c
 It is ignored in HTML.
 1 is the depth of the table of contents: sections of the chapters are included.
 It can be changed for 2 to display subsections too, and so on.
+
+\hypertarget{boxed-text}{%
+\section{Boxed text}\label{boxed-text}}
+
+Boxed text allows summarizing important points out of the main text.
+An example is given here, to define the Pythagorean theorem.
+
+
+
+\leavevmode\vadjust pre{\hypertarget{pythkao}{}}%
+\begin{greybox}[frametitle=Pythagorean theorem]
+For a right triangle, if \(c\) denotes the length of the hypotenuse
+and \(a\) and \(b\) denote the lengths of the other two sides, we have
+
+\[a^2 + b^2 = c^2\]
+
+\end{greybox}
+
+These boxes are included in the document as fenced blocks, whose syntax is as follows:
+
+\begin{verbatim}
+:::{#pythkao .greybox data-latex='[frametitle=Pythagorean theorem]'
+title='Pythagorean theorem'}
+For a right triangle, if $c$ denotes the length of the hypotenuse
+and $a$ and $b$ denote the lengths of the other two sides, we have
+
+$$a^2 + b^2 = c^3$$
+:::
+\end{verbatim}
+
+The text block is delimited by \texttt{:::} instead of the backquotes of code chunks.
+The header of the block contains its name, prefixed by \texttt{\#}.
+The type of block follows, here: \texttt{.greybox}.
+Arguments \texttt{data-latex} and \texttt{title} contain the title of the box in the PDF and HTML outputs, so a referenced text caption is useful to avoid repeating it.
+Enter it in a paragraph starting with \texttt{(ref:pythkao)} followed by a space.
+Then, call the text with the code \texttt{(ref:pythkao)}.
+This technique is identical to that used for elaborate figure captions.
+Note the particular syntax of the title in the PDF output.
+
+Grey text boxes (\texttt{.greybox}) are provided by the memoir template.
+Advanced users can define other colored boxes, say a yellow box, following the next steps:
+
+\begin{itemize}
+\tightlist
+\item
+  Obtain the HTML code of the color, for instance with a color picker\footnote{\url{https://www.w3schools.com/colors/colors_picker.asp}}. \texttt{ffff66} is suitable for yellow.
+\item
+  In \texttt{latex/preamble.tex}, define the color by adding the following line below that defining the grey color:
+\end{itemize}
+
+\begin{verbatim}
+\definecolor{yellow}{HTML}{FFFF66}
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Also define the text box environment by duplicating the \texttt{greybox} item and replacing \texttt{grey} with \texttt{yellow} three times:
+\end{itemize}
+
+\begin{verbatim}
+\newmdenv[
+    style=boxstyle,
+    backgroundcolor=yellow,
+    frametitlebackgroundcolor=yellow,
+]{yellowbox}
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  In \texttt{style.css}, duplicate all lines that define \enquote{Grey text box}, including the starting and ending comment lines.
+  Replace \texttt{.greybox} with \texttt{.yellowbox} everywhere, \enquote{Grey} with \enquote{Yellow} in the comments and change the \texttt{background-color} with \texttt{\#ffff66}.
+\item
+  In the text, use the same syntax as above but declare the class of the fenced block as \texttt{.yellowbox} instead of \texttt{.greybox}.
+\end{itemize}
 
 \hypertarget{documentation}{%
 \section{Documentation}\label{documentation}}

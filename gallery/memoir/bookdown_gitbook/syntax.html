@@ -181,10 +181,11 @@ div.csl-indent {
 <li class="chapter" data-level="2.9" data-path="syntax.html"><a href="syntax.html#sec:languages"><i class="fa fa-check"></i><b>2.9</b> Languages</a></li>
 <li class="chapter" data-level="2.10" data-path="syntax.html"><a href="syntax.html#chapter-summary"><i class="fa fa-check"></i><b>2.10</b> Chapter summary</a></li>
 <li class="chapter" data-level="2.11" data-path="syntax.html"><a href="syntax.html#local-table-of-contents"><i class="fa fa-check"></i><b>2.11</b> Local table of contents</a></li>
-<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.12</b> Documentation</a>
+<li class="chapter" data-level="2.12" data-path="syntax.html"><a href="syntax.html#boxed-text"><i class="fa fa-check"></i><b>2.12</b> Boxed text</a></li>
+<li class="chapter" data-level="2.13" data-path="syntax.html"><a href="syntax.html#documentation"><i class="fa fa-check"></i><b>2.13</b> Documentation</a>
 <ul>
-<li class="chapter" data-level="2.12.1" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.12.1</b> User documentation</a></li>
-<li class="chapter" data-level="2.12.2" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.12.2</b> Documentation for developers</a></li>
+<li class="chapter" data-level="2.13.1" data-path="syntax.html"><a href="syntax.html#user-documentation"><i class="fa fa-check"></i><b>2.13.1</b> User documentation</a></li>
+<li class="chapter" data-level="2.13.2" data-path="syntax.html"><a href="syntax.html#documentation-for-developers"><i class="fa fa-check"></i><b>2.13.2</b> Documentation for developers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -543,18 +544,66 @@ Some text for this block.
 1 is the depth of the table of contents: sections of the chapters are included.
 It can be changed for 2 to display subsections too, and so on.</p>
 </div>
-<div id="documentation" class="section level2 hasAnchor" number="2.12">
-<h2><span class="header-section-number">2.12</span> Documentation<a href="syntax.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="user-documentation" class="section level3 hasAnchor" number="2.12.1">
-<h3><span class="header-section-number">2.12.1</span> User documentation<a href="syntax.html#user-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="boxed-text" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> Boxed text<a href="syntax.html#boxed-text" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Boxed text allows summarizing important points out of the main text.
+An example is given here, to define the Pythagorean theorem.</p>
+
+<div id="pythkao" class="greybox" title="Pythagorean theorem">
+<p>For a right triangle, if <span class="math inline">\(c\)</span> denotes the length of the hypotenuse
+and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> denote the lengths of the other two sides, we have</p>
+<p><span class="math display">\[a^2 + b^2 = c^2\]</span></p>
+</div>
+<p>These boxes are included in the document as fenced blocks, whose syntax is as follows:</p>
+<pre><code>:::{#pythkao .greybox data-latex=&#39;[frametitle=Pythagorean theorem]&#39;
+title=&#39;Pythagorean theorem&#39;}
+For a right triangle, if $c$ denotes the length of the hypotenuse
+and $a$ and $b$ denote the lengths of the other two sides, we have
+
+$$a^2 + b^2 = c^3$$
+:::</code></pre>
+<p>The text block is delimited by <code>:::</code> instead of the backquotes of code chunks.
+The header of the block contains its name, prefixed by <code>#</code>.
+The type of block follows, here: <code>.greybox</code>.
+Arguments <code>data-latex</code> and <code>title</code> contain the title of the box in the PDF and HTML outputs, so a referenced text caption is useful to avoid repeating it.
+Enter it in a paragraph starting with <code>(ref:pythkao)</code> followed by a space.
+Then, call the text with the code <code>(ref:pythkao)</code>.
+This technique is identical to that used for elaborate figure captions.
+Note the particular syntax of the title in the PDF output.</p>
+<p>Grey text boxes (<code>.greybox</code>) are provided by the memoir template.
+Advanced users can define other colored boxes, say a yellow box, following the next steps:</p>
+<ul>
+<li>Obtain the HTML code of the color, for instance with a color picker<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. <code>ffff66</code> is suitable for yellow.</li>
+<li>In <code>latex/preamble.tex</code>, define the color by adding the following line below that defining the grey color:</li>
+</ul>
+<pre><code>\definecolor{yellow}{HTML}{FFFF66}</code></pre>
+<ul>
+<li>Also define the text box environment by duplicating the <code>greybox</code> item and replacing <code>grey</code> with <code>yellow</code> three times:</li>
+</ul>
+<pre><code>\newmdenv[
+    style=boxstyle,
+    backgroundcolor=yellow,
+    frametitlebackgroundcolor=yellow,
+]{yellowbox}
+</code></pre>
+<ul>
+<li>In <code>style.css</code>, duplicate all lines that define “Grey text box”, including the starting and ending comment lines.
+Replace <code>.greybox</code> with <code>.yellowbox</code> everywhere, “Grey” with “Yellow” in the comments and change the <code>background-color</code> with <code>#ffff66</code>.</li>
+<li>In the text, use the same syntax as above but declare the class of the fenced block as <code>.yellowbox</code> instead of <code>.greybox</code>.</li>
+</ul>
+</div>
+<div id="documentation" class="section level2 hasAnchor" number="2.13">
+<h2><span class="header-section-number">2.13</span> Documentation<a href="syntax.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="user-documentation" class="section level3 hasAnchor" number="2.13.1">
+<h3><span class="header-section-number">2.13.1</span> User documentation<a href="syntax.html#user-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The book <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> by Yihui Xie, the author of <strong>bookdown</strong> and <strong>knitr</strong>.
 All the necessary details for writing (writing equations, cross-references, etc.) are given.</li>
 <li>The <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheat sheet</a> for the syntax.</li>
 </ul>
 </div>
-<div id="documentation-for-developers" class="section level3 hasAnchor" number="2.12.2">
-<h3><span class="header-section-number">2.12.2</span> Documentation for developers<a href="syntax.html#documentation-for-developers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="documentation-for-developers" class="section level3 hasAnchor" number="2.13.2">
+<h3><span class="header-section-number">2.13.2</span> Documentation for developers<a href="syntax.html#documentation-for-developers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization">LaTeX file format customization</a>.</li>
 <li>The <a href="https://pandoc.org/MANUAL.html">Pandoc manual</a> for possible options in the YAML header.</li>
@@ -578,6 +627,7 @@ Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Defi
 <li id="fn3"><p><a href="https://rmarkdown.rstudio.com/lesson-1.html" class="uri">https://rmarkdown.rstudio.com/lesson-1.html</a><a href="syntax.html#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a><a href="syntax.html#fnref4" class="footnote-back">↩︎</a></p></li>
 <li id="fn5"><p><a href="http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf" class="uri">http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf</a><a href="syntax.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://www.w3schools.com/colors/colors_picker.asp" class="uri">https://www.w3schools.com/colors/colors_picker.asp</a><a href="syntax.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
