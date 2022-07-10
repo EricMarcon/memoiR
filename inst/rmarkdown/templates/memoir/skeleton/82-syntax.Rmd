@@ -267,6 +267,19 @@ Its heading text is set in the header of `index.Rmd`:
     chaptersummary: In a Nutshell
 
 
+## Local table of contents
+
+At the beginning of each chapter of the PDF document, a local table of content can be added with the following code:
+
+```
+\toc{1}
+```
+
+It is ignored in HTML.
+1 is the depth of the table of contents: sections of the chapters are included.
+It can be changed for 2 to display subsections too, and so on.
+
+
 ## Documentation
 
 ### User documentation

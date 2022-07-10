@@ -60,6 +60,11 @@ maintitlepage:
 The verso page is made of an epigraph at the top and credits at the bottom.
 Their content must be written in plain LaTeX rather than Markdown.
 Build on the template.
+A logo can be added to the credits.
+Note that the `maintitlepage:` key must contain something to be taken into account, so if you use none of `epigraph:`, `credits`, `logo` or `filigrane:`, just write:
+```
+maintitlepage: true
+```
 
 Of course, only one of the two covers should be kept even though the template prints both.
 Delete or comment out the undesired option, either `pdftitlepage` or the whole `maintitlepage`.

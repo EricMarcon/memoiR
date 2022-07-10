@@ -1,5 +1,8 @@
 url: https://EricMarcon.github.io/memoiR/
 
+template:
+  bootstrap: 5
+
 development:
   mode: auto
 
@@ -7,6 +10,7 @@ articles:
 - title: Articles
   navbar: ~
   contents:
+  - memoiR
   - articles/articles
   - articles/customize
   - articles/figures

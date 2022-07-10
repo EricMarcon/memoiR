@@ -22,6 +22,7 @@ maintitlepage:
     
     An explanatory sentence.
     Leave an empty line for line breaks.
+  logo: "images/logo.png"
 # ... or a PDF cover
 pdftitlepage: images/cover.pdf
 # Language
@@ -98,12 +99,15 @@ backcover:
 backcoverfontsize: normalsize
 # Figure cropping may be set to false if ghostscript is not installed
 fig_crop: true
+# URL color
+urlcolor: blue
 # Do not modify
 site: bookdown::bookdown_site
 always_allow_html: true
 graphics: true
 link-citations: true
 colorlinks: true
+csquotes: true
 ---
 
 <!-- HTML code necessary for key messages --> 
