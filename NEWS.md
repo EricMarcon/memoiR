@@ -1,16 +1,23 @@
-# memoiR 1.2-0.9000
+# memoiR 1.2-0.9001
 
 ## Improvements
 
-* full-width figures supported in memoirs.
-* bs4_book css added to memoir template to support *Summary* block style.
-* date format is localized by `build_ghworkflow()`.
-* distill format allowed for HTML articles.
-* better prevention of overfull lines in PDF articles.
 * Local tocs in PDF memoirs.
 * Localized quotes in PDF.
 * `urlcolor: blue` available in all templates.
-* the logo in the epigraph of the PDF output of memoirs is now declared in the YAML header.
+* The logo in the epigraph of the PDF output of memoirs is now declared in the YAML header.
+* Colored text blocks in memoirs. See the template's documentation.
+
+
+# memoiR 1.2-0
+
+## Improvements
+
+* Full-width figures supported in memoirs.
+* bs4_book css added to memoir template to support *Summary* block style.
+* Date format is localized by `build_ghworkflow()`.
+* distill format allowed for HTML articles.
+* Better prevention of overfull lines in PDF articles.
 
 ## Bug Correction
 
