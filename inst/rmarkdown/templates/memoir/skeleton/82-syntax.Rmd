@@ -285,9 +285,9 @@ It can be changed for 2 to display subsections too, and so on.
 Boxed text allows summarizing important points out of the main text.
 An example is given here, to define the Pythagorean theorem.
 
-(ref:pythkao) Pythagorean theorem
+(ref:pythbox) Pythagorean theorem
 
-:::{#pythkao .greybox data-latex='[frametitle=(ref:pythkao)]' title='(ref:pythkao)'}
+:::{#pythbox .greybox data-latex='[frametitle=(ref:pythbox)]' title='(ref:pythbox)'}
 For a right triangle, if $c$ denotes the length of the hypotenuse
 and $a$ and $b$ denote the lengths of the other two sides, we have
 
@@ -296,7 +296,7 @@ $$a^2 + b^2 = c^2$$
 
 These boxes are included in the document as fenced blocks, whose syntax is as follows:
 ```
-:::{#pythkao .greybox data-latex='[frametitle=Pythagorean theorem]'
+:::{#pythbox .greybox data-latex='[frametitle=Pythagorean theorem]'
 title='Pythagorean theorem'}
 For a right triangle, if $c$ denotes the length of the hypotenuse
 and $a$ and $b$ denote the lengths of the other two sides, we have
@@ -309,8 +309,8 @@ The text block is delimited by `:::` instead of the backquotes of code chunks.
 The header of the block contains its name, prefixed by `#`.
 The type of block follows, here: `.greybox`.
 Arguments `data-latex` and `title` contain the title of the box in the PDF and HTML outputs, so a referenced text caption is useful to avoid repeating it.
-Enter it in a paragraph starting with `(ref:pythkao)` followed by a space. 
-Then, call the text with the code `(ref:pythkao)`.
+Enter it in a paragraph starting with `(ref:pythbox)` followed by a space. 
+Then, call the text with the code `(ref:pythbox)`.
 This technique is identical to that used for elaborate figure captions.
 Note the particular syntax of the title in the PDF output.
 
@@ -318,7 +318,7 @@ Grey text boxes (`.greybox`) are provided by the memoir template.
 Advanced users can define other colored boxes, say a yellow box, following the next steps:
 
 - Obtain the HTML code of the color, for instance with a color picker[^824]. `ffff66` is suitable for yellow.
-- In `latex/preamble.tex`, define the color by adding the following line below that defining the grey color:
+- In `latex/preamble.tex`, define the color by adding the following line below the definition of the grey color:
 ```
 \definecolor{yellow}{HTML}{FFFF66}
 ```
