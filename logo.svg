@@ -11,13 +11,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="8.5in"
-   height="11in"
-   viewBox="0 0 765.00001 990.00003"
+   width="1.7100998in"
+   height="1.9945561in"
+   viewBox="0 0 153.90899 179.51005"
    id="svg7307"
    version="1.1"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="memoiR.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="logo.svg"
    inkscape:export-filename="C:\Users\Eric.Marcon\Documents\R\SpatDiv\man\figures\logo.png"
    inkscape:export-xdpi="140.34"
    inkscape:export-ydpi="140.34">
@@ -133,30 +133,31 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="8"
-     inkscape:cx="384.14566"
-     inkscape:cy="650.83438"
+     inkscape:cx="58.259"
+     inkscape:cy="102.58677"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="in"
-     fit-margin-top="1"
-     fit-margin-bottom="1"
-     fit-margin-right="1"
-     fit-margin-left="1"
+     fit-margin-top="0"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="3000"
-     inkscape:window-height="1875"
-     inkscape:window-x="-13"
-     inkscape:window-y="-13"
-     inkscape:window-maximized="1">
+     inkscape:window-width="3840"
+     inkscape:window-height="2004"
+     inkscape:window-x="-16"
+     inkscape:window-y="-16"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="false">
     <sodipodi:guide
-       position="526.50754,705.18846"
+       position="220.98877,179.51007"
        orientation="0,1"
        id="guide8412"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="562.98996,525.67841"
+       position="257.4712,2.2421162e-005"
        orientation="0,1"
        id="guide8414"
        inkscape:locked="false" />
@@ -169,7 +170,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -177,7 +178,7 @@
      inkscape:label="Artwork"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(178.67433,582.63783)"
+     transform="translate(-126.84442,297.82627)"
      style="display:inline">
     <path
        d="m 203.56453,-292.97596 73.14189,42.57485 -0.23438,84.8941 -72.67313,42.80923 -73.25907,-42.57485 v -85.01129 z m 0.23438,-4.85031 -76.95449,44.8772 v 89.75566 l 76.95449,44.87719 76.9545,-44.87719 v -89.75566 z"
@@ -231,11 +232,10 @@
     <g
        id="g54"
        transform="matrix(1.1560707,0,0,1.1394712,156.08234,-258.21319)">
-	<path
-   id="path52"
-   d="M 11.5,96.7 C 6.4,108.8 26.2,33.9 97.6,10.4 70.1,29.3 68.1,60.4 31.2,67.6 38.4,67.8 46.1,64.8 49.1,63 47.1,68.8 30,72.6 25.6,72 20.1,79.9 15.9,86.3 11.5,96.7 Z"
-   inkscape:connector-curvature="0" />
-
-</g>
+      <path
+         id="path52"
+         d="M 11.5,96.7 C 6.4,108.8 26.2,33.9 97.6,10.4 70.1,29.3 68.1,60.4 31.2,67.6 38.4,67.8 46.1,64.8 49.1,63 47.1,68.8 30,72.6 25.6,72 20.1,79.9 15.9,86.3 11.5,96.7 Z"
+         inkscape:connector-curvature="0" />
+    </g>
   </g>
 </svg>
