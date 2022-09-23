@@ -28,7 +28,8 @@ keywords: [keyword1, keyword2, etc]
 # First Page Header
 journalinfo: "Publication reference"
 archive: "DOI: xxx/xx"
-date: "`r format(Sys.time(), '%d %B %Y')`"
+# Date format: '%Y %B %d' for distill
+date: "`r format(Sys.time(), '%Y %B %d')`"
 url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
 # Language
@@ -48,11 +49,12 @@ preamble: >
 always_allow_html: yes
 csquotes: true
 output:
-  bookdown::pdf_book:
-    template: latex/template.tex
-    citation_package: natbib
-    latex_engine: xelatex
-    keep_tex: yes
+  bookdown::html_document2:
+    base_format: distill::distill_article
+    toc: yes
+    toc_float: yes
+    code_folding: show
+    highlight_downlit: yes
   rmdformats::downcute:
     use_bookdown: yes
     lightbox: yes
@@ -61,12 +63,11 @@ output:
       download: "pdf"
       sharing:
         github: yes
-  bookdown::html_document2:
-    base_format: distill::distill_article
-    toc: yes
-    toc_float: yes
-    code_folding: show
-    highlight_downlit: yes
+  bookdown::pdf_book:
+    template: latex/template.tex
+    citation_package: natbib
+    latex_engine: xelatex
+    keep_tex: yes
   bookdown::word_document2: default
 ---
 
