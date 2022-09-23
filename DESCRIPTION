@@ -21,7 +21,6 @@ VignetteBuilder: knitr
 Imports: 
   bookdown,
   distill,
-  downlit,
   rmarkdown,
   rmdformats,
   usethis
