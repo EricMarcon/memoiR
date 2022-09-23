@@ -1,3 +1,10 @@
+# memoiR 1.2-2
+
+## Improvements
+
+* All output format libraries are now installed with memoiR.
+
+
 # memoiR 1.2-1
 
 ## Improvements

@@ -56,6 +56,20 @@ NULL
 #' @rdname Knit
 #' @export
 knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") {
+  # Make output formats visible for code check
+  if (FALSE) {
+    # Not run: list of output formats
+    bookdown::beamer_presentation2()
+    bookdown::ioslides_presentation2()
+    bookdown::bs4_book()
+    bookdown::gitbook()
+    bookdown::html_document2()
+    bookdown::pdf_book()
+    bookdown::slidy_presentation2()
+    distill::distill_article()
+    rmdformats::downcute()
+  }
+  # Knit all templates
   done <- knit_template("simple_article",
                         output_format=c("bookdown::pdf_book", 
                                         "rmdformats::downcute", 
