@@ -1,4 +1,4 @@
-# memoiR 1.2-2
+# memoiR 1.2-1.9000
 
 ## Improvements
 
