@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Syntax | Title of the Memoir</title>
   <meta name="description" content="Bookdown template based on LaTeX memoir class" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Syntax | Title of the Memoir" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2022-07-10" />
+<meta name="date" content="2022-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -549,13 +549,13 @@ It can be changed for 2 to display subsections too, and so on.</p>
 <p>Boxed text allows summarizing important points out of the main text.
 An example is given here, to define the Pythagorean theorem.</p>
 
-<div id="pythkao" class="greybox" title="Pythagorean theorem">
+<div id="pythbox" class="greybox" title="Pythagorean theorem">
 <p>For a right triangle, if <span class="math inline">\(c\)</span> denotes the length of the hypotenuse
 and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> denote the lengths of the other two sides, we have</p>
 <p><span class="math display">\[a^2 + b^2 = c^2\]</span></p>
 </div>
 <p>These boxes are included in the document as fenced blocks, whose syntax is as follows:</p>
-<pre><code>:::{#pythkao .greybox data-latex=&#39;[frametitle=Pythagorean theorem]&#39;
+<pre><code>:::{#pythbox .greybox data-latex=&#39;[frametitle=Pythagorean theorem]&#39;
 title=&#39;Pythagorean theorem&#39;}
 For a right triangle, if $c$ denotes the length of the hypotenuse
 and $a$ and $b$ denote the lengths of the other two sides, we have
@@ -566,15 +566,15 @@ $$a^2 + b^2 = c^3$$
 The header of the block contains its name, prefixed by <code>#</code>.
 The type of block follows, here: <code>.greybox</code>.
 Arguments <code>data-latex</code> and <code>title</code> contain the title of the box in the PDF and HTML outputs, so a referenced text caption is useful to avoid repeating it.
-Enter it in a paragraph starting with <code>(ref:pythkao)</code> followed by a space.
-Then, call the text with the code <code>(ref:pythkao)</code>.
+Enter it in a paragraph starting with <code>(ref:pythbox)</code> followed by a space.
+Then, call the text with the code <code>(ref:pythbox)</code>.
 This technique is identical to that used for elaborate figure captions.
 Note the particular syntax of the title in the PDF output.</p>
 <p>Grey text boxes (<code>.greybox</code>) are provided by the memoir template.
 Advanced users can define other colored boxes, say a yellow box, following the next steps:</p>
 <ul>
 <li>Obtain the HTML code of the color, for instance with a color picker<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>. <code>ffff66</code> is suitable for yellow.</li>
-<li>In <code>latex/preamble.tex</code>, define the color by adding the following line below that defining the grey color:</li>
+<li>In <code>latex/preamble.tex</code>, define the color by adding the following line below the definition of the grey color:</li>
 </ul>
 <pre><code>\definecolor{yellow}{HTML}{FFFF66}</code></pre>
 <ul>
@@ -696,7 +696,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
