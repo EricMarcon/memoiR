@@ -32,20 +32,20 @@ output:
     toc_float: yes
     css: style.css
     code_folding: show
-  bookdown::pdf_book:
-    template: latex/template.tex
-    citation_package: natbib
-    latex_engine: xelatex
-    keep_tex: yes
   rmdformats::downcute:
     use_bookdown: yes
     lightbox: yes
-  bookdown::word_document2: default
   bookdown::gitbook:
     config:
       download: "pdf"
       sharing:
         github: yes
+  bookdown::pdf_book:
+    template: latex/template.tex
+    citation_package: natbib
+    latex_engine: xelatex
+    keep_tex: yes
+  bookdown::word_document2: default
 ---
 
 ```{r DoNotModify, include=FALSE}
