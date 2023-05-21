@@ -1,3 +1,11 @@
+# memoiR 1.2-2.9000
+
+## External changes
+
+* codecov.io URL in `README.md`.
+* Pending issue in [kableExtra](https://github.com/haozhu233/kableExtra/issues/750).
+
+
 # memoiR 1.2-2
 
 ## Improvements
