@@ -44,8 +44,8 @@ A correction is available until the package is updated.
 Install it from GitHub:
 
 ```
-devtools::install_github("kupietz/kableExtra")
+remotes::install_github("kupietz/kableExtra")
 ```
 
-If you don't use tables in your documents or if you use other tools to format them, you may just remove the line containing `library("kableExtra")` in the first code chunk of aby template.
+If you don't use tables in your documents or if you use other tools to format them, you may just remove the line containing `library("kableExtra")` in the first code chunk of any template.
 
