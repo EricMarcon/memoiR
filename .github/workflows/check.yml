@@ -19,10 +19,13 @@ jobs:
         run: |
           brew install ghostscript
       - name: Install dependencies
+        env:
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
         run: |
           install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown", "tinytex"))
           tinytex::install_tinytex()
           remotes::install_deps(dependencies = TRUE)
+          devtools::install_github("kupietz/kableExtra")
         shell: Rscript {0}
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error", check_dir = "check")
