@@ -35,3 +35,6 @@ src/*.so
 src/*.dll
 # pkgdown by GitHub Actions
 docs/
+# JOSS
+paper/*.html
+
