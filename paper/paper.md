@@ -1,18 +1,20 @@
 ---
 title: 'memoiR: R Markdown and Bookdown Templates to Publish Documents'
 tags:
-  - R
-  - Markdown
-  - litterate programming
+- R
+- Markdown
+- litterate programming
+date: "1 August 2023"
+output: pdf_document
 authors:
-  - name: Eric Marcon
-    orcid: 0000-0002-5249-321X
-    affiliation: 1
-affiliations:
- - name: AgroParisTech, UMR AMAP, CIRAD, CNRS, INRAE, IRD, Univ Montpellier, Montpellier, France
-   index: 1
-date: 1 August 2023
+- name: Eric Marcon
+  orcid: "0000-0002-5249-321X"
+  affiliation: 1
 bibliography: paper.bib
+affiliations:
+- name: AgroParisTech, UMR AMAP, CIRAD, CNRS, INRAE, IRD, Univ Montpellier, Montpellier,
+    France
+  index: 1
 ---
 
 # Summary
@@ -63,7 +65,7 @@ The powerful features of bookdown allow the simultaneous production of HTML and 
 The memoiR package builds on bookdown with two main goals: provide a full set of well-formated templates and simplify the integration with GitHub pages to efficiently publish the documents.
 The full process is summarized in figure \autoref{fig:process}.
 
-![Processing documents with R and Markdown. memoiR provides templates and helpers to organize continuous integration and publication of the document of GitHub.\label{fig:process}](process.png)
+![Processing documents with R and Markdown. memoiR provides templates and helpers to organize continuous integration and publication of the document of GitHub.\label{fig:process}](process.pdf)
 
 
 The memoir LaTeX package[@Wilson2006] allows publishing high-quality long documents such as books and theses. 
