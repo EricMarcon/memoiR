@@ -61,6 +61,10 @@ The bookdown package [@Xie2016] extends its features to the required standards f
 The powerful features of bookdown allow the simultaneous production of HTML and PDF documents, along with other formats such as Microsoft Word.
 
 The memoiR package builds on bookdown with two main goals: provide a full set of well-formated templates and simplify the integration with GitHub pages to efficiently publish the documents.
+The full process is summarized in figure \autoref{fig:process}.
+
+![Processing documents with R and Markdown. memoiR provides templates and helpers to organize continuous integration and publication of the document of GitHub.\label{fig:process}](process.png)
+
 
 The memoir LaTeX package[@Wilson2006] allows publishing high-quality long documents such as books and theses. 
 The memoiR package for R makes it available for R users.
@@ -71,19 +75,9 @@ To ensure reproducibility, the continuous integration supported by GitHub Action
 memoiR provides the functions to simplify their use, inclufing the production of the necessary scripts.
 
 
-
-# Figures
-
-Figures can be included like this:
-![Caption for example figure.\label{fig:example}](figure.png)
-and referenced from text using \autoref{fig:example}.
-
-Figure sizes can be customized by adding an optional second parameter:
-![Caption for example figure.](figure.png){ width=20% }
-
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
+This work benefited from the support of “Investissements d’avenir” of the French National Agency for Research (Labex CEBA, ref. ANR-10-LABX-25-01).
+The author thanks [Mathias Legrand](https://www.mcgill.ca/mecheng/people/staff/mathias-legrand) for the original LaTeX class of the stylish article.
 
 # References
