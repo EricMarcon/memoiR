@@ -37,4 +37,5 @@ src/*.dll
 docs/
 # JOSS
 paper/*.html
+paper/*.pdf
 
