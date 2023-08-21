@@ -1,7 +1,4 @@
-#' Package memoiR
-#'
-#' R Bookdown templates to publish documents,
-#' especially relying on the memoir LaTeX package
+#' @keywords internal 
 "_PACKAGE"
 
 

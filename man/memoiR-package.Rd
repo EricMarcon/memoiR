@@ -4,10 +4,11 @@
 \name{memoiR-package}
 \alias{memoiR}
 \alias{memoiR-package}
-\title{Package memoiR}
+\title{memoiR: R Markdown and Bookdown Templates to Publish Documents}
 \description{
-R Bookdown templates to publish documents,
-especially relying on the memoir LaTeX package
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Producing high-quality documents suitable for publication directly from R is made possible by the R Markdown ecosystem. 'memoiR' makes it easy. It provides templates to knit memoirs, articles and slideshows with helpers to publish the documents on GitHub Pages and activate continuous integration.
 }
 \seealso{
 Useful links:
@@ -21,3 +22,4 @@ Useful links:
 \strong{Maintainer}: Eric Marcon \email{eric.marcon@agroparistech.fr} (\href{https://orcid.org/0000-0002-5249-321X}{ORCID})
 
 }
+\keyword{internal}
