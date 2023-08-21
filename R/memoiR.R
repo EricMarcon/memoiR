@@ -2,10 +2,7 @@
 #'
 #' R Bookdown templates to publish documents,
 #' especially relying on the memoir LaTeX package
-#'
-#' @name memoiR
-#' @docType package
-NULL
+"_PACKAGE"
 
 
 #' RStudio Project
