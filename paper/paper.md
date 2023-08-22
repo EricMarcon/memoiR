@@ -3,8 +3,8 @@ title: 'memoiR: R Markdown and Bookdown Templates to Publish Documents'
 tags:
 - R
 - Markdown
-- litterate programming
-date: "1 August 2023"
+- literate programming
+date: "22 August 2023"
 output: pdf_document
 authors:
 - name: Eric Marcon
@@ -22,7 +22,7 @@ affiliations:
 `memoiR` is a package for R that provides templates to publish well-formatted documents both in HTML and PDF formats. 
 Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.
 
-Long documents are the main purpose of this package.
+Long documents, namely theses, are the main purpose of this package.
 Along with HTML output to be read online, their PDF version based on the \LaTeX class `memoir` can be highly customized.
 
 Functions are provided to make the publication of the documents on GitHub very easy, including their continuous integration.
@@ -45,6 +45,7 @@ A gallery is provided on the GitHub pages of the project.
 Reproducibility is a major concern of science [@Ioannidis2005], that induced propositions to improve it [@Munafo2017].
 
 Experimental design and data curation are out of the scope of this paper but a lot can be done in the last steps of the production of scientific documents, namely data processing, inclusion of the results (including tables and figures) into a written document, and the final formatting.
+In an academic context, reproducible student work is easier to update and its content more clearly assessable.
 
 Literate programming [@Knuth1984] is the framework: the code used to process the data is included into the text of the document, and run each time the document is produced.
 In the R [@R] environment, its first implementation was `Sweave` [@Leisch2002], that included code chunks into \LaTeX documents.
