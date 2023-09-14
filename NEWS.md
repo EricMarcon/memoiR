@@ -1,4 +1,4 @@
-# memoiR 1.2-2.9004
+# memoiR 1.2-4
 
 ## External changes
 
