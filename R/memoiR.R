@@ -650,7 +650,7 @@ build_ghworkflow <- function() {
     '    runs-on: macOS-latest',
     '    steps:',
     '      - name: Checkout repo',
-    '        uses: actions/checkout@v3',
+    '        uses: actions/checkout@v4',
     '      - name: Setup R',
     '        uses: r-lib/actions/setup-r@v2',
     '      - name: Install pandoc',
@@ -662,7 +662,8 @@ build_ghworkflow <- function() {
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
     '          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))',
-    '          tinytex::install_tinytex()')
+    '          tinytex::install_tinytex(bundle = "TinyTeX")'
+  )
   
   # Read languages in header
   langs <- c(yaml_header$lang, yaml_header$otherlangs)
@@ -693,10 +694,14 @@ build_ghworkflow <- function() {
   if (is_memoir) {
     lines <- c(lines,
     '      - name: Render pdf book',
+    '        env:',
+    '          GITHUB_PAT: ${{ secrets.GH_PAT }}',
     '        run: |',
     '          bookdown::render_book("index.Rmd", "bookdown::pdf_book")',
     '        shell: Rscript {0}',
     '      - name: Render gitbook',
+    '        env:',
+    '          GITHUB_PAT: ${{ secrets.GH_PAT }}',
     '        run: |',
     '          bookdown::render_book("index.Rmd", "bookdown::gitbook")',
     '        shell: Rscript {0}'
@@ -704,6 +709,8 @@ build_ghworkflow <- function() {
   } else {
     lines <- c(lines,
     '      - name: Render Rmarkdown files',
+    '        env:',
+    '          GITHUB_PAT: ${{ secrets.GH_PAT }}',
     '        run: |'
     )
     if (!is.null(langs)) {
@@ -736,7 +743,7 @@ build_ghworkflow <- function() {
     '    needs: render',
     '    steps:',
     '      - name: Checkout',
-    '        uses: actions/checkout@v3',
+    '        uses: actions/checkout@v4',
     '      - name: Download artifact',
     '        uses: actions/download-artifact@v3',
     '        with:',
