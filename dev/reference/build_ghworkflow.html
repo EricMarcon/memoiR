@@ -16,7 +16,7 @@ formats are produced and stored into the gh-pages branch of the project."><meta 
     
     <a class="navbar-brand me-2" href="../index.html">memoiR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-2.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-4.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,7 +107,7 @@ They must be declared in the options code chunk of each .Rmd file
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">wd</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Make it the current project</span></span></span>
 <span class="r-in"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/proj_utils.html" class="external-link">proj_set</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting active project to <span style="color: #0000BB;">'/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpkziNmS/example4b8b7f1a32ac'</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting active project to <span style="color: #0000BB;">'/private/var/folders/3s/vfzpb5r51gs6y328rmlgzm7c0000gn/T/RtmpNcM86k/example6b2b6c7de7b'</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Build GitHub Actions Workflow script</span></span></span>
 <span class="r-in"><span><span class="fu">build_ghworkflow</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -126,7 +126,7 @@ They must be declared in the options code chunk of each .Rmd file
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "    runs-on: macOS-latest"                                                                       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "    steps:"                                                                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [12] "      - name: Checkout repo"                                                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "        uses: actions/checkout@v3"                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "        uses: actions/checkout@v4"                                                               </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [14] "      - name: Setup R"                                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [15] "        uses: r-lib/actions/setup-r@v2"                                                          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [16] "      - name: Install pandoc"                                                                    </span>
@@ -138,40 +138,42 @@ They must be declared in the options code chunk of each .Rmd file
 <span class="r-out co"><span class="r-pr">#&gt;</span> [22] "          options(pkgType = \"binary\")"                                                         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [23] "          options(install.packages.check.source = \"no\")"                                       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [24] "          install.packages(c(\"distill\", \"downlit\", \"memoiR\", \"rmdformats\", \"tinytex\"))"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "          tinytex::install_tinytex()"                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "          tinytex::install_tinytex(bundle = \"TinyTeX\")"                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [26] "          tinytex::tlmgr_install(\"hyphen-french\")"                                             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [27] "          tinytex::tlmgr_install(\"hyphen-italian\")"                                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [28] "        shell: Rscript {0}"                                                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [29] "      - name: Render Rmarkdown files"                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "        run: |"                                                                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "          Sys.setlocale(\"LC_TIME\", \"en_US\")"                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "          lapply(list.files(pattern=\"*.Rmd\"), function(file) rmarkdown::render(file, \"all\"))"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "          memoiR::build_githubpages()"                                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "        shell: Rscript {0}"                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "      - name: Upload artifact"                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "        uses: actions/upload-artifact@v3"                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "        with:"                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "          name: ghpages"                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "          path: docs"                                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "  checkout-and-deploy:"                                                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "    runs-on: ubuntu-latest"                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "    needs: render"                                                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "    steps:"                                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "      - name: Checkout"                                                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "        uses: actions/checkout@v3"                                                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "      - name: Download artifact"                                                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "        uses: actions/download-artifact@v3"                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "        with:"                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "          name: ghpages"                                                                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "          path: docs"                                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "      - name: Deploy to GitHub Pages"                                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "        uses: Cecilapp/GitHub-Pages-deploy@v3"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "        env:"                                                                                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "          GITHUB_TOKEN: ${{ secrets.GH_PAT }}"                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "        with:"                                                                                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "          email: ${{ secrets.EMAIL }}"                                                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "          build_dir: docs"                                                                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "          jekyll: yes"                                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "        env:"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "          GITHUB_PAT: ${{ secrets.GH_PAT }}"                                                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "        run: |"                                                                                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "          Sys.setlocale(\"LC_TIME\", \"en_US\")"                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "          lapply(list.files(pattern=\"*.Rmd\"), function(file) rmarkdown::render(file, \"all\"))"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "          memoiR::build_githubpages()"                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "        shell: Rscript {0}"                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "      - name: Upload artifact"                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "        uses: actions/upload-artifact@v3"                                                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "        with:"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "          name: ghpages"                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "          path: docs"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "  checkout-and-deploy:"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "    runs-on: ubuntu-latest"                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "    needs: render"                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "    steps:"                                                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] "      - name: Checkout"                                                                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "        uses: actions/checkout@v4"                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [48] "      - name: Download artifact"                                                                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "        uses: actions/download-artifact@v3"                                                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [50] "        with:"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "          name: ghpages"                                                                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [52] "          path: docs"                                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "      - name: Deploy to GitHub Pages"                                                            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [54] "        uses: Cecilapp/GitHub-Pages-deploy@v3"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "        env:"                                                                                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [56] "          GITHUB_TOKEN: ${{ secrets.GH_PAT }}"                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "        with:"                                                                                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [58] "          email: ${{ secrets.EMAIL }}"                                                           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "          build_dir: docs"                                                                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [60] "          jekyll: yes"                                                                           </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## End of the example: cleanup</span></span></span>
 <span class="r-in"><span><span class="co"># Return to the original working directory and clean up</span></span></span>
