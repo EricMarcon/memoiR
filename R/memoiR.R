@@ -742,8 +742,6 @@ build_ghworkflow <- function() {
     '    runs-on: ubuntu-latest',
     '    needs: render',
     '    steps:',
-    '      - name: Checkout',
-    '        uses: actions/checkout@v4',
     '      - name: Download artifact',
     '        uses: actions/download-artifact@v3',
     '        with:',
