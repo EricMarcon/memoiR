@@ -1,6 +1,7 @@
 fig:pressure
 fig:pressure2
 tab:kable
+tab:Paracou
 eq:disk
 getting_started
 index

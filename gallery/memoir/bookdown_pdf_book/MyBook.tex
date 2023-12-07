@@ -393,7 +393,7 @@
 
 \author{Authors' names}
 
-\date{2023-11-27}
+\date{2023-12-07}
 
 
 % Include headers (preamble.tex) here
@@ -709,15 +709,12 @@ See the correct syntax in section \ref{sec:languages}.
 \hypertarget{syntax}{%
 \chapter{Syntax}\label{syntax}}
 
-\scriptsize
-
 \begin{Summary}
 Deliver the take-home message here.
 
 It can contain several paragraphs.
-\end{Summary}
 
-\normalsize
+\end{Summary}
 
 The syntax of \emph{R Mardown} extended by \emph{Bookdown} is recalled here.
 
@@ -897,33 +894,29 @@ Always place these files in the \texttt{images} folder for good organization.
 \hypertarget{tables}{%
 \section{Tables}\label{tables}}
 
-The horizontal - and vertical separators \textbar{} allow to draw a table according to the Markdown syntax, but it is not the best method.
+The horizontal \texttt{-} and vertical separators \texttt{\textbar{}} allow you to draw a table according to Markdown syntax, but this is not the best method.
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The \texttt{kable} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
+The \texttt{kable()} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
 
 \scriptsize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
-\FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length ($l\_s$)"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
-    \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
-    \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{,}
+    \StringTok{"Species"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
         \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
-
-\caption{\label{tab:kable}Table created by R}
-\centering
-\begin{tabular}[t]{rrrrl}
+\begin{longtable}[t]{rrrrl}
+\caption{\label{tab:kable}Table created by R}\\
 \toprule
-Sepal length ($l_s$) & Width & Petal length & Width & Species\\
+Sepal length & Width & Petal length & Width & Species\\
 \midrule
 5.1 & 3.5 & 1.4 & 0.2 & setosa\\
 4.9 & 3.0 & 1.4 & 0.2 & setosa\\
@@ -933,19 +926,46 @@ Sepal length ($l_s$) & Width & Petal length & Width & Species\\
 \addlinespace
 5.4 & 3.9 & 1.7 & 0.4 & setosa\\
 \bottomrule
-\end{tabular}
+\end{longtable}
+
+\normalsize
+
+The caption is specified by the \texttt{caption} argument and referencing is possible because the table receives a label whose name is \texttt{tab:} followed by the name of the code snippet (table \ref{tab:kable}).
+Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
+The \texttt{bootstrap\_options\ =\ "striped"} option provides more readable tables in HTML.
+
+
+
+\scriptsize
+
+\begin{table}
+
+\caption{\label{tab:Paracou}Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
+\toprule
+\textbf{Treatment} & \textbf{Timber} & \textbf{Thinning} & \textbf{Fuelwood} & \textbf{\%AGB lost}\\
+\midrule
+Control &  &  &  & 0\\
+T1 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha &  &  & $[12\%-33\%]$\\
+T2 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha & DBH $\geq$ 40 cm, non-valuable species, $\approx$ 30 trees/ha &  & $[33\%-56\%]$\\
+T3 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha & DBH $\geq$ 50 cm, non-valuable species, $\approx$ 15 trees/ha & 40 cm $\leq$ DBH $\leq$ 50 cm, non-valuable species, $\approx$ 15 trees/ha & $[35\%-56\%]$\\
+\bottomrule
+\end{tabu}
 \end{table}
 
 \normalsize
 
-The caption is specified by the \texttt{caption} argument and referencing is possible because the table is given a label whose name is \texttt{tab:} followed by the name of the code snippet (table \ref{tab:kable}).
-As with figures, an enhanced legend can be written in a separate paragraph.
+In LaTeX, tables can have the width of the column and possibly span multiple pages (\texttt{longtable\ =\ TRUE}), or use the width of the page (\texttt{longtable\ =\ FALSE}), like table \ref{tab:Paracou}.
 
-Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
-Since the table contains mathematics (in the name of the first column), the \texttt{escape\ =\ FALSE} option is necessary.
+This table contains mathematics: the \texttt{escape\ =\ FALSE} option is necessary.
 
-The \texttt{bootstrap\_options\ =\ "striped"} style option provides more readable tables in HTML.
-Last, the \texttt{full\_width\ =\ FALSE} option allows you to adjust the width of the table to its content instead of occupying all the available width.
+Finally, the \texttt{full\_width\ =\ FALSE} option adjusts the width of the table to its content instead of occupying all the available width.
+It must be \texttt{TRUE} for correct formatting of two-column tables, i.e.~with \texttt{longtable\ =\ FALSE} in LaTeX.
+
+The content of table cells can be formatted following the Markdown syntax, with some limits due to \emph{kableExtra}: the argument \texttt{format="markdown"} is necessary in \texttt{kable()} or LaTeX output will ignore formatting, but this is not compatible with \texttt{full\_width\ =\ TRUE} in \texttt{kable\_styling()}.
+See \emph{kableExtra}'s documentation to format rows or columns globally without using Markdown (e.g.~function \texttt{row\_spec()}.
+The header of \ref{tab:Paracou}) is set to bold this way.
 
 \hypertarget{maths}{%
 \section{Maths}\label{maths}}
@@ -1038,9 +1058,9 @@ The take-home message of each chapter can be displayed in a box, see the beginni
 The code is that of a code block of type \enquote{Summary}.
 
 \begin{verbatim}
-```{block, type='Summary'}
+::: {.Summary data-latex=""}
 Some text for this block.
-```
+:::
 \end{verbatim}
 
 Its heading text is set in the header of \texttt{index.Rmd}:
@@ -1048,6 +1068,8 @@ Its heading text is set in the header of \texttt{index.Rmd}:
 \begin{verbatim}
 chaptersummary: In a Nutshell
 \end{verbatim}
+
+Note that the chapter summaries are formatted as simple text in Word outputs.
 
 \hypertarget{local-table-of-contents}{%
 \section{Local table of contents}\label{local-table-of-contents}}

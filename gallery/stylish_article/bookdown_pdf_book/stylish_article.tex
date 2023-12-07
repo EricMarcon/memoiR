@@ -250,6 +250,17 @@ The \texttt{kable()} function in the \emph{knitr} package prepares the table for
 
 \scriptsize
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
+    \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{,}
+    \AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
+        \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{longtable}[t]{rrrrl}
 \caption{\label{tab:kable}Table created by R}\\
 \toprule
@@ -271,8 +282,6 @@ The caption is specified by the \texttt{caption} argument and referencing is pos
 Always use the \texttt{booktabs\ =\ TRUE} argument so that the thickness of the separator lines is optimal in LaTeX.
 The \texttt{bootstrap\_options\ =\ "striped"} option provides more readable tables in HTML.
 
-In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like table \ref{tab:Paracou}).
-
 
 
 \scriptsize
@@ -283,7 +292,7 @@ In LaTeX, tables can have the width of the column and possibly span multiple pag
 \centering
 \begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
 \toprule
-Treatment & Timber & Thinning & Fuelwood & \%AGB lost\\
+\textbf{Treatment} & \textbf{Timber} & \textbf{Thinning} & \textbf{Fuelwood} & \textbf{\%AGB lost}\\
 \midrule
 Control &  &  &  & 0\\
 T1 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha &  &  & $[12\%-33\%]$\\
@@ -295,10 +304,16 @@ T3 & DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha & DBH $\geq$ 50
 
 \normalsize
 
+In LaTeX, tables can have the width of the column and possibly span multiple pages (\texttt{longtable\ =\ TRUE}), or use the width of the page (\texttt{longtable\ =\ FALSE}), like table \ref{tab:Paracou}.
+
 This table contains mathematics: the \texttt{escape\ =\ FALSE} option is necessary.
 
 Finally, the \texttt{full\_width\ =\ FALSE} option adjusts the width of the table to its content instead of occupying all the available width.
-It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
+It must be \texttt{TRUE} for correct formatting of two-column tables, i.e.~with \texttt{longtable\ =\ FALSE} in LaTeX.
+
+The content of table cells can be formatted following the Markdown syntax, with some limits due to \emph{kableExtra}: the argument \texttt{format="markdown"} is necessary in \texttt{kable()} or LaTeX output will ignore formatting, but this is not compatible with \texttt{full\_width\ =\ TRUE} in \texttt{kable\_styling()}.
+See \emph{kableExtra}'s documentation to format rows or columns globally without using Markdown (e.g.~function \texttt{row\_spec()}.
+The header of \ref{tab:Paracou}) is set to bold this way.
 
 \hypertarget{figures}{%
 \subsection{Figures}\label{figures}}
@@ -313,7 +328,7 @@ It must be \texttt{TRUE} for correct formatting of two-column tables in LaTeX.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmphy8CGG/stylish_article/gallery/stylish_article/bookdown_pdf_book/stylish_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/rk/_sy2cn255cd462wpk_9hgfn80000gn/T/RtmpRMdjd2/stylish_article/gallery/stylish_article/bookdown_pdf_book/stylish_article_files/figure-latex/pressure-1} 
 
 }
 

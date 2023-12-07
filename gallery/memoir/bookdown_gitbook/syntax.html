@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Syntax | Title of the Memoir</title>
   <meta name="description" content="Bookdown template based on LaTeX memoir class" />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Syntax | Title of the Memoir" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2023-11-27" />
+<meta name="date" content="2023-12-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,16 +215,10 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="syntax" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> Syntax<a href="syntax.html#syntax" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p></p>
 <div class="Summary">
-<p>
-Deliver the take-home message here.
-</p>
-<p>
-It can contain several paragraphs.
-</p>
+<p>Deliver the take-home message here.</p>
+<p>It can contain several paragraphs.</p>
 </div>
-<p></p>
 <p>The syntax of <em>R Mardown</em> extended by <em>Bookdown</em> is recalled here.</p>
 <p>In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.</p>
@@ -329,18 +323,17 @@ Always place these files in the <code>images</code> folder for good organization
 </div>
 <div id="tables" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Tables<a href="syntax.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The horizontal - and vertical separators | allow to draw a table according to the Markdown syntax, but it is not the best method.</p>
+<p>The horizontal <code>-</code> and vertical separators <code>|</code> allow you to draw a table according to Markdown syntax, but this is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
+The <code>kable()</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="syntax.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb16-2"><a href="syntax.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length ($l_s$)&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>,</span>
-<span id="cb16-3"><a href="syntax.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb16-4"><a href="syntax.html#cb16-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iris), <span class="at">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-5"><a href="syntax.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-6"><a href="syntax.html#cb16-6" aria-hidden="true" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
-<span id="cb16-7"><a href="syntax.html#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="syntax.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, <span class="st">&quot;Width&quot;</span>,</span>
+<span id="cb16-2"><a href="syntax.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb16-3"><a href="syntax.html#cb16-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iris), <span class="at">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="at">longtable =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-4"><a href="syntax.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="syntax.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
+<span id="cb16-6"><a href="syntax.html#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:kable">Table 2.1: </span>Table created by R
@@ -348,7 +341,7 @@ The <code>kable</code> function in the <em>knitr</em> package prepares the table
 <thead>
 <tr>
 <th style="text-align:right;">
-Sepal length (<span class="math inline">\(l_s\)</span>)
+Sepal length
 </th>
 <th style="text-align:right;">
 Width
@@ -470,12 +463,107 @@ setosa
 </tbody>
 </table>
 <p></p>
-<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table is given a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="syntax.html#tab:kable">2.1</a>).
-As with figures, an enhanced legend can be written in a separate paragraph.</p>
-<p>Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
-Since the table contains mathematics (in the name of the first column), the <code>escape = FALSE</code> option is necessary.</p>
-<p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
-Last, the <code>full_width = FALSE</code> option allows you to adjust the width of the table to its content instead of occupying all the available width.</p>
+<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table receives a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="syntax.html#tab:kable">2.1</a>).
+Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
+The <code>bootstrap_options = "striped"</code> option provides more readable tables in HTML.</p>
+
+<p></p>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:Paracou">Table 2.2: </span>Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+Treatment
+</th>
+<th style="text-align:left;font-weight: bold;">
+Timber
+</th>
+<th style="text-align:left;font-weight: bold;">
+Thinning
+</th>
+<th style="text-align:left;font-weight: bold;">
+Fuelwood
+</th>
+<th style="text-align:left;font-weight: bold;">
+%AGB lost
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T1
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, commercial species, <span class="math inline">\(\approx\)</span> 10 trees/ha
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+<span class="math inline">\([12\%-33\%]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T2
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, commercial species, <span class="math inline">\(\approx\)</span> 10 trees/ha
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 40 cm, non-valuable species, <span class="math inline">\(\approx\)</span> 30 trees/ha
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+<span class="math inline">\([33\%-56\%]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T3
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, commercial species, <span class="math inline">\(\approx\)</span> 10 trees/ha
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, non-valuable species, <span class="math inline">\(\approx\)</span> 15 trees/ha
+</td>
+<td style="text-align:left;">
+40 cm <span class="math inline">\(\leq\)</span> DBH <span class="math inline">\(\leq\)</span> 50 cm, non-valuable species, <span class="math inline">\(\approx\)</span> 15 trees/ha
+</td>
+<td style="text-align:left;">
+<span class="math inline">\([35\%-56\%]\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>In LaTeX, tables can have the width of the column and possibly span multiple pages (<code>longtable = TRUE</code>), or use the width of the page (<code>longtable = FALSE</code>), like table <a href="syntax.html#tab:Paracou">2.2</a>.</p>
+<p>This table contains mathematics: the <code>escape = FALSE</code> option is necessary.</p>
+<p>Finally, the <code>full_width = FALSE</code> option adjusts the width of the table to its content instead of occupying all the available width.
+It must be <code>TRUE</code> for correct formatting of two-column tables, i.e. with <code>longtable = FALSE</code> in LaTeX.</p>
+<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format="markdown"</code> is necessary in <code>kable()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
+See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code>row_spec()</code>.
+The header of <a href="syntax.html#tab:Paracou">2.2</a>) is set to bold this way.</p>
 </div>
 <div id="maths" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Maths<a href="syntax.html#maths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -534,11 +622,12 @@ Name matches are listed in table 3 of the polyglossia package documentation<a hr
 <h2><span class="header-section-number">2.10</span> Chapter summary<a href="syntax.html#chapter-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The take-home message of each chapter can be displayed in a box, see the beginning of this one.
 The code is that of a code block of type “Summary”.</p>
-<pre><code>```{block, type=&#39;Summary&#39;}
+<pre><code>::: {.Summary data-latex=&quot;&quot;}
 Some text for this block.
-```</code></pre>
+:::</code></pre>
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <pre><code>chaptersummary: In a Nutshell</code></pre>
+<p>Note that the chapter summaries are formatted as simple text in Word outputs.</p>
 </div>
 <div id="local-table-of-contents" class="section level2 hasAnchor" number="2.11">
 <h2><span class="header-section-number">2.11</span> Local table of contents<a href="syntax.html#local-table-of-contents" class="anchor-section" aria-label="Anchor link to header"></a></h2>

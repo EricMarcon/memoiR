@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-11-27" />
+<meta name="date" content="2023-12-07" />
 
 <title>Title of the Article</title>
 
@@ -1817,7 +1817,7 @@ border-radius: 0px;
 <h1 class="title toc-ignore">Title of the Article</h1>
 <h4 class="author">First Author’s name</h4>
 <h4 class="author">Second Author’s name</h4>
-<h4 class="date">27 November 2023</h4>
+<h4 class="date">07 December 2023</h4>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 <p>Abstract of the article.</p>
@@ -1876,7 +1876,16 @@ The memoiR package templates are displayed: choose <em>Simple Article</em>.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
 The <code>kable()</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
+<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table receives a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="#tab:kable">3.1</a>).
+Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
+The <code>bootstrap_options = &quot;striped&quot;</code> option provides more readable tables in HTML.</p>
 <p></p>
+<pre class="r"><code>names(iris) &lt;- c(&quot;Sepal length&quot;, &quot;Width&quot;, &quot;Petal length&quot;,
+    &quot;Width&quot;, &quot;Species&quot;)
+knitr::kable(head(iris), caption = &quot;Table created by R&quot;,
+    longtable = TRUE, booktabs = TRUE) %&gt;%
+    kableExtra::kable_styling(bootstrap_options = &quot;striped&quot;,
+        full_width = FALSE)</code></pre>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:kable">Table 3.1: </span>Table created by R
@@ -2006,10 +2015,6 @@ setosa
 </tbody>
 </table>
 <p></p>
-<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table receives a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="#tab:kable">3.1</a>).
-Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
-The <code>bootstrap_options = &quot;striped&quot;</code> option provides more readable tables in HTML.</p>
-<p>In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like table <a href="#tab:Paracou">3.2</a>).</p>
 
 <p></p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -2018,19 +2023,19 @@ The <code>bootstrap_options = &quot;striped&quot;</code> option provides more re
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="text-align:left;font-weight: bold;">
 Treatment
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;font-weight: bold;">
 Timber
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;font-weight: bold;">
 Thinning
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;font-weight: bold;">
 Fuelwood
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;font-weight: bold;">
 %AGB lost
 </th>
 </tr>
@@ -2101,9 +2106,13 @@ DBH <span class="math inline">\(\geq\)</span> 50 cm, non-valuable species, <span
 </tbody>
 </table>
 <p></p>
+<p>In LaTeX, tables can have the width of the column and possibly span multiple pages (<code>longtable = TRUE</code>), or use the width of the page (<code>longtable = FALSE</code>), like table <a href="#tab:Paracou">3.2</a>.</p>
 <p>This table contains mathematics: the <code>escape = FALSE</code> option is necessary.</p>
 <p>Finally, the <code>full_width = FALSE</code> option adjusts the width of the table to its content instead of occupying all the available width.
-It must be <code>TRUE</code> for correct formatting of two-column tables in LaTeX.</p>
+It must be <code>TRUE</code> for correct formatting of two-column tables, i.e. with <code>longtable = FALSE</code> in LaTeX.</p>
+<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format=&quot;markdown&quot;</code> is necessary in <code>kable()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
+See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code>row_spec()</code>.
+The header of <a href="#tab:Paracou">3.2</a>) is set to bold this way.</p>
 </div>
 <div id="figures" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Figures</h2>

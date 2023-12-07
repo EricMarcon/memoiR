@@ -6,20 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 Syntax | Title of the Memoir</title>
 <meta name="author" content="Authors’ names">
-<meta name="description" content="Deliver the take-home message here.  It can contain several paragraphs.  The syntax of R Mardown extended by Bookdown is recalled here. In RStudio, create a new document of type Document R...">
-<meta name="generator" content="bookdown 0.36 with bs4_book()">
+<meta name="description" content="Deliver the take-home message here. It can contain several paragraphs. The syntax of R Mardown extended by Bookdown is recalled here. In RStudio, create a new document of type Document R Markdown....">
+<meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="2 Syntax | Title of the Memoir">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://GitHubID.github.io/Repository/syntax.html">
 <meta property="og:image" content="https://GitHubID.github.io/Repository/images/logo.png">
-<meta property="og:description" content="Deliver the take-home message here.  It can contain several paragraphs.  The syntax of R Mardown extended by Bookdown is recalled here. In RStudio, create a new document of type Document R...">
+<meta property="og:description" content="Deliver the take-home message here. It can contain several paragraphs. The syntax of R Mardown extended by Bookdown is recalled here. In RStudio, create a new document of type Document R Markdown....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2 Syntax | Title of the Memoir">
-<meta name="twitter:description" content="Deliver the take-home message here.  It can contain several paragraphs.  The syntax of R Mardown extended by Bookdown is recalled here. In RStudio, create a new document of type Document R...">
+<meta name="twitter:description" content="Deliver the take-home message here. It can contain several paragraphs. The syntax of R Mardown extended by Bookdown is recalled here. In RStudio, create a new document of type Document R Markdown....">
 <meta name="twitter:image" content="https://GitHubID.github.io/Repository/images/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.0/transition.js"></script><script src="libs/bs3compat-0.6.0/tabs.js"></script><script src="libs/bs3compat-0.6.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -84,16 +84,10 @@
 <h1>
 <span class="header-section-number">2</span> Syntax<a class="anchor" aria-label="anchor" href="#syntax"><i class="fas fa-link"></i></a>
 </h1>
-<p></p>
 <div class="Summary">
-<p>
-Deliver the take-home message here.
-</p>
-<p>
-It can contain several paragraphs.
-</p>
+<p>Deliver the take-home message here.</p>
+<p>It can contain several paragraphs.</p>
 </div>
-<p></p>
 <p>The syntax of <em>R Mardown</em> extended by <em>Bookdown</em> is recalled here.</p>
 <p>In RStudio, create a new document of type Document R Markdown.
 The wizard allows you to choose between different formats.</p>
@@ -211,17 +205,16 @@ Always place these files in the <code>images</code> folder for good organization
 <h2>
 <span class="header-section-number">2.4</span> Tables<a class="anchor" aria-label="anchor" href="#tables"><i class="fas fa-link"></i></a>
 </h2>
-<p>The horizontal - and vertical separators | allow to draw a table according to the Markdown syntax, but it is not the best method.</p>
+<p>The horizontal <code>-</code> and vertical separators <code>|</code> allow you to draw a table according to Markdown syntax, but this is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The <code>kable</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
+The <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
 <p></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://tidyverse.tidyverse.org">"tidyverse"</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal length ($l_s$)"</span>, <span class="st">"Width"</span>, <span class="st">"Petal length"</span>,</span>
-<span>    <span class="st">"Width"</span>, <span class="st">"Species"</span><span class="op">)</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"Table created by R"</span>, booktabs <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    escape <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal length"</span>, <span class="st">"Width"</span>, <span class="st">"Petal length"</span>, <span class="st">"Width"</span>,</span>
+<span>    <span class="st">"Species"</span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, caption <span class="op">=</span> <span class="st">"Table created by R"</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    booktabs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="st">"striped"</span>,</span>
 <span>        full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-table"><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -230,7 +223,7 @@ The <code>kable</code> function in the <em>knitr</em> package prepares the table
 </caption>
 <thead><tr>
 <th style="text-align:right;">
-Sepal length (<span class="math inline">\(l_s\)</span>)
+Sepal length
 </th>
 <th style="text-align:right;">
 Width
@@ -351,12 +344,105 @@ setosa
 </tbody>
 </table></div>
 <p></p>
-<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table is given a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="syntax.html#tab:kable">2.1</a>).
-As with figures, an enhanced legend can be written in a separate paragraph.</p>
-<p>Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
-Since the table contains mathematics (in the name of the first column), the <code>escape = FALSE</code> option is necessary.</p>
-<p>The <code>bootstrap_options = "striped"</code> style option provides more readable tables in HTML.
-Last, the <code>full_width = FALSE</code> option allows you to adjust the width of the table to its content instead of occupying all the available width.</p>
+<p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table receives a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="syntax.html#tab:kable">2.1</a>).
+Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
+The <code>bootstrap_options = "striped"</code> option provides more readable tables in HTML.</p>
+
+<p></p>
+<div class="inline-table"><table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:Paracou">Table 2.2: </span>Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+</caption>
+<thead><tr>
+<th style="text-align:left;font-weight: bold;">
+Treatment
+</th>
+<th style="text-align:left;font-weight: bold;">
+Timber
+</th>
+<th style="text-align:left;font-weight: bold;">
+Thinning
+</th>
+<th style="text-align:left;font-weight: bold;">
+Fuelwood
+</th>
+<th style="text-align:left;font-weight: bold;">
+%AGB lost
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T1
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, commercial species, <span class="math inline">\(\approx\)</span> 10 trees/ha
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+<span class="math inline">\([12\%-33\%]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T2
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, commercial species, <span class="math inline">\(\approx\)</span> 10 trees/ha
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 40 cm, non-valuable species, <span class="math inline">\(\approx\)</span> 30 trees/ha
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+<span class="math inline">\([33\%-56\%]\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+T3
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, commercial species, <span class="math inline">\(\approx\)</span> 10 trees/ha
+</td>
+<td style="text-align:left;">
+DBH <span class="math inline">\(\geq\)</span> 50 cm, non-valuable species, <span class="math inline">\(\approx\)</span> 15 trees/ha
+</td>
+<td style="text-align:left;">
+40 cm <span class="math inline">\(\leq\)</span> DBH <span class="math inline">\(\leq\)</span> 50 cm, non-valuable species, <span class="math inline">\(\approx\)</span> 15 trees/ha
+</td>
+<td style="text-align:left;">
+<span class="math inline">\([35\%-56\%]\)</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p></p>
+<p>In LaTeX, tables can have the width of the column and possibly span multiple pages (<code>longtable = TRUE</code>), or use the width of the page (<code>longtable = FALSE</code>), like table <a href="syntax.html#tab:Paracou">2.2</a>.</p>
+<p>This table contains mathematics: the <code>escape = FALSE</code> option is necessary.</p>
+<p>Finally, the <code>full_width = FALSE</code> option adjusts the width of the table to its content instead of occupying all the available width.
+It must be <code>TRUE</code> for correct formatting of two-column tables, i.e. with <code>longtable = FALSE</code> in LaTeX.</p>
+<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format="markdown"</code> is necessary in <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling()</a></code>.
+See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec()</a></code>.
+The header of <a href="syntax.html#tab:Paracou">2.2</a>) is set to bold this way.</p>
 </div>
 <div id="maths" class="section level2" number="2.5">
 <h2>
@@ -427,11 +513,12 @@ Name matches are listed in table 3 of the polyglossia package documentation<a cl
 </h2>
 <p>The take-home message of each chapter can be displayed in a box, see the beginning of this one.
 The code is that of a code block of type “Summary”.</p>
-<pre><code>```{block, type='Summary'}
+<pre><code>::: {.Summary data-latex=""}
 Some text for this block.
-```</code></pre>
+:::</code></pre>
 <p>Its heading text is set in the header of <code>index.Rmd</code>:</p>
 <pre><code>chaptersummary: In a Nutshell</code></pre>
+<p>Note that the chapter summaries are formatted as simple text in Word outputs.</p>
 </div>
 <div id="local-table-of-contents" class="section level2" number="2.11">
 <h2>
@@ -562,7 +649,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2023-11-27.</p>
+    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2023-12-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
