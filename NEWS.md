@@ -1,4 +1,12 @@
-# memoiR 1.2-4.9001
+# memoiR 1.2-4.9002
+
+## Improvements
+
+* The useless checkout step before deploying documents to GH pages by CI has been deleted.
+* Documentation about tables has been improved in templates.
+
+
+# memoiR 1.2-4
 
 ## External changes
 
@@ -9,10 +17,6 @@
 ## Bug Correction
 
 * Updated package help file following roxygen2 v.7 [breaking change](https://github.com/r-lib/roxygen2/issues/1491).
-
-## Improvements
-
-* The useless checkout step before deploying documents to GH pages by CI has been deleted.
 
 
 # memoiR 1.2-2
