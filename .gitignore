@@ -35,3 +35,5 @@ src/*.so
 src/*.dll
 # pkgdown by GitHub Actions
 docs/
+# JOSE paper
+paper/
