@@ -98,7 +98,9 @@ When it is `TRUE`, the code is printed as follows
 
 ## Figures
 
-```{r pressure, fig.cap="A figure"}
+```{r}
+#| label: pressure
+#| fig-cap: "A figure"
 plot(pressure)
 ```
 
@@ -132,7 +134,10 @@ For more elaborate captions, it is possible to declare the caption in a separate
 The figure \@ref(fig:pressure2) benefits from an improved caption.
 
 (ref:pressure2) Title with _italic_, math ($\sqrt\pi$) and reference to figure \@ref(fig:pressure)
-```{r pressure2, fig.cap="(ref:pressure2)", echo=FALSE}
+```{r}
+#| label: pressure2
+#| fig-cap: "(ref:pressure2)"
+#| echo: false
 plot(pressure)
 ```
 
@@ -152,11 +157,14 @@ Tables can also be produced by R code.
 The content of the table is in a dataframe.
 The `kable()` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
 
-```{r kable, echo=TRUE, warning=FALSE}
+```{r}
+#| label: kable
+#| echo: true
+#| warning: false
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
 knitr::kable(
   head(iris), 
-  caption="Table created by R", longtable = TRUE, booktabs = TRUE
+  caption = "Table created by R", longtable = TRUE, booktabs = TRUE
   ) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
@@ -166,26 +174,37 @@ Always use the `booktabs = TRUE` argument so that the thickness of the separator
 The `bootstrap_options = "striped"` option provides more readable tables in HTML.
 
 (ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
-```{r Paracou, echo=FALSE, warning=FALSE}
+```{r}
+#| label: Paracou
+#| echo: false
+#| warning: false
 Intervention <- data.frame(
-  Treatment=c("Control", "T1", "T2", "T3"),
-  Timber=c("", 
+  Treatment = c("Control", "T1", "T2", "T3"),
+  Timber = c("", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning=c("", 
+  Thinning = c("", 
              "", 
              "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
              "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood=c("", 
+  Fuelwood = c("", 
              "", 
              "", 
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
-  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+  AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
-knitr::kable(Intervention, caption="(ref:Paracou)", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE) %>% 
+knitr::kable(
+  Intervention, 
+  caption = "(ref:Paracou)", 
+  longtable = FALSE, 
+  booktabs = TRUE, 
+  escape = FALSE) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = "striped", 
+    full_width = TRUE
+  ) %>% 
   row_spec(row = 0, bold = TRUE)
 ```
 

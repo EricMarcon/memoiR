@@ -28,13 +28,15 @@ output:
     slide_level: 2
 ---
 
-```{r DoNotModify, include=FALSE}
+```{r}
+#| label: DoNotModify
+#| include: false
 ### Utilities. Do not modify.
 # Installation of packages if necessary
 InstallPackages <- function(Packages) {
   InstallPackage <- function(Package) {
     if (!Package %in% installed.packages()[, 1]) {
-      install.packages(Package, repos="https://cran.rstudio.com/")
+      install.packages(Package, repos = "https://cran.rstudio.com/")
     }
   }
   invisible(sapply(Packages, InstallPackage))
@@ -59,7 +61,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-```{r Options, include=FALSE}
+```{r}
+#| label: Options
+#| include: false
 ### Customized options for this document
 # Add necessary packages here
 Packages <- c("tidyverse")
@@ -78,17 +82,19 @@ knitr::opts_chunk$set(
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy = TRUE, tidy.opts = list(blank=FALSE, width.cutoff=50),
+  tidy = TRUE, tidy.opts = list(blank = FALSE, width.cutoff = 50),
   size = "scriptsize", knitr.graphics.auto_pdf = TRUE
-  )
+)
 options(width = 50)
 
 # ggplot style
 library("tidyverse")
 theme_set(theme_bw())
-theme_update(panel.background=element_rect(fill="transparent", colour=NA),
-             plot.background=element_rect(fill="transparent", colour=NA))
-knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+theme_update(
+  panel.background = element_rect(fill = "transparent", colour = NA),
+  plot.background = element_rect(fill = "transparent", colour = NA)
+)
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
 
 # Tibbles: 5 lines, fit to slide width
 options(tibble.print_min = 5, tibble.width = 50)
@@ -130,13 +136,16 @@ Incremental bullets start with `> -` instead of `-`:
 
 R code chunks are displayed as follows:
 
-```{r cars, echo = TRUE}
+```{r}
+#| label: cars
+#| echo: true
 head(cars)
 ```
 
 ## Slide with a Centered Plot{.flexbox .vcenter}
 
-```{r pressure}
+```{r}
+#| label: pressure
 plot(pressure)
 ```
 
@@ -156,7 +165,9 @@ In HTML, the `{.columns-2}` option is added to the slide title and `<p class="fo
   \begincol{.48\textwidth}
   <p class="forceBreak"></p>
 
-```{r pressure2, out.width='90%'}
+```{r}
+#| label: pressure2
+#| out-width: 90%
 plot(pressure)
 ```
 

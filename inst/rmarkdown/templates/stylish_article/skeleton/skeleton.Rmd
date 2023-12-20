@@ -71,13 +71,15 @@ output:
   bookdown::word_document2: default
 ---
 
-```{r DoNotModify, include=FALSE}
+```{r}
+#| label: DoNotModify
+#| include: false
 ### Utilities. Do not modify.
 # Installation of packages if necessary
 InstallPackages <- function(Packages) {
   InstallPackage <- function(Package) {
     if (!Package %in% installed.packages()[, 1]) {
-      install.packages(Package, repos="https://cran.rstudio.com/")
+      install.packages(Package, repos = "https://cran.rstudio.com/")
     }
   }
   invisible(sapply(Packages, InstallPackage))
@@ -102,7 +104,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-```{r Options, include=FALSE}
+```{r}
+#| label: Options
+#| include: false
 ### Customized options for this document
 # Add necessary packages here
 Packages <- c("tidyverse")
@@ -121,7 +125,7 @@ knitr::opts_chunk$set(
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy = TRUE, tidy.opts = list(blank=FALSE, width.cutoff=50),
+  tidy = TRUE, tidy.opts = list(blank = FALSE, width.cutoff = 50),
   size = "scriptsize", knitr.graphics.auto_pdf = TRUE
   )
 options(width = 50)
@@ -129,9 +133,11 @@ options(width = 50)
 # ggplot style
 library("tidyverse")
 theme_set(theme_bw())
-theme_update(panel.background=element_rect(fill="transparent", colour=NA),
-             plot.background=element_rect(fill="transparent", colour=NA))
-knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+theme_update(
+  panel.background = element_rect(fill = "transparent", colour = NA),
+  plot.background = element_rect(fill = "transparent", colour = NA)
+)
+knitr::opts_chunk$set(dev.args = list(bg = "transparent"))
 
 # Random seed
 set.seed(973)
@@ -194,7 +200,9 @@ The main features of Markdown are summarized here.
 
 R code is included in code chunks:
 
-```{r cars, echo = TRUE}
+```{r}
+#| label: cars
+#| echo: true
 head(cars)
 ```
 
@@ -207,11 +215,14 @@ Tables can also be produced by R code.
 The content of the table is in a dataframe.
 The `kable()` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
 
-```{r kable, echo=TRUE, warning=FALSE}
+```{r}
+#| label: kable
+#| echo: true
+#| warning: false
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
 knitr::kable(
   head(iris), 
-  caption="Table created by R", longtable = TRUE, booktabs = TRUE
+  caption = "Table created by R", longtable = TRUE, booktabs = TRUE
   ) %>%
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
@@ -221,26 +232,37 @@ Always use the `booktabs = TRUE` argument so that the thickness of the separator
 The `bootstrap_options = "striped"` option provides more readable tables in HTML.
 
 (ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
-```{r Paracou, echo=FALSE, warning=FALSE}
+```{r}
+#| label: Paracou
+#| echo: false
+#| warning: false
 Intervention <- data.frame(
-  Treatment=c("Control", "T1", "T2", "T3"),
-  Timber=c("", 
+  Treatment = c("Control", "T1", "T2", "T3"),
+  Timber = c("", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning=c("", 
+  Thinning = c("", 
              "", 
              "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
              "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood=c("", 
+  Fuelwood = c("", 
              "", 
              "", 
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
-  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+  AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
-knitr::kable(Intervention, caption="(ref:Paracou)", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE) %>% 
+knitr::kable(
+  Intervention, 
+  caption = "(ref:Paracou)", 
+  longtable = FALSE, 
+  booktabs = TRUE, 
+  escape = FALSE) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = "striped", 
+    full_width = TRUE
+  ) %>% 
   row_spec(row = 0, bold = TRUE)
 ```
 
@@ -259,7 +281,9 @@ The header of \@ref(tab:Paracou)) is set to bold this way.
 
 ## Figures
 
-```{r pressure, fig.cap="Figure title"}
+```{r}
+#| label: pressure
+#| fig-cap: "Figure title"
 plot(pressure)
 ```
 
@@ -272,7 +296,11 @@ A figure can use the full width of the page by adding the following options to t
 Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
 <aside>
-```{r logo, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
+```{r}
+#| label: logo
+#| out-width: 60%
+#| fig-cap: "A figure from a file"
+#| echo: false
 knitr::include_graphics("images/logo.png")
 ```
 </aside>
