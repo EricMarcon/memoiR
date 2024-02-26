@@ -43,6 +43,7 @@ biblio-style: chicago
 # LaTeX
 toc-depth: 3
 fontsize: 10pt
+urlcolor: blue
 preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
 # Do not modify
