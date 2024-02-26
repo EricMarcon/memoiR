@@ -1,10 +1,11 @@
-# memoiR 1.2-4.9003
+# memoiR 1.2-5
 
 ## Improvements
 
 * The useless checkout step before deploying documents to GH pages by CI has been deleted.
 * Documentation about tables has been improved in templates.
 * Chunk options format is updated.
+* `urlcolor: blue` is by default in stylish articles.
 
 
 # memoiR 1.2-4
