@@ -35,17 +35,3 @@ Gallery:
 A quick [introduction](https://ericmarcon.github.io/memoiR/articles/memoiR.html) is in `vignette("memoiR")`.
 
 The development version documentation is available [here](https://ericmarcon.github.io/memoiR/dev/).
-
-
-### Pending issue between package kableExtra and R >= 4.3
-
-kableExtra v.1.3.4 avaible on CRAN is not compatible with R starting from 4.3.0, see this [issue](https://github.com/haozhu233/kableExtra/issues/750).
-A correction is available until the package is updated.
-Install it from GitHub:
-
-```
-remotes::install_github("kupietz/kableExtra")
-```
-
-If you don't use tables in your documents or if you use other tools to format them, you may just remove the line containing `library("kableExtra")` in the first code chunk of any template.
-

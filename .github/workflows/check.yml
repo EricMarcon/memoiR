@@ -25,8 +25,11 @@ jobs:
           install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown", "tinytex"))
           tinytex::install_tinytex()
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("kupietz/kableExtra")
         shell: Rscript {0}
+      - name: Roxygenize
+        run: roxygen2::roxygenize()
+        shell: Rscript {0}
+      - uses: EndBug/add-and-commit@v9
       - name: Check
         run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error", check_dir = "check")
         shell: Rscript {0}
@@ -35,16 +38,16 @@ jobs:
         shell: Rscript {0}
       - name: Install package
         run: R CMD INSTALL .
-      - name: Pkgdown
+     - name: Pkgdown
         run: |
-          install.packages(c("dplyr"))
-          pkgdown::build_site(run_dont_run = TRUE, new_process = FALSE)
-        shell: Rscript {0}
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
       - name: Build Gallery
         run: memoiR::knit_all()
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: site
           path: docs
@@ -55,13 +58,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
         with:
-          ref: 'gh-pages'
+          ref: gh-pages
       - name: Download artifact
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v3
         with:
           name: site
       - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@master
+        uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:

@@ -1,4 +1,13 @@
-# memoiR 1.2-2.9004
+# memoiR 1.2-4.9003
+
+## Improvements
+
+* The useless checkout step before deploying documents to GH pages by CI has been deleted.
+* Documentation about tables has been improved in templates.
+* Chunk options format is updated.
+
+
+# memoiR 1.2-4
 
 ## External changes
 

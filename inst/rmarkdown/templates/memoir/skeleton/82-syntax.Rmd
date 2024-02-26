@@ -1,10 +1,10 @@
 # Syntax
 
-```{block, type='Summary'}
+::: {.Summary data-latex=""}
 Deliver the take-home message here.
 
 It can contain several paragraphs.
-```
+:::
 
 The syntax of _R Mardown_ extended by _Bookdown_ is recalled here.
 
@@ -98,7 +98,9 @@ When it is `TRUE`, the code is printed as follows
 
 ## Figures
 
-```{r pressure, fig.cap="A figure"}
+```{r}
+#| label: pressure
+#| fig-cap: "A figure"
 plot(pressure)
 ```
 
@@ -132,7 +134,10 @@ For more elaborate captions, it is possible to declare the caption in a separate
 The figure \@ref(fig:pressure2) benefits from an improved caption.
 
 (ref:pressure2) Title with _italic_, math ($\sqrt\pi$) and reference to figure \@ref(fig:pressure)
-```{r pressure2, fig.cap="(ref:pressure2)", echo=FALSE}
+```{r}
+#| label: pressure2
+#| fig-cap: "(ref:pressure2)"
+#| echo: false
 plot(pressure)
 ```
 
@@ -146,27 +151,74 @@ Always place these files in the `images` folder for good organization.
 
 ## Tables
 
-The horizontal - and vertical separators | allow to draw a table according to the Markdown syntax, but it is not the best method.
+The horizontal `-` and vertical separators `|` allow you to draw a table according to Markdown syntax, but this is not the best method.
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The `kable` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
+The `kable()` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
 
-```{r kable, echo=TRUE, warning=FALSE}
-library("tidyverse")
-names(iris) <- c("Sepal length ($l_s$)", "Width", "Petal length", "Width", "Species")
-knitr::kable(head(iris), caption="Table created by R", booktabs = TRUE, escape = FALSE) %>%
-kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+```{r}
+#| label: kable
+#| echo: true
+#| warning: false
+names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
+knitr::kable(
+  head(iris), 
+  caption = "Table created by R", longtable = TRUE, booktabs = TRUE
+  ) %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-The caption is specified by the `caption` argument and referencing is possible because the table is given a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
-As with figures, an enhanced legend can be written in a separate paragraph.
-
+The caption is specified by the `caption` argument and referencing is possible because the table receives a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
 Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
-Since the table contains mathematics (in the name of the first column), the `escape = FALSE` option is necessary.
+The `bootstrap_options = "striped"` option provides more readable tables in HTML.
 
-The `bootstrap_options = "striped"` style option provides more readable tables in HTML.
-Last, the `full_width = FALSE` option allows you to adjust the width of the table to its content instead of occupying all the available width.
+(ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+```{r}
+#| label: Paracou
+#| echo: false
+#| warning: false
+Intervention <- data.frame(
+  Treatment = c("Control", "T1", "T2", "T3"),
+  Timber = c("", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
+  Thinning = c("", 
+             "", 
+             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
+  Fuelwood = c("", 
+             "", 
+             "", 
+             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
+  AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+)
+names(Intervention)[5] <- "\\%AGB lost"
+knitr::kable(
+  Intervention, 
+  caption = "(ref:Paracou)", 
+  longtable = FALSE, 
+  booktabs = TRUE, 
+  escape = FALSE) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = "striped", 
+    full_width = TRUE
+  ) %>% 
+  row_spec(row = 0, bold = TRUE)
+```
+
+
+In LaTeX, tables can have the width of the column and possibly span multiple pages (`longtable = TRUE`), or use the width of the page (`longtable = FALSE`), like table \@ref(tab:Paracou).
+
+This table contains mathematics: the `escape = FALSE` option is necessary.
+
+Finally, the `full_width = FALSE` option adjusts the width of the table to its content instead of occupying all the available width.
+It must be `TRUE` for correct formatting of two-column tables, i.e. with `longtable = FALSE` in LaTeX.
+
+The content of table cells can be formatted following the Markdown syntax, with some limits due to  _kableExtra_: the argument `format="markdown"` is necessary in `kable()` or LaTeX output will ignore formatting, but this is not compatible with `full_width = TRUE` in `kable_styling()`.
+See _kableExtra_'s documentation to format rows or columns globally without using Markdown (e.g. function  `row_spec()`.
+The header of \@ref(tab:Paracou)) is set to bold this way.
 
 
 ## Maths
@@ -256,15 +308,18 @@ Name matches are listed in table 3 of the polyglossia package documentation[^823
 The take-home message of each chapter can be displayed in a box, see the beginning of this one.
 The code is that of a code block of type "Summary".
 
-````
-```{block, type='Summary'}`r ''`
-Some text for this block.
 ```
-````
+::: {.Summary data-latex=""}
+Some text for this block.
+:::
+```
 
 Its heading text is set in the header of `index.Rmd`: 
 
     chaptersummary: In a Nutshell
+
+
+Note that the chapter summaries are formatted as simple text in Word outputs.
 
 
 ## Local table of contents
