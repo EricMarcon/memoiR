@@ -20,7 +20,7 @@ jobs:
           brew install ghostscript
       - name: Install dependencies
         run: |
-          install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown", "tinytex", "roxygen2"))
+          install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown", "tinytex", "roxygen2", "dplyr"))
           tinytex::install_tinytex()
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
