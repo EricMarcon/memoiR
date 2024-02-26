@@ -44,7 +44,7 @@ jobs:
         run: memoiR::knit_all()
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: site
           path: docs
@@ -52,16 +52,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: R-CMD-check
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-        with:
-          ref: 'gh-pages'
       - name: Download artifact
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v3
         with:
           name: site
       - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@master
+        uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
