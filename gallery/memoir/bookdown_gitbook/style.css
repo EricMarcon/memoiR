@@ -1,0 +1,42 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+div.Summary {
+background:url('images/trombone.png') 3% 50% no-repeat #dbe0ef;
+border-top:2px solid #aeb8de;
+border-bottom:2px solid #aeb8de;
+padding:1em 1em 1em 5em;
+margin: 2em ;
+}
+
+/* Grey text box */
+.greybox {
+  display: block;
+  margin-bottom: 10px;
+  background-color: #f5f5f5;
+}
+.greybox p {
+  padding: 15px 15px 15px 15px;
+}
+.greybox:before {
+    content: attr(title);
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 15px 5px 15px;
+    border-bottom: solid 1px #000000;
+    font-weight: bold;
+}
+/* End of grey text box */
