@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">memoiR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-4.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-7.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@ The function is useless in book projects: the <em>Build the Book</em> (i.e. the 
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co">## Simulate the creation of a new project</span></span></span>
 <span class="r-in"><span><span class="co"># Save working directory</span></span></span>
 <span class="r-in"><span><span class="va">original_wd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></span></span>
@@ -104,59 +104,28 @@ The function is useless in book projects: the <em>Build the Book</em> (i.e. the 
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">wd</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Make it the current project</span></span></span>
 <span class="r-in"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/proj_utils.html" class="external-link">proj_set</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Setting active project to <span style="color: #0000BB;">'/private/var/folders/h1/8hndypj13nsbj5pn4xsnv1tm0000gn/T/RtmpLgLDJg/example87ed1948ca0b'</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Sequence of actions to build a complete project</span></span></span>
 <span class="r-in"><span><span class="co"># Build .gitignore</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="build_gitignore.html">build_gitignore</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">'.gitignore'</span></span>
 <span class="r-in"><span><span class="co">## Activate source control, edit your files, commit</span></span></span>
 <span class="r-in"><span><span class="co"># Build README, link to HTML output only in this example</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="build_readme.html">build_readme</a></span><span class="op">(</span>PDF<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">'README.md'</span></span>
+<span class="r-in"><span><span class="fu"><a href="build_readme.html">build_readme</a></span><span class="op">(</span>PDF <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># render: knit to HTML Document (interactively: click the Knit button)</span></span></span>
-<span class="r-in"><span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span>input<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>pattern<span class="op">=</span><span class="st">"*.Rmd"</span><span class="op">)</span>, </span></span>
-<span class="r-in"><span>                  output_format<span class="op">=</span><span class="st">"bookdown::html_document2"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> processing file: example87ed1948ca0b.Rmd</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2/15 [DoNotModify]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4/15 [Options]    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6/15 [cars]       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8/15 [kable]      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10/15 [Paracou]    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12/15 [pressure]   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13/15              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14/15 [logo]       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15/15              </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> output file: example87ed1948ca0b.knit.md</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> /usr/local/bin/pandoc +RTS -K512m -RTS example87ed1948ca0b.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output example87ed1948ca0b.html --lua-filter /Users/runner/work/_temp/Library/bookdown/rmarkdown/lua/custom-environment.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Users/runner/work/_temp/Library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --wrap preserve --variable bs3=TRUE --section-divs --table-of-contents --toc-depth 3 --variable toc_float=1 --variable toc_selectors=h1,h2,h3 --variable toc_collapsed=1 --variable toc_smooth_scroll=1 --variable toc_print=1 --template /Users/runner/work/_temp/Library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --number-sections --variable theme=bootstrap --css style.css --mathjax --variable 'mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /var/folders/h1/8hndypj13nsbj5pn4xsnv1tm0000gn/T//RtmpLgLDJg/rmarkdown-str87ed5b0809dd.html --variable code_folding=show --variable code_menu=1 --citeproc </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Output created: example87ed1948ca0b.html</span>
+<span class="r-in"><span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span>input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"*.Rmd"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>                  output_format <span class="op">=</span> <span class="st">"bookdown::html_document2"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Build GitHub Pages</span></span></span>
 <span class="r-in"><span><span class="fu">build_githubpages</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Output files moved to /private/var/folders/h1/8hndypj13nsbj5pn4xsnv1tm0000gn/T/RtmpLgLDJg/example87ed1948ca0b/docs</span>
 <span class="r-in"><span><span class="co"># List the GitHub Pages files</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">"docs"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>recursive<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "README.md"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "example87ed1948ca0b.html"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "images/logo.pdf"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "images/logo.png"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "style.css"               </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">## Commit and push. Outputs will be in /docs of the master branch.</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## End of the example: cleanup</span></span></span>
 <span class="r-in"><span><span class="co"># Return to the original working directory and clean up</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">original_wd</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">wd</span>, recursive<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">wd</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
