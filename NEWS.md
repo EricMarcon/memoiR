@@ -1,3 +1,10 @@
+# memoiR 1.2-7.9000
+
+## Improvements
+
+* `kableExtra::kbl()` is preferred to `knitr::kable()` format tables after *kableExtra* v.1.4.0 (*kableExtra* issue [#831](https://github.com/haozhu233/kableExtra/issues/831)).
+
+
 # memoiR 1.2-7
 
 ## Improvements
