@@ -18,7 +18,7 @@ draft_memoir <- function(path, ...) {
   # Create a draft based on the template
   templates <- c("simple_article", "stylish_article", "memoir", "beamer_presentation")
   names(templates) <- c("Simple Article", "Stylish Article", "Memoir", "Beamer Presentation")
-  rmarkdown::draft(path, template=templates[template], package="memoiR", edit=FALSE)
+  rmarkdown::draft(path, template = templates[template], package = "memoiR", edit=FALSE)
 }
 
 
@@ -49,7 +49,7 @@ NULL
 
 #' @rdname Knit
 #' @export
-knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") {
+knit_all <- function(destination=usethis::proj_path("docs"), gallery = "gallery") {
   # Make output formats visible for code check
   if (FALSE) {
     # Not run: list of output formats
@@ -65,33 +65,37 @@ knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") 
   }
   # Knit all templates
   done <- knit_template("simple_article",
-                        output_format=c("bookdown::pdf_book", 
+                        output_format = c("bookdown::pdf_book", 
                                         "rmdformats::downcute", 
                                         "bookdown::html_document2"), 
-                        destination=destination, gallery=gallery)
+                        destination = destination, gallery = gallery)
   if (done)
     done <- knit_template("stylish_article", 
-                          output_format=c("bookdown::pdf_book", 
+                          output_format = c("bookdown::pdf_book", 
                                           "bookdown::html_document2"), 
-                          destination=destination, gallery=gallery)
+                          destination = destination, gallery = gallery)
   if (done)
     done <- knit_template("memoir", 
-                          output_format=c("bookdown::pdf_book", 
+                          output_format = c("bookdown::pdf_book", 
                                           "bookdown::gitbook",
                                           "bookdown::bs4_book"), 
-                          destination=destination, gallery=gallery)
+                          destination = destination, gallery = gallery)
   if (done)
     done <- knit_template("beamer_presentation", 
-                          output_format=c("bookdown::beamer_presentation2", 
+                          output_format = c("bookdown::beamer_presentation2", 
                                           "bookdown::ioslides_presentation2", 
                                           "bookdown::slidy_presentation2"), 
-                          destination=destination, gallery=gallery)
+                          destination = destination, gallery = gallery)
   return(invisible(done))
 }
 
 #' @rdname Knit
 #' @export
-knit_template <- function(template, output_format, destination=usethis::proj_path("docs"), gallery="gallery") {
+knit_template <- function(
+    template, 
+    output_format, 
+    destination = usethis::proj_path("docs"), 
+    gallery = "gallery") {
   done <- FALSE
   # Save knitr.table.format option (for kable)
   knitr_table_format <- options("knitr.table.format")
@@ -104,20 +108,20 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
   # Prepare clean up
   on.exit({
     setwd(OriginalWD)
-    unlink(paste(tmpdir, "/", template, sep=""), recursive=TRUE)
-    options(knitr.table.format=knitr_table_format)
+    unlink(paste(tmpdir, "/", template, sep = ""), recursive = TRUE)
+    options(knitr.table.format = knitr_table_format)
   })
   
   # Go to temp directory
   setwd(tmpdir)
   # Clean up the working folder
-  unlink(template, recursive=TRUE)
+  unlink(template, recursive = TRUE)
   # Create a draft based on the template
-  rmarkdown::draft(template, template=template, package="memoiR", edit=FALSE)
+  rmarkdown::draft(template, template = template, package = "memoiR", edit = FALSE)
   setwd(template)
   if (template == "memoir") {
     # Delete the useless file created by draft
-    unlink(paste(template, ".Rmd", sep=""))
+    unlink(paste(template, ".Rmd", sep = ""))
   }
   tryCatch({
     # Knit
@@ -129,62 +133,62 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
                         "bookdown::ioslides_presentation2", 
                         "bookdown::slidy_presentation2")) {
         # Knit to HTML
-        options(knitr.table.format="html")
+        options(knitr.table.format = "html")
         if (template == "memoir") {
           # Book
-          bookdown::render_book(input="index.Rmd",
-                                output_format=format,
-                                output_dir=paste(gallery, "/", 
+          bookdown::render_book(input = "index.Rmd",
+                                output_format = format,
+                                output_dir = paste(gallery, "/", 
                                                  template, "/", 
                                                  gsub("::", "_", format),
-                                                 sep=""))
+                                                 sep = ""))
         } else {
           # Article or presentation
-          rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                            output_format=format,
-                            output_dir=paste(gallery, "/", 
+          rmarkdown::render(input = paste(template, ".Rmd", sep = ""),
+                            output_format = format,
+                            output_dir = paste(gallery, "/", 
                                              template, "/", 
                                              gsub("::", "_", format),
-                                             sep=""))
+                                             sep = ""))
         }
       }
       if (format %in% c("bookdown::pdf_book", 
                         "bookdown::beamer_presentation2")) {
         # Knit to PDF
-        options(knitr.table.format="latex")
+        options(knitr.table.format = "latex")
         if (template == "memoir") {
           # Book
-          bookdown::render_book(input="index.Rmd",
-                                output_format=format,
-                                output_dir=paste(gallery, "/", 
+          bookdown::render_book(input = "index.Rmd",
+                                output_format = format,
+                                output_dir = paste(gallery, "/", 
                                                  template, "/", 
                                                  gsub("::", "_", format),
-                                                 sep=""))
+                                                 sep = ""))
         } else {
           # Article or presentation
-          rmarkdown::render(input=paste(template, ".Rmd", sep=""),
-                            output_format=format,
-                            output_dir=paste(gallery, "/", 
+          rmarkdown::render(input = paste(template, ".Rmd", sep = ""),
+                            output_format = format,
+                            output_dir = paste(gallery, "/", 
                                              template, "/", 
                                              gsub("::", "_", format),
-                                             sep=""))
+                                             sep = ""))
         }
       }
     }
   
     # Copy to destination
-    docsDirs <- list.dirs(path=gallery, full.names=TRUE, recursive=TRUE)
+    docsDirs <- list.dirs(path = gallery, full.names = TRUE, recursive = TRUE)
     if (length(docsDirs) > 0) {
-      docsFiles <- list.files(gallery, full.names=TRUE, recursive=TRUE)
+      docsFiles <- list.files(gallery, full.names = TRUE, recursive = TRUE)
       # Create destination under the working directory
-      vapply(paste(destination, "/", docsDirs, sep=""),
+      vapply(paste(destination, "/", docsDirs, sep = ""),
              dir.create,
-             showWarnings=FALSE,
-             recursive=TRUE,
+             showWarnings = FALSE,
+             recursive = TRUE,
              FUN.VALUE = TRUE)
-      file.copy(from=docsFiles,
-                to=paste(destination,  "/", docsFiles, sep=""),
-                overwrite=TRUE)
+      file.copy(from = docsFiles,
+                to = paste(destination,  "/", docsFiles, sep = ""),
+                overwrite = TRUE)
     }
     done <- TRUE
   },
@@ -232,23 +236,23 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
 #' build_gitignore()
 #' ## Activate source control, edit your files, commit
 #' # Build README, link to HTML output only in this example
-#' build_readme(PDF=FALSE)
+#' build_readme(PDF = FALSE)
 #' # render: knit to HTML Document (interactively: click the Knit button)
-#' rmarkdown::render(input=list.files(pattern="*.Rmd"), 
-#'                   output_format="bookdown::html_document2")
+#' rmarkdown::render(input = list.files(pattern = "*.Rmd"), 
+#'                   output_format = "bookdown::html_document2")
 #' # Build GitHub Pages
 #' build_githubpages()
 #' # List the GitHub Pages files
 #' setwd("docs")
-#' list.files(recursive=TRUE)
+#' list.files(recursive = TRUE)
 #' ## Commit and push. Outputs will be in /docs of the master branch.
 #' 
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
-#' unlink(wd, recursive=TRUE)
+#' unlink(wd, recursive = TRUE)
 #' }
-build_githubpages <- function(destination=usethis::proj_path("docs")) {
+build_githubpages <- function(destination = usethis::proj_path("docs")) {
 
   # Quit if the project is a book
   if (file.exists(usethis::proj_path("_bookdown.yml")))
@@ -265,65 +269,65 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
   # Create the destination folder
   if (!dir.exists(destination)) dir.create(destination)
   # Move knitted html files
-  htmlFiles <- list.files(pattern="*.html")
+  htmlFiles <- list.files(pattern = "*.html")
   if (length(htmlFiles) > 0) {
     processed <- c(processed, htmlFiles)
-    file.rename(from=htmlFiles, to=paste(destination, "/", htmlFiles, sep=""))
+    file.rename(from = htmlFiles, to = paste(destination, "/", htmlFiles, sep = ""))
   }
   # Copy css files
-  cssFiles <- list.files(pattern="*.css")
+  cssFiles <- list.files(pattern = "*.css")
   if (length(cssFiles) > 0) {
     processed <- c(processed, cssFiles)
-    file.copy(from=cssFiles, to=paste(destination, "/", cssFiles, sep=""), overwrite=TRUE)
+    file.copy(from = cssFiles, to = paste(destination, "/", cssFiles, sep = ""), overwrite = TRUE)
   }
   # Copy generated figures
-  html_filesDir <- list.files(pattern="*_files")
+  html_filesDir <- list.files(pattern = "*_files")
   if (length(html_filesDir) > 0) {
     processed <- c(processed, html_filesDir)
-    sapply(paste(destination, "/", html_filesDir, sep=""), dir.create, showWarnings=FALSE)
-    sapply(paste(destination, "/", html_filesDir, "/figure-html", sep=""), dir.create, showWarnings=FALSE)
-    html_files <- list.files(path=paste(html_filesDir, "/figure-html/", sep=""), full.names = TRUE, recursive=TRUE)
+    sapply(paste(destination, "/", html_filesDir, sep = ""), dir.create, showWarnings = FALSE)
+    sapply(paste(destination, "/", html_filesDir, "/figure-html", sep = ""), dir.create, showWarnings = FALSE)
+    html_files <- list.files(path = paste(html_filesDir, "/figure-html/", sep = ""), full.names = TRUE, recursive = TRUE)
     if (length(html_files) > 0)
-      file.copy(from=html_files, to=paste(destination, "/", html_files, sep = ""), overwrite=TRUE)
+      file.copy(from = html_files, to = paste(destination, "/", html_files, sep = ""), overwrite = TRUE)
   }
   # Copy libs
-  libsDirs <- list.dirs(path="libs", full.names=TRUE, recursive=TRUE)
+  libsDirs <- list.dirs(path = "libs", full.names = TRUE, recursive = TRUE)
   if (length(libsDirs) > 0) {
     processed <- c(processed, libsDirs)
-    sapply(paste(destination, "/", libsDirs, sep = ""), dir.create, showWarnings=FALSE)
-    libsFiles <- list.files("libs", full.names = TRUE, recursive=TRUE)
-    file.copy(from=libsFiles, to=paste(destination, "/", libsFiles, sep = ""), overwrite=TRUE)
+    sapply(paste(destination, "/", libsDirs, sep = ""), dir.create, showWarnings = FALSE)
+    libsFiles <- list.files("libs", full.names = TRUE, recursive = TRUE)
+    file.copy(from = libsFiles, to = paste(destination, "/", libsFiles, sep = ""), overwrite = TRUE)
   }
   # Copy static image files. MUST be in /images, may be in subfolders.
-  imagesDirs <- list.dirs(path="images", full.names=TRUE, recursive=TRUE)
+  imagesDirs <- list.dirs(path = "images", full.names = TRUE, recursive = TRUE)
   if (length(imagesDirs) > 0) {
     processed <- c(processed, imagesDirs)
-    sapply(paste(destination, "/", imagesDirs, sep = ""), dir.create, showWarnings=FALSE)
-    imagesFiles <- list.files("images", full.names = TRUE, recursive=TRUE)
-    file.copy(from=imagesFiles, to=paste(destination, "/", imagesFiles, sep = ""), overwrite=TRUE)
+    sapply(paste(destination, "/", imagesDirs, sep = ""), dir.create, showWarnings = FALSE)
+    imagesFiles <- list.files("images", full.names = TRUE, recursive = TRUE)
+    file.copy(from = imagesFiles, to = paste(destination, "/", imagesFiles, sep = ""), overwrite = TRUE)
   }
   # Move knitted pdf files
-  RmdFiles <- list.files(pattern="*.Rmd")
+  RmdFiles <- list.files(pattern = "*.Rmd")
   # Change .Rmd files extension
   pdfFiles <- gsub(".Rmd", ".pdf", RmdFiles)
   if (length(pdfFiles) > 0) {
     processed <- c(processed, pdfFiles)
-    suppressWarnings(file.rename(from=pdfFiles, to=paste(destination, "/", pdfFiles, sep="")))
+    suppressWarnings(file.rename(from = pdfFiles, to = paste(destination, "/", pdfFiles, sep = "")))
   }
   # Move knitted PPTx files
   PPTxFiles <- gsub(".Rmd", ".pptx", RmdFiles)
   if (length(PPTxFiles) > 0) {
     processed <- c(processed, PPTxFiles)
-    suppressWarnings(file.rename(from=PPTxFiles, to=paste(destination, "/", PPTxFiles, sep="")))
+    suppressWarnings(file.rename(from = PPTxFiles, to = paste(destination, "/", PPTxFiles, sep = "")))
   }
   # Move knitted docx files
   docxFiles <- gsub(".Rmd", ".docx", RmdFiles)
   if (length(docxFiles) > 0) {
     processed <- c(processed, PPTxFiles)
-    suppressWarnings(file.rename(from=docxFiles, to=paste(destination, "/", docxFiles, sep="")))
+    suppressWarnings(file.rename(from = docxFiles, to = paste(destination, "/", docxFiles, sep = "")))
   }
   # Copy README.md to docs
-  file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
+  file.copy(from = "README.md", to = "docs/README.md", overwrite = TRUE)
   processed <- c(processed, "README.md")
   
   cat("Output files moved to", destination)
@@ -366,7 +370,7 @@ build_githubpages <- function(destination=usethis::proj_path("docs")) {
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
-#' unlink(wd, recursive=TRUE)
+#' unlink(wd, recursive = TRUE)
 #' 
 build_readme <- function(PDF = TRUE) {
   # Is this a book project?
@@ -378,7 +382,7 @@ build_readme <- function(PDF = TRUE) {
   # Make the project directory the working directory
   setwd(usethis::proj_path())
   # Find the markdown files
-  RmdFiles <- list.files(pattern="*.Rmd")
+  RmdFiles <- list.files(pattern = "*.Rmd")
   lines <- character()
   if (is_memoir) {
     yaml_header <- rmarkdown::yaml_front_matter(usethis::proj_path("index.Rmd"))
@@ -389,7 +393,7 @@ build_readme <- function(PDF = TRUE) {
     lines <- c(paste("# [",
                      yaml_header$title, "](",
                      yaml_header$url, "/index.html)\n",
-                     sep=""),
+                     sep = ""),
                yaml_header$description,
                "\n",
                abstract)
@@ -400,17 +404,17 @@ build_readme <- function(PDF = TRUE) {
       RmdFileName <- gsub(".Rmd", "", RmdFile)
       if (PDF) {
         lines <- c(lines,
-                   paste("# ", yaml_header$title, "\n", sep=""),
+                   paste("# ", yaml_header$title, "\n", sep = ""),
                    yaml_header$abstract,
                    "Formats:\n",
-                   paste("- [HTML](", yaml_header$url, RmdFileName, ".html)", sep=""),
-                   paste("- [PDF](", yaml_header$url, RmdFileName, ".pdf)\n", sep=""),
+                   paste("- [HTML](", yaml_header$url, RmdFileName, ".html)", sep = ""),
+                   paste("- [PDF](", yaml_header$url, RmdFileName, ".pdf)\n", sep = ""),
                    "\n")
       } else{
         lines <- c(paste("# [", 
                          yaml_header$title, "](", 
                          yaml_header$url, RmdFileName, "html)\n", 
-                         sep=""),
+                         sep = ""),
                    yaml_header$abstract)
       }
     }
@@ -451,7 +455,7 @@ build_readme <- function(PDF = TRUE) {
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
-#' unlink(wd, recursive=TRUE)
+#' unlink(wd, recursive = TRUE)
 #' 
 build_gitignore <- function() {
   lines <- c("# History files",
@@ -507,7 +511,7 @@ build_gitignore <- function() {
 #' `NULL` if `lang` is not recognized.
 #' @keywords internal
 add_hyphen <- function(lang) {
-  lang_2 <- substr(lang, start=1, stop=2)
+  lang_2 <- substr(lang, start = 1, stop = 2)
   hyphen_package <- switch(lang_2,
                            de = "hyphen-german",
                            fr = "hyphen-french",
@@ -517,7 +521,7 @@ add_hyphen <- function(lang) {
   if (is.null(hyphen_package)) {
     return(NULL)
   } else {
-    return(paste('          tinytex::tlmgr_install("', hyphen_package, '")', sep=""))
+    return(paste('          tinytex::tlmgr_install("', hyphen_package, '")', sep = ""))
   }
 }
 
@@ -535,31 +539,31 @@ add_font <- function(font) {
   font_package <- NULL
   # Reference: https://r2src.github.io/top10fonts/
   # DejaVu
-  if (substr(font, start=1, stop=6) == "dejavu") {
+  if (substr(font, start = 1, stop = 6) == "dejavu") {
     font_package <- "dejavu-otf"
   }
   # Garamond Libre
-  if (substr(font, start=1, stop=13) == "GaramondLibre") {
+  if (substr(font, start = 1, stop = 13) == "GaramondLibre") {
     font_package <- "garamond-libre"
   }
   # Garamond Math
-  if (substr(font, start=1, stop=13) == "Garamond-Math") {
+  if (substr(font, start = 1, stop = 13) == "Garamond-Math") {
     font_package <- "garamond-math"
   }
   # KP-fonts
-  if (substr(font, start=1, stop=2) == "Kp") {
+  if (substr(font, start = 1, stop = 2) == "Kp") {
     font_package <- "kpfonts-otf"
   }
   # Libertine
-  if (substr(font, start=1, stop=11) == "LinBiolinum" |
-      substr(font, start=1, stop=12) == "LinLibertine") {
+  if (substr(font, start = 1, stop = 11) == "LinBiolinum" |
+      substr(font, start = 1, stop = 12) == "LinLibertine") {
     font_package <- "libertine"
   }
   # TeX Gyre
-  if (substr(font, start=1, stop=7) == "texgyre") {
+  if (substr(font, start = 1, stop = 7) == "texgyre") {
     font_package <- "tex-gyre"
     # TeX Gyre math
-    if (substr(font, nchar(font)-4, nchar(font)) == "-math")
+    if (substr(font, nchar(font) - 4, nchar(font)) == "-math")
       font_package <- "tex-gyre-math"
   }
   
@@ -567,7 +571,7 @@ add_font <- function(font) {
   if (is.null(font_package)) {
     return(NULL)
   } else {
-    return(paste('          tinytex::tlmgr_install("', font_package, '")', sep=""))
+    return(paste('          tinytex::tlmgr_install("', font_package, '")', sep = ""))
   }
 }
 
@@ -615,7 +619,7 @@ add_font <- function(font) {
 #' ## End of the example: cleanup
 #' # Return to the original working directory and clean up
 #' setwd(original_wd)
-#' unlink(wd, recursive=TRUE)
+#' unlink(wd, recursive = TRUE)
 #' 
 build_ghworkflow <- function() {
   
@@ -632,7 +636,7 @@ build_ghworkflow <- function() {
   if (is_memoir) {
     yaml_header <- rmarkdown::yaml_front_matter("index.Rmd")
   } else {
-    Rmd_files <- list.files(pattern="*.Rmd")
+    Rmd_files <- list.files(pattern = "*.Rmd")
     yaml_header <- rmarkdown::yaml_front_matter(Rmd_files[1])
   }
   
@@ -725,7 +729,7 @@ build_ghworkflow <- function() {
         )
     }
     lines <- c(lines,
-    '          lapply(list.files(pattern="*.Rmd"), function(file) rmarkdown::render(file, "all"))',
+    '          lapply(list.files(pattern = "*.Rmd"), function(file) rmarkdown::render(file, "all"))',
     '          memoiR::build_githubpages()',
     '        shell: Rscript {0}'
     )
@@ -768,7 +772,7 @@ build_ghworkflow <- function() {
   }
   
   # Create the workflow file
-  dir.create(".github/workflows", showWarnings=FALSE, recursive=TRUE)
+  dir.create(".github/workflows", showWarnings = FALSE, recursive = TRUE)
   usethis::write_over(".github/workflows/memoir.yml", lines)
   return(invisible(lines))
 }
