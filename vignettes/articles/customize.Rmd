@@ -200,7 +200,7 @@ The math font name is fully specified, with no options.
 A monotype font may be declared to be used in code blocks, and in code included in the text.
 It may be `monofont: texgyrecursor`, completed by an identical `monofontoptions` list, but the default font is usually better.
 
-Note that long tables (`longtable = TRUE` argument in the `kable()` function to render tables) may not be cut correctly across pages when specific fonts are declared.
+Note that long tables (`longtable = TRUE` argument in the `kbl()` function to render tables) may not be cut correctly across pages when specific fonts are declared.
 
 The font size is 12pt by default.
 Change it if necessary, depending on the font type, the margin width and personal preferences.

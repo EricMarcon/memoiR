@@ -186,7 +186,7 @@ The horizontal `-` and vertical separators `|` allow you to draw a table accordi
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The `kable()` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
+The `kbl()` function in the _kableExtra_ package (which enhances the original `kable()` function from _knitr_) prepares the table for display and passes the result to the `kable_styling` function for final formatting.
 
 The caption is specified by the `caption` argument and referencing is possible because the table receives a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
 Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
@@ -197,7 +197,7 @@ The `bootstrap_options = "striped"` option provides more readable tables in HTML
 #| echo: true
 #| warning: false
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
-knitr::kable(
+kableExtra::kbl(
   head(iris), 
   caption = "Table created by R", longtable = TRUE, booktabs = TRUE
   ) %>%
@@ -227,7 +227,7 @@ Intervention <- data.frame(
   AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(Intervention)[5] <- "\\%AGB lost"
-knitr::kable(
+kableExtra::kbl(
   Intervention, 
   caption = "(ref:Paracou)", 
   longtable = FALSE, 
@@ -248,7 +248,7 @@ This table contains mathematics: the `escape = FALSE` option is necessary.
 Finally, the `full_width = FALSE` option adjusts the width of the table to its content instead of occupying all the available width.
 It must be `TRUE` for correct formatting of two-column tables, i.e. with `longtable = FALSE` in LaTeX.
 
-The content of table cells can be formatted following the Markdown syntax, with some limits due to  _kableExtra_: the argument `format="markdown"` is necessary in `kable()` or LaTeX output will ignore formatting, but this is not compatible with `full_width = TRUE` in `kable_styling()`.
+The content of table cells can be formatted following the Markdown syntax, with some limits due to  _kableExtra_: the argument `format="markdown"` is necessary in `kbl()` or LaTeX output will ignore formatting, but this is not compatible with `full_width = TRUE` in `kable_styling()`.
 See _kableExtra_'s documentation to format rows or columns globally without using Markdown (e.g. function  `row_spec()`.
 The header of \@ref(tab:Paracou)) is set to bold this way.
 
@@ -291,7 +291,7 @@ In the figure chunk heading, the caption is called in the `fig.cap` field:
 
   {r ChunkName, fig.cap="(ref:ChunkName)"}
 
-In tables, the `caption` argument of the `kable()` function is used the same way.
+In tables, the `caption` argument of the `kbl()` function is used the same way.
 
 
 ## Lists
