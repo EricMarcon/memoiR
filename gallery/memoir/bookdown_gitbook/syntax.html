@@ -23,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2024-03-14" />
+<meta name="date" content="2024-04-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,11 +327,11 @@ Always place these files in the <code>images</code> folder for good organization
 <p>The horizontal <code>-</code> and vertical separators <code>|</code> allow you to draw a table according to Markdown syntax, but this is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The <code>kable()</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
+The <code>kbl()</code> function in the <em>kableExtra</em> package (which enhances the original <code>kable()</code> function from <em>knitr</em>) prepares the table for display and passes the result to the <code>kable_styling</code> function for final formatting.</p>
 <p></p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="syntax.html#cb16-1" tabindex="-1"></a><span class="fu">names</span>(iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, <span class="st">&quot;Width&quot;</span>,</span>
 <span id="cb16-2"><a href="syntax.html#cb16-2" tabindex="-1"></a>    <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb16-3"><a href="syntax.html#cb16-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(iris), <span class="at">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="at">longtable =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-3"><a href="syntax.html#cb16-3" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(<span class="fu">head</span>(iris), <span class="at">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="at">longtable =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb16-4"><a href="syntax.html#cb16-4" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb16-5"><a href="syntax.html#cb16-5" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
 <span id="cb16-6"><a href="syntax.html#cb16-6" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
@@ -562,7 +562,7 @@ DBH <span class="math inline">\(\geq\)</span> 50 cm, non-valuable species, <span
 <p>This table contains mathematics: the <code>escape = FALSE</code> option is necessary.</p>
 <p>Finally, the <code>full_width = FALSE</code> option adjusts the width of the table to its content instead of occupying all the available width.
 It must be <code>TRUE</code> for correct formatting of two-column tables, i.e. with <code>longtable = FALSE</code> in LaTeX.</p>
-<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format="markdown"</code> is necessary in <code>kable()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
+<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format="markdown"</code> is necessary in <code>kbl()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
 See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code>row_spec()</code>.
 The header of <a href="syntax.html#tab:Paracou">2.2</a>) is set to bold this way.</p>
 </div>

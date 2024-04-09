@@ -239,7 +239,7 @@ The horizontal \texttt{-} and vertical separators \texttt{\textbar{}} allow you 
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The \texttt{kable()} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
+The \texttt{kbl()} function in the \emph{kableExtra} package (which enhances the original \texttt{kable()} function from \emph{knitr}) prepares the table for display and passes the result to the \texttt{kable\_styling} function for final formatting.
 
 \scriptsize
 
@@ -247,7 +247,7 @@ The \texttt{kable()} function in the \emph{knitr} package prepares the table for
 \begin{Highlighting}[]
 \FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{,}
     \StringTok{"Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{,}
+\NormalTok{kableExtra}\SpecialCharTok{::}\FunctionTok{kbl}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{,}
     \AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
         \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
@@ -304,7 +304,7 @@ This table contains mathematics: the \texttt{escape\ =\ FALSE} option is necessa
 Finally, the \texttt{full\_width\ =\ FALSE} option adjusts the width of the table to its content instead of occupying all the available width.
 It must be \texttt{TRUE} for correct formatting of two-column tables, i.e.~with \texttt{longtable\ =\ FALSE} in LaTeX.
 
-The content of table cells can be formatted following the Markdown syntax, with some limits due to \emph{kableExtra}: the argument \texttt{format="markdown"} is necessary in \texttt{kable()} or LaTeX output will ignore formatting, but this is not compatible with \texttt{full\_width\ =\ TRUE} in \texttt{kable\_styling()}.
+The content of table cells can be formatted following the Markdown syntax, with some limits due to \emph{kableExtra}: the argument \texttt{format="markdown"} is necessary in \texttt{kbl()} or LaTeX output will ignore formatting, but this is not compatible with \texttt{full\_width\ =\ TRUE} in \texttt{kable\_styling()}.
 See \emph{kableExtra}'s documentation to format rows or columns globally without using Markdown (e.g.~function \texttt{row\_spec()}.
 The header of \ref{tab:Paracou}) is set to bold this way.
 
@@ -320,7 +320,7 @@ The header of \ref{tab:Paracou}) is set to bold this way.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/h1/8hndypj13nsbj5pn4xsnv1tm0000gn/T/RtmpCC0vye/stylish_article/gallery/stylish_article/bookdown_pdf_book/stylish_article_files/figure-latex/pressure-1} 
+{\centering \includegraphics[width=0.8\linewidth]{/private/var/folders/8_/r1lvzqc55v10qydntqm5c3j00000gn/T/RtmpQD1JG2/stylish_article/gallery/stylish_article/bookdown_pdf_book/stylish_article_files/figure-latex/pressure-1} 
 
 }
 
@@ -365,7 +365,7 @@ In the figure chunk heading, the caption is called in the \texttt{fig.cap} field
 
 \{r ChunkName, fig.cap=\enquote{(ref:ChunkName)}\}
 
-In tables, the \texttt{caption} argument of the \texttt{kable()} function is used the same way.
+In tables, the \texttt{caption} argument of the \texttt{kbl()} function is used the same way.
 
 \subsection{Lists}\label{lists}
 

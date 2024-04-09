@@ -6,7 +6,7 @@
     <meta name="generator" content="pandoc" />
 
     
-        <meta name="date" content="2024-03-14" />
+        <meta name="date" content="2024-04-09" />
     
     <title>Title of the Article</title>
 
@@ -2064,7 +2064,7 @@ margin-left: 0 !important;
            <span class="glyphicon glyphicon-user"></span> Second Author’s name
                <br>
       </p>
-         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 14 March 2024</p>
+         <p class="date"><span class="glyphicon glyphicon-calendar"></span> 09 April 2024</p>
            
 
    
@@ -2121,14 +2121,14 @@ The memoiR package templates are displayed: choose <em>Simple Article</em>.</p>
 <p>The horizontal <code>-</code> and vertical separators <code>|</code> allow you to draw a table according to Markdown syntax, but this is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The <code>kable()</code> function in the <em>knitr</em> package prepares the table for display and passes the result to the <code>kable_styling</code> function in the <em>kableExtra</em> package for final formatting.</p>
+The <code>kbl()</code> function in the <em>kableExtra</em> package (which enhances the original <code>kable()</code> function from <em>knitr</em>) prepares the table for display and passes the result to the <code>kable_styling</code> function for final formatting.</p>
 <p>The caption is specified by the <code>caption</code> argument and referencing is possible because the table receives a label whose name is <code>tab:</code> followed by the name of the code snippet (table <a href="#tab:kable">3.1</a>).
 Always use the <code>booktabs = TRUE</code> argument so that the thickness of the separator lines is optimal in LaTeX.
 The <code>bootstrap_options = &quot;striped&quot;</code> option provides more readable tables in HTML.</p>
 <p></p>
 <pre class="r"><code>names(iris) &lt;- c(&quot;Sepal length&quot;, &quot;Width&quot;, &quot;Petal length&quot;,
     &quot;Width&quot;, &quot;Species&quot;)
-knitr::kable(head(iris), caption = &quot;Table created by R&quot;,
+kableExtra::kbl(head(iris), caption = &quot;Table created by R&quot;,
     longtable = TRUE, booktabs = TRUE) %&gt;%
     kableExtra::kable_styling(bootstrap_options = &quot;striped&quot;,
         full_width = FALSE)</code></pre>
@@ -2356,7 +2356,7 @@ DBH <span class="math inline">\(\geq\)</span> 50 cm, non-valuable species, <span
 <p>This table contains mathematics: the <code>escape = FALSE</code> option is necessary.</p>
 <p>Finally, the <code>full_width = FALSE</code> option adjusts the width of the table to its content instead of occupying all the available width.
 It must be <code>TRUE</code> for correct formatting of two-column tables, i.e. with <code>longtable = FALSE</code> in LaTeX.</p>
-<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format=&quot;markdown&quot;</code> is necessary in <code>kable()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
+<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format=&quot;markdown&quot;</code> is necessary in <code>kbl()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
 See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code>row_spec()</code>.
 The header of <a href="#tab:Paracou">3.2</a>) is set to bold this way.</p>
 </div>
@@ -2394,7 +2394,7 @@ Such captions must be stored in a separate paragraph starting with <code>(ref:Ch
 The text of the caption follows.</p>
 <p>In the figure chunk heading, the caption is called in the <code>fig.cap</code> field:</p>
 <p>{r ChunkName, fig.cap=“(ref:ChunkName)”}</p>
-<p>In tables, the <code>caption</code> argument of the <code>kable()</code> function is used the same way.</p>
+<p>In tables, the <code>caption</code> argument of the <code>kbl()</code> function is used the same way.</p>
 </div>
 <div id="lists" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Lists</h2>

@@ -393,7 +393,7 @@
 
 \author{Authors' names}
 
-\date{2024-03-14}
+\date{2024-04-09}
 
 
 % Include headers (preamble.tex) here
@@ -410,6 +410,20 @@
 	backgroundcolor=grey,
 	frametitlebackgroundcolor=grey,
 ]{greybox}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 
 
 % End of preamble
@@ -887,7 +901,7 @@ The horizontal \texttt{-} and vertical separators \texttt{\textbar{}} allow you 
 
 Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The \texttt{kable()} function in the \emph{knitr} package prepares the table for display and passes the result to the \texttt{kable\_styling} function in the \emph{kableExtra} package for final formatting.
+The \texttt{kbl()} function in the \emph{kableExtra} package (which enhances the original \texttt{kable()} function from \emph{knitr}) prepares the table for display and passes the result to the \texttt{kable\_styling} function for final formatting.
 
 \scriptsize
 
@@ -895,7 +909,7 @@ The \texttt{kable()} function in the \emph{knitr} package prepares the table for
 \begin{Highlighting}[]
 \FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{,}
     \StringTok{"Species"}\NormalTok{)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{,}
+\NormalTok{kableExtra}\SpecialCharTok{::}\FunctionTok{kbl}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{,}
     \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
         \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
@@ -952,7 +966,7 @@ This table contains mathematics: the \texttt{escape\ =\ FALSE} option is necessa
 Finally, the \texttt{full\_width\ =\ FALSE} option adjusts the width of the table to its content instead of occupying all the available width.
 It must be \texttt{TRUE} for correct formatting of two-column tables, i.e.~with \texttt{longtable\ =\ FALSE} in LaTeX.
 
-The content of table cells can be formatted following the Markdown syntax, with some limits due to \emph{kableExtra}: the argument \texttt{format="markdown"} is necessary in \texttt{kable()} or LaTeX output will ignore formatting, but this is not compatible with \texttt{full\_width\ =\ TRUE} in \texttt{kable\_styling()}.
+The content of table cells can be formatted following the Markdown syntax, with some limits due to \emph{kableExtra}: the argument \texttt{format="markdown"} is necessary in \texttt{kbl()} or LaTeX output will ignore formatting, but this is not compatible with \texttt{full\_width\ =\ TRUE} in \texttt{kable\_styling()}.
 See \emph{kableExtra}'s documentation to format rows or columns globally without using Markdown (e.g.~function \texttt{row\_spec()}.
 The header of \ref{tab:Paracou}) is set to bold this way.
 
