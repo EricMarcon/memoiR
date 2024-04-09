@@ -46,20 +46,20 @@ usethis::proj_set(path = ".", force = TRUE)
 build_gitignore()
 ## Activate source control, edit your files, commit
 # Build README, link to HTML output only in this example
-build_readme(PDF=FALSE)
+build_readme(PDF = FALSE)
 # render: knit to HTML Document (interactively: click the Knit button)
-rmarkdown::render(input=list.files(pattern="*.Rmd"), 
-                  output_format="bookdown::html_document2")
+rmarkdown::render(input = list.files(pattern = "*.Rmd"), 
+                  output_format = "bookdown::html_document2")
 # Build GitHub Pages
 build_githubpages()
 # List the GitHub Pages files
 setwd("docs")
-list.files(recursive=TRUE)
+list.files(recursive = TRUE)
 ## Commit and push. Outputs will be in /docs of the master branch.
 
 ## End of the example: cleanup
 # Return to the original working directory and clean up
 setwd(original_wd)
-unlink(wd, recursive=TRUE)
+unlink(wd, recursive = TRUE)
 }
 }

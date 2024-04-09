@@ -51,6 +51,6 @@ readLines(".github/workflows/memoir.yml")
 ## End of the example: cleanup
 # Return to the original working directory and clean up
 setwd(original_wd)
-unlink(wd, recursive=TRUE)
+unlink(wd, recursive = TRUE)
 
 }
