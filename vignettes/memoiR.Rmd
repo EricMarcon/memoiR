@@ -72,7 +72,7 @@ The feather in the memoiR package sticker is from [Wikimedia](https://fr.wikiped
 
 The [memoir](https://www.ctan.org/pkg/memoir) LaTeX package is on CTAN.
 
-The [Stylish Article](https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf) template is adapted from [LaTeX Templates](http://www.latextemplates.com/template/stylish-article), that in turn adapted it from a LaTeX class by [Mathias Legrand](https://www.mcgill.ca/mecheng/people/staff/mathias-legrand).
+The [Stylish Article](https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf) template is adapted from [LaTeX Templates](http://www.latextemplates.com/template/stylish-article), that in turn adapted it from a LaTeX class by [Mathias Legrand](https://www.mcgill.ca/mecheng/people/faculty/staff/mathias-legrand).
 Its licence is [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/).
 
 
