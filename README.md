@@ -3,9 +3,9 @@
 ![stability-wip](https://img.shields.io/badge/lifecycle-stable-green.svg)
 ![R-CMD-check](https://github.com/EricMarcon/memoiR/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/github/EricMarcon/memoiR/branch/master/graphs/badge.svg)](https://app.codecov.io/github/EricMarcon/memoiR)
-[![CRAN version](http://www.r-pkg.org/badges/version/memoiR)](https://CRAN.r-project.org/package=memoiR)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/memoiR)](https://CRAN.R-project.org/package=memoiR)
-[![](http://cranlogs.r-pkg.org/badges/memoiR)](https://CRAN.R-project.org/package=memoiR)
+[![CRAN version](https://www.r-pkg.org/badges/version/memoiR)](https://CRAN.r-project.org/package=memoiR)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/memoiR)](https://CRAN.R-project.org/package=memoiR)
+[![](https://cranlogs.r-pkg.org/badges/memoiR)](https://CRAN.R-project.org/package=memoiR)
 
 
 Templates to publish well-formatted documents both in HTML and PDF formats.
