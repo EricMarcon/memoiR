@@ -1,3 +1,9 @@
+# memoiR 1.2-9.9000
+
+## Improvements
+- fixed URL format in DESCRIPTION 
+
+
 # memoiR 1.2-9
 
 ## Improvements
