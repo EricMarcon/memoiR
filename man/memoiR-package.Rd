@@ -14,8 +14,8 @@ Producing high-quality documents suitable for publication directly from R is mad
 Useful links:
 \itemize{
   \item \url{https://ericmarcon.github.io/memoiR/}
-  \item \url{https://github.com/EricMarcon/memoiR}
-  \item Report bugs at \url{https://github.com/EricMarcon/memoiR/issues}
+  \item \url{https://github.com/EricMarcon/memoiR/}
+  \item Report bugs at \url{https://github.com/EricMarcon/memoiR/issues/}
 }
 
 }
