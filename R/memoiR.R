@@ -745,6 +745,8 @@ build_ghworkflow <- function() {
     '  checkout-and-deploy:',
     '    runs-on: ubuntu-latest',
     '    needs: render',
+    '    permissions:',
+    '      contents: write',
     '    steps:',
     '      - name: Download artifact',
     '        uses: actions/download-artifact@v4',
@@ -754,7 +756,7 @@ build_ghworkflow <- function() {
     '      - name: Deploy to GitHub Pages',
     '        uses: Cecilapp/GitHub-Pages-deploy@v3',
     '        env:',
-    '          GITHUB_TOKEN: ${{ secrets.GH_PAT }}',
+    '          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}',
     '        with:',
     '          email: ${{ secrets.EMAIL }}',
     '          build_dir: docs'
