@@ -1,8 +1,9 @@
-# memoiR 1.2-9.9001
+# memoiR 1.2-9.9002
 
 ## Improvements
-- fixed URL format in DESCRIPTION 
-- updated upload/download-artifact action version to v4
+* updated Cecilapp/GitHub-Pages-deploy action version to v3 with new syntax in `build_ghworkflow()`.
+* fixed URL format in DESCRIPTION.
+* updated upload/download-artifact action version to v4.
 
 
 # memoiR 1.2-9
