@@ -738,7 +738,7 @@ build_ghworkflow <- function() {
   # Publish
   lines <- c(lines,
     '      - name: Upload artifact',
-    '        uses: actions/upload-artifact@v3',
+    '        uses: actions/upload-artifact@v4',
     '        with:',
     '          name: ghpages',
     '          path: docs',
@@ -747,7 +747,7 @@ build_ghworkflow <- function() {
     '    needs: render',
     '    steps:',
     '      - name: Download artifact',
-    '        uses: actions/download-artifact@v3',
+    '        uses: actions/download-artifact@v4',
     '        with:',
     '          name: ghpages',
     '          path: docs',
