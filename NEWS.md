@@ -1,4 +1,4 @@
-# memoiR 1.2-9.9002
+# memoiR 1.2-10
 
 ## Improvements
 * updated Cecilapp/GitHub-Pages-deploy action version to v3 with new syntax in `build_ghworkflow()`.
