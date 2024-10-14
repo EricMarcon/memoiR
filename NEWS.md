@@ -1,7 +1,8 @@
-# memoiR 1.2-9.9000
+# memoiR 1.2-9.9001
 
 ## Improvements
 - fixed URL format in DESCRIPTION 
+- updated upload/download-artifact action version to v4
 
 
 # memoiR 1.2-9
