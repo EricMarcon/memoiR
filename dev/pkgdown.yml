@@ -1,0 +1,14 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  articles/articles: articles.html
+  articles/customize: customize.html
+  articles/figures: figures.html
+  articles/LaTeX: LaTeX.html
+  memoiR: memoiR.html
+  articles/upgrade: upgrade.html
+last_built: 2024-10-14T21:40Z
+urls:
+  reference: https://EricMarcon.github.io/memoiR/reference
+  article: https://EricMarcon.github.io/memoiR/articles
