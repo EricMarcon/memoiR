@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1.7100998in"
+   height="1.9945561in"
+   viewBox="0 0 153.90899 179.51005"
+   id="svg7307"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="C:\Users\Eric.Marcon\Documents\R\SpatDiv\man\figures\logo.png"
+   inkscape:export-xdpi="140.34"
+   inkscape:export-ydpi="140.34">
+  <defs
+     id="defs7309">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient7570">
+      <stop
+         style="stop-color:#970c03;stop-opacity:1;"
+         offset="0"
+         id="stop7566" />
+      <stop
+         style="stop-color:#970c03;stop-opacity:0;"
+         offset="1"
+         id="stop7568" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient7562"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#970c03;stop-opacity:1;"
+         offset="0"
+         id="stop7560" />
+    </linearGradient>
+    <clipPath
+       id="clipPath7668"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7666"
+         d="M 1419.8,1151.4 H 3374 V 3105.6 H 1419.8 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath9054"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path9052"
+         d="M 0,3255 H 3940 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath9899"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path9897"
+         d="m 809.5,512.398 h 2682.8 v 2682.8 H 809.5 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath11285"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path11283"
+         d="M 0,3255 H 3940 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath12144"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path12142"
+         d="m 495.199,355.301 h 3390 v 2839.9 h -3390 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath12192"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path12190"
+         d="M 0,3255 H 3940 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath2103"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2101"
+         d="m 506.199,354.199 h 4489 v 2736 h -4489 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath2151"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2149"
+         d="M 0,0 H 5055 V 3150 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath2270"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path2268"
+         d="m 506.199,354.199 h 2314 v 1746 h -2314 z" />
+    </clipPath>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient7570"
+       id="linearGradient7572"
+       x1="126.84442"
+       y1="-208.07124"
+       x2="478.21436"
+       y2="-205.72749"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8"
+     inkscape:cx="58.259"
+     inkscape:cy="102.58677"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="in"
+     fit-margin-top="0"
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="3840"
+     inkscape:window-height="2004"
+     inkscape:window-x="-16"
+     inkscape:window-y="-16"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="false">
+    <sodipodi:guide
+       position="220.98877,179.51007"
+       orientation="0,1"
+       id="guide8412"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="257.4712,2.2421162e-005"
+       orientation="0,1"
+       id="guide8414"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7312">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Artwork"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-126.84442,297.82627)"
+     style="display:inline">
+    <path
+       d="m 203.56453,-292.97596 73.14189,42.57485 -0.23438,84.8941 -72.67313,42.80923 -73.25907,-42.57485 v -85.01129 z m 0.23438,-4.85031 -76.95449,44.8772 v 89.75566 l 76.95449,44.87719 76.9545,-44.87719 v -89.75566 z"
+       id="path7067"
+       inkscape:connector-curvature="0"
+       style="opacity:1;fill:url(#linearGradient7572);fill-opacity:1;stroke-width:0.35433072;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-xdpi="140.34268"
+       inkscape:export-ydpi="140.34268"
+       sodipodi:nodetypes="cccccccccccccc"
+       inkscape:export-filename="C:\Users\Eric.Marcon\Documents\R\SimComm\man\figures\logo.png" />
+    <g
+       transform="matrix(1.25,0,0,-1.25,-178.67433,-175.13782)"
+       inkscape:label="ink_ext_XXXXXX"
+       id="g12120"
+       inkscape:export-filename="C:\Users\Eric.Marcon\Documents\R\SimComm\man\figures\logo.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140">
+      <g
+         transform="scale(0.1)"
+         id="g12122" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.84124756px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.54603118px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="242.55165"
+       y="-10.096483"
+       id="text12397"
+       transform="matrix(0.8742924,-0.49644251,0.50716988,0.85579986,0,0)"
+       inkscape:export-filename="C:\Users\Eric.Marcon\Documents\R\SimComm\man\figures\logo.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan12395"
+         x="242.55165"
+         y="-10.096483"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.36824942px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.54603118px">https://ericmarcon.github.io/memoiR/</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.5px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="146.75537"
+       y="-237.52063"
+       id="text7051"
+       inkscape:export-filename="C:\Users\Eric.Marcon\Documents\R\SimComm\man\figures\logo.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140"><tspan
+         sodipodi:role="line"
+         id="tspan7049"
+         x="146.75537"
+         y="-237.52063"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;font-family:'Freestyle Script';-inkscape-font-specification:'Freestyle Script, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.9375px">memoiR</tspan></text>
+    <g
+       id="g54"
+       transform="matrix(1.1560707,0,0,1.1394712,156.08234,-258.21319)">
+      <path
+         id="path52"
+         d="M 11.5,96.7 C 6.4,108.8 26.2,33.9 97.6,10.4 70.1,29.3 68.1,60.4 31.2,67.6 38.4,67.8 46.1,64.8 49.1,63 47.1,68.8 30,72.6 25.6,72 20.1,79.9 15.9,86.3 11.5,96.7 Z"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
