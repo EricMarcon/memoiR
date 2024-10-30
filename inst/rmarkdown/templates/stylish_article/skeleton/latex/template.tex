@@ -160,7 +160,7 @@ $for(author)$$author.name$\textsuperscript{$author.authsuperscript$}$sep$\\ $end
 \affiliation{
 $for(affiliation)$\textsuperscript{$affiliation.affsuperscript$}$affiliation.dptuniv$\\ \hspace{1em} $affiliation.address$$sep$\\$endfor$
 }
-\affiliation{*\textbf{$corrauthorlabel$}: $corrauthor.email$, $if(corrauthor.url)$$corrauthor.url$$endif$} % Corresponding author
+\affiliation{*\textbf{$corrauthorlabel$}: $corrauthor.email$$if(corrauthor.url)$, $corrauthor.url$$endif$} % Corresponding author
 
 \Keywords{$for(keywords)$$keywords$$sep$, $endfor$} % Keywords
 \newcommand{\keywordname}{$keywordlabel$} % Defines the keywords heading name
