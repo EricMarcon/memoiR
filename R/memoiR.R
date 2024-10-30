@@ -645,7 +645,7 @@ build_ghworkflow <- function() {
     'on:',
     '  push:',
     '   branches:',
-    '     - master',
+    '     - [main, master]',
     '',
     'name: rmarkdown',
     '',
