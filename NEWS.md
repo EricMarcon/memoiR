@@ -1,4 +1,5 @@
-# memoiR 1.2-10.9000
+# memoiR 1.2-10.9001
+* added the "main" branch name to `build_ghworkflow()`
 
 
 # memoiR 1.2-10
