@@ -1,4 +1,4 @@
-# memoiR 1.2-10.9002
+# memoiR 1.2-10.9003
 * added the "main" branch name to `build_ghworkflow()`
 * corrected the Stylish Article template (Thanks to Florence Puech, #5)
 
