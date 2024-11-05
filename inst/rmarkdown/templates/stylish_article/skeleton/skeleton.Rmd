@@ -24,7 +24,19 @@ corrauthor:
     url: https://www.company.com
 abstract: >
   Summary of the article.
+  Mandatory.
+  
+  
+  Use double line feed for a new paragraph.
+# Below the abstract
 keywords: [keyword1, keyword2, etc]
+# For economics journals
+JEL: [Code1, Code2, etc, MayBeDeleted]
+acknowledgements: >
+  Acknowledgements. 
+  
+  
+  May be deleted.
 # First Page Header
 journalinfo: "Publication reference"
 archive: "DOI: xxx/xx"
@@ -36,6 +48,8 @@ github-repo: GitHubID/Repository
 lang: en-US
 otherlangs: [fr-FR,it]
 keywordlabel: Keywords
+JELlabel: JEL
+acknowledgementslabel: Acknowledgements
 corrauthorlabel: Corresponding author
 # Bibliography
 bibliography: references.bib
@@ -277,7 +291,7 @@ It must be `TRUE` for correct formatting of two-column tables, i.e. with `longta
 
 The content of table cells can be formatted following the Markdown syntax, with some limits due to  _kableExtra_: the argument `format="markdown"` is necessary in `kbl()` or LaTeX output will ignore formatting, but this is not compatible with `full_width = TRUE` in `kable_styling()`.
 See _kableExtra_'s documentation to format rows or columns globally without using Markdown (e.g. function  `row_spec()`.
-The header of \@ref(tab:Paracou)) is set to bold this way.
+The header of table \@ref(tab:Paracou) is set to bold this way.
 
 
 ## Figures

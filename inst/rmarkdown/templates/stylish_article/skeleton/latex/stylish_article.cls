@@ -146,6 +146,8 @@
 \newcommand{\JournalInfo}[1]{\def\@JournalInfo{#1}}
 \newcommand{\Abstract}[1]{\def\@Abstract{#1}}
 \newcommand{\Keywords}[1]{\def\@Keywords{#1}}
+\newcommand{\JEL}[1]{\def\@JEL{#1}}
+\newcommand{\Acknowledgements}[1]{\def\@Acknowledgements{#1}}
 % ---------------------------------------------------------------------
 \renewcommand{\@maketitle}{%
 \twocolumn[{%
@@ -161,12 +163,23 @@
 \parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
 \colorbox{color2!10}{%
 \parbox{\textwidth-3.5\fboxsep-3.5\fboxrule}{%
-\ifx\@Keywords\@empty
 \sffamily\small\textbf{\abstractname}\\\@Abstract
+\ifx\@Keywords\@empty
 \else
-\sffamily\small\textbf{\abstractname}\\\@Abstract\\[5pt]%
+\\[5pt]%
 \textbf{\keywordname}\\\@Keywords%
 \fi
+\ifx\@JEL\@empty
+\else
+\\[5pt]%
+\textbf{\JELname}\\\@JEL%
+\fi
+\ifx\@Acknowledgements\@empty
+\else
+\\[5pt]%
+\textbf{\acknowledgementsname}\\\@Acknowledgements%
+\fi
+
 }%
 }%
 \vskip5pt%
