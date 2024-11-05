@@ -9,7 +9,7 @@
 #' @param path the path to the newly created project
 #' @param ... extra arguments passed by the New Project Wizard
 #'
-#' @return Used for side effects.
+#' @returns Used for side effects.
 #' @keywords internal
 draft_memoir <- function(path, ...) {
   # Read dots. Arguments come from inst/rstudio/templates/project/memoir.dcf
@@ -42,7 +42,7 @@ draft_memoir <- function(path, ...) {
 #' @param destination name of the folder containing GitHub pages or equivalent.
 #' @param gallery name of the subfolder of `destination` to store the knitted documents.
 #'
-#' @return `TRUE` if all documents have been knitted and copied to the gallery, invisibly.
+#' @returns `TRUE` if all documents have been knitted and copied to the gallery, invisibly.
 #' 
 #' @name Knit
 NULL
@@ -214,7 +214,7 @@ knit_template <- function(
 #'
 #' @param destination destination folder of the knitted documents.
 #'
-#' @return A vector with the names of the files and directory that were copied if they existed (some may not be knitted), invisibly.
+#' @returns A vector with the names of the files and directory that were copied if they existed (some may not be knitted), invisibly.
 #'
 #' @export
 #' @examples
@@ -346,7 +346,7 @@ build_githubpages <- function(destination = usethis::proj_path("docs")) {
 #'
 #' @param PDF if `TRUE` (by default), a link to the PDF output is added.
 #' 
-#' @return The content of the `README.md` file as a vector of characters, invisibly. Each element is a line of the file.
+#' @returns The content of the `README.md` file as a vector of characters, invisibly. Each element is a line of the file.
 #' 
 #' @export
 #' @examples
@@ -431,7 +431,7 @@ build_readme <- function(PDF = TRUE) {
 #' The .gitignore file contains the list of files (file name patterns) that must not be controlled by git.
 #' Run this function once in each project created from a memoiR template, before activating version control.
 #'
-#' @return The content of the `.gitignore` file as a vector of characters, invisibly. Each element is a line of the file.
+#' @returns The content of the `.gitignore` file as a vector of characters, invisibly. Each element is a line of the file.
 #' 
 #' @export
 #' @examples
@@ -507,7 +507,7 @@ build_gitignore <- function() {
 #'
 #' @param lang a language code, such as "fr-FR"
 #'
-#' @return A line of the GitHub Actions script to install the hyphenation package. 
+#' @returns A line of the GitHub Actions script to install the hyphenation package. 
 #' `NULL` if `lang` is not recognized.
 #' @keywords internal
 add_hyphen <- function(lang) {
@@ -532,7 +532,7 @@ add_hyphen <- function(lang) {
 #'
 #' @param font a font file name
 #'
-#' @return A line of the GitHub Actions script to install the font package. 
+#' @returns A line of the GitHub Actions script to install the font package. 
 #' `NULL` if `font` is not recognized.
 #' @keywords internal
 add_font <- function(font) {
@@ -595,7 +595,7 @@ add_font <- function(font) {
 #' - GH_PAT: a valid access token,
 #' - EMAIL: the email address to send the workflow results to.
 #'
-#' @return The content of the YAML file as a vector of characters, invisibly. Each element is a line of the file.
+#' @returns The content of the YAML file as a vector of characters, invisibly. Each element is a line of the file.
 #' 
 #' @export
 #' @examples
