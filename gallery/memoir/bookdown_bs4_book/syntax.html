@@ -209,7 +209,7 @@ Always place these files in the <code>images</code> folder for good organization
 <p>The horizontal <code>-</code> and vertical separators <code>|</code> allow you to draw a table according to Markdown syntax, but this is not the best method.</p>
 <p>Tables can also be produced by R code.
 The content of the table is in a dataframe.
-The <code><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl()</a></code> function in the <em>kableExtra</em> package (which enhances the original <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function from <em>knitr</em>) prepares the table for display and passes the result to the <code>kable_styling</code> function for final formatting.</p>
+The <code>kbl()</code> function in the <em>kableExtra</em> package (which enhances the original <code>kable()</code> function from <em>knitr</em>) prepares the table for display and passes the result to the <code>kable_styling</code> function for final formatting.</p>
 <p></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sepal length"</span>, <span class="st">"Width"</span>, <span class="st">"Petal length"</span>, <span class="st">"Width"</span>,</span>
@@ -441,8 +441,8 @@ DBH <span class="math inline">\(\geq\)</span> 50 cm, non-valuable species, <span
 <p>This table contains mathematics: the <code>escape = FALSE</code> option is necessary.</p>
 <p>Finally, the <code>full_width = FALSE</code> option adjusts the width of the table to its content instead of occupying all the available width.
 It must be <code>TRUE</code> for correct formatting of two-column tables, i.e. with <code>longtable = FALSE</code> in LaTeX.</p>
-<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format="markdown"</code> is necessary in <code><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl()</a></code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling()</a></code>.
-See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec()</a></code>.
+<p>The content of table cells can be formatted following the Markdown syntax, with some limits due to <em>kableExtra</em>: the argument <code>format="markdown"</code> is necessary in <code>kbl()</code> or LaTeX output will ignore formatting, but this is not compatible with <code>full_width = TRUE</code> in <code>kable_styling()</code>.
+See <em>kableExtra</em>’s documentation to format rows or columns globally without using Markdown (e.g. function <code>row_spec()</code>.
 The header of <a href="syntax.html#tab:Paracou">2.2</a>) is set to bold this way.</p>
 </div>
 <div id="maths" class="section level2" number="2.5">
@@ -650,7 +650,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2024-11-05.</p>
+    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2024-12-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
