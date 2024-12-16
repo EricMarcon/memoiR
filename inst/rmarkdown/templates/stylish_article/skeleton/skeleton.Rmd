@@ -274,7 +274,7 @@ kableExtra::kbl(
     bootstrap_options = "striped", 
     full_width = TRUE
   ) %>% 
-  row_spec(row = 0, bold = TRUE)
+  kableExtra::row_spec(row = 0, bold = TRUE)
 ```
 
 
