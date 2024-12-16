@@ -118,25 +118,17 @@ csquotes: true
 #| include: FALSE
 ### Utilities. Do not modify.
 # Installation of packages if necessary
-InstallPackages <- function(Packages) {
-  InstallPackage <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {
-      install.packages(Package, repos = "https://cran.rstudio.com/")
+install_packages <- function(packages) {
+  install_package <- function(package) {
+    if (!package %in% installed.packages()[, 1]) {
+      install.packages(package, repos = "https://cran.rstudio.com/")
     }
   }
-  invisible(sapply(Packages, InstallPackage))
+  invisible(sapply(packages, install_package))
 }
 
 # Basic packages
-InstallPackages(c("bookdown", "formatR", "kableExtra", "magick", "ragg"))
-
-# kableExtra must be loaded 
-if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
-  # Word output (https://stackoverflow.com/questions/35144130/in-knitr-how-can-i-test-for-if-the-output-will-be-pdf-or-word)
-  # Do not use autoformat (https://github.com/haozhu233/kableExtra/issues/308)
-  options(kableExtra.auto_format = FALSE)
-}
-library("kableExtra")
+install_packages(c("bookdown", "formatR", "kableExtra", "magick", "ragg"))
 
 # Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")
@@ -178,7 +170,7 @@ knitr::knit_hooks$set(
 
 # Figures with side captions
 if (rmarkdown::metadata$largemargins)
-  knitr::opts_chunk$set(fig.env='SCfigure')
+  knitr::opts_chunk$set(fig.env = 'SCfigure')
 ```
 
 ```{r}
@@ -186,11 +178,11 @@ if (rmarkdown::metadata$largemargins)
 #| include: false
 ### Customized options for this document
 # Add necessary packages here
-Packages <- c("tidyverse")
+packages <- c("tidyverse")
 # Install them
-InstallPackages(Packages)
+install_packages(packages)
 # Create packages.bib file to reference them as @R-package
-knitr::write_bib(Packages, file="packages.bib")
+knitr::write_bib(packages, file = "packages.bib")
 
 # knitr options
 knitr::opts_chunk$set(
