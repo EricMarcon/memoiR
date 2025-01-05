@@ -393,7 +393,7 @@
 
 \author{Authors' names}
 
-\date{2024-12-16}
+\date{2025-01-05}
 
 
 % Include headers (preamble.tex) here
@@ -910,7 +910,7 @@ The \texttt{kbl()} function in the \emph{kableExtra} package (which enhances the
 \FunctionTok{names}\NormalTok{(iris) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Sepal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{, }\StringTok{"Petal length"}\NormalTok{, }\StringTok{"Width"}\NormalTok{,}
     \StringTok{"Species"}\NormalTok{)}
 \NormalTok{kableExtra}\SpecialCharTok{::}\FunctionTok{kbl}\NormalTok{(}\FunctionTok{head}\NormalTok{(iris), }\AttributeTok{caption =} \StringTok{"Table created by R"}\NormalTok{, }\AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{,}
-    \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
 \NormalTok{    kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{,}
         \AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
@@ -943,7 +943,7 @@ The \texttt{bootstrap\_options\ =\ "striped"} option provides more readable tabl
 
 \begin{table}
 \centering
-\caption{\label{tab:Paracou}Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.}
+\caption{\label{tab:Paracou}Disturbance intensity of the 4 plot treatments in Paracou.}
 \centering
 \begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X>{\raggedright}X}
 \toprule

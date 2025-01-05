@@ -23,7 +23,7 @@
 <meta name="author" content="Authors’ names" />
 
 
-<meta name="date" content="2024-12-16" />
+<meta name="date" content="2025-01-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -332,7 +332,7 @@ The <code>kbl()</code> function in the <em>kableExtra</em> package (which enhanc
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="syntax.html#cb16-1" tabindex="-1"></a><span class="fu">names</span>(iris) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Sepal length&quot;</span>, <span class="st">&quot;Width&quot;</span>, <span class="st">&quot;Petal length&quot;</span>, <span class="st">&quot;Width&quot;</span>,</span>
 <span id="cb16-2"><a href="syntax.html#cb16-2" tabindex="-1"></a>    <span class="st">&quot;Species&quot;</span>)</span>
 <span id="cb16-3"><a href="syntax.html#cb16-3" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(<span class="fu">head</span>(iris), <span class="at">caption =</span> <span class="st">&quot;Table created by R&quot;</span>, <span class="at">longtable =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-4"><a href="syntax.html#cb16-4" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="syntax.html#cb16-4" tabindex="-1"></a>    <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb16-5"><a href="syntax.html#cb16-5" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>,</span>
 <span id="cb16-6"><a href="syntax.html#cb16-6" tabindex="-1"></a>        <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -471,7 +471,7 @@ The <code>bootstrap_options = "striped"</code> option provides more readable tab
 <p></p>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:Paracou">Table 2.2: </span>Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+<span id="tab:Paracou">Table 2.2: </span>Disturbance intensity of the 4 plot treatments in Paracou.
 </caption>
 <thead>
 <tr>
