@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">memoiR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-10.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-10.9006</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +43,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/articles.html">Writing articles</a></li>
     <li><a class="dropdown-item" href="../articles/customize.html">LaTeX memoir Customization</a></li>
+    <li><a class="dropdown-item" href="../articles/tables.html">Tables with memoiR</a></li>
     <li><a class="dropdown-item" href="../articles/figures.html">Figures in memoirs with large margins</a></li>
     <li><a class="dropdown-item" href="../articles/upgrade.html">Upgrade a Project</a></li>
     <li><a class="dropdown-item" href="../articles/LaTeX.html">Production of LaTeX Documents</a></li>
@@ -136,21 +137,27 @@ head(cars)
 allow you to draw a table according to Markdown syntax, but this is not
 the best method.</p>
 <p>Tables can also be produced by R code. The content of the table is in
-a dataframe. The <code>kbl()</code> function in the <em>kableExtra</em>
-package (which enhances the original <code>kable()</code> function from
+a dataframe. The <code><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl()</a></code> function in the <em>kableExtra</em>
+package (which enhances the original <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable()</a></code> function from
 <em>knitr</em>) prepares the table for display and passes the result to
 the <code>kable_styling</code> function for final formatting.</p>
 <pre><code>```{r iris, echo=FALSE, warning=FALSE}
 library("kableExtra")
 names(iris) &lt;- c("Sepal length", "Width", "Petal length", "Width", "Species")
-kbl(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE) %&gt;%
+kbl(
+  head(iris), 
+  caption = "Table created by R", longtable = TRUE, booktabs = TRUE
+) |&gt;
   kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```</code></pre>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## Attaching package: 'kableExtra'</span></span></code></pre>
-<pre><code><span><span class="co">## The following object is masked from 'package:dplyr':</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##     group_rows</span></span></code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="http://haozhu233.github.io/kableExtra/" class="external-link">"kableExtra"</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sepal length"</span>, <span class="st">"Width"</span>, <span class="st">"Petal length"</span>, <span class="st">"Width"</span>, <span class="st">"Species"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, </span>
+<span>  caption <span class="op">=</span> <span class="st">"Table created by R"</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span>, booktabs <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>bootstrap_options <span class="op">=</span> <span class="st">"striped"</span>, full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Table created by R
@@ -288,7 +295,7 @@ tables in HTML.</p>
 <p>In LaTeX, tables can have the width of the column and possibly span
 multiple pages, or use the width of the page.</p>
 <pre><code>```{r Paracou, echo=FALSE, warning=FALSE}
-Intervention &lt;- data.frame(
+logging &lt;- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
   Timber=c("", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
@@ -304,14 +311,14 @@ Intervention &lt;- data.frame(
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
   AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
-names(Intervention)[5] &lt;- "\\%AGB lost"
+names(logging)[5] &lt;- "\\%AGB lost"
 kbl(
-  Intervention, 
+  logging, 
   caption = "Summary of the disturbance intensity for the 4 plot treatments in Paracou.", 
   longtable = FALSE,
   booktabs = TRUE, 
   escape = FALSE
-) %&gt;%
+) |&gt;
   kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```</code></pre>
 <table class="table table table-striped" style="margin-left: auto; margin-right: auto;">
@@ -441,6 +448,8 @@ tables in LaTeX.</p>
 <pre><code>```{r pressure, fig.cap="Figure title"}
 plot(pressure)
 ```</code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pressure</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="articles_files/figure-html/pressure-1.png" alt="Figure title" width="700"><p class="caption">
 Figure title
@@ -456,7 +465,11 @@ code snippet that generates it: <code>fig.env="figure*"</code> and
 <code>out.extra=""</code>.</p>
 <p>Existing figures are integrated into a piece of code by the
 <code>include_graphics</code> function.</p>
-<pre><code>```{r cover, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
+<pre><code>```{r}
+#| label: cover
+#| out-width: 60%
+#| fig-cap: "A figure from a file"
+#| echo: false
 knitr::include_graphics("images/trim.png")
 ```</code></pre>
 <div class="figure">
@@ -478,11 +491,13 @@ follows.</p>
 <p>In the figure chunk heading, the caption is called in the
 <code>fig.cap</code> field:</p>
 <pre><code>(ref:ChunkName) This *is* a figure legend.
-```{r ChunkName, fig.cap="(ref:ChunkName)"}
+```{r}
+#| label: ChunkName
+#| fig-cap: "(ref:ChunkName)"
 plot(pressure)
 ```</code></pre>
 <p>In tables, the <code>caption</code> argument of the
-<code>kbl()</code> function is used the same way.</p>
+<code><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl()</a></code> function is used the same way.</p>
 </div>
 <div class="section level3">
 <h3 id="lists">Lists<a class="anchor" aria-label="anchor" href="#lists"></a>
