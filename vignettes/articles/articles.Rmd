@@ -85,11 +85,11 @@ The `kbl()` function in the _kableExtra_ package (which enhances the original `k
 ```{r iris, echo=FALSE, warning=FALSE}`r ''`
 library("kableExtra")
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
-kableExtra::kbl(
+kbl(
   head(iris), 
   caption = "Table created by R", longtable = TRUE, booktabs = TRUE
 ) |>
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 ````
 
@@ -97,12 +97,13 @@ kableExtra::kbl(
 #| label: kable
 #| echo: true
 #| warning: false
+library("kableExtra")
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
-kableExtra::kbl(
+kbl(
   head(iris), 
   caption = "Table created by R", longtable = TRUE, booktabs = TRUE
 ) |>
-  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
 The caption is specified by the `caption` argument and referencing is possible because the table receives a label whose name is `tab:` followed by the name of the code snippet: write something like `see table \@ref(tab:iris))`.
