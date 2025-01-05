@@ -196,17 +196,17 @@ names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
 kableExtra::kbl(
   head(iris), 
   caption = "Table created by R", longtable = TRUE, booktabs = TRUE
-  ) %>%
+  ) |>
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
 
-(ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+(ref:Paracou) Disturbance intensity of the 4 plot treatments in Paracou.
 ```{r}
 #| label: Paracou
 #| echo: false
 #| warning: false
-Intervention <- data.frame(
+logging <- data.frame(
   Treatment = c("Control", "T1", "T2", "T3"),
   Timber = c("", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
@@ -222,17 +222,17 @@ Intervention <- data.frame(
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
   AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
-names(Intervention)[5] <- "\\%AGB lost"
+names(logging)[5] <- "\\%AGB lost"
 kableExtra::kbl(
-  Intervention, 
+  logging, 
   caption = "(ref:Paracou)", 
   longtable = FALSE, 
   booktabs = TRUE, 
-  escape = FALSE) %>%
+  escape = FALSE) |>
   kableExtra::kable_styling(
     bootstrap_options = "striped", 
     full_width = TRUE
-  ) %>% 
+  ) |> 
   kableExtra::row_spec(row = 0, bold = TRUE)
 ```
 

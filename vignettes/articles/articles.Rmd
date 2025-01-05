@@ -14,7 +14,6 @@ vignette: >
 ```{r global_options, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE)
 set.seed(97310)
-library("dplyr")
 ```
 
 
@@ -86,16 +85,24 @@ The `kbl()` function in the _kableExtra_ package (which enhances the original `k
 ```{r iris, echo=FALSE, warning=FALSE}`r ''`
 library("kableExtra")
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
-kbl(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+kableExtra::kbl(
+  head(iris), 
+  caption = "Table created by R", longtable = TRUE, booktabs = TRUE
+) |>
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 ````
 
-```{r iris, echo=FALSE, warning=FALSE}
-library("kableExtra")
+```{r}
+#| label: kable
+#| echo: true
+#| warning: false
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
-kbl(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE) %>%
-  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+kableExtra::kbl(
+  head(iris), 
+  caption = "Table created by R", longtable = TRUE, booktabs = TRUE
+) |>
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
 The caption is specified by the `caption` argument and referencing is possible because the table receives a label whose name is `tab:` followed by the name of the code snippet: write something like `see table \@ref(tab:iris))`.
@@ -106,7 +113,7 @@ In LaTeX, tables can have the width of the column and possibly span multiple pag
 
 ````
 ```{r Paracou, echo=FALSE, warning=FALSE}`r ''`
-Intervention <- data.frame(
+logging <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
   Timber=c("", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
@@ -122,21 +129,23 @@ Intervention <- data.frame(
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
   AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
-names(Intervention)[5] <- "\\%AGB lost"
+names(logging)[5] <- "\\%AGB lost"
 kbl(
-  Intervention, 
+  logging, 
   caption = "Summary of the disturbance intensity for the 4 plot treatments in Paracou.", 
   longtable = FALSE,
   booktabs = TRUE, 
   escape = FALSE
-) %>%
+) |>
   kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 ````
 
-
-```{r Paracou, echo=FALSE, warning=FALSE}
-Intervention <- data.frame(
+```{r}
+#| label: Paracou
+#| echo: false
+#| warning: false
+logging <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
   Timber=c("", 
            "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
@@ -152,14 +161,14 @@ Intervention <- data.frame(
              "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
   AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
-names(Intervention)[5] <- "\\%AGB lost"
+names(logging)[5] <- "\\%AGB lost"
 kbl(
-  Intervention, 
+  logging, 
   caption = "Summary of the disturbance intensity for the 4 plot treatments in Paracou.", 
   longtable = FALSE, 
   booktabs = TRUE, 
   escape = FALSE
-) %>%
+) |>
   kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
@@ -179,7 +188,9 @@ plot(pressure)
 ```
 ````
 
-```{r pressure, fig.cap="Figure title", echo=FALSE}
+```{r}
+#| label: pressure
+#| fig-cap: "Figure title"
 plot(pressure)
 ```
 
@@ -191,12 +202,20 @@ In the PDF output of Stylish Articles, a figure can use the full width of the pa
 Existing figures are integrated into a piece of code by the `include_graphics` function.
 
 ````
-```{r cover, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}`r ''`
+```{r}`r ''`
+#| label: cover
+#| out-width: 60%
+#| fig-cap: "A figure from a file"
+#| echo: false
 knitr::include_graphics("images/trim.png")
 ```
 ````
 
-```{r cover, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
+```{r}
+#| label: cover
+#| out-width: 60%
+#| fig-cap: "A figure from a file"
+#| echo: false
 knitr::include_graphics("trim.png")
 ```
 
@@ -214,7 +233,9 @@ In the figure chunk heading, the caption is called in the `fig.cap` field:
 
 ````
 (ref:ChunkName) This *is* a figure legend.
-```{r ChunkName, fig.cap="(ref:ChunkName)"}`r ''`
+```{r}`r ''`
+#| label: ChunkName
+#| fig-cap: "(ref:ChunkName)"
 plot(pressure)
 ```
 ````
