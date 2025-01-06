@@ -53,7 +53,7 @@ Its value is the path to a PDF file whose first page will be extracted.
 
 Or build a cover based on the options declared as `maintitlepage`.
 The title and authors of the document will be printed with the current date on the cover page.
-An illustration (example [here](https://ericmarcon.github.io/travailleR/travailleR.pdf) can be added at the bottom right of the page, declared as `filigrane`:
+An illustration (example [here](https://ericmarcon.github.io/WorkingWithR/WwR.pdf) can be added at the bottom right of the page, declared as `filigrane`:
 ```
 maintitlepage:
   filigrane: images/filigrane.png

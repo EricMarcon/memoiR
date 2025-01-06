@@ -121,7 +121,7 @@ set.seed(973)
 
 This template allows writing articles in Markdown[^1] format.
 
-[^1]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
+[^1]: <https://ericmarcon.github.io/WorkingWithR/chap-rediger.html>
 
 
 # R Markdown{#markdown}
