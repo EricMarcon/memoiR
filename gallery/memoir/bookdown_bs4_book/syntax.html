@@ -132,7 +132,9 @@ Last, numbered lists are created in the same way by replacing the hyphens by num
 <p>R code is included in code chunks (<em>code chunks</em>) that are easily created by clicking on the “Insert a new code chunk” button above the source code window in RStudio.
 They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:</p>
-<pre><code>```{r cars, echo=TRUE}
+<pre><code>```{r}
+#| label: cars
+#| echo: true
 ```</code></pre>
 <p>The name and options are optional: the minimum header is <code>{r}</code>.</p>
 <p>The most useful options are:</p>
@@ -171,7 +173,9 @@ Figure 2.1: A figure
 With Bookdown, a label is associated with each figure: its name is <code>fig:xxx</code> where <code>xxx</code> is the name of the R code snippet.
 References are made with the command <code>\@ref(fig:xxx)</code>.</p>
 <p>The header of the code snippet of the figure <a href="syntax.html#fig:pressure">2.1</a> is:</p>
-<pre><code>```{r pressure, fig.cap="Title of the figure"}
+<pre><code>```{r}
+#| label: pressure
+#| fig-cap: "Title of the figure"
 ```</code></pre>
 <p>It contains at least the name of the figure and its caption.</p>
 <p>The default width of figures is set in the option chunk in <code>index.Rmd</code>.
@@ -650,7 +654,7 @@ All the necessary details for writing (writing equations, cross-references, etc.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2025-01-05.</p>
+    <p>"<strong>Title of the Memoir</strong>" was written by Authors’ names. It was last built on 2025-01-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

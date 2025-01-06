@@ -393,7 +393,7 @@
 
 \author{Authors' names}
 
-\date{2025-01-05}
+\date{2025-01-06}
 
 
 % Include headers (preamble.tex) here
@@ -786,7 +786,9 @@ They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example:
 
 \begin{verbatim}
-```{r cars, echo=TRUE}
+```{r}
+#| label: cars
+#| echo: true
 ```
 \end{verbatim}
 
@@ -851,7 +853,9 @@ References are made with the command \texttt{\textbackslash{}@ref(fig:xxx)}.
 The header of the code snippet of the figure \ref{fig:pressure} is:
 
 \begin{verbatim}
-```{r pressure, fig.cap="Title of the figure"}
+```{r}
+#| label: pressure
+#| fig-cap: "Title of the figure"
 ```
 \end{verbatim}
 
