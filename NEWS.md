@@ -1,12 +1,16 @@
-# memoiR 1.2-10.9006
+# memoiR 1.2-10.9007
+
+## Improvements
 
 * added the "main" branch name to `build_ghworkflow()`.
 * corrected the Stylish Article template (Thanks to Florence Puech, #5).
 * added JEL codes and acknowledgements to Stylish Article template.
+* added a vignette about tables.
 
 # memoiR 1.2-10
 
 ## Improvements
+
 * updated Cecilapp/GitHub-Pages-deploy action version to v3 with new syntax in `build_ghworkflow()`.
 * fixed URL format in DESCRIPTION.
 * updated upload/download-artifact action version to v4.
