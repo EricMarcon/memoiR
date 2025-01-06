@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">memoiR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-10.9006</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2-10.9007</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,7 +105,10 @@ paragraph.</p>
 </h3>
 <p>This code produces a standard figure.</p>
 <pre><code>(ref:pressure1) Standard figure
-```{r pressure1, fig.cap="(ref:pressure1)", echo=FALSE}
+```{r}
+#| label: pressure1
+#| fig.cap: "(ref:pressure1)"
+#| echo: false
 plot(pressure)
 ```</code></pre>
 </div>
@@ -113,9 +116,13 @@ plot(pressure)
 <h3 id="margin-figure">Margin figure<a class="anchor" aria-label="anchor" href="#margin-figure"></a>
 </h3>
 <p>A margin figure is obtained by changing the figure environment
-(<code>fig.env='marginfigure'</code>) in the code chunk options.</p>
+(<code>fig.env: 'marginfigure'</code>) in the code chunk options.</p>
 <pre><code>(ref:pressure2) Margin figure
-```{r pressure2, fig.cap="(ref:pressure2)", fig.env='marginfigure', echo=FALSE}
+```{r}
+#| label: pressure2
+#| fig.cap: "(ref:pressure2)"
+#| fig.env: 'marginfigure'
+#| echo: false
 plot(pressure)
 ```</code></pre>
 </div>
@@ -123,13 +130,18 @@ plot(pressure)
 <h3 id="full-width-figure">Full-width figure<a class="anchor" aria-label="anchor" href="#full-width-figure"></a>
 </h3>
 <p>A full-width figure is obtained by changing the figure environment
-(<code>fig.env='figure'</code>) and width
-(<code>out.width='\\widthw'</code>).</p>
+(<code>fig.env: 'figure'</code>) and width
+(<code>out.width: '\\widthw'</code>).</p>
 <pre><code>(ref:pressure3) Full-width figure
-```{r pressure3, fig.cap="(ref:pressure3)", fig.env='figure', out.width='\\widthw', echo=FALSE}
+```{r}
+#| label: pressure3
+#| fig.cap: "(ref:pressure3)"
+#| fig.env: 'figure'
+#| out.width: '\\widthw'
+#| echo: false
 plot(pressure)
 ```</code></pre>
-<p>The figure must be centered (<code>fig.align='center'</code>), which
+<p>The figure must be centered (<code>fig.align: 'center'</code>), which
 is by default in <strong>memoiR</strong> templates.</p>
 </div>
 </div>
