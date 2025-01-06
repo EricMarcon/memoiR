@@ -10,8 +10,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(cache = TRUE)
 set.seed(97310)
 ```
 
@@ -24,7 +26,8 @@ Two alternative layouts are available: margin figures and full-width figures tha
 # Layouts
 
 This copy of a page with all three types of figures illustrates their differences.
-```{r, echo=FALSE}
+```{r}
+#| echo: false
 knitr::include_graphics("figures.png")
 ```
 
@@ -42,31 +45,43 @@ This code produces a standard figure.
 
 ````
 (ref:pressure1) Standard figure
-```{r pressure1, fig.cap="(ref:pressure1)", echo=FALSE}`r ''`
+```{r}`r ''`
+#| label: pressure1
+#| fig.cap: "(ref:pressure1)"
+#| echo: false
 plot(pressure)
 ```
 ````
 
 ## Margin figure
 
-A margin figure is obtained by changing the figure environment (`fig.env='marginfigure'`) in the code chunk options.
+A margin figure is obtained by changing the figure environment (`fig.env: 'marginfigure'`) in the code chunk options.
 
 ````
 (ref:pressure2) Margin figure
-```{r pressure2, fig.cap="(ref:pressure2)", fig.env='marginfigure', echo=FALSE}`r ''`
+```{r}`r ''`
+#| label: pressure2
+#| fig.cap: "(ref:pressure2)"
+#| fig.env: 'marginfigure'
+#| echo: false
 plot(pressure)
 ```
 ````
 
 ## Full-width figure
 
-A full-width figure is obtained by changing the figure environment (`fig.env='figure'`) and width (`out.width='\\widthw'`).
+A full-width figure is obtained by changing the figure environment (`fig.env: 'figure'`) and width (`out.width: '\\widthw'`).
 
 ````
 (ref:pressure3) Full-width figure
-```{r pressure3, fig.cap="(ref:pressure3)", fig.env='figure', out.width='\\widthw', echo=FALSE}`r ''`
+```{r}`r ''`
+#| label: pressure3
+#| fig.cap: "(ref:pressure3)"
+#| fig.env: 'figure'
+#| out.width: '\\widthw'
+#| echo: false
 plot(pressure)
 ```
 ````
 
-The figure must be centered (`fig.align='center'`), which is by default in **memoiR** templates.
+The figure must be centered (`fig.align: 'center'`), which is by default in **memoiR** templates.

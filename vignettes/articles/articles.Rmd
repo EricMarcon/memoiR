@@ -11,8 +11,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(cache = FALSE)
 set.seed(97310)
 ```
 
@@ -63,12 +65,16 @@ The main features of R Markdown are summarized here.
 R code is included in code chunks:
 
 ````
-```{r cars, echo=FALSE}`r ''`
+```{r}`r ''`
+#| label: cars
+#| echo: false
 head(cars)
 ```
 ````
 
-```{r cars, echo = TRUE}
+```{r}
+#| label: cars
+#| echo: false
 head(cars)
 ```
 
@@ -82,7 +88,10 @@ The content of the table is in a dataframe.
 The `kbl()` function in the _kableExtra_ package (which enhances the original `kable()` function from _knitr_) prepares the table for display and passes the result to the `kable_styling` function for final formatting.
 
 ````
-```{r iris, echo=FALSE, warning=FALSE}`r ''`
+```{r}`r ''`
+#| label: iris
+#| echo: true
+#| warning: false
 library("kableExtra")
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
 kbl(
@@ -95,7 +104,7 @@ kbl(
 
 ```{r}
 #| label: kable
-#| echo: true
+#| echo: false
 #| warning: false
 library("kableExtra")
 names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
@@ -113,7 +122,10 @@ The `bootstrap_options = "striped"` option provides more readable tables in HTML
 In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page. 
 
 ````
-```{r Paracou, echo=FALSE, warning=FALSE}`r ''`
+```{r}`r ''`
+#| label: Paracou
+#| echo: false
+#| warning: false
 logging <- data.frame(
   Treatment=c("Control", "T1", "T2", "T3"),
   Timber=c("", 
@@ -147,20 +159,26 @@ kbl(
 #| echo: false
 #| warning: false
 logging <- data.frame(
-  Treatment=c("Control", "T1", "T2", "T3"),
-  Timber=c("", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning=c("", 
-             "", 
-             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
-             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood=c("", 
-             "", 
-             "", 
-             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
-  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+  Treatment = c("Control", "T1", "T2", "T3"),
+  Timber = c(
+    "", 
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"
+  ),
+  Thinning = c(
+    "", 
+    "", 
+    "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+    "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "
+  ),
+  Fuelwood = c(
+    "", 
+    "", 
+    "", 
+    "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"
+  ),
+  AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(logging)[5] <- "\\%AGB lost"
 kbl(
@@ -184,7 +202,9 @@ It must be `TRUE` for correct formatting of two-column tables in LaTeX.
 Figures can be created by some R code.
 
 ````
-```{r pressure, fig.cap="Figure title"}`r ''`
+```{r}`r ''`
+#| label: pressure
+#| fig-cap: "Figure title"
 plot(pressure)
 ```
 ````

@@ -10,8 +10,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache=FALSE)
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(cache = FALSE)
 set.seed(97310)
 ```
 

@@ -10,8 +10,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r global_options, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(cache = FALSE)
 set.seed(97310)
 ```
 
@@ -173,7 +175,8 @@ Both provide updated versions of the classical:
 
 The LaTeX packages must be installed in the LaTeX distribution.
 If **tinytex** installed it, it can do that too:
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
 ```
 
@@ -283,7 +286,10 @@ classoption:
 
 The printed paper will show the trim marks like this:
 
-```{r trim, echo=FALSE, out.width="50%"}
+```{r}
+#| label: trim
+#| out.width: '50%'
+#| echo: false
 knitr::include_graphics("trim.png")
 ```
  

@@ -77,7 +77,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-```{r Options, include=FALSE}
+```{r}
+#| label: Options
+#| include: false
 ### Customized options for this document
 # Add necessary packages here
 packages <- c("tidyverse")
@@ -96,7 +98,8 @@ knitr::opts_chunk$set(
   # Graphic devices (ragg_png is better than standard png)
   dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy = TRUE, tidy.opts = list(blank=FALSE, width.cutoff = 50),
+  tidy = TRUE, tidy.opts = list(blank = 
+                                  FALSE, width.cutoff = 50),
   size = "scriptsize", knitr.graphics.auto_pdf = TRUE
   )
 options(width = 50)

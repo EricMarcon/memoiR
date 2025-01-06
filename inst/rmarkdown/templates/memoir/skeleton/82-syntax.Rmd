@@ -73,7 +73,9 @@ They start and end with three quotation marks on a new line.
 These code chunks can contain R code but also Python code for example: the type of code is indicated in the header on the first line, before the name of the code chunk, then a comma separated list of options, for example: 
 
 ````
-```{r cars, echo=TRUE}`r ''`
+```{r}`r ''`
+#| label: cars
+#| echo: true
 ```
 ````
 
@@ -90,7 +92,8 @@ The `echo` option should be set to `FALSE` by default for a scientific article f
 
 When it is `TRUE`, the code is printed as follows
 
-```{r, echo=TRUE}
+```{r}
+#| echo: true
 2+2
 ```
 
@@ -111,7 +114,9 @@ References are made with the command `\@ref(fig:xxx)`.
 The header of the code snippet of the figure \@ref(fig:pressure) is:
 
 ````
-```{r pressure, fig.cap="Title of the figure"}`r ''`
+```{r}`r ''`
+#| label: pressure
+#| fig-cap: "Title of the figure"
 ```
 ````
 

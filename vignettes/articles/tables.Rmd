@@ -12,7 +12,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r global_options, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 # Installation of packages if necessary
 install_packages <- function(packages) {
   install_package <- function(package) {
