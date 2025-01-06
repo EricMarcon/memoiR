@@ -1,5 +1,7 @@
 ---
 title: "Tables with memoiR"
+pkgdown:
+  as_is: true
 output: 
   bookdown::html_document2:
     toc: yes
@@ -152,7 +154,7 @@ Read its documentation[^6].
 
 ## Limitations
 
-Word output is correct in contrast with **kableExtra** but LaTeX support is yet more limited.
+Word output is correct, unlike **kableExtra**, but LaTeX support is more limited.
 In Stylish Articles, tables are always printed in full width.
 There seems to be no way to make them fit a single column.
 
@@ -162,7 +164,7 @@ There seems to be no way to make them fit a single column.
 **gt** is the a promising table package, developped by the RStudio team with an approach similar to that of **ggplot2**, i.e. the definition of a grammar of tables.
 
 It has been focusing on HTML output and somehow neglected LaTeX in its first versions.
-LaTeX support was improved in version 0.11 but it can't be used in memoiR yet because the numbered captions are not correct, even in HTML, as shown below.
+LaTeX support was improved in version 0.11 but it can't be used in memoiR yet because the numbered captions are not correct when the document is rendered with `bookdown::html_document2()`, as shown below.
 
 ```{r}
 #| label: gt
