@@ -143,7 +143,7 @@ library("huxtable")
 mtcars[1:5, 1:6] |>
   as_hux() |>
   set_header_rows(1, value = TRUE) |> 
-  style_headers(bold = TRUE)|> 
+  style_headers(bold = TRUE) |> 
   theme_article() |>
   set_caption("(ref:ht)")
 ```

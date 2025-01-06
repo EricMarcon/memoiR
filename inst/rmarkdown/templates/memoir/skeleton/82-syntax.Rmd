@@ -185,18 +185,24 @@ The `bootstrap_options = "striped"` option provides more readable tables in HTML
 #| warning: false
 logging <- data.frame(
   Treatment = c("Control", "T1", "T2", "T3"),
-  Timber = c("", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning = c("", 
-             "", 
-             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
-             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood = c("", 
-             "", 
-             "", 
-             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
+  Timber = c(
+    "", 
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"
+  ),
+  Thinning = c(
+    "", 
+    "", 
+    "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+    "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "
+  ),
+  Fuelwood = c(
+    "", 
+    "", 
+    "", 
+    "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"
+  ),
   AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
 names(logging)[5] <- "\\%AGB lost"
