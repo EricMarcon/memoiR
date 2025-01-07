@@ -1,4 +1,4 @@
-# memoiR 1.2-10.9007
+# memoiR 1.3-0
 
 ## Improvements
 
@@ -6,6 +6,7 @@
 * corrected the Stylish Article template (Thanks to Florence Puech, #5).
 * added JEL codes and acknowledgements to Stylish Article template.
 * added a vignette about tables.
+
 
 # memoiR 1.2-10
 
