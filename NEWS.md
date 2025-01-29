@@ -1,3 +1,10 @@
+# memoiR 1.3-0.9000
+
+## Improvements
+
+* cleaned up the code.
+
+
 # memoiR 1.3-0
 
 ## Improvements

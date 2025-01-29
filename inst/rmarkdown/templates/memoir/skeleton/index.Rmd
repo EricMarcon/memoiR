@@ -115,7 +115,7 @@ csquotes: true
 
 ```{r}
 #| label: DoNotModify
-#| include: FALSE
+#| include: false
 ### Utilities. Do not modify.
 # Installation of packages if necessary
 install_packages <- function(packages) {
