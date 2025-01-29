@@ -48,7 +48,7 @@ build_gitignore()
 # Build README, link to HTML output only in this example
 build_readme(PDF = FALSE)
 # render: knit to HTML Document (interactively: click the Knit button)
-rmarkdown::render(input = list.files(pattern = "*.Rmd"), 
+rmarkdown::render(input = list.files(pattern = "*.Rmd"),
                   output_format = "bookdown::html_document2")
 # Build GitHub Pages
 build_githubpages()
