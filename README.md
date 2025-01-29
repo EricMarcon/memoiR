@@ -8,7 +8,13 @@
 [![](https://cranlogs.r-pkg.org/badges/memoiR)](https://CRAN.R-project.org/package=memoiR)
 
 
-Templates to publish well-formatted documents both in HTML and PDF formats.
+This R package provides templates to publish well-formatted documents both in HTML and PDF formats. 
+Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.
+
+Long documents are the main purpose of this package. 
+Along with a GitBook or Bootstrap 4 version to be read online, their PDF version based on the LaTeX class memoir can be highly customized (see examples 1 and 2).
+
+Functions are provided to make the publication of the documents on GitHub very easy, including their continuous integration.
 
 Gallery:
 
