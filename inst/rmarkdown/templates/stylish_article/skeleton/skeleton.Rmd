@@ -48,9 +48,12 @@ github-repo: GitHubID/Repository
 lang: en-US
 otherlangs: [fr-FR,it]
 keywordlabel: Keywords
+# Labels
 JELlabel: JEL
 acknowledgementslabel: Acknowledgements
 corrauthorlabel: Corresponding author
+# Author separator: \par (no quote) for one author per line, "," (between quotes) else
+authorseparator: \par
 # Bibliography
 bibliography: references.bib
 biblio-style: chicago

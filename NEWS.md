@@ -1,8 +1,9 @@
-# memoiR 1.3-0.9000
+# memoiR 1.3-0.9001
 
 ## Improvements
 
 * cleaned up the code.
+* allowed all authors on the same line in Stylish Article.
 
 
 # memoiR 1.3-0

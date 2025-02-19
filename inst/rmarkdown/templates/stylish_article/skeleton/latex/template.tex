@@ -155,7 +155,7 @@ $endif$
 \PaperTitle{$title$} % Article title
 
 \Authors{
-$for(author)$$author.name$\textsuperscript{$author.authsuperscript$}$sep$\\ $endfor$
+$for(author)$$author.name$\textsuperscript{$author.authsuperscript$}$sep$$authorseparator$ $endfor$
 } % Authors
 \affiliation{
 $for(affiliation)$\textsuperscript{$affiliation.affsuperscript$}$affiliation.dptuniv$\\ \hspace{1em} $affiliation.address$$sep$\\$endfor$
