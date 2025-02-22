@@ -3,6 +3,7 @@ title: "Title of the Article"
 author:
   - name: "First Author's name"
     authsuperscript: 1*
+    orcid: 0000-0000-0000-0000
   - name: "Second Author's name"
     authsuperscript: 2
 affiliation:

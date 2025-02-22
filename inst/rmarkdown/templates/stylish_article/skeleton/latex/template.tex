@@ -88,6 +88,7 @@ $endif$
 \usepackage{enumitem}           % Line spacing in lists
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
+\usepackage{orcidlink}          % ORCID
 
 % Tables
 \usepackage{longtable,booktabs}
@@ -155,7 +156,7 @@ $endif$
 \PaperTitle{$title$} % Article title
 
 \Authors{
-$for(author)$$author.name$\textsuperscript{$author.authsuperscript$}$sep$$authorseparator$ $endfor$
+$for(author)$$author.name$\textsuperscript{$author.authsuperscript$}$if(author.orcid)$\orcidlink{$author.orcid$}$endif$$sep$$authorseparator$ $endfor$
 } % Authors
 \affiliation{
 $for(affiliation)$\textsuperscript{$affiliation.affsuperscript$}$affiliation.dptuniv$\\ \hspace{1em} $affiliation.address$$sep$\\$endfor$

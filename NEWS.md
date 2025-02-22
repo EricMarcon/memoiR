@@ -1,9 +1,10 @@
-# memoiR 1.3-0.9001
+# memoiR 1.3-0.9002
 
 ## Improvements
 
 * cleaned up the code.
-* allowed all authors on the same line in Stylish Article.
+* allowed all authors on the same line in Stylish Article PDF.
+* allowed ORCID link in Stylish Article PDF.
 
 
 # memoiR 1.3-0
