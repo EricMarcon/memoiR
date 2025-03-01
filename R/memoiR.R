@@ -182,8 +182,12 @@ knit_template <- function(
           )
         }
       }
-      if (format %in% c("bookdown::pdf_book",
-                        "bookdown::beamer_presentation2")) {
+      if (
+        format %in% c(
+          "bookdown::pdf_book",
+          "bookdown::beamer_presentation2"
+        )
+      ) {
         # Knit to PDF
         options(knitr.table.format = "latex")
         if (template == "memoir") {
@@ -228,7 +232,7 @@ knit_template <- function(
     }
     done <- TRUE
   },
-  error = function(e) e
+  error = function(e) print(e)
   )
   return(done)
 }
