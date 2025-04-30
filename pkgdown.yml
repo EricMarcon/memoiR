@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   articles/articles: articles.html
@@ -9,7 +9,7 @@ articles:
   memoiR: memoiR.html
   articles/tables: tables.html
   articles/upgrade: upgrade.html
-last_built: 2025-01-07T16:00Z
+last_built: 2025-04-30T12:25Z
 urls:
   reference: https://EricMarcon.github.io/memoiR/reference
   article: https://EricMarcon.github.io/memoiR/articles
