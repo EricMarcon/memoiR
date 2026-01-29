@@ -1,0 +1,326 @@
+# LaTeX memoir Customization
+
+The *Memoir* template is based of the LaTeX **memoir** package. It is
+optimized for long documents and is very versatile, with very different
+possible layouts.
+
+The template can be highly customized by simple changes in the header of
+`index.Rmd`. This short article presents the main features of the
+customization. The details to implement them, namely the options in the
+header of `index.Rmd` are in the template text. Occasionally, advanced
+customization can be made by adding LaTeX code in the
+`latex/preamble.tex` file as described below. As a general rule, the
+`latex/template.tex` should not be modified.
+
+Two main choices must be made:
+
+- The chapter and page styles. Many are proposed by **memoir**.
+- The way margins are used. Large margins host sidenotes rather than
+  footnotes, bibliographic references and figure captions. Small margins
+  remain empty.
+
+The default options produce a small-margin document, with an elaborate
+chapter style. It is presented in the
+[gallery](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf).
+It can be changed quickly for a [wide-margin
+layout](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf),
+whose parameters are given in comments.
+
+The full set of settings is described below.
+
+## Cover
+
+### Basic use
+
+Two default cover pages are proposed.
+
+Either insert a PDF page as the first page of the printed document,
+followed by a verso blank page. To do that, set the `pdftitlepage`
+option in the header of `index.Rmd`. Its value is the path to a PDF file
+whose first page will be extracted.
+
+Or build a cover based on the options declared as `maintitlepage`. The
+title and authors of the document will be printed with the current date
+on the cover page. An illustration (example
+[here](https://ericmarcon.github.io/WorkingWithR/WwR.pdf) can be added
+at the bottom right of the page, declared as `filigrane`:
+
+    maintitlepage:
+      filigrane: images/filigrane.png
+
+The verso page is made of an epigraph at the top and credits at the
+bottom. Their content must be written in plain LaTeX rather than
+Markdown. Build on the template. A logo can be added to the credits.
+Note that the `maintitlepage:` key must contain something to be taken
+into account, so if you use none of `epigraph:`, `credits`, `logo` or
+`filigrane:`, just write:
+
+    maintitlepage: true
+
+Of course, only one of the two covers should be kept even though the
+template prints both. Delete or comment out the undesired option, either
+`pdftitlepage` or the whole `maintitlepage`.
+
+### Advanced use
+
+A personal LaTeX cover, e.g. a faculty thesis mandatory cover, can be
+used by redefining the `\MainTitlePage` LaTeX command. This can be done
+in `preamble.tex`. This is a minimum, ugly example:
+
+    \renewcommand{\MainTitlePage}[2]{
+        \SmallMargins       % Margins
+        \pagestyle{empty}   % No header/footer
+      \Huge\thetitle\\
+      \Large\theauthor\\
+      \normalsize\thedate
+        \clearpage
+        #1                  % epigraph
+        #2                  % credits
+        \cleardoublepage    
+    }
+
+The command is called with two parameters: the content of `epigraph` and
+`credits` in `maintitlepage`, that may be used: then, set them in the
+header of `index.Rmd`.
+
+Note that in contrast with `template.tex`,`preamble.tex` does not
+support parameters based on the header of the document, such as
+`$title$`.
+
+## Chapter and page styles
+
+Chapter styles define the way top-level titles are presented. A
+[gallery](https://mirrors.ctan.org/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf)
+is available.
+
+The default chapter style of the template is `daleif1`. It is not
+actually supported natively by **memoir** but its code is added in
+`preamble.tex`. It proposes graphic chapter titles. It works well with
+the `Ruled` page style, with a page header that recalls the chapter and
+section titles. All page styles are described in the section 7.2 of the
+**memoir**
+[manual](https://mirrors.ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf).
+
+An alternative is `companion`, both chapter and page style employed in
+the large margin layout template.
+
+## Margins
+
+A4 or Letter paper with 1-inch margin on both sides imply long lines,
+actually too long to read comfortably. Avoid lines other 80 characters
+by increasing margin width. Two options are used:
+
+    smallmargin: 1.5in         # outer margin (small).
+    spinemargin: 1.5in         # spine margin. Reduce to 1.2 with large margins.
+
+Large margins allow both a narrower text column for readability and
+putting stuff into them. Use `largemargins: true` to use them. The outer
+margin is then set to `largemargin: 3in` and the spine margin may be
+reduced a bit.
+
+## Bibliographic styles
+
+Many bibliographic styles come with **biblatex**, the LaTeX package in
+charge of reference management. A
+[gallery](https://fr.overleaf.com/learn/latex/Biblatex_bibliography_styles)
+is available.
+
+The style is selected in the options of biblatex:
+
+    biblatexoptions:
+      - style=verbose-inote
+      - pageref=true
+
+The default style of the template is a classical author-year style, with
+the ibidem option, i.e. the authors are not repeated if they are the
+same as in the previous reference. When large margins are available, the
+`verbose-inote` style is appropriate for the reader to have the full
+references close to the text, including a DOI link.
+
+More styles can be used, including specific styles requiring an extra
+LaTeX package that is usually installed automatically by LaTeX
+distributions. The `pageref` option must be commented out if the chosen
+style does not support it or an error may occur during the LaTeX
+compilation of the document.
+
+If verbose citations in large margins are wanted but another
+bibliographic style is desired, `style` can be replaced by two separate
+instructions for citation and bibliographic styles, such as:
+
+    biblatexoptions:
+      - citestyle=verbose-inote
+      - pageref=true
+      - bibstyle=apa
+
+Note that the apa style requires the **biblatex-apa** package installed
+in the LaTeX distribution.
+
+## Fonts
+
+The default font of the memoir is Computer Modern (actually, an update
+of it), the LaTeX standard.
+
+Other fonts may be used: the [LaTeX font
+catalogue](https://tug.org/FontCatalogue/alphfonts.html) is their
+gallery. They must be installed in a LaTeX package, such as
+[**tex-gyre**](https://www.ctan.org/pkg/tex-gyre) and its companion
+**tex-gyre-math**. Both provide updated versions of the classical:
+
+- Times New Roman:
+  [`Tex Gyre Termes`](https://tug.org/FontCatalogue/texgyretermes/)
+- Century Schoolbook:
+  [`Tex Gyre Schola`](https://tug.org/FontCatalogue/texgyreschola/)
+- Palatino:
+  [`Tex Gyre Pagella`](https://tug.org/FontCatalogue/texgyrepagella/)
+- Helvetica:
+  [`Tex Gyre Heros`](https://tug.org/FontCatalogue/texgyreheros/)
+- Courier:
+  [`Tex Gyre Cursor`](https://tug.org/FontCatalogue/texgyrecursor/)
+- Bookman Old Style:
+  [`Tex Gyre Bonum`](https://tug.org/FontCatalogue/texgyrebonum/)
+- Avant Garde Gothic:
+  [`Tex Gyre Adventor`](https://tug.org/FontCatalogue/texgyreadventor/)
+- Zapf Chancery:
+  [`Tex Gyre Chorus`](https://tug.org/FontCatalogue/texgyrechorus/)
+
+The LaTeX packages must be installed in the LaTeX distribution. If
+**tinytex** installed it, it can do that too:
+
+``` r
+tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
+```
+
+This command must be added to the GitHub Action script created by
+[`build_ghworkflow()`](https://EricMarcon.github.io/memoiR/dev/reference/build_ghworkflow.md),
+just after
+[`tinytex::install_tinytex()`](https://rdrr.io/pkg/tinytex/man/install_tinytex.html).
+[`build_ghworkflow()`](https://EricMarcon.github.io/memoiR/dev/reference/build_ghworkflow.md)
+does it automatically if it recognizes the font, see below.
+
+The fonts are declared in the header of `index.Rmd`. XeLaTeX is not able
+to find fonts by their name if they are not installed at the system
+level, namely when installed by packages. They must be declared by their
+file names, which are in general their names without spaces, in lower
+case. The main font options allow building the actual file names and are
+not likely to be changed.
+
+    mainfont: texgyretermes
+    mainfontoptions:
+      - Extension=.otf
+      - UprightFont=*-regular
+      - BoldFont=*-bold
+      - BoldItalicFont=*-bolditalic
+      - ItalicFont=*-italic
+    mathfont: texgyretermes-math.otf
+
+The math font name is fully specified, with no options.
+
+A monotype font may be declared to be used in code blocks, and in code
+included in the text. It may be `monofont: texgyrecursor`, completed by
+an identical `monofontoptions` list, but the default font is usually
+better.
+
+Note that long tables (`longtable = TRUE` argument in the `kbl()`
+function to render tables) may not be cut correctly across pages when
+specific fonts are declared.
+
+The font size is 12pt by default. Change it if necessary, depending on
+the font type, the margin width and personal preferences.
+
+## GitHub Actions workflow
+
+The memoir can be produced by GitHub Actions and made visible in GitHub
+Pages by the `memoir.yml` script (in `.github\workflows`) created by
+`build_ghworklow()`.
+
+The script installs tinytex, a low-weight TeXLive distribution, with the
+**tinytex** R package. Neither additional fonts nor language support
+beyond English are installed by default. `build_ghworklow()` adds the
+necessary commands in the script (basically, install LaTeX packages) by
+reading the fonts and languages options in the header of the document
+and recognizing the LaTeX packages they need.
+
+Support is necessarily limited. Supported languages and fonts are listed
+here. Other ones can be used in a memoir, but the `memoir.yml` script
+will have to be edited manually to allow GitHub Actions to work
+properly.
+
+### Supported languages
+
+The hyphenation pattern of a language must be installed in the LaTeX
+distribution. If it is not, text will just not be hyphenated. Supported
+languages are:
+
+- `de`: German,
+- `fr`: French,
+- `it`: Italian,
+- `pt`: Portuguese,
+- `sp`: Spanish.
+
+English is supported natively.
+
+### Supported fonts
+
+Font file names are used to find the corresponding package and install
+it. For instance, `mainfont: texgyretermes`, as all fonts whose name
+starts with `texgyre` needs the **tex-gyre** LaTeX package.
+
+Supported font families are listed here with their name (the file name
+pattern) and their LaTeX package:
+
+- DejaVu (`dejavu*`): **dejavu-otf**
+- Garamond (`GaramondLibre*`): **garamond-libre**
+- Garamond Math (`Garamond-Math*`): **garamond-math**
+- KP-fonts (`kp*`): **kpfonts-otf**
+- Libertine (`LinBiolinum*`, `LinLibertine*`): **libertine**
+- TeX Gyre (`texgyre*`): **tex-gyre**
+- TeX Gyre Math (`texgyre-math*`): **tex-gyre-math**
+
+## Paper and stock size
+
+### Basic use
+
+The paper size is chosen in the `papersize` option. Common values are
+“A4” or “Letter”, but many sizes are allowed by the LaTeX package
+**memoir**. They are listed in tables 1.1 to 1.3 of the
+[manual](https://mirrors.ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf).
+Note that the “paper” suffix is added automatically and must not be
+typed: to select “a3paper”, just type “a3” or “A3”.
+
+The paper size (the area the document is printed on) is also the stock
+size (the size of the piece of paper the printer accepts).
+
+### Advanced use
+
+If the desired paper size is not that of the stock, LaTeX allows
+selecting different values. The `papersize` option actually selects the
+size of the stock. To use a smaller paper size that fits in this stock,
+e.g. an octavo (9 x 6 inches) paper in an A4 stock, the following
+commands must be added to `latex/preamble.tex`:
+
+    \settrimmedsize{9in}{6in}{*}
+    \settrims{1in}{1in}
+
+The trimmed size is that of the final document: here, octavo size. The
+stock is trimmed to the right and the bottom and the useful paper area
+is at the top left of the stock by default. The `\settrims` command adds
+trims on the left and the top sizes.
+
+In `index.Rmd`, set the paper stock to A4 and add the class option
+`showtrims` so that the trim marks are visible on the printed document.
+
+    classoption:
+      - showtrims
+
+The printed paper will show the trim marks like this:
+
+![](trim.png)
+
+## Conclusion
+
+Large margins are optimal with the `companion` style and the
+`verbose-inote` bibliographic style; small margins should be used with
+the default options of the template. Much of memoir customization is
+offered by the template by choosing other styles, and possibly other
+fonts. If needed, some LaTeX code may be added in `latex/preamble.tex`,
+but the `latex/template.tex` should not be modified.

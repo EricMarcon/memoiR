@@ -1,0 +1,69 @@
+# Figures in memoirs with large margins
+
+Large margins in PDF memoirs allow storing references and footnotes
+(actually sidenotes) while improving readability of the text in a
+narrower column. An example is
+[here](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf).
+
+By default, figures cover the width of the text column and their caption
+is placed inside the margin. Two alternative layouts are available:
+margin figures and full-width figures that extend into the margin.
+
+## Layouts
+
+This copy of a page with all three types of figures illustrates their
+differences. ![](figures.png)
+
+## Syntax
+
+Default figures are declared in code chunks which contain the
+appropriate code:
+[`plot()`](https://rdrr.io/r/graphics/plot.default.html), `ggplot()` or
+`include_graphics()`. The chunk header contains the figure caption or,
+better, a reference to it. The referenced caption, declared outside the
+chunk by `(ref:chunk_label)`, allows all text formats and contents. Its
+only limit is that it must be a single paragraph.
+
+### Standard figure
+
+This code produces a standard figure.
+
+    (ref:pressure1) Standard figure
+    ```{r}
+    #| label: pressure1
+    #| fig.cap: "(ref:pressure1)"
+    #| echo: false
+    plot(pressure)
+    ```
+
+### Margin figure
+
+A margin figure is obtained by changing the figure environment
+(`fig.env: 'marginfigure'`) in the code chunk options.
+
+    (ref:pressure2) Margin figure
+    ```{r}
+    #| label: pressure2
+    #| fig.cap: "(ref:pressure2)"
+    #| fig.env: 'marginfigure'
+    #| echo: false
+    plot(pressure)
+    ```
+
+### Full-width figure
+
+A full-width figure is obtained by changing the figure environment
+(`fig.env: 'figure'`) and width (`out.width: '\\widthw'`).
+
+    (ref:pressure3) Full-width figure
+    ```{r}
+    #| label: pressure3
+    #| fig.cap: "(ref:pressure3)"
+    #| fig.env: 'figure'
+    #| out.width: '\\widthw'
+    #| echo: false
+    plot(pressure)
+    ```
+
+The figure must be centered (`fig.align: 'center'`), which is by default
+in **memoiR** templates.

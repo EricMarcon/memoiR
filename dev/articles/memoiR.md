@@ -1,0 +1,113 @@
+# R Markdown and Bookdown Templates to Publish Documents
+
+## Content
+
+This package provides templates to publish well-formatted documents both
+in HTML and PDF formats. Documents can be produced locally or hosted on
+GitHub, where GitHub actions can update the published documents
+continuously.
+
+Long documents are the main purpose of this package. Along with a
+GitBook or Bootstrap 4 version to be read online, their PDF version
+based on the LaTeX class **memoir** can be highly customized (see
+examples [1](https://ericmarcon.github.io/WorkingWithR/WwR.pdf) and
+[2](https://ericmarcon.github.io/MesuresBioDiv2/MesuresBD.pdf)).
+
+Functions are provided to make the publication of the documents on
+GitHub very easy, including their continuous integration.
+
+Templates include:
+
+- “Memoir”: a book template based on memoir. The HTML version is a
+  GitBook or a Bootstap 4 book and the PDF version is formatted by the
+  memoir LaTeX template.
+- “Stylish Article”: an article for self archiving. The HTML versions
+  are optimized to be read online and the PDF version is a two-column,
+  well formatted article to be printed.
+- “Simple Article”: simpler than the stylish article. The HTML versions
+  are the same and the PDF version follows the classical ‘article’ LaTeX
+  template.
+- “Beamer Slideshow”: the HTML version is either IOSlide or Slidy and
+  the PDF version is a Beamer slideshow.
+
+Available HTML formats for articles are:
+
+- GitBook:
+  [`bookdown::gitbook`](https://pkgs.rstudio.com/bookdown/reference/gitbook.html)
+- Bookdown’s HTML format
+  ([`bookdown::html_document2`](https://pkgs.rstudio.com/bookdown/reference/html_document2.html))
+- Any format from the **rmdformats** package.
+  [`rmdformats::downcute`](https://rdrr.io/pkg/rmdformats/man/downcute.html)
+  is by default. See the package documentation for other possibilities.
+- distill article from the **distill** package
+  (`base_format: distill::distill_article` option in
+  [`bookdown::html_document2`](https://pkgs.rstudio.com/bookdown/reference/html_document2.html)).
+
+## Getting started
+
+In RStudio, either:
+
+- create a new R Markdown document and chose the appropriate template in
+  the wizard:
+  - Use the menu “File \> New File… \> R Markdown…”, click on *From
+    template* and pick up the template you want in the list.
+  - Choose the location to create the document and the name of its
+    directory.
+  - Make the new folder an RStudio Project: use the menu “File / New
+    Project…”, click on “Existing Directory” and select the directory
+    created previously.
+- or directly create a project with the appropriate wizard:
+  - Use the menu “File \> New Project \> New Directory \> Document
+    Project using memoiR”.
+  - Chose the location to create the document and the name of its
+    directory.
+  - Choose the document type in the list.
+
+Articles and slideshows are produced by clicking on the **Knit** button
+of the Source pane of their Rmd file. Memoirs are produced by clicking
+on the **Build Book** button of the Build pane.
+
+Push your project to GitHub and activate GitHub Pages to make your
+documents readable online. The following functions help simplify that
+task:
+
+- [`build_gitignore()`](https://EricMarcon.github.io/memoiR/dev/reference/build_gitignore.md)
+  to create a `.gitignore` file. Activate git source control then.
+- [`build_readme()`](https://EricMarcon.github.io/memoiR/dev/reference/build_readme.md)
+  to create a `README.md` file, that will be the GitHub Pages index of
+  articles or slideshows.
+- [`build_githubpages()`](https://EricMarcon.github.io/memoiR/dev/reference/build_githubpages.md)
+  to move knitted documents (articles or slideshows) to the `docs`
+  folder.
+
+Documents can be knitted by GitHub Action if continuous integration is
+activated:
+
+- In GitHub Settings, enter two secrets:
+  - EMAIL: the email address of the author,
+  - GH-PAT: a valid Personal Access Token.
+- run
+  [`build_ghworkflow()`](https://EricMarcon.github.io/memoiR/dev/reference/build_ghworkflow.md)
+  to create the necessary script (`.github/workflows/check.yml`).
+
+## Credits
+
+The feather in the memoiR package sticker is from
+[Wikimedia](https://fr.wikipedia.org/wiki/Fichier:Plume.svg#/media/Fichier:Plume.svg)
+under license [CC BY-SA
+3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+
+The [memoir](https://www.ctan.org/pkg/memoir) LaTeX package is on CTAN.
+
+The [Stylish
+Article](https://ericmarcon.github.io/memoiR/gallery/stylish_article/bookdown_pdf_book/stylish_article.pdf)
+template is adapted from [LaTeX
+Templates](http://www.latextemplates.com/template/stylish-article), that
+in turn adapted it from a LaTeX class by [Mathias
+Legrand](https://www.mcgill.ca/mecheng/people/faculty/staff/mathias-legrand).
+Its licence is [CC BY-NC-SA
+3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/).
+
+## Full documentation
+
+<https://EricMarcon.github.io/memoiR/>
