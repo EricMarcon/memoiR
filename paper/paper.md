@@ -4,7 +4,7 @@ tags:
 - R
 - Markdown
 - litterate programming
-date: "1 August 2023"
+date: "26 March 2026"
 output: pdf_document
 authors:
 - name: Eric Marcon
@@ -19,7 +19,7 @@ affiliations:
 
 # Summary
 
-`memoiR` is a package for R that provides templates to publish well-formatted documents both in HTML and PDF formats. 
+`memoiR` is a package for R that provides templates to publish well-formatted documents both in HTML and PDF formats.
 Documents can be produced locally or hosted on GitHub, where GitHub actions can update the published documents continuously.
 
 Long documents are the main purpose of this package.
@@ -29,16 +29,12 @@ Functions are provided to make the publication of the documents on GitHub very e
 
 Templates include:
 
-- "Memoir": a book template based on memoir. 
-The HTML version is a GitBook or a Bootstap 4 book and the PDF version is formatted by the `memoir` \LaTeX template.
-- "Stylish Article": an article for self archiving. 
-The HTML versions are optimized to be read online and the PDF version is a two-column, well formatted article to be printed.
-- "Simple Article":  simpler than the stylish article. 
-The HTML versions are the same and the PDF version follows the classical `article` \LaTeX template.
-- "Beamer Slideshow": the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.
+-   "Memoir": a book template based on memoir. The HTML version is a GitBook or a Bootstap 4 book and the PDF version is formatted by the `memoir` \LaTeX template.
+-   "Stylish Article": an article for self archiving. The HTML versions are optimized to be read online and the PDF version is a two-column, well formatted article to be printed.
+-   "Simple Article": simpler than the stylish article. The HTML versions are the same and the PDF version follows the classical `article` \LaTeX template.
+-   "Beamer Slideshow": the HTML version is either IOSlide or Slidy and the PDF version is a Beamer slideshow.
 
 A gallery is provided on the GitHub pages of the project.
-
 
 # Statement of need
 
@@ -58,9 +54,9 @@ The full process is summarized in figure \autoref{fig:process}.
 
 ![Processing documents with R and Markdown. Data and code are processed by R to obtain figures and results, which are included in the text and formated by R Markdown (actually by `knitr`, `bookdown`, Pandoc and a \LaTeX compiler) with respect to a template.\label{fig:process}](process.pdf)
 
-The `memoiR` package builds on `bookdown` with two main goals: provide a full set of well-formated templates and simplify the integration with GitHub pages to efficiently publish the documents.
-  
-The `memoir` \LaTeX package [@Wilson2006] allows publishing high-quality long documents such as books and theses. 
+The `memoiR` package builds on `bookdown` with two main goals: provide a full set of well-formatted templates and simplify the integration with GitHub pages to efficiently publish the documents.
+
+The `memoir` \LaTeX package [@Wilson2006] allows publishing high-quality long documents such as books and theses.
 The `memoiR` package for R makes it available for R users.
 A wide set of options allows extensive customization of the documents.
 Other available formats are a simple and a stylish article, and a Beamer slideshow.
@@ -70,9 +66,13 @@ To ensure reproducibility, the continuous integration supported by GitHub Action
 
 Other packages provide templates for R Markdown, e.g. `rticles` [@Allaire2023], which gathers \LaTeX templates for many journals, `rmdformats` [@Barnier2022] which comes with several HTML output formats or `thesisdown` [@Ismay2023] for theses.
 In contrast, `memoiR` is a general purpose package, that always allows both HTML and PDF outputs, and was developed for easy continuous integration and publishing.
+Quarto[^1], which is presented as an open publishing system, was developed to replace R Markdown by extending its functionality beyond R, starting with Jupyter notebooks and Julia.
+It benefits from considerable resources and will ultimately supersede `bookdown` and all its extensions such as `memoiR`.
 
+[^1]: <https://quarto.org/>
 
 # Acknowledgements
+
 This work benefited from the support of “Investissements d’avenir” of the French National Agency for Research (Labex CEBA, ref. ANR-10-LABX-25-01).
 The author thanks [Mathias Legrand](https://www.mcgill.ca/mecheng/people/staff/mathias-legrand) for the original \LaTeX class of the stylish article.
 
