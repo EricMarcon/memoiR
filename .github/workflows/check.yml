@@ -50,7 +50,7 @@ jobs:
         run: memoiR::knit_all()
         shell: Rscript {0}
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site
           path: docs
@@ -65,7 +65,7 @@ jobs:
         with:
           ref: gh-pages
       - name: Download artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: site
       - name: Deploy to GitHub Pages
