@@ -47,7 +47,7 @@ setwd(wd)
 # Make it the current project
 usethis::proj_set(path = ".", force = TRUE)
 #> ✔ Setting active project to
-#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpuZ3rCQ/example3d216bc5e467".
+#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpKuTK77/example36ce7fafc2da".
 
 # Build GitHub Actions Workflow script
 build_ghworkflow()
