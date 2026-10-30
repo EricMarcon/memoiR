@@ -17,5 +17,5 @@ docs/
 ^_gh-pages$
 ^pkgdown$
 vignettes/articles/
-.github/
+^\.github$
 paper/
