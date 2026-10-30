@@ -2,13 +2,13 @@
 
 Markdown is a very simple language for producing various types of
 documents: HTML, PDF, and Word among others. Its documentation is
-available at the RStudio website[¹](#fn1).
+available at the RStudio website[^1].
 
-Markdown is extended by Bookdown[²](#fn2), which allows for book writing
-and more efficient syntax for articles. Articles of the memoiR package
-are made with Markdown in RStudio: knitr processes the Markdown code,
-passes it to Pandoc for transformation into LaTeX, finally LaTeX
-compiles it into PDF.
+Markdown is extended by Bookdown[^2], which allows for book writing and
+more efficient syntax for articles. Articles of the memoiR package are
+made with Markdown in RStudio: knitr processes the Markdown code, passes
+it to Pandoc for transformation into LaTeX, finally LaTeX compiles it
+into PDF.
 
 ### Motivation
 
@@ -93,7 +93,8 @@ for final formatting.
 |          5.0 |   3.6 |          1.4 |   0.2 | setosa  |
 |          5.4 |   3.9 |          1.7 |   0.4 | setosa  |
 
-Table created by R
+Table created by R {.table .table .table-striped
+style="width: auto !important; margin-left: auto; margin-right: auto;"}
 
 The caption is specified by the `caption` argument and referencing is
 possible because the table receives a label whose name is `tab:`
@@ -143,15 +144,16 @@ multiple pages, or use the width of the page.
       kable_styling(bootstrap_options = "striped", full_width = TRUE)
     ```
 
-| Treatment | Timber                                                      | Thinning                                                      | Fuelwood                                                                   | %AGB lost                    |
-|:----------|:------------------------------------------------------------|:--------------------------------------------------------------|:---------------------------------------------------------------------------|:-----------------------------|
-| Control   |                                                             |                                                               |                                                                            | 0                            |
-| T1        | DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha |                                                               |                                                                            | $\lbrack 12\% - 33\%\rbrack$ |
-| T2        | DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha | DBH $\geq$ 40 cm, non-valuable species, $\approx$ 30 trees/ha |                                                                            | $\lbrack 33\% - 56\%\rbrack$ |
-| T3        | DBH $\geq$ 50 cm, commercial species, $\approx$ 10 trees/ha | DBH $\geq$ 50 cm, non-valuable species, $\approx$ 15 trees/ha | 40 cm $\leq$ DBH $\leq$ 50 cm, non-valuable species, $\approx$ 15 trees/ha | $\lbrack 35\% - 56\%\rbrack$ |
+| Treatment | Timber | Thinning | Fuelwood | %AGB lost |
+|:---|:---|:---|:---|:---|
+| Control |  |  |  | 0 |
+| T1 | DBH $`\geq`$ 50 cm, commercial species, $`\approx`$ 10 trees/ha |  |  | $`[12\%-33\%]`$ |
+| T2 | DBH $`\geq`$ 50 cm, commercial species, $`\approx`$ 10 trees/ha | DBH $`\geq`$ 40 cm, non-valuable species, $`\approx`$ 30 trees/ha |  | $`[33\%-56\%]`$ |
+| T3 | DBH $`\geq`$ 50 cm, commercial species, $`\approx`$ 10 trees/ha | DBH $`\geq`$ 50 cm, non-valuable species, $`\approx`$ 15 trees/ha | 40 cm $`\leq`$ DBH $`\leq`$ 50 cm, non-valuable species, $`\approx`$ 15 trees/ha | $`[35\%-56\%]`$ |
 
 Summary of the disturbance intensity for the 4 plot treatments in
-Paracou.
+Paracou. {.table .table .table-striped
+style="margin-left: auto; margin-right: auto;"}
 
 This table contains mathematics: the `escape = FALSE` option is
 necessary.
@@ -171,6 +173,7 @@ Figures can be created by some R code.
     ```
 
 ``` r
+
 plot(pressure)
 ```
 
@@ -241,8 +244,11 @@ items.
 
 ### Math
 
-Equations in LaTeX format can be inserted in line, like $A = \pi r^{2}$
-or isolated like $$e^{i\pi} = - 1.$$
+Equations in LaTeX format can be inserted in line, like $`A=\pi r^2`$ or
+isolated like
+``` math
+e^{i \pi} = -1.
+```
 
 They can be numbered using the `equation` environment:
 
@@ -270,7 +276,7 @@ In all cases, the call to the reference is made by the command
 
 Bibliographic references included in the `references.bib` file can be
 called by `[@CitationKey]`, in parentheses (Xie 2016), or without square
-brackets, in the text, as Xie, Allaire, and Grolemund (2018) .
+brackets, in the text, as Xie et al. (2018) .
 
 The bibliography is processed by Pandoc when producing Word or HTML
 documents. The bibliographic style can be specified, by adding the line
@@ -278,7 +284,7 @@ documents. The bibliographic style can be specified, by adding the line
     csl:file_name.csl
 
 in the document header and copying the *.csl* style file to the project
-folder. More than a thousand styles are available[³](#fn3).
+folder. More than a thousand styles are available[^3].
 
 For PDF documents, the bibliography is managed by natbib. The style is
 declared in the header:
@@ -381,7 +387,7 @@ command is simply ignored in HTML.
 
 Language codes are used in the header, such as `en-US` but language
 names are necessary in \`. Name matches are listed in table 3 of the
-polyglossia package documentation[⁴](#fn4).
+polyglossia package documentation[^4].
 
 ### Word
 
@@ -397,19 +403,17 @@ The level 1 title *References* must be added manually to Word files.
 ## References
 
 Xie, Yihui. 2016. *Bookdown: Authoring Books and Technical Documents
-with R Markdown*. Boca Raton, Florida: Chapman; Hall/CRC.
+with R Markdown*. Chapman; Hall/CRC.
 <https://github.com/rstudio/bookdown>.
 
 Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. *R Markdown: The
-Definitive Guide*. Boca Raton, Florida: Chapman; Hall/CRC.
+Definitive Guide*. Chapman; Hall/CRC.
 <https://bookdown.org/yihui/rmarkdown>.
 
-------------------------------------------------------------------------
+[^1]: [http://rmarkdown.rstudio.com/articles.html](http://rmarkdown.rstudio.com/articles.md)
 
-1.  [http://rmarkdown.rstudio.com/articles.html](http://rmarkdown.rstudio.com/articles.md)
+[^2]: <https://bookdown.org/yihui/bookdown/>
 
-2.  <https://bookdown.org/yihui/bookdown/>
+[^3]: <https://github.com/citation-style-language/styles>
 
-3.  <https://github.com/citation-style-language/styles>
-
-4.  <http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf>
+[^4]: <http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf>

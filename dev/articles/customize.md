@@ -187,6 +187,7 @@ The LaTeX packages must be installed in the LaTeX distribution. If
 **tinytex** installed it, it can do that too:
 
 ``` r
+
 tinytex::tlmgr_install(c("tex-gyre", "tex-gyre-math"))
 ```
 

@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Writing articles">
 <meta name="robots" content="noindex">
@@ -377,7 +377,7 @@ DBH
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mn>12</mn><mi>%</mi><mo>−</mo><mn>33</mn><mi>%</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[12\%-33\%]</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>12</mn><mi>%</mi><mo>−</mo><mn>33</mn><mi>%</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[12\%-33\%]</annotation></semantics></math>
 </td>
 </tr>
 <tr>
@@ -401,7 +401,7 @@ DBH
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mn>33</mn><mi>%</mi><mo>−</mo><mn>56</mn><mi>%</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[33\%-56\%]</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>33</mn><mi>%</mi><mo>−</mo><mn>56</mn><mi>%</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[33\%-56\%]</annotation></semantics></math>
 </td>
 </tr>
 <tr>
@@ -432,7 +432,7 @@ DBH
 15 trees/ha
 </td>
 <td style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mn>35</mn><mi>%</mi><mo>−</mo><mn>56</mn><mi>%</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[35\%-56\%]</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>35</mn><mi>%</mi><mo>−</mo><mn>56</mn><mi>%</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[35\%-56\%]</annotation></semantics></math>
 </td>
 </tr>
 </tbody>
@@ -531,7 +531,7 @@ items.</p>
 <p>Equations in LaTeX format can be inserted in line, like
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">A=\pi r^2</annotation></semantics></math>
 or isolated like
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>=</mo><mo>−</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">e^{i \pi} = -1.</annotation></semantics></math></p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>=</mo><mi>−</mi><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">e^{i \pi} = -1.</annotation></semantics></math></p>
 <p>They can be numbered using the <code>equation</code> environment:</p>
 <pre><code>\begin{equation}
   A = \pi r^2.
@@ -558,8 +558,7 @@ to the name of the code snippet prefixed with <code>fig:</code> and
 </h3>
 <p>Bibliographic references included in the <code>references.bib</code>
 file can be called by <code>[@CitationKey]</code>, in parentheses <span class="citation">(Xie 2016)</span>, or without square brackets, in the
-text, as <span class="citation">Xie, Allaire, and Grolemund
-(2018)</span> .</p>
+text, as <span class="citation">Xie et al. (2018)</span> .</p>
 <p>The bibliography is processed by Pandoc when producing Word or HTML
 documents. The bibliographic style can be specified, by adding the
 line</p>
@@ -684,15 +683,14 @@ files.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Xie2016" class="csl-entry">
 Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents
-with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman;
-Hall/CRC. <a href="https://github.com/rstudio/bookdown" class="external-link">https://github.com/rstudio/bookdown</a>.
+with <span>R</span> Markdown</em>. Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown" class="external-link">https://github.com/rstudio/bookdown</a>.
 </div>
 <div id="ref-Xie2018" class="csl-entry">
 Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown:
-The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown" class="external-link">https://bookdown.org/yihui/rmarkdown</a>.
+The Definitive Guide</em>. Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown" class="external-link">https://bookdown.org/yihui/rmarkdown</a>.
 </div>
 </div>
 </div>
@@ -708,7 +706,7 @@ The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

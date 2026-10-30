@@ -20,13 +20,14 @@ needed.
 ### Basic use
 
 **bookdown** was built with the
-[`kable()`](https://rdrr.io/pkg/knitr/man/kable.html) function[¹](#fn1),
+[`kable()`](https://rdrr.io/pkg/knitr/man/kable.html) function[^1],
 completed by the **kableExtra** package.
 
 This basic example shows how to produce a simple, well-formatted table.
 The label of the code chunk is `cars`.
 
 ``` r
+
 library("kableExtra")
 mtcars[1:5, 1:6] |>
   kbl(
@@ -44,7 +45,8 @@ mtcars[1:5, 1:6] |>
 | Hornet 4 Drive    | 21.4 |   6 |  258 | 110 | 3.08 | 3.215 |
 | Hornet Sportabout | 18.7 |   8 |  360 | 175 | 3.15 | 3.440 |
 
-Table 1: Demo table
+Table 1: Demo table {.table .table
+style="margin-left: auto; margin-right: auto;"}
 
 The [`kableExtra::kbl()`](https://rdrr.io/pkg/kableExtra/man/kbl.html)
 function replaces
@@ -55,8 +57,7 @@ header with option `tab.cap` which works only with
 [`kable()`](https://rdrr.io/pkg/knitr/man/kable.html). The table caption
 is thus in the argument `caption` of
 [`kbl()`](https://rdrr.io/pkg/kableExtra/man/kbl.html). Formatted
-captions, possibly with maths, can be used with text
-references[²](#fn2):
+captions, possibly with maths, can be used with text references[^2]:
 
 - add the reference somewhere in the text (just above the code chunk is
   a good place), such as
@@ -88,7 +89,8 @@ mtcars[1:5, 1:6] |>
 | Hornet 4 Drive    | 21.4 |   6 |  258 | 110 | 3.08 | 3.215 |
 | Hornet Sportabout | 18.7 |   8 |  360 | 175 | 3.15 | 3.440 |
 
-Table 2: Caption with *italics* and maths: \\\pi\\.
+Table 2: Caption with *italics* and maths: \\\pi\\. {.table .table
+style="margin-left: auto; margin-right: auto;"}
 
 Argument `booktabs = TRUE` provides clean horizontal rules and should
 always be used.
@@ -96,10 +98,10 @@ always be used.
 Last,
 [`kable_styling()`](https://rdrr.io/pkg/kableExtra/man/kable_styling.html)
 formats the table for printing. It has many arguments that are not
-detailed here: read the documentation of the package[³](#fn3). More
-details are given in the document templates of memoiR, including the
-code to place tables in a single column or across the full page in the
-Stylish Article template.
+detailed here: read the documentation of the package[^3]. More details
+are given in the document templates of memoiR, including the code to
+place tables in a single column or across the full page in the Stylish
+Article template.
 
 Cross references (such as table [2](#tab:cars)) are called by
 `table \@ref(tab:cars)`: the name of the code snippet (“cars” here) is
@@ -108,12 +110,12 @@ prefixed by `tab:`.
 ### Limitations
 
 **kableExtra** used to produce clean tables in Word with a
-workaround[⁴](#fn4) that was included in previous versions of memoiR but
-this no longer the case since its version 1. Tables are rendered with a
+workaround[^4] that was included in previous versions of memoiR but this
+no longer the case since its version 1. Tables are rendered with a
 single cell per row.
 
 The solution is to produce the HTML version of the document, copy its
-tables and paste them into the Word version[⁵](#fn5).
+tables and paste them into the Word version[^5].
 
 ## huxtable
 
@@ -133,6 +135,7 @@ Add **huxtable** in the vector of packages to install in the “Options”
 chunk:
 
 ``` r
+
 # Add necessary packages here
 packages <- c("tidyverse", "huxtable")
 ```
@@ -142,6 +145,7 @@ Tables are produced by
 and formatting is made possible by a large set of functions.
 
 ``` r
+
 library("huxtable")
 mtcars[1:5, 1:6] |>
   as_hux() |>
@@ -159,9 +163,11 @@ mtcars[1:5, 1:6] |>
 | 21.4 |   6 |  258 | 110 | 3.08 | 3.21 |
 | 18.7 |   8 |  360 | 175 | 3.15 | 3.44 |
 
-Table 3: Made by **huxtable**
+Table 3: Made by **huxtable** {#tab:ht .table .huxtable
+quarto-disable-processing="true"
+style="margin-left: auto; margin-right: auto;   break-inside: avoid; page-break-inside: avoid;"}
 
-Read its documentation[⁶](#fn6).
+Read its documentation[^6].
 
 ### Limitations
 
@@ -183,6 +189,7 @@ the document is rendered with
 as shown below.
 
 ``` r
+
 library("gt")
 ```
 
@@ -194,6 +201,7 @@ library("gt")
     ##     fmt_percent
 
 ``` r
+
 mtcars[1:5, 1:6] |>
   gt(
     caption = "Demo table"
@@ -208,7 +216,8 @@ mtcars[1:5, 1:6] |>
 | 21.4 | 6   | 258  | 110 | 3.08 | 3.215 |
 | 18.7 | 8   | 360  | 175 | 3.15 | 3.440 |
 
-Table 4: Demo table
+Table 4: Demo table {.table .gt_table quarto-disable-processing="false"
+quarto-bootstrap="false"}
 
 ## flextable
 
@@ -223,16 +232,14 @@ the LaTeX templates are not compatible.
 
 In conclusion, flextable is not supported.
 
-------------------------------------------------------------------------
+[^1]: <https://bookdown.org/yihui/rmarkdown-cookbook/kable.html>
 
-1.  <https://bookdown.org/yihui/rmarkdown-cookbook/kable.html>
+[^2]: <https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references>
 
-2.  <https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references>
+[^3]: <https://haozhu233.github.io/kableExtra/>
 
-3.  <https://haozhu233.github.io/kableExtra/>
+[^4]: <https://github.com/haozhu233/kableExtra/issues/308>
 
-4.  <https://github.com/haozhu233/kableExtra/issues/308>
+[^5]: <https://haozhu233.github.io/kableExtra/kableExtra_and_word.html>
 
-5.  <https://haozhu233.github.io/kableExtra/kableExtra_and_word.html>
-
-6.  <https://hughjonesd.github.io/huxtable/reference/>
+[^6]: <https://hughjonesd.github.io/huxtable/reference/>

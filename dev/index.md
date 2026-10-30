@@ -1,11 +1,5 @@
 # memoiR
 
-![stability-wip](https://img.shields.io/badge/lifecycle-stable-green.svg)![R-CMD-check](https://github.com/EricMarcon/memoiR/workflows/R-CMD-check/badge.svg)[![codecov](https://codecov.io/github/EricMarcon/memoiR/branch/master/graphs/badge.svg)](https://app.codecov.io/github/EricMarcon/memoiR)
-[![CRAN
-version](https://www.r-pkg.org/badges/version/memoiR)](https://CRAN.r-project.org/package=memoiR)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/memoiR)](https://CRAN.R-project.org/package=memoiR)
-[![](https://cranlogs.r-pkg.org/badges/memoiR)](https://CRAN.R-project.org/package=memoiR)
-
 This R package provides templates to publish well-formatted documents
 both in HTML and PDF formats. Documents can be produced locally or
 hosted on GitHub, where GitHub actions can update the published

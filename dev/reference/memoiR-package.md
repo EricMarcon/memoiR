@@ -20,3 +20,8 @@ Useful links:
 
 **Maintainer**: Eric Marcon <eric.marcon@agroparistech.fr>
 ([ORCID](https://orcid.org/0000-0002-5249-321X))
+
+Authors:
+
+- Eric Marcon <eric.marcon@agroparistech.fr>
+  ([ORCID](https://orcid.org/0000-0002-5249-321X))

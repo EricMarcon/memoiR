@@ -34,7 +34,7 @@ setwd(wd)
 # Make it the current project
 usethis::proj_set(path = ".", force = TRUE)
 #> ✔ Setting active project to
-#>   "/private/var/folders/yz/zr09txvs5dn18vt4cn21kzl40000gn/T/Rtmp5by3Aw/example2a1a131130e1".
+#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpUU9TMp/example3c9d32ce2ddd".
 
 # Build .gitignore file
 build_gitignore()
