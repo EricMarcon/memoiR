@@ -44,7 +44,7 @@ setwd(wd)
 # Make it the current project
 usethis::proj_set(path = ".", force = TRUE)
 #> ✔ Setting active project to
-#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpdhUnNh/example2784270e3356".
+#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpuZ3rCQ/example3d212ddd7406".
 
 # Build README.md file
 build_readme()
@@ -57,8 +57,8 @@ readLines("README.md")
 #>  [4] ""                                                                        
 #>  [5] "Formats:"                                                                
 #>  [6] ""                                                                        
-#>  [7] "- [HTML](https://GitHubID.github.io/Repository/example2784270e3356.html)"
-#>  [8] "- [PDF](https://GitHubID.github.io/Repository/example2784270e3356.pdf)"  
+#>  [7] "- [HTML](https://GitHubID.github.io/Repository/example3d212ddd7406.html)"
+#>  [8] "- [PDF](https://GitHubID.github.io/Repository/example3d212ddd7406.pdf)"  
 #>  [9] ""                                                                        
 #> [10] ""                                                                        
 #> [11] ""                                                                        
