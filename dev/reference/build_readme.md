@@ -44,24 +44,24 @@ setwd(wd)
 # Make it the current project
 usethis::proj_set(path = ".", force = TRUE)
 #> ✔ Setting active project to
-#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpKuTK77/example36ce3a79e72".
+#>   "/private/var/folders/n6/hn37q6pj7sj_9dmqqc2113800000gn/T/RtmpBEasv9/example75716b05d5bb".
 
 # Build README.md file
 build_readme()
 #> ✔ Writing README.md.
 # Content
 readLines("README.md")
-#>  [1] "# Title of the Article"                                                 
-#>  [2] ""                                                                       
-#>  [3] "Abstract of the article."                                               
-#>  [4] ""                                                                       
-#>  [5] "Formats:"                                                               
-#>  [6] ""                                                                       
-#>  [7] "- [HTML](https://GitHubID.github.io/Repository/example36ce3a79e72.html)"
-#>  [8] "- [PDF](https://GitHubID.github.io/Repository/example36ce3a79e72.pdf)"  
-#>  [9] ""                                                                       
-#> [10] ""                                                                       
-#> [11] ""                                                                       
+#>  [1] "# Title of the Article"                                                  
+#>  [2] ""                                                                        
+#>  [3] "Abstract of the article."                                                
+#>  [4] ""                                                                        
+#>  [5] "Formats:"                                                                
+#>  [6] ""                                                                        
+#>  [7] "- [HTML](https://GitHubID.github.io/Repository/example75716b05d5bb.html)"
+#>  [8] "- [PDF](https://GitHubID.github.io/Repository/example75716b05d5bb.pdf)"  
+#>  [9] ""                                                                        
+#> [10] ""                                                                        
+#> [11] ""                                                                        
 
 ## End of the example: cleanup
 # Return to the original working directory and clean up
